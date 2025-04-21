@@ -1,5 +1,6 @@
+{{-- resources\views\admin\auth\reset-password.blade.php --}}
 <x-guest-layout>
-    <form method="POST" action="{{ route('password.store') }}">
+    <form method="POST" action="{{ route('admin.password.store') }}">
         @csrf
 
         <!-- Password Reset Token -->
