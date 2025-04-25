@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class InstructorDashboardContoller extends Controller
 {
-    function index(): View
-    {
-        return view('dashboard');
+    function index() : View {
+        return view('Instructor.dashboard');
     }
 }
