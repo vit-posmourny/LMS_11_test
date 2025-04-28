@@ -30,10 +30,6 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
 });
 
 
-// must be middleware(['auth:admin',...]) here, for an admin
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth:admin', 'verified'])->name('admin.dashboard');
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
