@@ -24,7 +24,7 @@
     <script src="{{ asset('admin/assets/dist/js/demo-theme.min.js?1692870487') }}"></script>
     <div class="page">
       <!-- Sidebar -->
-            {{-- moved --}}
+            @include('admin.layouts.sidebar');
       <!-- Navbar -->
       <header class="navbar navbar-expand-md d-none d-lg-flex d-print-none" >
         <div class="container-xl">
