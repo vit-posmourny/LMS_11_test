@@ -22,7 +22,7 @@ Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], f
         ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store'])
-    ->name('login.store');
+        ->name('login.store');
 
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
@@ -55,10 +55,12 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
-    Route::put('password', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('password', [PasswordController::class, 'update'])
+        ->name('password.update');
 
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('dasboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])
+        ->name('dashboard');
 });
