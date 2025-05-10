@@ -38,8 +38,6 @@
                 </a>
             </div>
 
-            <x-auth-session-status class="mb-4" :status="session('status')" />
-
             <div class="card card-md">
                 <div class="card-body">
                     <h2 class="text-center">Reset password</h2>
