@@ -1,5 +1,8 @@
 {{-- resources\views\frontend\layouts\header.blade.php --}}
 
+    <!--===========================
+        HEADER START
+    ============================-->
     <header class="header_3">
         <div class="row">
             <div class="col-xxl-4 col-lg-7 col-md-8 d-none d-md-block">
@@ -39,6 +42,9 @@
             </div>
         </div>
     </header>
+    <!--===========================
+        HEADER END
+    ============================-->
 
 
     <!--===========================
@@ -46,7 +52,7 @@
     ============================-->
     <nav class="navbar navbar-expand-lg main_menu main_menu_3">
         <a class="navbar-brand" href="index_3.html">
-            <img src="images/logo.png" alt="EduCore" class="img-fluid">
+            <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="EduCore" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -55,14 +61,14 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="menu_category">
                 <div class="icon">
-                    <img src="images/grid_icon.png" alt="Category" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/grid_icon.png') }}" alt="Category" class="img-fluid">
                 </div>
                 Category
                 <ul>
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_1.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_1.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Development
                         </a>
@@ -76,7 +82,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_2.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_2.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Business
                         </a>
@@ -90,7 +96,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_3.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_3.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Marketing
                         </a>
@@ -104,7 +110,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_4.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_4.png" alt="Category') }}" class="img-fluid">
                             </span>
                             Lifestyle
                         </a>
@@ -118,7 +124,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_5.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_5.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Health & Fitness
                         </a>
@@ -132,7 +138,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_6.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_6.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Design
                         </a>
@@ -146,7 +152,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="images/menu_category_icon_7.png" alt="Category" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_7.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Academics
                         </a>
@@ -212,13 +218,13 @@
 
             <div class="right_menu">
                 <div class="menu_search_btn">
-                    <img src="images/search_icon.png" alt="Search" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/search_icon.png') }}" alt="Search" class="img-fluid">
                 </div>
                 <ul>
                     <li>
                         <a class="menu_signin" href="#">
                             <span>
-                                <img src="images/cart_icon_black.png" alt="user" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/cart_icon_black.png') }}" alt="user" class="img-fluid">
                             </span>
                             <b>06</b>
                         </a>
@@ -226,13 +232,13 @@
                     <li>
                         <a class="admin" href="#">
                             <span>
-                                <img src="images/user_icon_black.png" alt="user" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/user_icon_black.png') }}" alt="user" class="img-fluid">
                             </span>
                             admin
                         </a>
                     </li>
                     <li>
-                        <a class="common_btn" href="#">Sign Up</a>
+                        <a class="common_btn" href="{{ route('login') }}">Sign In</a>
                     </li>
                 </ul>
             </div>

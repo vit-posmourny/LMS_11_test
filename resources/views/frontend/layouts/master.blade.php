@@ -41,6 +41,8 @@
     </div>
     <!--============ PRELOADER START ===========-->
 
+    @include('frontend.layouts.header')
+
     @yield('content')
 
     <!--================================
