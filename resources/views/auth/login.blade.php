@@ -1,4 +1,7 @@
+@extends('frontend.layouts.master')
 
+@section('content')
+{{-- resources\views\auth\login.blade.php --}}
 <!--===========================
     SIGN IN START
 ============================-->
@@ -70,3 +73,4 @@
 <!--===========================
     SIGN IN END
 ============================-->
+@endsection
