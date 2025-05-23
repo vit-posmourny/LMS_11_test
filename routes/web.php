@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Frontend\UserDashboardController;
+use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
 
 
@@ -18,7 +18,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 *-----------------------------------------------------------------
 */
 Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'prefix' => 'student', 'as' => 'student.'], function() {
-    Route::get('/dashboard', [UserDashboardController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [StudentDashboardController::class, 'index'])->name('dashboard');
 });
 
 /*
