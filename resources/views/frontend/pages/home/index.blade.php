@@ -1,15 +1,6 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-   <!--===========================
-        HEADER START
-    ============================-->
-    @include('frontend.layouts.header')
-    <!--===========================
-        HEADER END
-    ============================-->
-
-
     <!--===========================
         BANNER 3 START
     ============================-->
@@ -118,6 +109,6 @@
     ============================-->
 
     @yield('content')
-    
+
 @endsection
 
