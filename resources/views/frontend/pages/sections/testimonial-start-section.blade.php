@@ -25,11 +25,11 @@
                     urna.Morbi molestie purus egestas aliquam euismod utrum eget dapibus fames ac ante  orci ut
                     lectus.</p>
                 <div class="testimonial_logo">
-                    <img src="images/testimonial_logo.png" alt="Testimonial" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/testimonial_logo.png') }}" alt="Testimonial" class="img-fluid">
                 </div>
                 <div class="wsus__testimonial_footer">
                     <div class="img">
-                        <img src="images/testimonial_user_1.png" alt="user" class="img-fluid">
+                        <img src="{{ asset('frontend/assets/images/testimonial_user_1.png') }}" alt="user" class="img-fluid">
                     </div>
                     <h3>
                         Spruce Springclean
@@ -52,11 +52,11 @@
                     urna.Morbi molestie purus egestas aliquam euismod utrum eget dapibus fames ac ante  orci ut
                     lectus.</p>
                 <div class="testimonial_logo">
-                    <img src="images/testimonial_logo_2.png" alt="Testimonial" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/testimonial_logo_2.png') }}" alt="Testimonial" class="img-fluid">
                 </div>
                 <div class="wsus__testimonial_footer">
                     <div class="img">
-                        <img src="images/testimonial_user_2.png" alt="user" class="img-fluid">
+                        <img src="{{ asset('frontend/assets/images/testimonial_user_2.png') }}" alt="user" class="img-fluid">
                     </div>
                     <h3>
                         Ravi O'Leigh
@@ -79,11 +79,11 @@
                     urna.Morbi molestie purus egestas aliquam euismod utrum eget dapibus fames ac ante  orci ut
                     lectus.</p>
                 <div class="testimonial_logo">
-                    <img src="images/testimonial_logo_3.png" alt="Testimonial" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/testimonial_logo_3.png') }}" alt="Testimonial" class="img-fluid">
                 </div>
                 <div class="wsus__testimonial_footer">
                     <div class="img">
-                        <img src="images/testimonial_user_3.png" alt="user" class="img-fluid">
+                        <img src="{{ asset('frontend/assets/images/testimonial_user_3.png') }}" alt="user" class="img-fluid">
                     </div>
                     <h3>
                         Hanson Deck
@@ -106,11 +106,11 @@
                     urna.Morbi molestie purus egestas aliquam euismod utrum eget dapibus fames ac ante  orci ut
                     lectus.</p>
                 <div class="testimonial_logo">
-                    <img src="images/testimonial_logo_2.png" alt="Testimonial" class="img-fluid">
+                    <img src="{{ asset('frontend/assets/images/testimonial_logo_2.png') }}" alt="Testimonial" class="img-fluid">
                 </div>
                 <div class="wsus__testimonial_footer">
                     <div class="img">
-                        <img src="images/testimonial_user_2.png" alt="user" class="img-fluid">
+                        <img src="{{ asset('frontend/assets/images/testimonial_user_2.png') }}" alt="user" class="img-fluid">
                     </div>
                     <h3>
                         Spruce Springclean
