@@ -19,12 +19,14 @@ class UserSeeder extends Seeder
                 'email' => 'user@gmail.com',
                 'password' => bcrypt('heslo'),
                 'role' => 'student',
-            ],           
+                'approve_status' => 'approved'
+            ],
             [
                 'name' => 'Instructor',
                 'email' => 'instructor@gmail.com',
                 'password' => bcrypt('heslo'),
                 'role' => 'instructor',
+                'approve_status' => 'pending'
             ]
         ];
 
