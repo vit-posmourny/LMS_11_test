@@ -51,7 +51,7 @@
         MAIN MENU 3 START
     ============================-->
     <nav class="navbar navbar-expand-lg main_menu main_menu_3">
-        <a class="navbar-brand" href="index_3.html">
+        <a class="navbar-brand" href="{{ route('home')}}">
             <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="EduCore" class="img-fluid">
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"

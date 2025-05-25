@@ -1,4 +1,6 @@
 {{-- resources\views\welcome.blade.php --}}
+{{ dd('jsem ve welcome');}}
+wewerwerwerwer
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
