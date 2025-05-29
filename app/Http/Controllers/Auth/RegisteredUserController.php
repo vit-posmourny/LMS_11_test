@@ -63,7 +63,7 @@ class RegisteredUserController extends Controller
         }else {
             abort('404');
         }
-        
+
 
         event(new Registered($user));
 
@@ -76,7 +76,7 @@ class RegisteredUserController extends Controller
         }
         elseif ($request->user()->role == 'instructor')
         {
-            return redirect()->intended(route('instructor.dashboard', absolute: false));
+            return redirect()->intended(route('student.dashboard', absolute: false));
         }
     }
 }
