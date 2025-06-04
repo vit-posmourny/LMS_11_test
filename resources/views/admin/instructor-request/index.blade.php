@@ -28,6 +28,8 @@
                                     <td>
                                         @if ($instructor->approve_status == 'pending')
                                             <span class="badge bg-yellow text-yellow-fg">Pending</span>
+                                        @elseif ($instructor->approve_status == 'rejected')
+                                            <span class="badge bg-red text-yellow-fg">Rejected</span>
                                         @endif
                                     </td>
                                     <td>
@@ -36,11 +38,13 @@
                                         </a>
                                     </td>
                                     <td>
-                                        <form action="">
-                                            <select name="" id="" class="form-control">
-                                                <option value="">Pending</option>
-                                                <option value="">Approve</option>
-                                                <option value="">Reject</option>
+                                        <form action="{{ route('admin.instructor-request.update', $instructor->id) }}" method="POST" class="status-{{ $instructor->id }}">
+                                            @csrf
+                                            @method('PUT')
+                                            <select name="status" id="" class="form-control" onchange="$('.status-{{ $instructor->id }}').submit()">
+                                                <option @selected($instructor->approve_status === 'pending') value="pending">Pending</option>
+                                                <option @selected($instructor->approve_status === 'approved') value="approved">Approve</option>
+                                                <option @selected($instructor->approve_status === 'rejected') value="rejected">Reject</option>
                                             </select>
                                         </form>
                                     </td>

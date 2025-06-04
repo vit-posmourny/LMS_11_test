@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class InstructorRequestController extends Controller
 {
@@ -14,7 +15,8 @@ class InstructorRequestController extends Controller
      */
     public function index(): View
     {
-        $instructorRequests = User::where('approve_status', 'pending')->get();
+        $instructorRequests = User::where('approve_status', 'pending')
+            ->orWhere('approve_status', 'rejected')->get();
         return view('admin.instructor-request.index', compact('instructorRequests'));
     }
 
@@ -53,9 +55,15 @@ class InstructorRequestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $instructor_request): RedirectResponse
     {
-        //
+        //dd($request->status);
+        $request->validate(['status' => 'required|in:rejected,approved,pending']);
+        $instructor_request->approve_status = $request->status;
+        $request->status == 'approved' ? $instructor_request->role = 'instructor' : "";
+        $instructor_request->save();
+
+        return redirect()->back();
     }
 
     /**
