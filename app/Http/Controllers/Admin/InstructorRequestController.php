@@ -6,7 +6,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
+use App\Mail\InstructorRequestApprovedMail;
 
 class InstructorRequestController extends Controller
 {
@@ -23,7 +25,8 @@ class InstructorRequestController extends Controller
 
     public function download(User $user)
     {
-        return response()->download(public_path($user->document));
+        //return response()->download(public_path($user->document));
+        return response()->file(public_path($user->document));
     }
 
     /**
@@ -63,11 +66,16 @@ class InstructorRequestController extends Controller
      */
     public function update(Request $request, User $instructor_request): RedirectResponse
     {
-        //dd($request->status);
         $request->validate(['status' => 'required|in:rejected,approved,pending']);
         $instructor_request->approve_status = $request->status;
         $request->status == 'approved' ? $instructor_request->role = 'instructor' : "";
         $instructor_request->save();
+
+        if (config('mail_queue.is_queue')) {
+            Mail::to($instructor_request->email)->queue(new InstructorRequestApprovedMail());
+        }else {
+            Mail::to($instructor_request->email)->send(new InstructorRequestApprovedMail());
+        }
 
         return redirect()->back();
     }
