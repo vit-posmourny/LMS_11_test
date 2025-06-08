@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\RedirectResponse;
 use App\Mail\InstructorRequestApprovedMail;
+use App\Mail\InstructorRequestRejectedMail;
 
 class InstructorRequestController extends Controller
 {
@@ -71,20 +72,30 @@ class InstructorRequestController extends Controller
         $request->status == 'approved' ? $instructor_request->role = 'instructor' : "";
         $instructor_request->save();
 
-        if (config('mail_queue.is_queue')) {
-            Mail::to($instructor_request->email)->queue(new InstructorRequestApprovedMail());
-        }else {
-            Mail::to($instructor_request->email)->send(new InstructorRequestApprovedMail());
-        }
+        self::sendNotification($instructor_request);
 
         return redirect()->back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+
+    public static function sendNotification($instructor_request): Void
     {
-        //
+        switch ($instructor_request->approve_status)
+        {
+            case 'approved':
+                if (config('mail_queue.is_queue')) {
+                    Mail::to($instructor_request->email)->queue(new InstructorRequestApprovedMail());
+                } else {
+                    Mail::to($instructor_request->email)->send(new InstructorRequestApprovedMail());
+                }
+                break;
+
+            case 'rejected':
+                if (config('mail_queue.is_queue')) {
+                    Mail::to($instructor_request->email)->queue(new InstructorRequestRejectedMail());
+                } else {
+                    Mail::to($instructor_request->email)->send(new InstructorRequestRejectedMail());
+                }
+        }
     }
 }
