@@ -37,20 +37,23 @@
                 <div class="col-xl-9 col-md-8">
 
                     <div class="text-end">
-                        <a href="{{ route('student.become-instructor') }}" class="btn btn-primary">Become an Instructor</a>
+                        {{-- <a href="{{ route('student.become-instructor') }}" class="btn btn-primary">Become an Instructor</a> --}}
+                        <a href="{{ route('student.dashboard') }}" class="common_btn">Back</a>
                     </div>
                     <div class="card mt-4">
                         <div class="card-header">
                             Become an Instructor
                         </div>
                         <div class="card-body">
-                            <form action="">
+                            <form action="{{ route('student.become-instructor.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <label for="document">Document</label>
                                     <input type="file" name="document">
+                                    <x-input-error :messages="$errors->get('document')" class="mt-2"/>
                                 </div>
                                 <div class="form-group mt-3">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                    <button type="submit" class="common_btn">Submit</button>
                                 </div>
                             </form>
                         </div>

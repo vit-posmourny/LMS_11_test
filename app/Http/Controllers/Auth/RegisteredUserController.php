@@ -48,7 +48,7 @@ class RegisteredUserController extends Controller
 
         }elseif ($request->type === 'instructor')
         {
-            $request->validate(['document' => ['required', 'mimes:pdf, docx, jpg, jpeg, png', 'max:2000']]);
+            $request->validate(['document' => ['required', 'mimes:pdf,docx,jpg,jpeg,png', 'max:2000']]);
             $filePath = $this->fileUpload($request->file('document'));
 
             $user = User::create([

@@ -85,28 +85,28 @@
                                     <div class="wsus__login_form_input">
                                         <label>Name</label>
                                         <input type="text" placeholder="Name" name='name' required>
-                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__login_form_input">
                                         <label>Your email</label>
                                         <input type="email" placeholder="Your email" name='email' required>
-                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__login_form_input">
                                         <label>Document (Education/Certificate)</label>
                                         <input type="file" placeholder="Document" name='document' required>
-                                        <x-input-error :messages="$errors->get('document')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('document')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__login_form_input">
                                         <label>Password</label>
                                         <input type="password" placeholder="Your password" name="password" required>
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('password')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
