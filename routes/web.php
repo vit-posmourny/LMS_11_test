@@ -31,6 +31,8 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'student', '
     */
     Route::get('profile', [ProfileController::class, 'index'])
         ->name('profile.index');
+    Route::post('profile/update', [ProfileController::class, 'profileUpdate'])
+        ->name('profile.update');
 });
 
 /*

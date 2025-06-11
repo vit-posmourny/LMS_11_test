@@ -60,24 +60,28 @@
                             </div>
                         </div>
 
-                        <form action="#" class="wsus__dashboard_profile_update">
+                        <form action="{{ route('student.profile.update') }}" method="POST" class="wsus__dashboard_profile_update">
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Your Name</label>
-                                        <input type="text" name="name" placeholder="Enter your full name">
+                                        <input type="text" name="name" value="{{ auth()->user()->name }}" placeholder="Enter your full name">
+                                        <x-input-error :messages="$errors->get('name')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Headline</label>
-                                        <input type="text" name="heading" placeholder="Enter your headline">
+                                        <input type="text" name="headline" value="{{ auth()->user()->headline }}" placeholder="Enter your headline">
+                                        <x-input-error :messages="$errors->get('headline')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Your E-mail</label>
-                                        <input type="text" name="email" placeholder="Enter your e-mail">
+                                        <input type="text" name="email" value="{{ auth()->user()->email }}" placeholder="Enter your e-mail">
+                                        <x-input-error :messages="$errors->get('email')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-6">
@@ -85,15 +89,17 @@
                                         <label>Your Gender</label>
                                         <select name="gender" name="gender" class="form-control">
                                             <option value="">Select</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
+                                            <option @selected(auth()->user()->gender == 'male') value="male">Male</option>
+                                            <option @selected(auth()->user()->gender == 'female') value="female">Female</option>
                                         </select>
                                     </div>
+                                    <x-input-error :messages="$errors->get('gender')" class="mt-2"/>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>About Me</label>
-                                        <textarea rows="7" name="about" placeholder="Your text here"></textarea>
+                                        <textarea rows="7" name="bio" placeholder="Your text here">{{ auth()->user()->bio }}</textarea>
+                                        <x-input-error :messages="$errors->get('bio')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">

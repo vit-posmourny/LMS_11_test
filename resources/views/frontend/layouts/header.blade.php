@@ -110,7 +110,7 @@
                     <li>
                         <a href="#">
                             <span>
-                                <img src="{{ asset('frontend/assets/images/menu_category_icon_4.png" alt="Category') }}" class="img-fluid">
+                                <img src="{{ asset('frontend/assets/images/menu_category_icon_4.png') }}" alt="Category" class="img-fluid">
                             </span>
                             Lifestyle
                         </a>
