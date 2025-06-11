@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
+use App\Http\Requests\Frontend\PasswordUpdateRequest;
 
 
 class ProfileController extends Controller
@@ -29,6 +30,18 @@ class ProfileController extends Controller
         $user->gender = $request->gender;
         $user->bio = $request->bio;
 
+        $user->save();
+
+        return redirect()->back();
+    }
+
+
+    function updatePassword(PasswordUpdateRequest $request): RedirectResponse
+    {
+
+        $user = Auth::user();
+
+        $user->password = bcrypt($request->new_password);
         $user->save();
 
         return redirect()->back();
