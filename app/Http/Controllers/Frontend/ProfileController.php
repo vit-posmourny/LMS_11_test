@@ -24,6 +24,12 @@ class ProfileController extends Controller
     }
 
 
+    function instructorIndex(): View
+    {
+        return view('frontend.instructor-dashboard.profile.index');
+    }
+
+
     function profileUpdate(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = Auth::user();

@@ -17,7 +17,7 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 *   Student Routes
 *-----------------------------------------------------------------
 */
-Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'student', 'as' => 'student.'], function() {
+Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'prefix' => 'student', 'as' => 'student.'], function() {
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])
         ->name('dashboard');
     Route::get('/become-instructor', [StudentDashboardController::class, 'becomeInstructor'])
@@ -26,7 +26,7 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'student', '
         ->name('become-instructor.update');
     /*
     *-----------------------------------------------------------------
-    *   Profile Routes
+    *   Stu. Profile Routes
     *-----------------------------------------------------------------
     */
     Route::get('profile', [ProfileController::class, 'index'])
@@ -41,13 +41,25 @@ Route::group(['middleware' => ['auth:web', 'verified'], 'prefix' => 'student', '
 
 /*
 *-----------------------------------------------------------------
-*   Student Routes
+*   Instructor Routes
 *-----------------------------------------------------------------
 */
 Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'], function() {
     Route::get('/dashboard', [InstructorDashboardContoller::class, 'index'])->name('dashboard');
+    /*
+    *-----------------------------------------------------------------
+    *  Ins. Profile Routes
+    *-----------------------------------------------------------------
+    */
+    Route::get('profile', [ProfileController::class, 'instructorIndex'])
+        ->name('profile.index');
+    Route::post('profile/update', [ProfileController::class, 'profileUpdate'])
+        ->name('profile.update');
+    Route::post('profile/update-password', [ProfileController::class, 'updatePassword'])
+        ->name('profile.update-password');
+    Route::post('profile/update-social', [ProfileController::class, 'updateSocial'])
+        ->name('profile.update-social');
 });
-
 
 
 require __DIR__.'/auth.php';
