@@ -6,7 +6,7 @@
                     alt="img" class="img-fluid">
             </div>
             <div class="img">
-                <img src="{{ asset(auth()->user()->image) }}" alt="profile"
+                <img src="{{ asset(auth()->user()->avatar) }}" alt="profile"
                     class="img-fluid w-100">
             </div>
             <h4>{{ auth()->user()->name }}</h4>

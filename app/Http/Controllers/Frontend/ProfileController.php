@@ -11,9 +11,13 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
 use App\Http\Requests\Frontend\SocialUpdateRequest;
+use App\Traits\FileUpload;
 
 class ProfileController extends Controller
 {
+
+    use FileUpload;
+
     function index(): View
     {
         return view('frontend.student-dashboard.profile.index');
@@ -23,6 +27,12 @@ class ProfileController extends Controller
     function profileUpdate(ProfileUpdateRequest $request): RedirectResponse
     {
         $user = Auth::user();
+
+        if ($request->hasFile('avatar'))
+        {
+            $this->deleteFile($user->avatar);
+            $user->avatar = $this->fileUpload($request->file('avatar'));
+        }
 
         $user->name = $request->name;
         $user->email = $request->email;

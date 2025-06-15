@@ -27,6 +27,7 @@ class ProfileUpdateRequest extends FormRequest
             "email" => "required|max:255|email|unique:users,email,".auth()->user()->id,
             "gender" => "nullable|in:male,female",
             "bio" => "nullable|max:255|string",
+            "avatar" => "nullable|image|max:600",
         ];
     }
 }
