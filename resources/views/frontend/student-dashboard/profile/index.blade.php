@@ -154,37 +154,45 @@
                         <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                             <div class="wsus__dashboard_heading">
                                 <h5>Update Your Social Information</h5>
-                                <p>Manage your courses and its update like live, draft and insight.</p>
+                                <p>Put your social links here.</p>
                             </div>
                         </div>
 
-                        <form action="#" class="wsus__dashboard_profile_update">
+                        <form action="{{ route('student.profile.update-social') }}" method="POST" class="wsus__dashboard_profile_update">
+                            @csrf
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Facebook</label>
-                                        <input type="text" name="" placeholder="">
+                                        <input type="text" name="facebook" placeholder="Enter your facebook url">
+                                        <x-input-error :messages="$errors->get('facebook')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>X</label>
-                                        <input type="text" name="" placeholder="">
+                                        <input type="text" name="x" placeholder="Enter your x url">
+                                        <x-input-error :messages="$errors->get('x')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>LinkedIn</label>
-                                        <input type="text" name="" placeholder="">
+                                        <input type="text" name="linkedin" placeholder="Enter your linkedin url">
+                                        <x-input-error :messages="$errors->get('linkedin')" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label>Website</label>
-                                        <input type="text" name="" placeholder="">
+                                        <input type="text" name="website" placeholder="Enter your website url">
+                                        <x-input-error :messages="$errors->get('website')" class="mt-2"/>
+                                </div>
+                                <div class="col-xl-12">
+                                    <div class="wsus__dashboard_profile_update_btn">
+                                        <button type="submit" class="common_btn">Update Socials</button>
                                     </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
-
+use App\Http\Requests\Frontend\SocialUpdateRequest;
 
 class ProfileController extends Controller
 {
@@ -29,7 +29,6 @@ class ProfileController extends Controller
         $user->headline = $request->headline;
         $user->gender = $request->gender;
         $user->bio = $request->bio;
-
         $user->save();
 
         return redirect()->back();
@@ -38,10 +37,23 @@ class ProfileController extends Controller
 
     function updatePassword(PasswordUpdateRequest $request): RedirectResponse
     {
-
         $user = Auth::user();
 
         $user->password = bcrypt($request->new_password);
+        $user->save();
+
+        return redirect()->back();
+    }
+
+
+    function updateSocial(SocialUpdateRequest $request): RedirectResponse
+    {
+        $user = Auth::user();
+
+        $user->facebook = $request->facebook;
+        $user->x = $request->x;
+        $user->linkedin = $request->linkedin;
+        $user->website = $request->website;
         $user->save();
 
         return redirect()->back();

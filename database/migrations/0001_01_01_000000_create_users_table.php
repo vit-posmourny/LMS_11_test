@@ -26,7 +26,7 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('x')->nullable();
             $table->string('linkedin')->nullable();
-            $table->string('webside')->nullable();
+            $table->string('website')->nullable();
             $table->string('github')->nullable();
             $table->enum('approve_status', ['pending', 'approved', 'rejected'])->default('pending');
             $table->enum('login_as', ['student', 'instructor'])->nullable();
