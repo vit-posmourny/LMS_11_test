@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Models\User;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +10,7 @@ use App\Http\Requests\Frontend\ProfileUpdateRequest;
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
 use App\Http\Requests\Frontend\SocialUpdateRequest;
 use App\Traits\FileUpload;
+use Flasher\Laravel\Facade\Flasher;
 
 class ProfileController extends Controller
 {
@@ -47,6 +46,8 @@ class ProfileController extends Controller
         $user->bio = $request->bio;
         $user->save();
 
+        flash()->option('position', 'bottom-right')->success('Your profile has been updated successfully.');
+
         return redirect()->back();
     }
 
@@ -57,6 +58,8 @@ class ProfileController extends Controller
 
         $user->password = bcrypt($request->new_password);
         $user->save();
+
+        flash()->option('position', 'bottom-right')->success('Your password has been updated successfully.');
 
         return redirect()->back();
     }
@@ -71,6 +74,8 @@ class ProfileController extends Controller
         $user->linkedin = $request->linkedin;
         $user->website = $request->website;
         $user->save();
+        
+        flash()->option('position', 'bottom-right')->success('Your socials has been updated successfully.');
 
         return redirect()->back();
     }
