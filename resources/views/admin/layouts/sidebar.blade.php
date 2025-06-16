@@ -256,14 +256,14 @@
                             </svg>
                         </span>
                         <span class="nav-link-title">
-                            Interface
+                            Course Management
                         </span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="dropdown-menu-columns">
                             <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="./alerts.html">
-                                    Alerts
+                                <a class="dropdown-item" href="{{ route('admin.course-languages.index') }}">
+                                    Languages
                                 </a>
                             </div>
                         </div>
