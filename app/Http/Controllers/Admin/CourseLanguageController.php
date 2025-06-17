@@ -16,7 +16,8 @@ class CourseLanguageController extends Controller
      */
     public function index(): View
     {
-        return view('admin.course.language.index');
+        $languages = CourseLanguage::paginate();
+        return view('admin.course.language.index', compact('languages'));
     }
 
     /**
