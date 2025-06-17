@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\CourseLanguage;
-use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Models\CourseLanguage;
+use Illuminate\Validation\Rule;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class CourseLanguageController extends Controller
 {
@@ -58,17 +59,27 @@ class CourseLanguageController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(CourseLanguage $course_language): View
     {
-        //
+        //dd($course_language, compact('course_language'));
+        return view('admin.course.language.edit', compact('course_language'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, CourseLanguage $course_language)
     {
-        //
+        //$request->validate(['name' => ['required', 'max:255', 'unique:course_languages,name,'.$course_language->id]]);
+        $request->validate(['name' => ['required', 'max:255', Rule::unique('course_languages')->ignore($course_language->id)]]);
+
+        $course_language->name = $request->name;
+        $course_language->slug = Str::slug($request->name);
+        $course_language->save();
+
+        notyf()->success('Language Edited');
+
+        return to_route('admin.course-languages.index');
     }
 
     /**
