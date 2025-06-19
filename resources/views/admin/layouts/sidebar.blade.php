@@ -266,6 +266,11 @@
                                     Languages
                                 </a>
                             </div>
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('admin.course-levels.index') }}">
+                                    Levels
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </li>
