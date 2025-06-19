@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\CourseLanguage;
 use Illuminate\Validation\Rule;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\ValidationException;
 
 class CourseLanguageController extends Controller
 {
@@ -85,8 +87,18 @@ class CourseLanguageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(CourseLanguage $course_language): Response
     {
-        dd($id);
+        try
+        {   // dá použít, pokud potřebuješ uměle vyvolat vyjímku
+            // throw ValidationException::withMessages(['you have an error']);
+            $course_language->delete();
+            notyf()->success('Language Deleted');
+            return response(['message' => 'delete success']);
+
+        }catch (\Throwable $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
     }
 }

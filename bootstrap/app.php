@@ -1,4 +1,3 @@
-<!-- bootstrap\app.php  -->
 <?php
 
 use App\Http\Middleware\CheckRoleMiddleware;
