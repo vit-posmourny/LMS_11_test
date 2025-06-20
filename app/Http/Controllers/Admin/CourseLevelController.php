@@ -50,53 +50,46 @@ class CourseLevelController extends Controller
         return to_route('admin.course-levels.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(CourseLevel $course_level): View
     {
-        //dd($course_language, compact('course_language')); 
+        //dd($course_level, compact('course_language'));
         return view('admin.course.level.edit', compact('course_level'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CourseLanguage $course_language)
+    public function update(Request $request, CourseLevel $course_level)
     {
-        //$request->validate(['name' => ['required', 'max:255', 'unique:course_languages,name,'.$course_language->id]]);
-        $request->validate(['name' => ['required', 'max:255', Rule::unique('course_languages')->ignore($course_language->id)]]);
+        //$request->validate(['name' => ['required', 'max:255', 'unique:course_languages,name,'.$course_level->id]]);
+        $request->validate(['name' => ['required', 'max:255', Rule::unique('course_levels')->ignore($course_level->id)]]);
 
-        $course_language->name = $request->name;
-        $course_language->slug = Str::slug($request->name);
-        $course_language->save();
+        $course_level->name = $request->name;
+        $course_level->slug = Str::slug($request->name);
+        $course_level->save();
 
-        notyf()->success('Language Edited');
+        notyf()->success('Level Edited');
 
-        return to_route('admin.course-languages.index');
+        return to_route('admin.course-levels.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CourseLanguage $course_language): Response
+    public function destroy(CourseLevel $course_level): Response
     {
         try
         {   // dá použít, pokud potřebuješ uměle vyvolat vyjímku
             // throw ValidationException::withMessages(['you have an error']);
-            $course_language->delete();
-            notyf()->success('Language Deleted');
+            $course_level->delete();
+            notyf()->success('Level Deleted');
             return response(['message' => 'delete success']);
-
-        }catch (\Throwable $e) {
+        }
+        catch (\Throwable $e) {
             notyf()->error("something went wrong");
             return response(["message" => "something went wrong"], 500);
         }

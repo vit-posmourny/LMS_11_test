@@ -7,13 +7,12 @@ var notyf = new Notyf();
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 var delete_url = null;
 
-
+/** Delete item with confirmation */
 $('.delete-item').on('click', function(e) {
 
     e.preventDefault();
 
     let url = $(this).attr('href');
-
     delete_url = url;
 
     $('#modal-danger').modal("show");

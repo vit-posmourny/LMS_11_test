@@ -37,7 +37,7 @@
                                         <td>{{ $level->name }}</td>
                                         <td>{{ $level->slug }}</td>
                                         <td>
-                                            <a href="{{ route('admin.course-languages.edit', $level) }}"
+                                            <a href="{{ route('admin.course-levels.edit', $level) }}"
                                                 class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -50,7 +50,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-languages.destroy', $level->id) }}" class="text-red delete-item">
+                                            <a href="{{ route('admin.course-levels.destroy', $level->id) }}" class="text-red delete-item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
