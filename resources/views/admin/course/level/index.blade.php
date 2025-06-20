@@ -70,6 +70,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="mt-5">
+                            {{ $levels->links() }}
+                        </div>
                     </div>
                 </div>
             </div>

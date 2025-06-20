@@ -70,6 +70,9 @@
                                 @endforelse
                             </tbody>
                         </table>
+                        <div class="mt-5">
+                            {{ $languages->links() }}
+                        </div>
                     </div>
                 </div>
             </div>
