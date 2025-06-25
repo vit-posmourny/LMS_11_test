@@ -1,14 +1,5 @@
 .ti {
     font-size: 20px !important;
-    stroke-width: 1px;
-}
-
-.tabler-icon {
-  stroke-width: 1px; /* Změňte hodnotu podle potřeby */
-}
-
-.custom-stroke {
-  stroke-width: 1px !important; /* Změňte hodnotu podle potřeby */
 }
 
 @media (min-width: 1400px) {

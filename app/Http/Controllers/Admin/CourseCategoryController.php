@@ -7,6 +7,7 @@ use App\Models\CourseCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseCategoryStoreRequest;
+use Illuminate\Http\RedirectResponse;
 
 class CourseCategoryController extends Controller
 {
@@ -16,7 +17,8 @@ class CourseCategoryController extends Controller
      */
     public function index(): View
     {
-        return view('admin.course.category.index');
+        $categories = CourseCategory::paginate(15);
+        return view('admin.course.category.index', compact('categories'));
     }
 
     /**
@@ -30,13 +32,14 @@ class CourseCategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CourseCategoryStoreRequest $request)
+    public function store(CourseCategoryStoreRequest $request): RedirectResponse
     {
+        //dd($request->all());
         $imagepath = $this->fileUpload($request->file('image'));
 
         $category = new CourseCategory();
         $category->image = $imagepath;
-        $category->icon_name = $request->icon_name;
+        $category->icon = $request->icon;
         $category->name = $request->name;
         $category->slug = \Str::slug($request->name);
         $category->show_at_trending = $request->show_at_trending ?? 0;

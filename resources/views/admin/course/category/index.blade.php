@@ -25,18 +25,34 @@
                         <table class="table table-vcenter card-table">
                             <thead>
                                 <tr>
+                                    <th>Icon</th>
                                     <th>Name</th>
-                                    <th>Slug</th>
+                                    <th>Trending</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            {{-- <tbody>
-                                @forelse ($languages as $language)
+                            <tbody>
+                                @forelse ($categories as $category)
                                     <tr>
-                                        <td>{{ $language->name }}</td>
-                                        <td>{{ $language->slug }}</td>
+                                        <td><i class="{{ $category->icon }}"></i></td>
+                                        <td>{{ $category->name }}</td>
                                         <td>
-                                            <a href="{{ route('admin.course-languages.edit', $language) }}"
+                                            @if ($category->show_at_trending)
+                                                <span class="badge bg-lime text-lime-fg">Yes</span>
+                                            @else
+                                                <span class="badge bg-pink text-pink-fg">No</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if ($category->status)
+                                                <span class="badge bg-lime text-lime-fg">Yes</span>
+                                            @else
+                                                <span class="badge bg-pink text-pink-fg">No</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.course-categories.edit', $category) }}"
                                                 class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -49,7 +65,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-languages.destroy', $language->id) }}" class="text-red delete-item">
+                                            <a href="{{ route('admin.course-categories.destroy', $category->id) }}" class="text-red delete-item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -67,10 +83,10 @@
                                 @empty
                                     <tr><td colspan="3" class="text-center">No data found!</td></tr>
                                 @endforelse
-                            </tbody> --}}
+                            </tbody>
                         </table>
                         <div class="mt-5">
-                            {{-- {{ $languages->links() }} --}}
+                            {{ $categories->links() }}
                         </div>
                     </div>
                 </div>
