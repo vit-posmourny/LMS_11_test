@@ -11,7 +11,7 @@ class InputToggleBlock extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $name = "name", public $label = "", public $checked = false)
+    public function __construct(public $name = "", public $label = "", public $checked = false)
     {
         //
     }

@@ -15,14 +15,14 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.course-categories.store') }}" method="POST">
+                <form action="{{ route('admin.course-categories.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
                             <x-input-file-block name="image"/>
                         </div>
                         <div class="col-md-6">
-                            <x-input-block name="icon" placeholder="Enter icon class name"/>
+                            <x-input-block name="icon_name" placeholder="Enter icon class name"/>
                         </div>
                         <div class="col-md-12">
                             <x-input-block name="name" placeholder="Enter category name"/>
