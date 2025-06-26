@@ -17,7 +17,7 @@ class CourseCategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = CourseCategory::paginate(15);
+        $categories = CourseCategory::paginate(13);
         return view('admin.course.category.index', compact('categories'));
     }
 
@@ -51,20 +51,13 @@ class CourseCategoryController extends Controller
         return to_route('admin.course-categories.index');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(CourseCategory $course_category): View
     {
-        //
+        return view('admin.course.category.edit', compact('course_category'));
     }
 
     /**
