@@ -7,6 +7,7 @@ use App\Models\CourseCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseCategoryStoreRequest;
+use App\Http\Requests\Admin\CourseCategoryUpdateRequest;
 use Illuminate\Http\RedirectResponse;
 
 class CourseCategoryController extends Controller
@@ -34,7 +35,6 @@ class CourseCategoryController extends Controller
      */
     public function store(CourseCategoryStoreRequest $request): RedirectResponse
     {
-        //dd($request->all());
         $imagepath = $this->fileUpload($request->file('image'));
 
         $category = new CourseCategory();
@@ -46,7 +46,7 @@ class CourseCategoryController extends Controller
         $category->status = $request->status ?? 0;
         $category->save();
 
-        notyf()->success("Create successfully");
+        notyf()->success("Created successfully");
 
         return to_route('admin.course-categories.index');
     }
@@ -63,9 +63,27 @@ class CourseCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CourseCategoryUpdateRequest $request, CourseCategory $course_category)
     {
-        //
+        $category = $course_category;
+
+        if ($request->hasFile('image'))
+        {
+            $imagepath = $this->fileUpload($request->file('image'));
+            $this->deleteFile($category->image);
+            $category->image = $imagepath;
+        }
+
+        $category->icon = $request->icon;
+        $category->name = $request->name;
+        $category->slug = \Str::slug($request->name);
+        $category->show_at_trending = $request->show_at_trending ?? 0;
+        $category->status = $request->status ?? 0;
+        $category->save();
+
+        notyf()->success("Updated successfully");
+
+        return to_route('admin.course-categories.index');
     }
 
     /**
