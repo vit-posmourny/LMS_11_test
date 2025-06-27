@@ -88,9 +88,7 @@ class CourseLanguageController extends Controller
      */
     public function destroy(CourseLanguage $course_language): Response
     {
-        try
-        {   // dá použít, pokud potřebuješ uměle vyvolat vyjímku
-            // throw ValidationException::withMessages(['you have an error']);
+        try{
             $course_language->delete();
             notyf()->success('Language Deleted');
             return response(['message' => 'delete success']);

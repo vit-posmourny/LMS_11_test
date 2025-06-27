@@ -24,7 +24,7 @@ trait FileUpload
     }
 
 
-    public function deleteFile(string $path): bool
+    public function deleteFile(?string $path): bool
     {
         if (File::exists(public_path($path)))
         {

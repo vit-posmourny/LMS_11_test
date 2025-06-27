@@ -82,16 +82,15 @@ class CourseLevelController extends Controller
      */
     public function destroy(CourseLevel $course_level): Response
     {
-        try
-        {   // dá použít, pokud potřebuješ uměle vyvolat vyjímku
-            // throw ValidationException::withMessages(['you have an error']);
+         try {
             $course_level->delete();
             notyf()->success('Level Deleted');
             return response(['message' => 'delete success']);
-        }
-        catch (\Throwable $e) {
+
+         } catch (\Throwable $e) {
             notyf()->error("something went wrong");
             return response(["message" => "something went wrong"], 500);
-        }
+         }
+
     }
 }

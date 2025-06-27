@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Models\CourseCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -89,8 +90,17 @@ class CourseCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(CourseCategory $course_category): Response
     {
-        //
+        try {
+            $this->deleteFile($course_category->image);
+            $course_category->delete();
+            notyf()->success('Category Deleted');
+            return response(['message' => 'delete success']);
+
+        } catch (\Throwable $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
     }
 }
