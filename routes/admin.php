@@ -1,3 +1,4 @@
+<!-- routes\admin.php -->
 <?php
 
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\CourseSubCategoryController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function () {
 
@@ -80,4 +82,6 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     /* Course Categories Routes */
     Route::resource('course-categories', CourseCategoryController::class);
+    Route::get('{course_category}/sub-categories', [CourseSubCategoryController::class, 'index'])
+        ->name('sub-categories.index');
 });

@@ -1,4 +1,4 @@
-{{-- resources\views\admin\course\category\index.blade.php --}}
+{{-- resources\views\admin\course\category\sub-category\index.blade.php --}}
 @extends('admin.layouts.master')
 
 @section('content')
@@ -6,7 +6,7 @@
         <div class="container-xl">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Course Categories</h3>
+                    <h3 class="card-title">Course Sub-Category: {{$course_category->name}}</h3>
                     <div class="card-actions">
                         <a href="{{ route('admin.course-categories.create') }}" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
@@ -33,7 +33,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($categories as $category)
+                                {{-- @forelse ($categories as $category)
                                     <tr>
                                         <td><i class="{{ $category->icon }}"></i></td>
                                         <td>{{ $category->name }}</td>
@@ -52,7 +52,7 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.sub-categories.index', $category->id) }}" class="btn-sm btn-primary text-yellow">
+                                            <a href="{{ route('admin.course-categories.edit', $category) }}" class="btn-sm btn-primary text-yellow">
                                                 <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="3"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-list"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 6l11 0" /><path d="M9 12l11 0" /><path d="M9 18l11 0" /><path d="M5 6l0 .01" /><path d="M5 12l0 .01" /><path d="M5 18l0 .01" /></svg>
                                             </a>
                                             <a href="{{ route('admin.course-categories.edit', $category) }}"
@@ -85,11 +85,11 @@
                                     </tr>
                                 @empty
                                     <tr><td colspan="3" class="text-center">No data found!</td></tr>
-                                @endforelse
+                                @endforelse --}}
                             </tbody>
                         </table>
                         <div class="mt-5">
-                            {{ $categories->links() }}
+                            {{-- {{ $categories->links() }} --}}
                         </div>
                     </div>
                 </div>
