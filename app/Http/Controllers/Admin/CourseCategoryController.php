@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Http\Controllers\Admin;
-use Illuminate\Http\Request;
 use App\Traits\FileUpload;
+use Illuminate\Http\Request;
 use App\Models\CourseCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Admin\CourseCategoryStoreRequest;
 use App\Http\Requests\Admin\CourseCategoryUpdateRequest;
-use Illuminate\Http\RedirectResponse;
 
 class CourseCategoryController extends Controller
 {
