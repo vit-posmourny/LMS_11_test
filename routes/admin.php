@@ -82,6 +82,13 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     /* Course Categories Routes */
     Route::resource('course-categories', CourseCategoryController::class);
+
     Route::get('{course_category}/sub-categories', [CourseSubCategoryController::class, 'index'])
         ->name('sub-categories.index');
+
+    Route::get('{course_category}/sub-categories/create', [CourseSubCategoryController::class, 'create'])
+        ->name('sub-categories.create');
+
+    Route::post('{course_category}/sub-categories', [CourseSubCategoryController::class, 'store'])
+        ->name('sub-categories.store');
 });
