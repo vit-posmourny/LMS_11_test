@@ -6,7 +6,7 @@
     <div class="container-xl">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Update Category</h3>
+                <h3 class="card-title">Update Sub-Category</h3>
                 <div class="card-actions">
                     <a href="{{ route('admin.course-categories.index') }}" class="btn btn-primary">
                         <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
@@ -15,30 +15,32 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.course-categories.update', $course_category) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.sub-categories.update', ['course_category' => $course_category->id, 'course_sub_category' => $course_sub_category->id]) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
+                    @method('PUT')
                     <div class="row">
-                        <x-image-preview src="{{ asset($course_category->image) }}"/>
+                        @if ($course_sub_category->image)
+                            <x-image-preview src="{{ asset($course_sub_category->image) }}"/>
+                        @endif
 
                         <div class="col-md-6">
                             <x-input-file-block name="image"/>
                         </div>
                         <div class="col-md-6">
-                            <x-input-block name="icon" :value="$course_category->icon" placeholder="Enter icon class name">
+                            <x-input-block name="icon" :value="$course_sub_category->icon" placeholder="Enter icon class name">
                                 <x-slot name="hint">
                                     <small class="hint">You can get icon classes from: <a target="__blank" href="https://tabler.io/icons">https://tabler.io/icons</a></small>
                                 </x-slot>
                             </x-input-block>
                         </div>
                         <div class="col-md-12">
-                            <x-input-block name="name" :value="$course_category->name"/>
+                            <x-input-block name="name" :value="$course_sub_category->name"/>
                         </div>
                         <div class="col-md-3">
-                            <x-input-toggle-block name="show_at_trending" label="Show at trending" :checked="$course_category->show_at_trending"/>
+                            <x-input-toggle-block name="show_at_trending" label="Show at trending" :checked="$course_sub_category->show_at_trending"/>
                         </div>
                         <div class="col-md-3">
-                            <x-input-toggle-block name="status" label="Status" :checked="$course_category->status"/>
+                            <x-input-toggle-block name="status" label="Status" :checked="$course_sub_category->status"/>
                         </div>
                     </div>
 

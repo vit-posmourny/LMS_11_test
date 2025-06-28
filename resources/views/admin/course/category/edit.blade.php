@@ -17,7 +17,7 @@
             <div class="card-body">
                 <form action="{{ route('admin.course-categories.update', $course_category) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PATCH')
+                    @method('PUT')
                     <div class="row">
                         <x-image-preview src="{{ asset($course_category->image) }}"/>
 
