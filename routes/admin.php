@@ -97,4 +97,7 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     Route::put('{course_category}/sub-categories/{course_sub_category}', [CourseSubCategoryController::class, 'update'])
         ->name('sub-categories.update');
+
+    Route::delete('{course_category}/sub-categories/{course_sub_category}', [CourseSubCategoryController::class, 'destroy'])
+        ->name('sub-categories.delete');
 });

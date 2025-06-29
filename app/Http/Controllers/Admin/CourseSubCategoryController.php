@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CourseSubCategoryStoreRequest;
 use App\Http\Requests\Admin\CourseSubCategoryUpdateRequest;
+use Exception;
 
 class CourseSubCategoryController extends Controller
 {
@@ -49,7 +50,7 @@ class CourseSubCategoryController extends Controller
         $category->status = $request->status ?? 0;
         $category->save();
 
-        notyf()->success("Created successfully");
+        notyf()->success("Sub-Category Created successfully");
 
         return to_route('admin.sub-categories.index', $course_category->id);
     }
@@ -65,7 +66,7 @@ class CourseSubCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(CourseCategory $course_category, CourseCategory $course_sub_category)
+    public function edit(CourseCategory $course_category, CourseCategory $course_sub_category): View
     {
         return view('admin.course.category.sub-category.edit', compact('course_category', 'course_sub_category'));
     }
@@ -90,7 +91,7 @@ class CourseSubCategoryController extends Controller
         $category->status = $request->status ?? 0;
         $category->save();
 
-        notyf()->success("Created successfully");
+        notyf()->success("Sub-Category Edited successfully");
 
         return to_route('admin.sub-categories.index', $course_category->id);
     }
@@ -98,8 +99,17 @@ class CourseSubCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(CourseCategory $course_category, CourseCategory $course_sub_category)
     {
-        //
+        try {
+            $this->deleteFile($course_sub_category->image);
+            $course_sub_category->delete();
+            notyf()->success('Sub-Category Deleted');
+            return response(['message' => 'delete success']);
+
+         } catch (Exception $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+         }
     }
 }

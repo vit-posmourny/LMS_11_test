@@ -8,6 +8,10 @@
                 <div class="card-header">
                     <h3 class="card-title">Course Sub-Category: {{$course_category->name}}</h3>
                     <div class="card-actions">
+                        <a href="{{ route('admin.course-categories.index') }}" class="btn btn-outline-primary">
+                            <svg  xmlns="http://www.w3.org/2000/svg"  width="24"  height="24"  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round"  class="icon icon-tabler icons-tabler-outline icon-tabler-chevron-left"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M15 6l-6 6l6 6" /></svg>
+                            Back
+                        </a>
                         <a href="{{ route('admin.sub-categories.create', $course_category->id) }}" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -64,7 +68,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-categories.destroy', $category->id) }}" class="text-red delete-item">
+                                            <a href="{{ route('admin.sub-categories.delete', ['course_category' => $course_category->id, 'course_sub_category' => $category->id]) }}" class="text-red delete-item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -80,7 +84,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="3" class="text-center">No data found!</td></tr>
+                                    <tr><td colspan="5" class="text-center">No data found!</td></tr>
                                 @endforelse
                             </tbody>
                         </table>
