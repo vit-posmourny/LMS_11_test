@@ -47,7 +47,7 @@ class CourseCategoryController extends Controller
         $category->status = $request->status ?? 0;
         $category->save();
 
-        notyf()->success("Created successfully");
+        notyf()->success("Category Created successfully");
 
         return to_route('admin.course-categories.index');
     }
@@ -82,7 +82,7 @@ class CourseCategoryController extends Controller
         $category->status = $request->status ?? 0;
         $category->save();
 
-        notyf()->success("Updated successfully");
+        notyf()->success("Category Updated successfully");
 
         return to_route('admin.course-categories.index');
     }
@@ -92,6 +92,9 @@ class CourseCategoryController extends Controller
      */
     public function destroy(CourseCategory $course_category): Response
     {
+        if (CourseCategory::where('parent_id', $course_category->id)->exists()) {
+            return response(["message" => "Cannot delete a category with a subcategory"], 422);
+        }
         try {
             $this->deleteFile($course_category->image);
             $course_category->delete();

@@ -2,7 +2,10 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 
 // Create an instance of Notyf
-var notyf = new Notyf();
+var notyf = new Notyf({
+    duration: 5000,
+    dismissible: true,
+});
 
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 var delete_url = null;
@@ -36,7 +39,11 @@ $('.delete-confirm').on('click', function(e) {
             window.location.reload();
         },
         error: function(xhr, status, error) {
-            window.location.reload();
+            notyf.error('Cannot delete a category with a subcategory');
+            //window.location.reload();
+        },
+        complete: function() {
+            //
         }
     })
 });
