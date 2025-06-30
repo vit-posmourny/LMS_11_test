@@ -12,4 +12,10 @@ class CourseController extends Controller
     {
         return view('frontend.instructor-dashboard.course.index');
     }
+
+
+    public function create(): View
+    {
+        return view('frontend.instructor-dashboard.course.create');
+    }
 }
