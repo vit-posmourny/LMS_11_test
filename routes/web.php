@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\StudentDashboardController;
@@ -24,11 +25,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('become-instructor');
     Route::post('/become-instructor/{user}', [StudentDashboardController::class, 'becomeInstructorUpdate'])
         ->name('become-instructor.update');
-    /*
-    *-----------------------------------------------------------------
-    *   Stu. Profile Routes
-    *-----------------------------------------------------------------
-    */
+
+    /* Profile Routes */
     Route::get('profile', [ProfileController::class, 'index'])
         ->name('profile.index');
     Route::post('profile/update', [ProfileController::class, 'profileUpdate'])
@@ -46,11 +44,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
 */
 Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'], function() {
     Route::get('/dashboard', [InstructorDashboardContoller::class, 'index'])->name('dashboard');
-    /*
-    *-----------------------------------------------------------------
-    *  Ins. Profile Routes
-    *-----------------------------------------------------------------
-    */
+
+    /* Profile Routes */
     Route::get('profile', [ProfileController::class, 'instructorIndex'])
         ->name('profile.index');
     Route::post('profile/update', [ProfileController::class, 'profileUpdate'])
@@ -59,6 +54,9 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('profile.update-password');
     Route::post('profile/update-social', [ProfileController::class, 'updateSocial'])
         ->name('profile.update-social');
+
+    /** Course Routes */
+    Route::get('courses', [CourseController::class, 'index'])->name('courses.index');
 });
 
 
