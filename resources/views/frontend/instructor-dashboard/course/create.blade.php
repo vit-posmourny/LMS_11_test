@@ -31,17 +31,17 @@
                             <b>(optional)</b></label>
                         <select class="select_js" name="demo_video_storage">
                             <option value=""> Please Select </option>
-                            <option value=""> Upload </option>
-                            <option value=""> YouTube </option>
-                            <option value=""> Vimeo </option>
-                            <option value=""> external-Link </option>
+                            <option value="" name="upload"> Upload </option>
+                            <option value="" name="youtube"> YouTube </option>
+                            <option value="" name="vimeo"> Vimeo </option>
+                            <option value="" name="external-link"> external-Link </option>
                         </select>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_imput">
-                        <label for="#">Path</label>
-                        <input type="file" name="file">
+                        <label for="#">Video Path</label>
+                        <input type="file" name="video_path">
                     </div>
                 </div>
                 <div class="col-xl-6">
