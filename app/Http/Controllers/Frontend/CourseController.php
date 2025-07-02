@@ -77,4 +77,10 @@ class CourseController extends Controller
                 break;
         }
     }
+
+
+    function update(Request $request)
+    {
+        dd($request->all());
+    }
 }
