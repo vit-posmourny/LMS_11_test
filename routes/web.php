@@ -36,7 +36,6 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
     Route::post('profile/update-social', [ProfileController::class, 'updateSocial'])
         ->name('profile.update-social');
 });
-
 /*
 *-----------------------------------------------------------------
 *   Instructor Routes

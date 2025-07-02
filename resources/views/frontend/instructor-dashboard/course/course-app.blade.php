@@ -73,5 +73,5 @@
 @endsection
 
 @push('header_scripts')
-    @vite(['resources\js\frontend\course.js'])
+    @vite(['resources/js/frontend/course.js'])
 @endpush
