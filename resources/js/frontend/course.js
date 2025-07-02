@@ -16,13 +16,15 @@ $('.basic_info_form').on('submit', function(e) {
         beforeSend: function() {
 
         },
-        beforeSend: function(data) {
+        success: function(data) {
+            if (data.status == 'success') {
+                window.location.href = data.redirect;
+            }
+        },
+        error: function(xhr, status, error) {
 
         },
-        beforeSend: function(xhr, status, error) {
-
-        },
-        beforeSend: function() {
+        complete: function() {
 
         },
     })

@@ -1,3 +1,4 @@
+{{-- resources\views\frontend\instructor-dashboard\course\create.blade.php --}}
 @extends('frontend.instructor-dashboard.course.course-app')
 
 @section('course_content')
@@ -6,6 +7,8 @@
     <div class="add_course_basic_info">
         <form action="{{route('instructor.courses.store-basic-info')}}" method="POST" class="basic_info_form" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="current_step" value="1">
+            <input type="hidden" name="next_step" value="2">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_imput">

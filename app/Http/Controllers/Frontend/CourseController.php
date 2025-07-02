@@ -52,6 +52,23 @@ class CourseController extends Controller
         return response([
             'status' => 'success',
             'message' => 'Updated successfully',
+            'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
         ]);
+    }
+
+
+    function edit(Request $request)
+    {
+        switch ($request->step) {
+            case '1':
+                # code...
+                break;
+            case '2':
+                return view('frontend.instructor-dashboard.course.more-info');
+                break;
+            default:
+                # code...
+                break;
+        }
     }
 }

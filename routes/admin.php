@@ -1,4 +1,3 @@
-<!-- routes\admin.php -->
 <?php
 
 use Illuminate\Support\Facades\Route;
