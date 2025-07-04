@@ -66,12 +66,14 @@ class CourseController extends Controller
             case '1':
                 # code...
                 break;
+
             case '2':
                 $categories = CourseCategory::where('status', 1)->get();
                 $levels = CourseLevel::all();
                 $languages = CourseLanguage::all();
                 return view('frontend.instructor-dashboard.course.more-info', compact('categories', 'levels', 'languages'));
                 break;
+                
             default:
                 # code...
                 break;
@@ -86,7 +88,18 @@ class CourseController extends Controller
             case '1':
                 # code...
                 break;
+
             case '2':
+                $request->validate([
+                    'capacity' => 'nullable|numeric',
+                    'duration' => 'required|numeric',
+                    'qna' => 'nullable|boolean',
+                    'certificate' => 'nullable|boolean',
+                    'category' => 'required|integer',
+                    'course_level_id' => 'required|integer',
+                    'course_language_id' => 'required|integer',
+                ]);
+
                 $course = Course::findOrFail($request->id);
                 $course->capacity = $request->capacity;
                 $course->duration = $request->duration;
@@ -103,6 +116,7 @@ class CourseController extends Controller
                     'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
+
             default:
                 # code...
                 break;
