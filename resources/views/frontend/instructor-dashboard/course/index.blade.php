@@ -34,7 +34,7 @@
         <div class="container">
             <div class="row">
             @include('frontend.instructor-dashboard.sidebar')
-            
+
             <div class="col-xl-9 col-md-8 wow fadeInRight">
                 <div class="wsus__dashboard_contant">
                     <div class="wsus__dashboard_contant_top">
@@ -82,10 +82,11 @@
                                                     ACTION
                                                 </th>
                                             </tr>
+                                            @foreach ($courses as $course)
                                             <tr>
                                                 <td class="image">
                                                     <div class="image_category">
-                                                        <img src="{{ asset('frontend/assets/images/courses_3_img_1.jpg') }}" alt="img"
+                                                        <img src="{{ asset($course->thumbnail) }}" alt="img"
                                                             class="img-fluid w-100">
                                                     </div>
                                                 </td>
@@ -98,8 +99,7 @@
                                                         <i class="far fa-star" aria-hidden="true"></i>
                                                         <span>(5.0)</span>
                                                     </p>
-                                                    <a class="title" href="#">Complete Blender Creator Learn
-                                                        3D Modelling.</a>
+                                                    <a class="title" href="#">{{ $course->title }}</a>
 
                                                 </td>
                                                 <td class="sale">
@@ -109,72 +109,11 @@
                                                     <p class="active">Active</p>
                                                 </td>
                                                 <td class="action">
-                                                    <a class="edit" href="#"><i class="far fa-edit"></i></a>
+                                                    <a class="edit" href="{{ route('instructor.courses.edit', [$course->id, 'step' => 1]) }}"><i class="far fa-edit"></i></a>
                                                     <a class="del" href="#"><i class="fas fa-trash-alt"></i></a>
                                                 </td>
                                             </tr>
-                                            <tr>
-                                                <td class="image">
-                                                    <div class="image_category">
-                                                        <img src="{{ asset('frontend/assets/images/courses_3_img_2.jpg') }}" alt="img"
-                                                            class="img-fluid w-100">
-                                                    </div>
-                                                </td>
-                                                <td class="details">
-                                                    <p class="rating">
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
-                                                        <i class="far fa-star" aria-hidden="true"></i>
-                                                        <span>(5.0)</span>
-                                                    </p>
-                                                    <a class="title" href="#">Complete Blender Creator Learn
-                                                        3D Modelling.</a>
-
-                                                </td>
-                                                <td class="sale">
-                                                    <p>5400</p>
-                                                </td>
-                                                <td class="status">
-                                                    <p class="Pending">Pending</p>
-                                                </td>
-                                                <td class="action">
-                                                    <a class="edit" href="#"><i class="far fa-edit"></i></a>
-                                                    <a class="del" href="#"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td class="image">
-                                                    <div class="image_category">
-                                                        <img src="{{ asset('frontend/assets/images/courses_3_img_3.jpg') }}" alt="img"
-                                                            class="img-fluid w-100">
-                                                    </div>
-                                                </td>
-                                                <td class="details">
-                                                    <p class="rating">
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star" aria-hidden="true"></i>
-                                                        <i class="fas fa-star-half-alt" aria-hidden="true"></i>
-                                                        <i class="far fa-star" aria-hidden="true"></i>
-                                                        <span>(5.0)</span>
-                                                    </p>
-                                                    <a class="title" href="#">Complete Blender Creator Learn
-                                                        3D Modelling.</a>
-
-                                                </td>
-                                                <td class="sale">
-                                                    <p>34</p>
-                                                </td>
-                                                <td class="status">
-                                                    <p class="delete">Deleted</p>
-                                                </td>
-                                                <td class="action">
-                                                    <a class="edit" href="#"><i class="far fa-edit"></i></a>
-                                                    <a class="del" href="#"><i class="fas fa-trash-alt"></i></a>
-                                                </td>
-                                            </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>

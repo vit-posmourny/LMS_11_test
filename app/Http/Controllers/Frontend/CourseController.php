@@ -23,7 +23,8 @@ class CourseController extends Controller
 
     public function index(): View
     {
-        return view('frontend.instructor-dashboard.course.index');
+        $courses = Course::all();
+        return view('frontend.instructor-dashboard.course.index', compact('courses'));
     }
 
 
@@ -64,7 +65,8 @@ class CourseController extends Controller
     {
         switch ($request->step) {
             case '1':
-                # code...
+                $course = Course::findOrFail($request->id);
+                return view('frontend.instructor-dashboard.course.edit', compact('course'));
                 break;
 
             case '2':
@@ -73,7 +75,7 @@ class CourseController extends Controller
                 $languages = CourseLanguage::all();
                 return view('frontend.instructor-dashboard.course.more-info', compact('categories', 'levels', 'languages'));
                 break;
-                
+
             default:
                 # code...
                 break;
