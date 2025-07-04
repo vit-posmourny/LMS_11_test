@@ -5,9 +5,11 @@
 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
     aria-labelledby="pills-home-tab" tabindex="0">
     <div class="add_course_basic_info">
-        <form action="" class="more_info_form">
+        <form action="{{ route('instructor.courses.update') }}" class="more_info_form">
             @csrf
             <input type="hidden" name="id" value="{{ request()?->id }}">
+            <input type="hidden" name="current_step" value="2">
+            <input type="hidden" name="next_step" value="3">
             <div class="row">
                 <div class="col-xl-6">
                     <div class="add_course_more_info_input">
@@ -25,11 +27,11 @@
                 <div class="col-xl-6">
                     <div class="add_course_more_info_checkbox">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="qna" id="flexCheckDefault">
+                            <input class="form-check-input" type="checkbox" value="1" name="qna" id="flexCheckDefault">
                             <label class="form-check-label" for="flexCheckDefault">Q&A</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" name="certificate" id="flexCheckDefault2">
+                            <input class="form-check-input" type="checkbox" value="1" name="certificate" id="flexCheckDefault2">
                             <label class="form-check-label" for="flexCheckDefault2">Completion Certificate</label>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                         <h3>Language</h3>
                         @foreach ($languages as $language )
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="language" value="{{ $languge->id }}" id="id-{{ $language->id }}">
+                                <input class="form-check-input" type="radio" name="language" value="{{ $language->id }}" id="id-{{ $language->id }}">
                                 <label class="form-check-label" for="id-{{ $language->id }}">
                                     {{ $language->name }}
                                 </label>
