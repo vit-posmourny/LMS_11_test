@@ -38,15 +38,16 @@ class CourseController extends Controller
     {
         $course = new Course();
 
-        $thumbPath = $this->fileUpload($request->file('thumb'));
+        $thumbPath = $this->fileUpload($request->file('thumbnail'));
         $course->title = $request->title;
         $course->slug = Str::slug($request->title);
-        $course->seo_description = $request->seo;
+        $course->seo_description = $request->seo_description;
         $course->thumbnail = $thumbPath;
         $course->demo_video_storage = $request->demo_video_storage;
         $course->demo_video_source = $request->video_path;
-        $course->description = $request->desc;
-        $course->discount = $request->discount;
+        $course->description = $request->description;
+        $course->price = $request->price;
+        $course->discount_price = $request->discount_price;
         $course->instructor_id = Auth::guard('web')->user()->id;
         $course->save();
 
@@ -85,10 +86,45 @@ class CourseController extends Controller
 
     function update(Request $request)
     {
-        //dd($request->all());
         switch ($request->current_step) {
             case '1':
-                # code...
+                $request->validate([
+                    "title" => "required|max:255|string",
+                    'seo_description' => 'nullable|max:255|string',
+                    'demo_video_storage' => 'nullable|in:upload,youtube,vimeo,external-link|string',
+                    'price' => 'numeric',
+                    'discount_price' => 'nullable|numeric',
+                    'description' => 'required',
+                    'thumbnail' => 'nullable|image|max:600',
+                    'video_path' => 'nullable',
+                ]);
+
+                $course = Course::findOrFail($request->id);
+
+                if ($request->hasFile('thumbnail')) {
+                    $thumbPath = $this->fileUpload($request->file('thumbnail'));
+                    $this->deleteFile($course->thumbnail);
+                    $course->thumbnail = $thumbPath;
+                }
+                $course->title = $request->title;
+                $course->slug = Str::slug($request->title);
+                $course->seo_description = $request->seo_description;
+                $course->demo_video_storage = $request->demo_video_storage;
+                $course->demo_video_source = $request->video_path;
+                $course->description = $request->description;
+                $course->price = $request->price;
+                $course->discount_price = $request->discount_price;
+                $course->instructor_id = Auth::guard('web')->user()->id;
+                $course->save();
+
+                // save course id to session
+                Session::put('course_create_id', $course->id);
+
+                return response([
+                    'status' => 'success',
+                    'message' => 'Updated successfully',
+                    'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+                ]);
                 break;
 
             case '2':
@@ -98,8 +134,8 @@ class CourseController extends Controller
                     'qna' => 'nullable|boolean',
                     'certificate' => 'nullable|boolean',
                     'category' => 'required|integer',
-                    'course_level_id' => 'required|integer',
-                    'course_language_id' => 'required|integer',
+                    'course_level_id' => 'integer',
+                    'course_language_id' => 'integer',
                 ]);
 
                 $course = Course::findOrFail($request->id);

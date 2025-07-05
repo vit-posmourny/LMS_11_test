@@ -1,7 +1,7 @@
 // resources\js\frontend\course.js
 const baseInfoUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseInfoUrl + '/instructor/courses/create';
-const more_info_url = baseInfoUrl + '/instructor/courses/update';
+const update_url = baseInfoUrl + '/instructor/courses/update';
 
 $('.basic_info_form').on('submit', function(e) {
     e.preventDefault();
@@ -32,6 +32,35 @@ $('.basic_info_form').on('submit', function(e) {
 });
 
 
+$('.basic_info_update_form').on('submit', function(e) {
+    e.preventDefault();
+
+    let formData = new FormData(this);
+
+    $.ajax({
+        method: 'POST',
+        url: update_url,
+        data: formData,
+        contentType: false,
+        processData: false,
+        beforeSend: function() {
+
+        },
+        success: function(data) {
+            if (data.status == 'success') {
+                window.location.href = data.redirect;
+            }
+        },
+        error: function(xhr, status, error) {
+
+        },
+        complete: function() {
+
+        },
+    })
+});
+
+
 $('.more_info_form').on('submit', function(e) {
     e.preventDefault();
 
@@ -39,7 +68,7 @@ $('.more_info_form').on('submit', function(e) {
 
     $.ajax({
         method: 'POST',
-        url: more_info_url,
+        url: update_url,
         data: formData,
         contentType: false,
         processData: false,

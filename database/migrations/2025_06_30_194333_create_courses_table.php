@@ -19,15 +19,15 @@ return new class extends Migration
             $table->string('title');
             $table->string('slug');
             $table->string('seo_description')->nullable();
-            $table->string('duration')->nullable();
+            $table->integer('duration')->nullable();
             $table->string('timezone')->nullable();
             $table->string('thumbnail')->nullable();
             $table->enum('demo_video_storage', ['upload','youtube','vimeo','external_link'])->nullable();
             $table->text('demo_video_source')->nullable();
             $table->text('description')->nullable();
             $table->integer('capacity')->nullable();
-            $table->double('prize')->nullable();
-            $table->double('discount')->nullable();
+            $table->double('price')->default(0);
+            $table->double('discount_price')->nullable();
             $table->tinyInteger('certificate')->default(1)->nullable();
             $table->tinyInteger('qna')->default(1)->nullable();
             $table->text('message_for_reviewer')->nullable();

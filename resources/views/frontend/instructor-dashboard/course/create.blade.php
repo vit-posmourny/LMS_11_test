@@ -19,13 +19,13 @@
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_imput">
                         <label for="#">Seo description</label>
-                        <input type="text" name="seo" placeholder="Seo description">
+                        <input type="text" name="seo_description" placeholder="Seo description">
                     </div>
                 </div>
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_imput">
                         <label for="#">Thumbnail *</label>
-                        <input type="file" name="thumb">
+                        <input type="file" name="thumbnail">
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -50,21 +50,23 @@
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_imput">
                         <label for="#">Price *</label>
-                        <input type="text" name="price" placeholder="Price">
+                        <input type="number" name="price" placeholder="Price">
                         <p>Put 0 for free</p>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_imput">
                         <label for="#">Discount Price</label>
-                        <input type="text" name="discount" placeholder="Discount">
+                        <input type="number" name="discount_price" placeholder="Discount">
                     </div>
                 </div>
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_imput mb-0">
                         <label for="#">Description</label>
-                        <textarea rows="8" name="desc" placeholder="Description"></textarea>
-                        <button type="submit" class="common_btn mt_20">Save</button>
+                        <textarea rows="8" name="description" placeholder="Description"></textarea>
+                        <button type="submit" class="common_btn mt_20">
+                            Save
+                        </button>
                     </div>
                 </div>
             </div>
