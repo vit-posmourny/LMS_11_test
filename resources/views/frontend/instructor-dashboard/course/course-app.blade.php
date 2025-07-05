@@ -46,16 +46,16 @@
                         <div class="dashboard_add_courses">
                             <ul class="nav nav-pills" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <a href="" class="nav-link active">Basic Infos</a>
+                                    <a href="" class="nav-link active course_tab" data-step="1">Basic Infos</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a href="" class="nav-link">More Infos</a>
+                                    <a href="" class="nav-link course_tab" data-step="2">More Infos</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a href="" class="nav-link">Course Contents</a>
+                                    <a href="" class="nav-link course_tab" data-step="3">Course Contents</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a href="" class="nav-link">Finish</a>
+                                    <a href="" class="nav-link course_tab" data-step="4">Finish</a>
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
