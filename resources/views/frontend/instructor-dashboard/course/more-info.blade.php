@@ -13,26 +13,26 @@
                     <div class="col-xl-6">
                         <div class="add_course_more_info_input">
                             <label for="#">Capacity</label>
-                            <input type="number" name="capacity" placeholder="Capacity">
+                            <input type="number" name="capacity" value="{{ $course?->capacity }}" placeholder="Capacity">
                             <p>leave blank for unlimited</p>
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="add_course_more_info_input">
                             <label for="#">Course Duration (Minutes)*</label>
-                            <input type="number" name="duration" placeholder="300">
+                            <input type="number" name="duration" value="{{ $course?->duration }}" placeholder="300">
                         </div>
                     </div>
                     <div class="col-xl-6">
                         <div class="add_course_more_info_checkbox">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" name="qna"
-                                    id="flexCheckDefault">
+                                    id="flexCheckDefault" @checked($course->qna === 1)>
                                 <label class="form-check-label" for="flexCheckDefault">Q&A</label>
                             </div>
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="1" name="certificate"
-                                    id="flexCheckDefault2">
+                                    id="flexCheckDefault2" @checked($course->certificate === 1)>
                                 <label class="form-check-label" for="flexCheckDefault2">Completion Certificate</label>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                                     @if ($category->subCategories->isNotEmpty())
                                         <optgroup label="{{ $category->name }}">
                                             @foreach ($category->subCategories as $subCategory)
-                                                <option value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                                <option @selected($course?->category_id === $subCategory->id) value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
                                             @endforeach
                                         </optgroup>
                                     @endif
@@ -59,8 +59,8 @@
                             <h3>Level</h3>
                             @foreach ($levels as $level)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="level"
-                                        value="{{ $level->id }}" id="id-{{ $level->id }}">
+                                    <input id="id-{{ $level->id }}" class="form-check-input" type="radio" name="level"
+                                        value="{{ $level->id }}" @checked($course->course_level_id === $level->id)>
                                     <label class="form-check-label" for="id-{{ $level->id }}">
                                         {{ $level->name }}
                                     </label>
@@ -73,8 +73,8 @@
                             <h3>Language</h3>
                             @foreach ($languages as $language)
                                 <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="language"
-                                        value="{{ $language->id }}" id="id-{{ $language->id }}">
+                                    <input id="id-{{ $language->id }}" class="form-check-input" type="radio" name="language"
+                                        value="{{ $language->id }}" @checked($course->course_language_id === $language->id)>
                                     <label class="form-check-label" for="id-{{ $language->id }}">
                                         {{ $language->name }}
                                     </label>
