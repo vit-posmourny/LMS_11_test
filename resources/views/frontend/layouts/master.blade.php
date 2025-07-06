@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/sticky_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
     <link rel=" stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
@@ -102,9 +104,11 @@
     <!--wow js-->
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
-
+    {{-- dynamic js --}}
+    @stack('scripts')
 </body>
 
 </html>

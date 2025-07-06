@@ -3,6 +3,12 @@ const baseInfoUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseInfoUrl + '/instructor/courses/create';
 const update_url = baseInfoUrl + '/instructor/courses/update';
 
+// Create an instance of Notyf
+var notyf = new Notyf({
+    duration: 5000,
+    dismissible: true
+});
+
 // course tab navigation
 $('.course_tab').on('click', function(e) {
     e.preventDefault();
@@ -31,7 +37,10 @@ $('.basic_info_form').on('submit', function(e) {
             }
         },
         error: function(xhr, status, error) {
-
+            let errors = xhr.responseJSON.errors;
+            $.each(errors, function(key, value) {
+                notyf.error(value[0]);
+            })
         },
         complete: function() {
 
