@@ -105,3 +105,18 @@ $('.more_info_form').on('submit', function(e) {
         },
     })
 });
+
+
+// show/hide VideoPath input depending on source
+$('.storage').on('change', function()
+{
+    let value = $(this).val();
+    if (value == 'upload')
+    {
+        $('.upload_source').removeClass('d-none');
+        $('.external_source').addClass('d-none');
+    }else {
+        $('.upload_source').addClass('d-none');
+        $('.external_source').removeClass('d-none');
+    }
+});
