@@ -53,14 +53,14 @@
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
                         <label for="#">Price *</label>
-                        <input type="number" name="price" placeholder="Price">
+                        <input type="text" name="price" placeholder="Price">
                         <p>Put 0 for free</p>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
                         <label for="#">Discount Price</label>
-                        <input type="number" name="discount_price" placeholder="Discount">
+                        <input type="text" name="discount_price" placeholder="Discount">
                     </div>
                 </div>
                 <div class="col-xl-12">

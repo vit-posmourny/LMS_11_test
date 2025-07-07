@@ -89,7 +89,7 @@ class CourseController extends Controller
     {
         switch ($request->current_step) {
             case '1':
-                $request->validate([
+                $rules = [
                     "title" => "required|max:255|string",
                     'seo_description' => 'nullable|max:255|string',
                     'demo_video_storage' => 'nullable|in:upload,youtube,vimeo,external-link|string',
@@ -98,7 +98,9 @@ class CourseController extends Controller
                     'description' => 'required',
                     'thumbnail' => 'nullable|image|max:600',
                     'video_path' => 'nullable',
-                ]);
+                ];
+
+                $request->validate($rules);
 
                 $course = Course::findOrFail($request->id);
 
@@ -111,7 +113,7 @@ class CourseController extends Controller
                 $course->slug = Str::slug($request->title);
                 $course->seo_description = $request->seo_description;
                 $course->demo_video_storage = $request->demo_video_storage;
-                $course->demo_video_source = $request->video_path;
+                $course->demo_video_source = $request->filled('file') ? $request->file : $request->url;
                 $course->description = $request->description;
                 $course->price = $request->price;
                 $course->discount_price = $request->discount_price;

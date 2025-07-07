@@ -43,33 +43,31 @@
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input upload_source">
                         <label for="#">Video Path</label>
-                        <input type="file" name="video_path">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                    <i class="fa fa-picture-o"></i> Choose
+                                </a>
+                            </span>
+                            <input id="thumbnail" class="form-control source_input" type="text" name="file" value="{{ $course->demo_video_source }}">
+                        </div>
                     </div>
                     <div class="add_course_basic_info_input external_source d-none">
                         <label for="#">Video Path</label>
-                        <input type="text" name="video_path">
+                        <input type="text" class="source_input" name="url" value="{{ $course->demo_video_source }}">
                     </div>
-                     <div class="input-group">
-                        <span class="input-group-btn">
-                            <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                <i class="fa fa-picture-o"></i> Choose
-                            </a>
-                        </span>
-                        <input id="thumbnail" class="form-control" type="text" name="filepath">
-                    </div>
-                    <div id="holder" style="margin-top:15px;max-height:100px;"></div>
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
                         <label for="#">Price *</label>
-                        <input type="number" name="price" placeholder="Price" value="{{ $course->price }}">
+                        <input type="text" name="price" placeholder="Price" value="{{ $course->price }}">
                         <p>Put 0 for free</p>
                     </div>
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
                         <label for="#">Discount Price</label>
-                        <input type="number" name="discount_price" placeholder="Discount" value="{{ $course->discount_price }}">
+                        <input type="text" name="discount_price" placeholder="Discount" value="{{ $course->discount_price }}">
                     </div>
                 </div>
                 <div class="col-xl-12">
