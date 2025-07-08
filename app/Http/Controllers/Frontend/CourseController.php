@@ -23,7 +23,7 @@ class CourseController extends Controller
 
     public function index(): View
     {
-        $courses = Course::all();
+        $courses = Course::where('instructor_id', Auth::user()->id)->orderBy('id', 'DESC')->get();
         return view('frontend.instructor-dashboard.course.index', compact('courses'));
     }
 

@@ -42,12 +42,19 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input upload_source">
-                        <label for="#">Video Path</label>
-                        <input type="file" name="video_path">
+                        <label for="#">Path</label>
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
+                                    <i class="fa fa-picture-o"></i> Choose
+                                </a>
+                            </span>
+                            <input id="thumbnail" class="form-control source_input" type="text" name="file">
+                        </div>
                     </div>
                     <div class="add_course_basic_info_input external_source d-none">
-                        <label for="#">Video Path</label>
-                        <input type="text" name="video_path">
+                        <label for="#">Path</label>
+                        <input type="text" class="source_input" name="url">
                     </div>
                 </div>
                 <div class="col-xl-6">
@@ -77,3 +84,9 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+<script>
+    $('#lfm').filemanager('file');
+</script>
+@endpush
