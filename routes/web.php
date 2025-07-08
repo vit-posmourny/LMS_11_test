@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -65,6 +66,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('courses.edit');
     Route::post('courses/update', [CourseController::class, 'update'])
         ->name('courses.update');
+    Route::get('courses/content/create-chapter', [CourseContentController::class, 'createChapterModal'])
+        ->name('content.create-chapter');
 });
 
     /** lfm routes */

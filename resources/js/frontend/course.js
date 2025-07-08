@@ -1,13 +1,23 @@
 // resources\js\frontend\course.js
-const baseInfoUrl = $(`meta[name="base_url"]`).attr('content');
-const basic_info_url = baseInfoUrl + '/instructor/courses/create';
-const update_url = baseInfoUrl + '/instructor/courses/update';
+const baseUrl = $(`meta[name="base_url"]`).attr('content');
+const basic_info_url = baseUrl + '/instructor/courses/create';
+const update_url = baseUrl + '/instructor/courses/update';
 
 // Create an instance of Notyf
 var notyf = new Notyf({
     duration: 5000,
     dismissible: true
 });
+
+
+var loader = `
+    <div class="modal-content text-center p-3" style="display:inline">
+        <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+`
+
 
 // course tab navigation
 $('.course_tab').on('click', function(e) {
@@ -132,4 +142,19 @@ $('.storage').on('change', function()
 $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
     $('#id__dynamic__modal').modal('show');
+
+    $.ajax({
+        method: 'GET',
+        url: baseUrl + '/instructor/courses/content/create-chapter',
+        data: {},
+        beforeSend: function() {
+            $('.dynamic__modal__content').html(loader);
+        },
+        success: function(data) {
+            $('.dynamic__modal__content').html(data);
+        },
+        error: function(xhr, status, error) {
+
+        },
+    })
 });
