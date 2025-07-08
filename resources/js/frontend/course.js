@@ -127,3 +127,9 @@ $('.storage').on('change', function()
         $('.external_source').removeClass('d-none');
     }
 });
+
+// modal showing
+$('.dynamic__modal__btn').on('click', function(e) {
+    e.preventDefault();
+    $('#id__dynamic__modal').modal('show');
+});
