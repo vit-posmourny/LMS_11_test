@@ -1,4 +1,4 @@
-@extends('frontend.instructor-dashboard.course.course-app')
+@extends('frontend.instructor-dashboard.course.app')
 
 @section('course_content')
 <div class="tab-pane fade show active" id="pills-home" role="tabpanel"
