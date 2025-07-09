@@ -5,10 +5,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        ...
-    </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <form action="{{ route('instructor.content.store-chapter', $courseId) }}" method="POST">
+            @csrf
+            <div class="form-group mb-3">
+                <label for="title">Title</label>
+                <input type="text" class="form-control" name="title" required>
+            </div>
+            <div class="form-group text-end">
+                <button type="submit" class="btn btn-primary text-end">Create</button>
+            </div>
+        </form>
     </div>
 </div>

@@ -79,7 +79,8 @@ class CourseController extends Controller
                 break;
 
             case '3':
-                return view('frontend.instructor-dashboard.course.content');
+                $courseId = $request->id;
+                return view('frontend.instructor-dashboard.course.content', compact('courseId'));
                 break;
 
             default:

@@ -143,9 +143,11 @@ $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
     $('#id__dynamic__modal').modal('show');
 
+    let courseId = $(this).data('id');
+
     $.ajax({
         method: 'GET',
-        url: baseUrl + '/instructor/courses/content/create-chapter',
+        url: baseUrl + '/instructor/courses/content/:id/create-chapter'.replace(':id', courseId),
         data: {},
         beforeSend: function() {
             $('.dynamic__modal__content').html(loader);
