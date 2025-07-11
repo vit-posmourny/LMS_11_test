@@ -32,7 +32,7 @@
     <link rel=" stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    @vite(['resources/css/frontend.css'])
+    @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js'])
     {{-- dynamic js --}}
     @stack('header_scripts')
 </head>
@@ -110,12 +110,24 @@
     <script src="{{ asset('frontend/assets/js/video_player_youtube.js') }}"></script>
     <!--wow js-->
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
+
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
+
     {{-- dynamic js --}}
     @stack('scripts')
+
+    <script>
+        @if ($errors->any())
+            @foreach ($errors as $error)
+                notyf.error("{{$error}}");
+            @endforeach
+        @endif
+    </script>
+
 </body>
 
 </html>

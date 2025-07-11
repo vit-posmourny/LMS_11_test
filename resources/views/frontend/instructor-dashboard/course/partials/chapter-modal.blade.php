@@ -9,7 +9,7 @@
             @csrf
             <div class="form-group mb-3">
                 <label for="title">Title</label>
-                <input type="text" class="form-control" name="title" required>
+                <input type="text" class="form-control" name="title">
             </div>
             <div class="form-group text-end">
                 <button type="submit" class="btn btn-primary text-end">Create</button>

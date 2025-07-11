@@ -2,11 +2,15 @@
 @extends('frontend.instructor-dashboard.course.app')
 
 @section('course_content')
-<div class="tab-pane fade show active" id="pills-contact" role="tabpanel"
-    aria-labelledby="pills-contact-tab" tabindex="0">
+<div class="tab-pane fade show active" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab" tabindex="0">
+    <form action="" class="course_form more_info_form">
+        @csrf
+        <input type="hidden" name="id" value="{{ request()?->id }}">
+        <input type="hidden" name="current_step" value="3">
+        <input type="hidden" name="next_step" value="4">
+    </form>
     <div class="add_course_content">
-        <div
-            class="add_course_content_btn_area d-flex flex-wrap justify-content-between">
+        <div class="add_course_content_btn_area d-flex flex-wrap justify-content-between">
             <a class="common_btn dynamic__modal__btn" href="#" data-id="{{ $courseId }}">Add New Chapter</a>
             <a class="common_btn" href="#">Short Chapter</a>
         </div>
