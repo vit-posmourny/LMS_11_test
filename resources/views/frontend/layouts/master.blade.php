@@ -121,9 +121,13 @@
     @stack('scripts')
 
     <script>
+        var notyf = new Notyf({
+            duration: 5000,
+            dismissible: true
+        });
         @if ($errors->any())
-            @foreach ($errors as $error)
-                notyf.error("{{$error}}");
+            @foreach ($errors->all() as $error)
+                notyf.error("{{ $error }}");
             @endforeach
         @endif
     </script>

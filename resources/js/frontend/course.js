@@ -3,6 +3,14 @@ const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseUrl + '/instructor/courses/create';
 const update_url = baseUrl + '/instructor/courses/update';
 
+
+// Create an instance of Notyf
+var notyf = new Notyf({
+    duration: 5000,
+    dismissible: true
+});
+
+
 var loader = `
     <div class="modal-content text-center p-3" style="display:inline">
         <div class="spinner-border" role="status">
@@ -137,11 +145,11 @@ $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
     $('#id__dynamic__modal').modal('show');
 
-    let courseId = $(this).data('id');
+    let course = $(this).data('id');
 
     $.ajax({
         method: 'GET',
-        url: baseUrl + '/instructor/courses/content/:id/create-chapter'.replace(':id', courseId),
+        url: baseUrl + '/instructor/courses/content/:id/create-chapter'.replace(':id', course),
         data: {},
         beforeSend: function() {
             $('.dynamic__modal__content').html(loader);

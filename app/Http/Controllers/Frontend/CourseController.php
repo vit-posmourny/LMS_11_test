@@ -79,8 +79,8 @@ class CourseController extends Controller
                 break;
 
             case '3':
-                $courseId = $request->id;
-                return view('frontend.instructor-dashboard.course.content', compact('courseId'));
+                $course = $request->id;
+                return view('frontend.instructor-dashboard.course.content', compact('course'));
                 break;
 
             default:
@@ -162,6 +162,13 @@ class CourseController extends Controller
                     'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
+
+            case '3':
+                return response([
+                    'status' => 'success',
+                    'message' => 'Updated successfully',
+                    'redirect' => route('instructor.courses.edit', ['id' => $request->id,'step' => $request->next_step])
+                ]);
 
             default:
                 # code...

@@ -5,7 +5,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('instructor.content.store-chapter', $courseId) }}" method="POST">
+        <form action="{{ route('instructor.content.store-chapter', $id) }}" method="POST">
             @csrf
             <div class="form-group mb-3">
                 <label for="title">Title</label>

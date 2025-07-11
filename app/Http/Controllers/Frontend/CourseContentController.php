@@ -12,13 +12,12 @@ use Illuminate\Support\Facades\Auth;
 
 class CourseContentController extends Controller
 {
-    function createChapterModal(Request $request): String {
-        $courseId = $request->courseId;
-        return view('frontend.instructor-dashboard.course.partials.chapter-modal', compact('courseId'))->render();
+    function createChapterModal(string $id): String {
+        return view('frontend.instructor-dashboard.course.partials.chapter-modal', compact('id'))->render();
     }
 
 
-    function storeChapter(Request $request, string $courseId): RedirectResponse
+    function storeChapter(Request $request, string $course): RedirectResponse
     {
         $request->validate([
             'title' => 'required|max:255',
@@ -26,9 +25,9 @@ class CourseContentController extends Controller
 
         $chapter = new CourseChapter();
         $chapter->title = $request->title;
-        $chapter->course_id = $courseId;
+        $chapter->course_id = $course;
         $chapter->instructor_id = Auth::user()->id;
-        $chapter->order = CourseChapter::where('course_id', $courseId)->count() + 1;
+        $chapter->order = CourseChapter::where('course_id', $course)->count() + 1;
         $chapter->save();
 
         return redirect()->back();
