@@ -66,7 +66,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('courses.edit');
     Route::post('courses/update', [CourseController::class, 'update'])
         ->name('courses.update');
-    Route::get('courses/content/{course}/create-chapter', [CourseContentController::class, 'createChapterModal'])
+    Route::get('courses/content/{courseId}/create-chapter', [CourseContentController::class, 'createChapterModal'])
         ->name('content.create-chapter');
     Route::post('courses/content/{course}/create-chapter', [CourseContentController::class, 'storeChapter'])
         ->name('content.store-chapter');

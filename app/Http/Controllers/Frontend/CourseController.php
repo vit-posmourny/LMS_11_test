@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use file;
 use App\Models\Course;
 use App\Traits\FileUpload;
 use App\Models\CourseLevel;
@@ -10,12 +9,12 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CourseCategory;
 use App\Models\CourseLanguage;
-use Illuminate\Http\UploadedFile;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Frontend\CourseBasicInfoCreateRequest;
+use App\Models\CourseChapter;
 
 class CourseController extends Controller
 {
@@ -79,8 +78,9 @@ class CourseController extends Controller
                 break;
 
             case '3':
-                $course = $request->id;
-                return view('frontend.instructor-dashboard.course.content', compact('course'));
+                $courseId = $request->id;
+                $chapters = CourseChapter::where(['course_id' => $courseId, 'instructor_id' => Auth::user()->id])->get();
+                return view('frontend.instructor-dashboard.course.content', compact('courseId', 'chapters'));
                 break;
 
             default:
