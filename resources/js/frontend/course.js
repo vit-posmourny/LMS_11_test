@@ -1,4 +1,3 @@
-// resources\js\frontend\course.js
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseUrl + '/instructor/courses/create';
 const update_url = baseUrl + '/instructor/courses/update';
@@ -126,11 +125,11 @@ $('.more_info_form').on('submit', function(e) {
 
 
 // show/hide VideoPath input depending on source
-$('.storage').on('change', function()
+$(document).on('change', '.storage', function()
 {
     let value = $(this).val();
     $('.source_input').val('');
-    if (value == 'upload')
+    if (value === 'upload')
     {
         $('.upload_source').removeClass('d-none');
         $('.external_source').addClass('d-none');
@@ -139,6 +138,9 @@ $('.storage').on('change', function()
         $('.external_source').removeClass('d-none');
     }
 });
+
+
+
 
 // modal showing
 $('.dynamic__modal__btn').on('click', function(e) {
