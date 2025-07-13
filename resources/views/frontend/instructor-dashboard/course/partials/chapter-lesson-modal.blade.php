@@ -8,37 +8,26 @@
         <form action="" method="POST">
             @csrf
             <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group mb-3">
+                <div class="col-md-12 mb-3">
+                    <div class="add_course_basic_info_input">
                         <label for="title">Title</label>
                         <input type="text" class="form-control" name="title">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="title">Source</label>
-                        <select name="" class="add_course_basic_info_input storage nice-select select_js">
-                            <option value="">Select</option>
-                            @foreach (config('course.video_sources') as $source => $name)
-                                <option value="{{ $source }}">{{ $name }}</option>
-                            @endforeach
-                        </select>
+                <div class="col-md-6 mb-3">
+                    <div class="add_course_more_info_input">
+                    <label for="title">Source</label>
+                    <select name="" class="storage nice-select select_js">
+                        <option value="">Select</option>
+                        @foreach (config('course.video_sources') as $source => $name)
+                            <option value="{{ $source }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group mb-3">
-                        <label for="title">File Type</label>
-                        <select name="" id="" class="add_course_basic_info_input nice-select select_js">
-                            <option value="">Select</option>
-                            @foreach (config('course.file_types') as $type => $name )
-                                <option value="{{ $type }}">{{ $name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="col-xl-6">
+                <div class="col-xl-6 mb-3">
                     <div class="add_course_basic_info_input upload_source">
-                        <label for="#">Path</label>
+                        <label for="#" class="mb-2">Path</label>
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
@@ -49,8 +38,43 @@
                         </div>
                     </div>
                     <div class="add_course_basic_info_input external_source d-none">
-                        <label for="#">Path</label>
-                        <input type="text" class="source_input" name="url">
+                        <label for="#" class="mb-2">Path</label>
+                        <input type="text" class="form-control source_input" name="url">
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="add_course_more_info_input">
+                    <label for="title">File Type</label>
+                    <select name="" id="" class="nice-select select_js">
+                        <option value="">Select</option>
+                        @foreach (config('course.file_types') as $type => $name )
+                            <option value="{{ $type }}">{{ $name }}</option>
+                        @endforeach
+                    </select>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <div class="add_course_more_info_input">
+                        <label for="duration" class="mb-2">Duration</label>
+                        <input type="text" class="form-control" name="duration">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="add_course_more_info_checkbox">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" name="" id="preview">
+                            <label class="form-check-label" for="preview">Is Preview</label>
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="1" name="" id="downloadable">
+                            <label class="form-check-label" for="downloadable">Downloadable</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="form-group mb-3">
+                        <label for="title">Description</label>
+                        <textarea name="" id="" class="add_course_basic_info_input" cols="30" rows="10"></textarea>
                     </div>
                 </div>
                 <div class="form-group text-end">
@@ -60,3 +84,7 @@
         </form>
     </div>
 </div>
+
+<script>
+    $('#lfm').filemanager('file');
+</script>
