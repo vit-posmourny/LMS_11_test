@@ -162,3 +162,29 @@ $('.dynamic__modal__btn').on('click', function(e) {
         },
     })
 });
+
+
+$('.add__lesson').on('click', function() {
+
+        $('#id__dynamic__modal').modal('show');
+        let courseId = $(this).data('course_id');
+        let chapterId = $(this).data('chapter_id');
+
+        $.ajax({
+        method: 'GET',
+        url: baseUrl + '/instructor/courses/content/create-lesson',
+        data: {
+            'course_id': courseId,
+            'chapter_id': chapterId,
+        },
+        beforeSend: function() {
+            $('.dynamic__modal__content').html(loader);
+        },
+        success: function(data) {
+            $('.dynamic__modal__content').html(data);
+        },
+        error: function(xhr, status, error) {
+
+        },
+    })
+})

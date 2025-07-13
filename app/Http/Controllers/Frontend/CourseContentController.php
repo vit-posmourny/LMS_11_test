@@ -9,7 +9,6 @@ use App\Models\CourseChapter;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
-
 class CourseContentController extends Controller
 {
     function createChapterModal(string $id): String {
@@ -31,5 +30,13 @@ class CourseContentController extends Controller
         $chapter->save();
 
         return redirect()->back();
+    }
+
+
+    function createLesson(Request $request): string
+    {
+        $courseId = $request->course_id;
+        $chapterId = $request->chapter_id;
+        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId'))->render();
     }
 }
