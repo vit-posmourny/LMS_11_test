@@ -169,8 +169,8 @@ $('.dynamic__modal__btn').on('click', function(e) {
 $('.add__lesson').on('click', function() {
 
         $('#id__dynamic__modal').modal('show');
-        let courseId = $(this).data('course_id');
-        let chapterId = $(this).data('chapter_id');
+        let courseId = $(this).data('course-id');
+        let chapterId = $(this).data('chapter-id');
 
         $.ajax({
         method: 'GET',
