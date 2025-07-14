@@ -19,7 +19,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <x-inputinput-file-block name="image"/>
+                            <x-input-file-block name="image"/>
                         </div>
                         <div class="col-md-6">
                             <x-input-block name="icon" placeholder="Enter icon class name">

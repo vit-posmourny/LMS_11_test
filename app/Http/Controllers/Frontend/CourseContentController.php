@@ -10,6 +10,7 @@ use App\Models\CourseChapterLesson;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use PhpParser\Node\Expr\Cast\String_;
 
 class CourseContentController extends Controller
 {
@@ -84,5 +85,15 @@ class CourseContentController extends Controller
         notyf()->success('Created Successfully.');
 
         return redirect()->back();
+    }
+
+
+    function editLesson(Request $request): String
+    {
+        $courseId = $request->course_id;
+        $chapterId = $request->chapter_id;
+        $lesson = CourseChapterLesson::where(['chapter_id' => $chapterId, 'course_id' => $courseId, 'instructor_id' => Auth::user()->id])->first();
+
+        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId', 'lesson'))->render();
     }
 }

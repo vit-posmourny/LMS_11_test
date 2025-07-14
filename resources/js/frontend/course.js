@@ -16,7 +16,7 @@ var loader = `
             <span class="visually-hidden">Loading...</span>
         </div>
     </div>
-`
+`;
 
 
 // course tab navigation
@@ -56,7 +56,7 @@ $('.basic_info_form').on('submit', function(e) {
         complete: function() {
 
         },
-    })
+    });
 });
 
 
@@ -88,7 +88,7 @@ $('.basic_info_update_form').on('submit', function(e) {
         complete: function() {
 
         },
-    })
+    });
 });
 
 
@@ -120,7 +120,7 @@ $('.more_info_form').on('submit', function(e) {
         complete: function() {
 
         },
-    })
+    });
 });
 
 
@@ -162,7 +162,7 @@ $('.dynamic__modal__btn').on('click', function(e) {
         error: function(xhr, status, error) {
 
         },
-    })
+    });
 });
 
 
@@ -173,11 +173,40 @@ $('.add__lesson').on('click', function() {
         let chapterId = $(this).data('chapter-id');
 
         $.ajax({
+            method: 'GET',
+            url: baseUrl + '/instructor/courses/content/create-lesson',
+            data: {
+                'course_id': courseId,
+                'chapter_id': chapterId,
+            },
+            beforeSend: function() {
+                $('.dynamic__modal__content').html(loader);
+            },
+            success: function(data) {
+                $('.dynamic__modal__content').html(data);
+            },
+            error: function(xhr, status, error) {
+
+            },
+        });
+});
+
+
+$('.edit__lesson').on('click', function(e)
+{
+    e.preventDefault();
+    $('#id__dynamic__modal').modal('show');
+    let courseId = $(this).data('course-id');
+    let chapterId = $(this).data('chapter-id');
+    let lessonId = $(this).data('lesson-id');
+
+    $.ajax({
         method: 'GET',
-        url: baseUrl + '/instructor/courses/content/create-lesson',
+        url: baseUrl + '/instructor/courses/content/edit-lesson',
         data: {
             'course_id': courseId,
             'chapter_id': chapterId,
+            'lesson_id': lessonId,
         },
         beforeSend: function() {
             $('.dynamic__modal__content').html(loader);
@@ -188,5 +217,5 @@ $('.add__lesson').on('click', function() {
         error: function(xhr, status, error) {
 
         },
-    })
-})
+    });
+});
