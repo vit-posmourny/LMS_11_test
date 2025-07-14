@@ -19,13 +19,13 @@ return new class extends Migration
             $table->foreignId('instructor_id')->constrained('users');
             $table->foreignId('course_id')->constrained('courses');
             $table->foreignId('chapter_id')->constrained('course_chapters')->onDelete('cascade');
+            $table->integer('order');
             $table->text('file_path');
             $table->enum('storage', ['upload', 'youtube', 'vimeo', 'external_link']);
             $table->string('volume')->nullable();
             $table->string('duration');
             $table->enum('file_type', ['video', 'audio', 'doc', 'pdf', 'file']);
             $table->boolean('downloadable')->default(0);
-            $table->integer('order');
             $table->boolean('is_preview')->default(1);
             $table->enum('lesson_type', ['lesson', 'live']);
             $table->timestamps();

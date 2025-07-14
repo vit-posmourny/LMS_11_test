@@ -67,7 +67,7 @@ class CourseContentController extends Controller
         $lesson = new CourseChapterLesson();
 
         $lesson->title = $request->title;
-        $lesson->slug = \Str::slug($request->title);
+        $lesson->slug = Str::slug($request->title);
         $lesson->storage = $request->storage;
         $lesson->file_path = $request->filled('file') ? $request->file : $request->url;
         $lesson->file_type = $request->file_type;
@@ -80,6 +80,8 @@ class CourseContentController extends Controller
         $lesson->chapter_id = $request->chapter_id;
         $lesson->order = CourseChapterLesson::where('chapter_id', $request->chapter_id)->count() + 1;
         $lesson->save();
+
+        notyf()->success('Created Successfully.');
 
         return redirect()->back();
     }

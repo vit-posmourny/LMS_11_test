@@ -55,7 +55,7 @@ class CourseController extends Controller
 
         return response([
             'status' => 'success',
-            'message' => 'Updated successfully',
+            'message' => 'Updated successfully.',
             'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
         ]);
     }
@@ -130,7 +130,7 @@ class CourseController extends Controller
 
                 return response([
                     'status' => 'success',
-                    'message' => 'Updated successfully',
+                    'message' => 'Updated successfully.',
                     'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
@@ -166,7 +166,7 @@ class CourseController extends Controller
             case '3':
                 return response([
                     'status' => 'success',
-                    'message' => 'Updated successfully',
+                    'message' => 'Updated successfully.',
                     'redirect' => route('instructor.courses.edit', ['id' => $request->id,'step' => $request->next_step])
                 ]);
 
