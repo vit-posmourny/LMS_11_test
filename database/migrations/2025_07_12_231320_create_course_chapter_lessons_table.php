@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('volume')->nullable();
             $table->string('duration');
             $table->enum('file_type', ['video', 'audio', 'doc', 'pdf', 'file']);
-            $table->boolean('downloadable')->default(0);
             $table->boolean('is_preview')->default(1);
+            $table->boolean('downloadable')->default(0);
             $table->enum('lesson_type', ['lesson', 'live']);
             $table->timestamps();
         });

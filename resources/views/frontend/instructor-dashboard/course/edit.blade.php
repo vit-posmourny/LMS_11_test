@@ -24,8 +24,8 @@
                 </div>
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_input">
-                        <label for="#">Thumbnail *</label>
-                        <input type="file" name="thumbnail">
+                        <label for="thumbnail">Thumbnail *</label>
+                        <input type="file" name="thumbnail" value="{{ $course->thumbnail }}">
                     </div>
                 </div>
                 <div class="col-xl-6">

@@ -9,6 +9,7 @@
             @csrf
             <input type="hidden" name="course_id" value="{{ $courseId }}">
             <input type="hidden" name="chapter_id" value="{{ $chapterId }}">
+
             <div class="row">
                 <div class="col-md-12 mb-3">
                     <div class="add_course_basic_info_input">
@@ -36,12 +37,12 @@
                                     <i class="fa fa-picture-o"></i> Choose
                                 </a>
                             </span>
-                            <input id="thumbnail" class="form-control source_input" type="text" name="file">
+                            <input id="thumbnail" class="form-control source_input" type="text" name="file" value="{{ @$lesson?->file_path }}">
                         </div>
                     </div>
                     <div class="add_course_basic_info_input external_source d-none">
                         <label for="#" class="mb-2">Path</label>
-                        <input type="text" class="form-control source_input" name="url">
+                        <input type="text" class="form-control source_input" name="url" value="{{ @$lesson?->file_path }}">
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -50,7 +51,7 @@
                         <select name="file_type" class="nice-select select_js" required >
                             <option value="">Select</option>
                             @foreach (config('course.file_types') as $type => $name )
-                                <option value="{{ $type }}">{{ $name }}</option>
+                                <option @selected(@$lesson?->storage == $source) value="{{ $type }}">{{ $name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -58,17 +59,17 @@
                 <div class="col-md-6 mb-3">
                     <div class="add_course_more_info_input">
                         <label for="duration" class="mb-2">Duration</label>
-                        <input type="text" class="form-control" name="duration" required>
+                        <input type="text" class="form-control" name="duration" value="{{ @$lesson?->duration }}" required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="add_course_more_info_checkbox">
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="is_preview" id="preview">
+                            <input @checked(@$lesson?->is_preview === 1) class="form-check-input" type="checkbox" value="1" name="is_preview" id="preview">
                             <label class="form-check-label" for="preview">Is Preview</label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="1" name="downloadable" id="downloadable">
+                            <input @checked(@$lesson?->downloadable === 1) class="form-check-input" type="checkbox" value="1" name="downloadable" id="downloadable">
                             <label class="form-check-label" for="downloadable">Downloadable</label>
                         </div>
                     </div>
@@ -76,7 +77,7 @@
                 <div class="col-md-12">
                     <div class="form-group mb-3 add_course_basic_info_input">
                         <label for="description">Description</label>
-                        <textarea name="description" class="add_course_basic_info_input" cols="30" rows="10" required></textarea>
+                        <textarea name="description" class="add_course_basic_info_input" cols="30" rows="10" required>{!! $lesson->description !!}</textarea>
                     </div>
                 </div>
                 <div class="form-group text-end">

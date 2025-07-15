@@ -51,7 +51,7 @@ class CourseContentController extends Controller
             'title' => 'required|string|max:255',
             'storage' => 'required|string',
             'file_type' => 'required|in:video,audio,file,pdf,doc',
-            'duration' => 'required',
+            'duration' => 'required|number',
             'is_preview' => 'boolean',
             'downloadable' => 'boolean',
             'description' => 'required',
@@ -92,8 +92,9 @@ class CourseContentController extends Controller
     {
         $courseId = $request->course_id;
         $chapterId = $request->chapter_id;
-        $lesson = CourseChapterLesson::where(['chapter_id' => $chapterId, 'course_id' => $courseId, 'instructor_id' => Auth::user()->id])->first();
+        $lessonId = $request->lesson_id;
+        $lesson = CourseChapterLesson::where(['id' => $lessonId, 'chapter_id' => $chapterId, 'course_id' => $courseId, 'instructor_id' => Auth::user()->id])->first();
 
-        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId', 'lesson'))->render();
+        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId', 'lessonId', 'lesson'))->render();
     }
 }
