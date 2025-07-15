@@ -1,11 +1,11 @@
 {{-- resources\views\frontend\instructor-dashboard\course\partials\chapter-lesson-modal.blade.php --}}
 <div class="modal-content">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Lesson</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form action="{{ route('instructor.content.store-lesson') }}" method="POST">
+        <form action="{{ @$editMode === true ? route('instructor.content.update-lesson', $lesson->id) : route('instructor.content.store-lesson') }}" method="POST">
             @csrf
             <input type="hidden" name="course_id" value="{{ $courseId }}">
             <input type="hidden" name="chapter_id" value="{{ $chapterId }}">
@@ -14,7 +14,7 @@
                 <div class="col-md-12 mb-3">
                     <div class="add_course_basic_info_input">
                         <label for="title">Title</label>
-                        <input type="text" class="form-control" name="title" value="{{ @$lesson?->title }}" required>
+                        <input type="text" class="form-control" name="title" value="{{ @$lesson->title }}" required>
                     </div>
                 </div>
                 <div class="col-md-6 mb-3">
@@ -51,7 +51,7 @@
                         <select name="file_type" class="nice-select select_js" required >
                             <option value="">Select</option>
                             @foreach (config('course.file_types') as $type => $name )
-                                <option @selected(@$lesson?->storage == $source) value="{{ $type }}">{{ $name }}</option>
+                                <option @selected(@$lesson?->file_type == $type) value="{{ $type }}">{{ $name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -77,11 +77,11 @@
                 <div class="col-md-12">
                     <div class="form-group mb-3 add_course_basic_info_input">
                         <label for="description">Description</label>
-                        <textarea name="description" class="add_course_basic_info_input" cols="30" rows="10" required>{!! $lesson->description !!}</textarea>
+                        <textarea name="description" class="add_course_basic_info_input" cols="30" rows="10" required>{!! @$lesson->description !!}</textarea>
                     </div>
                 </div>
                 <div class="form-group text-end">
-                    <button type="submit" class="btn btn-primary text-end">Create</button>
+                    <button type="submit" class="btn btn-primary text-end">{{ @$editMode ? 'Update' : 'Create' }}</button>
                 </div>
             </div>
         </form>
