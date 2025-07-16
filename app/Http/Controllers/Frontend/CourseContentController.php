@@ -37,7 +37,31 @@ class CourseContentController extends Controller
     }
 
 
-    function createLesson(Request $request): string
+    function editChapterModal(String $id): String
+    {
+        $editMode = true;
+        $chapter = CourseChapter::where(['id' => $id, 'instructor_id' => Auth::user()->id])->firstOrFail();
+        return view('frontend.instructor-dashboard.course.partials.chapter-modal', compact('chapter', 'editMode'))->render();
+    }
+
+
+    function updateChapterModal(Request $request, String $id)
+    {
+        $request->validate([
+            'title' => 'required|max:255',
+        ]);
+
+        $chapter = CourseChapter::findOrFail($id);
+        $chapter->title = $request->title;
+        $chapter->save();
+
+        notyf()->success('Chapter Title Updated Successfully.');
+
+        return redirect()->back();
+    }
+
+
+    function createLesson(Request $request): String
     {
         $courseId = $request->course_id;
         $chapterId = $request->chapter_id;

@@ -45,7 +45,7 @@
                                             Quiz</a></li>
                                 </ul>
                             </div>
-                            <a class="edit" href="#"><i
+                            <a class="edit edit__chapter" data-course-id="{{ $chapter->course_id }}" data-chapter-id="{{ $chapter->id }}" href="#"><i
                                     class="far fa-edit"></i></a>
                             <a class="del" href="#"><i
                                     class="fas fa-trash-alt"></i></a>

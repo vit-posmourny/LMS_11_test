@@ -141,7 +141,6 @@ $(document).on('change', '.storage', function()
 
 
 
-
 // modal showing
 $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
@@ -164,6 +163,32 @@ $('.dynamic__modal__btn').on('click', function(e) {
         },
     });
 });
+
+
+
+$('.edit__chapter').on('click', function(e)
+{
+    e.preventDefault();
+    $('#id__dynamic__modal').modal('show');
+
+    let chapterId = $(this).data('chapter-id');
+
+    $.ajax({
+        method: 'GET',
+        url: baseUrl + '/instructor/courses/content/:id/edit-chapter'.replace(':id', chapterId),
+        data: {},
+        beforeSend: function() {
+            $('.dynamic__modal__content').html(loader);
+        },
+        success: function(data) {
+            $('.dynamic__modal__content').html(data);
+        },
+        error: function(xhr, status, error) {
+
+        },
+    });
+});
+
 
 
 $('.add__lesson').on('click', function() {
