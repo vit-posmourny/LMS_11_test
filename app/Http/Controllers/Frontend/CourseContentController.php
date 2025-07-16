@@ -140,4 +140,10 @@ class CourseContentController extends Controller
 
         return redirect()->back();
     }
+
+
+    function destroyLesson(string $id)
+    {
+        dd($id);
+    }
 }

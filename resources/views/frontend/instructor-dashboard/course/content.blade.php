@@ -60,7 +60,7 @@
                                         <div class="add_course_content_action_btn">
                                             <a class="edit__lesson" href="#" data-lesson-id="{{ $lesson->id }}" data-course-id="{{ $chapter->course_id }}"
                                                 data-chapter-id="{{ $chapter->id }}"><i class="far fa-edit"></i></a>
-                                            <a class="del" href="#"><i
+                                            <a class="del delete__item" href="{{ route('instructor.content.destroy-lesson', $lesson->id) }}"><i
                                                     class="fas fa-trash-alt"></i></a>
                                             <a class="arrow" href="#"><i
                                                     class="fas fa-arrows-alt"></i></a>

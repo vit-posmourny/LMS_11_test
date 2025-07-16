@@ -78,6 +78,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.edit-lesson');
     Route::post('courses/content/{id}/update-lesson', [CourseContentController::class, 'updateLesson'])
         ->name('content.update-lesson');
+    Route::delete('courses/content/{id}/lesson', [CourseContentController::class, 'destroyLesson'])
+        ->name('content.destroy-lesson');
 });
 
     /** lfm routes */
