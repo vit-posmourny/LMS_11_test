@@ -32,10 +32,10 @@ $(".delete__item").on('click', function(e)
 
                 },
                 success: function() {
-
+                    window.location.reload();
                 },
                 error: function(xhr, status, error) {
-
+                    notyf.error(error);
                 },
                 complete: function() {
 

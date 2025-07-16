@@ -6,6 +6,7 @@ use render;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CourseChapter;
+use Illuminate\Http\Response;
 use App\Models\CourseChapterLesson;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -142,8 +143,17 @@ class CourseContentController extends Controller
     }
 
 
-    function destroyLesson(string $id)
+    function destroyLesson(string $id): Response
     {
-        dd($id);
+        try {
+            $lesson = CourseChapterLesson::findOrFail($id);
+            $lesson->delete();
+            notyf()->success('Sub-Category Deleted');
+            return response(['message' => 'Deleted Successfully.'], 200);
+
+        }catch (Exception $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
     }
 }
