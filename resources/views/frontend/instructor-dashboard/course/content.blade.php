@@ -53,21 +53,20 @@
                     </h2>
                     <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <ul class="item_list">
+                            <ul class="item_list sortable__list">
                                 @foreach ($chapter->lessons ?? [] as $lesson)
-                                    <li>
-                                        <span>{{ $lesson->title }}</span>
-                                        <div class="add_course_content_action_btn">
-                                            <a class="edit__lesson" href="#" data-lesson-id="{{ $lesson->id }}" data-course-id="{{ $chapter->course_id }}"
-                                                data-chapter-id="{{ $chapter->id }}"><i class="far fa-edit"></i></a>
-                                            <a class="del delete__item" href="{{ route('instructor.content.destroy-lesson', $lesson->id) }}"><i
-                                                    class="fas fa-trash-alt"></i></a>
-                                            <a class="arrow" href="#"><i
-                                                    class="fas fa-arrows-alt"></i></a>
-                                        </div>
-                                    </li>
+                                <li data-lesson-id="{{ $lesson->id }}">
+                                    <span>{{ $lesson->title }}</span>
+                                    <div class="add_course_content_action_btn">
+                                        <a class="edit__lesson" href="#" data-lesson-id="{{ $lesson->id }}" data-course-id="{{ $chapter->course_id }}"
+                                            data-chapter-id="{{ $chapter->id }}"><i class="far fa-edit"></i></a>
+                                        <a class="del delete__item" href="{{ route('instructor.content.destroy-lesson', $lesson->id) }}"><i
+                                                class="fas fa-trash-alt"></i></a>
+                                        <a class="arrow dragger" href="javascript:; "><i
+                                                class="fas fa-arrows-alt"></i></a>
+                                    </div>
+                                </li>
                                 @endforeach
-
                             </ul>
                         </div>
                     </div>

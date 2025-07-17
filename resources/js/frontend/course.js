@@ -244,3 +244,20 @@ $('.edit__lesson').on('click', function(e)
         },
     });
 });
+
+
+if ($('.sortable__list').length)
+{
+    $('.sortable__list').sortable({
+        items: 'li',
+        containment: 'parent',
+        cursor: 'pointer',
+        handler: '.dragger',
+        update: function(event, ui) {
+            let orderIds = $(this).sortable('toArray', {
+                attribute: 'data-lesson-id',
+            })
+            console.log(orderIds);
+        }
+    });
+}
