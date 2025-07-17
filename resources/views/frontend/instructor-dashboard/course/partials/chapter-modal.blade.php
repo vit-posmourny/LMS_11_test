@@ -8,6 +8,7 @@
         <form action="{{ @$editMode ? route('instructor.content.update-chapter', $chapter->id) : route('instructor.content.store-chapter', $id) }}" method="POST">
             @csrf
             @method('PUT')
+            @method('POST')
             <div class="form-group mb-3">
                 <label for="title">Title</label>
                 <input type="text" class="form-control " name="title" value="{{ @$chapter->title }}">

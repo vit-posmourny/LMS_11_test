@@ -175,7 +175,7 @@ $('.edit__chapter').on('click', function(e)
 
     $.ajax({
         method: 'GET',
-        url: baseUrl + '/instructor/courses/content/:id/edit-chapter'.replace(':id', chapterId),
+        url: baseUrl + '/instructor/courses/content/:chapterId/edit-chapter'.replace(':chapterId', chapterId),
         data: {},
         beforeSend: function() {
             $('.dynamic__modal__content').html(loader);

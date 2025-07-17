@@ -71,10 +71,12 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.create-chapter');
     Route::post('courses/content/{course}/create-chapter', [CourseContentController::class, 'storeChapter'])
         ->name('content.store-chapter');
-    Route::get('courses/content/{id}/edit-chapter', [CourseContentController::class, 'editChapterModal'])
+    Route::get('courses/content/{chapterId}/edit-chapter', [CourseContentController::class, 'editChapterModal'])
         ->name('content.edit-chapter');
-    Route::put('courses/content/{id}/update-chapter', [CourseContentController::class, 'updateChapterModal'])
+    Route::put('courses/content/{chapterId}/update-chapter', [CourseContentController::class, 'updateChapterModal'])
         ->name('content.update-chapter');
+    Route::delete('courses/content/{chapterId}/delete-chapter', [CourseContentController::class, 'destroyChapterModal'])
+        ->name('content.delete-chapter');
     /** Lesson Routes */
     Route::get('courses/content/create-lesson', [CourseContentController::class, 'createLesson'])
         ->name('content.create-lesson');

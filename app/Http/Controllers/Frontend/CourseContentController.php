@@ -45,6 +45,21 @@ class CourseContentController extends Controller
     }
 
 
+    function destroyChapterModal(String $chapterId): Response
+    {
+        try {
+            $chapter = CourseChapter::findOrFail($chapterId);
+            $chapter->delete();
+            notyf()->success('Chapter Successfully Deleted.');
+            return response(['message' => 'Chapter Successfully Deleted.'], 200);
+
+        }catch (Exception $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
+    }
+
+
     function updateChapterModal(Request $request, String $id)
     {
         $request->validate([
