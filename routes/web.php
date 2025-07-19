@@ -91,6 +91,9 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
     /** Sorting Lessons */
     Route::post('courses/chapter/{chapterId}/sort-lesson', [CourseContentController::class, 'sortLesson'])
         ->name('chapter.sort-lesson');
+    /** Sort Chapters */
+    Route::get('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'sortChapter'])
+        ->name('content.sort-chapter');
 });
 
     /** lfm routes */

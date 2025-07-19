@@ -148,7 +148,7 @@ $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
     $('#id__dynamic__modal').modal('show');
 
-    let courseId = $(this).data('id');
+    let courseId = $(this).data('course-id');
 
     $.ajax({
         method: 'GET',
@@ -277,3 +277,27 @@ if ($('.sortable__list').length)
         }
     });
 }
+
+
+$('.sort__chapter__btn').on('click', function(e)
+{
+    e.preventDefault();
+    $('#id__dynamic__modal').modal('show');
+    let courseId = $(this).data('course-id');
+    $.ajax({
+        method: 'GET',
+        url: baseUrl + `/instructor/courses/content/${courseId}/sort-chapter`,
+        data: {
+
+        },
+        beforeSend: function() {
+            $('.dynamic__modal__content').html(loader);
+        },
+        success: function(data) {
+            $('.dynamic__modal__content').html(data);
+        },
+        error: function(xhr, status, error) {
+            notyf.error(error);
+        },
+    });
+})

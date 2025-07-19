@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\CourseChapter;
 use Illuminate\Http\Response;
 use App\Models\CourseChapterLesson;
+use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
@@ -208,5 +209,14 @@ class CourseContentController extends Controller
         }
 
         return response(['status' => 'success', 'message' => 'sort success']);
+    }
+
+
+    /** Sort Chapters */
+    function sortChapter(String $courseId): String
+    {
+        $chapters = CourseChapter::where(['course_id' => $courseId])->get();
+
+        return view('frontend.instructor-dashboard.course.partials.chapter-sort-modal', compact('chapters'))->render();
     }
 }
