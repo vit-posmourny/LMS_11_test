@@ -197,8 +197,16 @@ class CourseContentController extends Controller
     }
 
 
-    function sortLesson(Request $request)
+    function sortLesson(Request $request, String $chapterId)
     {
-        dd($request->all());
+        $newOrders = $request->orderIds;
+        foreach($newOrders as $key => $itemId)
+        {
+            $lesson = CourseChapterLesson::where(['chapter_id' => $chapterId, 'id' => $itemId])->first();
+            $lesson->order = $key + 1;
+            $lesson->save();
+        }
+
+        return response(['status' => 'success', 'message' => 'sort success']);
     }
 }

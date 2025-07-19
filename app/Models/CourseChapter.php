@@ -9,6 +9,7 @@ class CourseChapter extends Model
 {
     function lessons(): HasMany
     {
-        return $this->hasMany(CourseChapterLesson::class, 'chapter_id', 'id');
+        return $this->hasMany(CourseChapterLesson::class, 'chapter_id', 'id')->orderBy('order');
     }
 }
+ 

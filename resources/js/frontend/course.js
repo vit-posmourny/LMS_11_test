@@ -251,15 +251,13 @@ $('.edit__lesson').on('click', function(e)
 if ($('.sortable__list').length)
 {
     $('.sortable__list').sortable({
-        items: 'li',
+        items: '> li',
         containment: 'parent',
         cursor: 'pointer',
         handler: '.dragger',
-        update: function(event, ui) {
-            let orderIds = $(this).sortable('toArray', {
-                attribute: 'data-lesson-id',
-            })
-
+        update: function(event, ui)
+        {
+            let orderIds = $(this).sortable('toArray', {attribute: 'data-lesson-id'})
             let chapterId = ui.item.data('chapter-id');
 
             $.ajax({
@@ -269,11 +267,11 @@ if ($('.sortable__list').length)
                     _token: csrf_token,
                     orderIds: orderIds,
                 },
-                success: function() {
-
+                success: function(data) {
+                    notyf.success(data.message);
                 },
                 error: function(xhr, statu, error) {
-
+                    notyf.error(error);
                 },
             });
         }
