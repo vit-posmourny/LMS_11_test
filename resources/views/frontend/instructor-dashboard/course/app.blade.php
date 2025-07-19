@@ -72,6 +72,7 @@
     ==============================-->
 @endsection
 
+{{-- push to the resources\views\frontend\layouts\master.blade.php <head> --}}
 @push('header_scripts')
     @vite(['resources/js/frontend/course.js'])
 @endpush

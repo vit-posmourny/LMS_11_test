@@ -88,6 +88,9 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.update-lesson');
     Route::delete('courses/content/{id}/lesson', [CourseContentController::class, 'destroyLesson'])
         ->name('content.destroy-lesson');
+    /** Sorting Lessons */
+    Route::post('courses/chapter/{chapterId}/sort-lesson', [CourseContentController::class, 'sortLesson'])
+        ->name('chapter.sort-lesson');
 });
 
     /** lfm routes */

@@ -1,6 +1,8 @@
+const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseUrl + '/instructor/courses/create';
 const update_url = baseUrl + '/instructor/courses/update';
+
 
 
 // Create an instance of Notyf
@@ -257,7 +259,23 @@ if ($('.sortable__list').length)
             let orderIds = $(this).sortable('toArray', {
                 attribute: 'data-lesson-id',
             })
-            console.log(orderIds);
+
+            let chapterId = ui.item.data('chapter-id');
+
+            $.ajax({
+                method: 'POST',
+                url: baseUrl + `/instructor/courses/chapter/${chapterId}/sort-lesson`,
+                data: {
+                    _token: csrf_token,
+                    orderIds: orderIds,
+                },
+                success: function() {
+
+                },
+                error: function(xhr, statu, error) {
+
+                },
+            });
         }
     });
 }
