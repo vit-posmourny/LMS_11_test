@@ -219,4 +219,10 @@ class CourseContentController extends Controller
 
         return view('frontend.instructor-dashboard.course.partials.chapter-sort-modal', compact('chapters'))->render();
     }
+
+
+    function updateSortChapter(Request $request)
+    {
+        dd($request->all());
+    }
 }
