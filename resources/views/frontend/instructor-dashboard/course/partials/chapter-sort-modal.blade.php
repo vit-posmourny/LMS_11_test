@@ -24,6 +24,12 @@
 <script>
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
+
+$('.btn-close').on('click', function() {
+    window.location.reload();
+})
+
+// sort chapter list
 if ($('.chapter__sortable__list').length)
 {
     $('.chapter__sortable__list').sortable({
@@ -31,6 +37,7 @@ if ($('.chapter__sortable__list').length)
         containment: 'parent',
         cursor: 'pointer',
         handler: '.dragger',
+        forcePlaceholdeSize: true,
         update: function(event, ui)
         {
             let orderIds = $(this).sortable('toArray', {attribute: 'data-chapter-id'})

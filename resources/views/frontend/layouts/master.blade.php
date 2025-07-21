@@ -54,7 +54,7 @@
     @yield('content')
 
     <!-- Modal -->
-    <div class="modal fade" id="id__dynamic__modal" tabindex="-1">
+    <div class="modal fade" id="id__dynamic__modal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-lg dynamic__modal__content">
 
         </div>
