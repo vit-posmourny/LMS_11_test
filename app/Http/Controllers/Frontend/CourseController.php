@@ -187,12 +187,20 @@ class CourseController extends Controller
                 $course->save();
 
                 notyf()->success('Finish Successfully.');
-
-                return response([
-                    'status' => 'success',
-                    'message' => 'Updated successfully.',
-                    'redirect' => route('instructor.courses.index'),
-                ]);
+    
+                if ($request->next_step == '4') {
+                    return response([
+                        'status' => 'success',
+                        'message' => 'Updated successfully.',
+                        'redirect' => route('instructor.courses.index'),
+                    ]);
+                }else {
+                    return response([
+                        'status' => 'success',
+                        'message' => 'Updated successfully.',
+                        'redirect' => route('instructor.courses.edit', ['id' => $request->id,'step' => $request->next_step]),
+                    ]);
+                }
                 break;
         }
     }

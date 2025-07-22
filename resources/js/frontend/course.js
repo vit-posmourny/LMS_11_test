@@ -25,7 +25,8 @@ var loader = `
 $('.course_tab').on('click', function(e) {
     e.preventDefault();
     let step = $(this).data('step');
-    $('.course_form').find(`input[name="next_step"]`).val(step);
+    let objekt = $('.course_form').find(`input[name="next_step"]`);
+    objekt.val(step);
     $('.course_form').trigger('submit');
 });
 
