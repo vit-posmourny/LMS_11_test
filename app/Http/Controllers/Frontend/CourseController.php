@@ -53,6 +53,8 @@ class CourseController extends Controller
         // save course id to session
         Session::put('course_create_id', $course->id);
 
+        notyf()->success('Basic Info store successfully.');
+
         return response([
             'status' => 'success',
             'message' => 'Updated successfully.',
@@ -83,8 +85,10 @@ class CourseController extends Controller
                 return view('frontend.instructor-dashboard.course.content', compact('courseId', 'chapters'));
                 break;
 
-            default:
-                # code...
+            case '4':
+                $course = Course::findOrFail($request->id);
+                $editMode = true;
+                return view('frontend.instructor-dashboard.course.finish', compact('course', 'editMode'));
                 break;
         }
     }
@@ -169,9 +173,26 @@ class CourseController extends Controller
                     'message' => 'Updated successfully.',
                     'redirect' => route('instructor.courses.edit', ['id' => $request->id,'step' => $request->next_step])
                 ]);
+                break;
 
-            default:
-                # code...
+            case '4':
+                $request->validate([
+                    'message' => 'nullable|max:1000|string',
+                    'status' => 'required|in:active,inactive,draft'
+                ]);
+
+                $course = Course::findOrFail($request->id);
+                $course->message_for_reviewer = $request->message;
+                $course->status = $request->status;
+                $course->save();
+
+                notyf()->success('Finish Successfully.');
+
+                return response([
+                    'status' => 'success',
+                    'message' => 'Updated successfully.',
+                    'redirect' => route('instructor.courses.index'),
+                ]);
                 break;
         }
     }

@@ -126,6 +126,7 @@ $('.more_info_form').on('submit', function(e) {
 });
 
 
+
 // show/hide VideoPath input depending on source
 $(document).on('change', '.storage', function()
 {
