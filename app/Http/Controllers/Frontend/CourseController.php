@@ -186,8 +186,6 @@ class CourseController extends Controller
                 $course->status = $request->status;
                 $course->save();
 
-                notyf()->success('Finish Successfully.');
-    
                 if ($request->next_step == '4') {
                     return response([
                         'status' => 'success',
