@@ -19,7 +19,8 @@ Route::get('/', [FrontendController::class, 'index'])->name('home');
 *   Student Routes
 *-----------------------------------------------------------------
 */
-Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'prefix' => 'student', 'as' => 'student.'], function() {
+Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'prefix' => 'student', 'as' => 'student.'], function()
+{
     Route::get('/dashboard', [StudentDashboardController::class, 'index'])
         ->name('dashboard');
     Route::get('/become-instructor', [StudentDashboardController::class, 'becomeInstructor'])
@@ -42,7 +43,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
 *   Instructor Routes
 *-----------------------------------------------------------------
 */
-Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'], function() {
+Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'], function()
+{
     Route::get('/dashboard', [InstructorDashboardContoller::class, 'index'])->name('dashboard');
 
     /* Profile Routes */
@@ -66,6 +68,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('courses.edit');
     Route::post('courses/update', [CourseController::class, 'update'])
         ->name('courses.update');
+
     /** Chapter Routes */
     Route::get('courses/content/{courseId}/create-chapter', [CourseContentController::class, 'createChapterModal'])
         ->name('content.create-chapter');
@@ -77,6 +80,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.update-chapter');
     Route::delete('courses/content/{chapterId}/delete-chapter', [CourseContentController::class, 'destroyChapterModal'])
         ->name('content.delete-chapter');
+
     /** Lesson Routes */
     Route::get('courses/content/create-lesson', [CourseContentController::class, 'createLesson'])
         ->name('content.create-lesson');
@@ -88,9 +92,11 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.update-lesson');
     Route::delete('courses/content/{id}/lesson', [CourseContentController::class, 'destroyLesson'])
         ->name('content.destroy-lesson');
+
     /** Sorting Lessons */
     Route::post('courses/chapter/{chapterId}/sort-lesson', [CourseContentController::class, 'sortLesson'])
         ->name('chapter.sort-lesson');
+
     /** Sort Chapters */
     Route::get('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'sortChapter'])
         ->name('content.sort-chapter');
@@ -98,7 +104,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.update-sort-chapter');
 });
 
-    /** lfm routes */
+/** lfm routes */
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
