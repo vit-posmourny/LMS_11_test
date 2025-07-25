@@ -86,6 +86,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Course Module Routes */
     Route::get('courses', [CourseController::class, 'index'])
         ->name('courses.index');
+    Route::put('courses/{course}/update-approval', [CourseController::class, 'updateApproval'])
+        ->name('courses.update-approval');
     Route::get('courses/create', [CourseController::class, 'create'])
         ->name('courses.create');
     Route::post('courses/create', [CourseController::class, 'storeBasicInfo'])

@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Frontend\CourseBasicInfoCreateRequest;
 use App\Models\CourseChapter;
+use Illuminate\Http\Response;
 
 class CourseController extends Controller
 {
@@ -24,6 +25,18 @@ class CourseController extends Controller
     {
         $courses = Course::with('instructor')->paginate(15);
         return view('admin.course.module.index', compact('courses'));
+    }
+
+    /** change approve status */
+    public function updateApproval(Request $request, Course $course): Response
+    {
+        $course->is_approved = $request->approval;
+        $course->save();
+
+        return response([
+            'status' => 'success',
+            'message' => 'Updated successfully.',
+        ]);
     }
 
 

@@ -50,10 +50,10 @@
                                             @endif
                                         </td>
                                         <td>
-                                            <select name="" class="form-control update-approval-status" data-id="{{ $course->id }}">
-                                                <option value="pending">Pending</option>
-                                                <option value="approved">Approved</option>
-                                                <option value="rejected">Rejected</option>
+                                            <select class="form-control update-approval-status" data-id="{{ $course->id }}">
+                                                <option @selected($course->is_approved == 'pending') value="pending">Pending</option>
+                                                <option @selected($course->is_approved == 'approved') value="approved">Approved</option>
+                                                <option @selected($course->is_approved == 'rejected') value="rejected">Rejected</option>
                                             </select>
                                         </td>
                                         <td>
