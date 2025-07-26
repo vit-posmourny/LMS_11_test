@@ -93,7 +93,7 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('courses.create');
     Route::post('courses/create', [CourseController::class, 'storeBasicInfo'])
         ->name('courses.store-basic-info');
-        
+
     Route::get('courses/{id}/edit', [CourseController::class, 'edit'])
         ->name('courses.edit');
     Route::post('courses/update', [CourseController::class, 'update'])
@@ -133,4 +133,9 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('content.sort-chapter');
     Route::POST('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'updateSortChapter'])
         ->name('content.update-sort-chapter');
+});
+
+/** lfm routes */
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
 });

@@ -144,7 +144,7 @@ $(document).on('change', '.storage', function()
 });
 
 
-
+/** Course Contents */
 // modal showing
 $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();

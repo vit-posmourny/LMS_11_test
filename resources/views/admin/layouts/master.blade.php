@@ -16,6 +16,7 @@
     <!-- CSS files -->
     <link href="{{ asset('admin/assets/dist/css/tabler.min.css?1692870487') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/dist/css/demo.min.css?1692870487') }}" rel="stylesheet" />
+    <link href="{{ asset('admin/assets/dist/css/nice-select.css') }}" rel="stylesheet" />
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -27,7 +28,7 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
-    @vite(['resources/css/admin.css', 'resources/js/admin/admin.js', 'resources/js/admin/course.js'])
+    @vite(['resources/css/admin.css', 'resources/js/admin/admin.js', ])
     @stack('header_scripts')
 </head>
 
@@ -88,7 +89,11 @@
     <!-- Tabler Core -->
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js?1692870487') }}" defer></script>
     <script src="{{ asset('admin/assets/dist/js/demo.min.js?1692870487') }}" defer></script>
-    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script> --}}
+    {{-- jQuery Core --}}
+    <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
+    {{-- 3rd party plugins --}}
+    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js" defer></script>
+    {{-- dynamic js --}}
+    @stack('scripts')
 </body>
-
 </html>

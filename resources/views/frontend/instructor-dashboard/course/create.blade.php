@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
-                        <label for="#">Demo Video Storage<b> (optional)</b></label>
+                        <label for="#">Demo Video Storage <b>(optional)</b></label>
                         <select class="select_js storage" name="demo_video_storage">
                             <option value=""> Please Select </option>
                             <option value="upload" name="upload"> Upload </option>
