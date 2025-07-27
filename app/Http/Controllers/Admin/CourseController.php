@@ -16,7 +16,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\Frontend\CourseBasicInfoCreateRequest;
+use App\Http\Requests\Admin\CourseBasicInfoCreateRequest;
 
 class CourseController extends Controller
 {
@@ -62,7 +62,7 @@ class CourseController extends Controller
         $course->description = $request->description;
         $course->price = $request->price;
         $course->discount_price = $request->discount_price;
-        $course->instructor_id = Auth::guard('web')->user()->id;
+        $course->instructor_id = $request->instructor;
         $course->save();
 
         // save course id to session
@@ -73,7 +73,7 @@ class CourseController extends Controller
         return response([
             'status' => 'success',
             'message' => 'Updated successfully.',
-            'redirect' => route('instructor.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+            'redirect' => route('admin.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
         ]);
     }
 

@@ -4,7 +4,7 @@
 <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
         <div class="add_course_basic_info">
-            <form action="{{route('instructor.courses.store-basic-info')}}" method="POST" class="basic_info_form course_form" enctype="multipart/form-data">
+            <form action="{{route('admin.courses.store-basic-info')}}" method="POST" class="basic_info_form course_form" enctype="multipart/form-data">
                 @csrf
                 <input type="hidden" name="current_step" value="1">
                 <input type="hidden" name="next_step" value="2">
@@ -12,7 +12,7 @@
                     <div class="col-xl-12">
                         <div class="add_course_basic_info_input">
                             <label for="#">Instructor *</label>
-                            <select class="select2">
+                            <select class="select2" name="instructor">
                                 <option value=""> Please Select </option>
                                 @foreach ($instructors as $instructor)
                                     <option value="{{ $instructor->id }}"> {{ $instructor->name }} &nbsp;-&nbsp; {{ $instructor->email }} </option>

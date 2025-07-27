@@ -4,8 +4,8 @@ window.$ = window.jQuery = $;
 
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
-const basic_info_url = baseUrl + '/instructor/courses/create';
-const update_url = baseUrl + '/instructor/courses/update';
+const basic_info_url = baseUrl + '/admin/courses/create';
+const update_url = baseUrl + '/admin/courses/update';
 
 
 // Create an instance of Notyf
