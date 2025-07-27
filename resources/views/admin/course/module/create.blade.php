@@ -11,6 +11,17 @@
                 <div class="row">
                     <div class="col-xl-12">
                         <div class="add_course_basic_info_input">
+                            <label for="#">Instructor *</label>
+                            <select class="select2">
+                                <option value=""> Please Select </option>
+                                @foreach ($instructors as $instructor)
+                                    <option value="{{ $instructor->id }}"> {{ $instructor->name }} &nbsp;-&nbsp; {{ $instructor->email }} </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xl-12">
+                        <div class="add_course_basic_info_input">
                             <label for="#">Title *</label>
                             <input type="text" name="title" placeholder="Title">
                         </div>

@@ -13,6 +13,7 @@
     {{-- css plugins --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- CSS files -->
     <link href="{{ asset('admin/assets/dist/css/tabler.min.css?1692870487') }}" rel="stylesheet" />
     <link href="{{ asset('admin/assets/dist/css/demo.min.css?1692870487') }}" rel="stylesheet" />
@@ -93,6 +94,7 @@
     <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
     {{-- 3rd party plugins --}}
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
     {{-- dynamic js --}}
     @stack('scripts')
 </body>

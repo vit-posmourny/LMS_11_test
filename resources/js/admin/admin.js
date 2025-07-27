@@ -10,6 +10,11 @@ var notyf = new Notyf({
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 var delete_url = null;
 
+// initialize Select2 with <select> in resources/views/admin/course/module/create.blade.php
+$(document).ready(function() {
+    $('.select2').select2();
+});
+
 /** Delete item with confirmation */
 $('.delete-item').on('click', function(e) {
 

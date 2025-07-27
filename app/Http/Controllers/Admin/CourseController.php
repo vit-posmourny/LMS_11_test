@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use App\Models\Course;
 use App\Traits\FileUpload;
 use App\Models\CourseLevel;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\CourseChapter;
+use Illuminate\Http\Response;
 use App\Models\CourseCategory;
 use App\Models\CourseLanguage;
 use Illuminate\Contracts\View\View;
@@ -14,8 +17,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Frontend\CourseBasicInfoCreateRequest;
-use App\Models\CourseChapter;
-use Illuminate\Http\Response;
 
 class CourseController extends Controller
 {
@@ -42,7 +43,8 @@ class CourseController extends Controller
 
     public function create(): View
     {
-        return view('admin.course.module.create');
+        $instructors = User::where('role', 'instructor')->where('approve_status', 'approved')->get();
+        return view('admin.course.module.create', compact('instructors'));
     }
 
 
