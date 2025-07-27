@@ -41,7 +41,7 @@
                     <div class="col-xl-6">
                         <div class="add_course_basic_info_input">
                             <label for="#">Demo Video Storage <b>(optional)</b></label>
-                            <select class="nice-select select_js storage" name="demo_video_storage">
+                            <select class="nice-select storage" name="demo_video_storage">
                                 <option value=""> Please Select </option>
                                 <option value="upload" name="upload"> Upload </option>
                                 <option value="youtube" name="youtube"> YouTube </option>
@@ -52,7 +52,7 @@
                     </div>
                     <div class="col-xl-6">
                         <div class="add_course_basic_info_input upload_source">
-                            <label for="#">Path</label>
+                            <label for="#" class="mb-2">Path</label>
                             <div class="input-group">
                                 <span class="input-group-btn">
                                     <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="add_course_basic_info_input external_source d-none">
-                            <label for="#">Path</label>
+                            <label for="#" class="mb-2">Path</label>
                             <input type="text" class="source_input" name="url">
                         </div>
                     </div>
