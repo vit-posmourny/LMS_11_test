@@ -1,10 +1,10 @@
 {{-- resources\views\frontend\instructor-dashboard\course\more-info.blade.php --}}
-@extends('frontend.instructor-dashboard.course.app')
+@extends('admin.course.module.app')
 
-@section('course_content')
+@section('tab_content')
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab" tabindex="0">
         <div class="add_course_basic_info">
-            <form action="{{ route('instructor.courses.update') }}" class="more_info_form course_form">
+            <form action="" class="more_info_form course_form">
                 @csrf
                 <input type="hidden" name="id" value="{{ request()?->id }}">
                 <input type="hidden" name="current_step" value="2">
@@ -23,6 +23,23 @@
                             <input type="text" name="duration" value="{{ $course?->duration }}" placeholder="300">
                         </div>
                     </div>
+                    <div class="col-6">
+                        <div class="add_course_more_info_input">
+                            <label for="#">Category *</label>
+                            <select class="nice-select" name="category">
+                                <option value=""> Please Select </option>
+                                @foreach ($categories as $category)
+                                    @if ($category->subCategories->isNotEmpty())
+                                        <optgroup label="{{ $category->name }}">
+                                            @foreach ($category->subCategories as $subCategory)
+                                                <option @selected($course?->category_id === $subCategory->id) value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
+                                            @endforeach
+                                        </optgroup>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-xl-6">
                         <div class="add_course_more_info_checkbox">
                             <div class="form-check">
@@ -35,23 +52,6 @@
                                     id="flexCheckDefault2" @checked($course->certificate === 1)>
                                 <label class="form-check-label" for="flexCheckDefault2">Completion Certificate</label>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="add_course_more_info_input">
-                            <label for="#">Category *</label>
-                            <select class="select_2" name="category">
-                                <option value=""> Please Select </option>
-                                @foreach ($categories as $category)
-                                    @if ($category->subCategories->isNotEmpty())
-                                        <optgroup label="{{ $category->name }}">
-                                            @foreach ($category->subCategories as $subCategory)
-                                                <option @selected($course?->category_id === $subCategory->id) value="{{ $subCategory->id }}">{{ $subCategory->name }}</option>
-                                            @endforeach
-                                        </optgroup>
-                                    @endif
-                                @endforeach
-                            </select>
                         </div>
                     </div>
                     <div class="col-xl-4">
