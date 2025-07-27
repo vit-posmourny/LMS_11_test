@@ -1,11 +1,11 @@
 {{-- resources\views\frontend\instructor-dashboard\course\partials\chapter-modal.blade.php --}}
 <div class="modal-content">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Chapter</h1>
+        <h1 class="modal-title" id="exampleModalLabel">Chapter</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form action="{{ @$editMode ? route('instructor.content.update-chapter', $chapter->id) : route('instructor.content.store-chapter', $id) }}" method="POST">
+        <form action="{{ @$editMode ? route('admin.content.update-chapter', @$chapter->id) : route('admin.content.store-chapter', $id) }}" method="POST">
             @csrf
             @method('PUT')
             @method('POST')

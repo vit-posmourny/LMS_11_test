@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use render;
+use App\Models\Course;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Models\CourseChapter;
@@ -17,22 +18,26 @@ use PhpParser\Node\Expr\Cast\String_;
 class CourseContentController extends Controller
 {
     function createChapterModal(string $id): String {
-        return view('frontend.instructor-dashboard.course.partials.chapter-modal', compact('id'))->render();
+        return view('admin.course.module.partials.chapter-modal', compact('id'))->render();
     }
 
 
-    function storeChapter(Request $request, string $course): RedirectResponse
+    function storeChapter(Request $request, string $courseId): RedirectResponse
     {
         $request->validate([
             'title' => 'required|max:255',
         ]);
 
+        $course = Course::findOrFail($courseId);
+
         $chapter = new CourseChapter();
         $chapter->title = $request->title;
-        $chapter->course_id = $course;
-        $chapter->instructor_id = Auth::user()->id;
-        $chapter->order = CourseChapter::where('course_id', $course)->count() + 1;
+        $chapter->course_id = $courseId;
+        $chapter->instructor_id = $course->instructor_id;
+        $chapter->order = CourseChapter::where('course_id', $courseId)->count() + 1;
         $chapter->save();
+
+        notyf()->success("Chapter Title create successfully.");
 
         return redirect()->back();
     }

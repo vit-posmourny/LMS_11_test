@@ -186,7 +186,7 @@ $(function()
 
         $.ajax({
             method: 'GET',
-            url: baseUrl + '/instructor/courses/content/:id/create-chapter'.replace(':id', courseId),
+            url: baseUrl + '/admin/courses/content/:id/create-chapter'.replace(':id', courseId),
             data: {},
             beforeSend: function() {
                 $('.dynamic__modal__content').html(loader);
@@ -211,7 +211,7 @@ $(function()
 
         $.ajax({
             method: 'GET',
-            url: baseUrl + '/instructor/courses/content/:chapterId/edit-chapter'.replace(':chapterId', chapterId),
+            url: baseUrl + '/admin/courses/content/:chapterId/edit-chapter'.replace(':chapterId', chapterId),
             data: {},
             beforeSend: function() {
                 $('.dynamic__modal__content').html(loader);
@@ -235,7 +235,7 @@ $(function()
 
             $.ajax({
                 method: 'GET',
-                url: baseUrl + '/instructor/courses/content/create-lesson',
+                url: baseUrl + '/admin/courses/content/create-lesson',
                 data: {
                     'course_id': courseId,
                     'chapter_id': chapterId,
@@ -263,7 +263,7 @@ $(function()
 
         $.ajax({
             method: 'GET',
-            url: baseUrl + '/instructor/courses/content/edit-lesson',
+            url: baseUrl + '/admin/courses/content/edit-lesson',
             data: {
                 'course_id': courseId,
                 'chapter_id': chapterId,
@@ -296,7 +296,7 @@ $(function()
 
                 $.ajax({
                     method: 'POST',
-                    url: baseUrl + `/instructor/courses/chapter/${chapterId}/sort-lesson`,
+                    url: baseUrl + `/admin/courses/chapter/${chapterId}/sort-lesson`,
                     data: {
                         _token: csrf_token,
                         orderIds: orderIds,
@@ -320,7 +320,7 @@ $(function()
         let courseId = $(this).data('course-id');
         $.ajax({
             method: 'GET',
-            url: baseUrl + `/instructor/courses/content/${courseId}/sort-chapter`,
+            url: baseUrl + `/admin/courses/content/${courseId}/sort-chapter`,
             data: {
 
             },

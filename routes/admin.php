@@ -103,7 +103,7 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Chapter Routes */
     Route::get('courses/content/{courseId}/create-chapter', [CourseContentController::class, 'createChapterModal'])
         ->name('content.create-chapter');
-    Route::post('courses/content/{course}/create-chapter', [CourseContentController::class, 'storeChapter'])
+    Route::post('courses/content/{courseId}/create-chapter', [CourseContentController::class, 'storeChapter'])
         ->name('content.store-chapter');
     Route::get('courses/content/{chapterId}/edit-chapter', [CourseContentController::class, 'editChapterModal'])
         ->name('content.edit-chapter');
