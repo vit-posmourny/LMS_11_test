@@ -1,11 +1,11 @@
 {{-- resources\views\frontend\instructor-dashboard\course\partials\chapter-lesson-modal.blade.php --}}
 <div class="modal-content">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Lesson</h1>
+        <h1 class="modal-title" id="exampleModalLabel">Lesson</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form action="{{ @$editMode === true ? route('instructor.content.update-lesson', $lesson->id) : route('instructor.content.store-lesson') }}" method="POST">
+        <form action="{{ @$editMode === true ? route('admin.content.update-lesson', $lesson->id) : route('admin.content.store-lesson') }}" method="POST">
             @csrf
             <input type="hidden" name="course_id" value="{{ $courseId }}">
             <input type="hidden" name="chapter_id" value="{{ $chapterId }}">

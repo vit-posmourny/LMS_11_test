@@ -28,7 +28,7 @@
                                 <div class="btn btn-secondary dropdown-toggle"
                                     type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <i class="far fa-plus"></i>
+                                    <i class="ti ti-plus"></i>
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
@@ -41,9 +41,9 @@
                                 </ul>
                             </div>
                             <a class="edit edit__chapter" data-course-id="{{ $chapter->course_id }}" data-chapter-id="{{ $chapter->id }}" href="#"><i
-                                    class="far fa-edit"></i></a>
+                                    class="ti ti-edit"></i></a>
                             <a class="del delete__item" href="{{ route('instructor.content.delete-chapter', $chapter->id) }}"><i
-                                    class="fas fa-trash-alt"></i></a>
+                                    class="ti ti-trash-x text-red"></i></a>
                         </div>
                     </h2>
                     <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">

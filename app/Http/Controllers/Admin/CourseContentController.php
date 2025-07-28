@@ -86,7 +86,7 @@ class CourseContentController extends Controller
     {
         $courseId = $request->course_id;
         $chapterId = $request->chapter_id;
-        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId'))->render();
+        return view('admin.course.module.partials.chapter-lesson-modal', compact('courseId', 'chapterId'))->render();
     }
 
 
