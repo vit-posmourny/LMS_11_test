@@ -103,6 +103,8 @@
     <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- jQuery Core --}}
     <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
+    {{-- jquery ui --}}
+    <script src="{{ asset('/frontend/assets/js/jquery-ui.min.js') }}" defer></script>
     {{-- 3rd party plugins --}}
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>

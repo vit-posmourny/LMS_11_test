@@ -282,7 +282,7 @@ $(function()
     });
 
 
-    if ($('.sortable__list').length)
+    if ($('.sortable__list li').length)
     {
         $('.sortable__list').sortable({
             items: '> li',
