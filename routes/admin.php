@@ -107,7 +107,7 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('content.store-chapter');
     Route::get('courses/content/{chapterId}/edit-chapter', [CourseContentController::class, 'editChapterModal'])
         ->name('content.edit-chapter');
-    Route::put('courses/content/{chapterId}/update-chapter', [CourseContentController::class, 'updateChapterModal'])
+    Route::post('courses/content/{chapterId}/update-chapter', [CourseContentController::class, 'updateChapterModal'])
         ->name('content.update-chapter');
     Route::delete('courses/content/{chapterId}/delete-chapter', [CourseContentController::class, 'destroyChapterModal'])
         ->name('content.delete-chapter');
