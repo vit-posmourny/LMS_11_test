@@ -41,9 +41,9 @@
                                 </ul>
                             </div>
                             <a class="edit edit__chapter" data-course-id="{{ $chapter->course_id }}" data-chapter-id="{{ $chapter->id }}" href="#"><i
-                                    class="ti ti-edit"></i></a>
+                                    class="far fa-edit"></i></a>
                             <a class="del delete__item" href="{{ route('instructor.content.delete-chapter', $chapter->id) }}"><i
-                                    class="ti ti-trash-x text-red"></i></a>
+                                    class="fas fa-trash-alt text-red"></i></a>
                         </div>
                     </h2>
                     <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -55,7 +55,7 @@
                                     <div class="add_course_content_action_btn">
                                         <a class="edit__lesson" href="#" data-lesson-id="{{ $lesson->id }}" data-course-id="{{ $chapter->course_id }}"
                                             data-chapter-id="{{ $chapter->id }}"><i class="far fa-edit"></i></a>
-                                        <a class="del delete__item" href="{{ route('instructor.content.destroy-lesson', $lesson->id) }}"><i
+                                        <a class="del delete__item" href="{{ route('admin.content.destroy-lesson', $lesson->id) }}"><i
                                                 class="fas fa-trash-alt"></i></a>
                                         <a class="arrow dragger" href="javascript:; "><i
                                                 class="fas fa-arrows-alt"></i></a>

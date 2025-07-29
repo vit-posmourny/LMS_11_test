@@ -16,7 +16,7 @@ $(document).ready(function() {
 });
 
 /** Delete item with confirmation */
-$('.delete-item').on('click', function(e) {
+$('.delete__item').on('click', function(e) {
 
     e.preventDefault();
 

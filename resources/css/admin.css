@@ -40,19 +40,19 @@ input, textarea {
 }
 
 
-.add_course_content_action_btn {
+.accordion-header .add_course_content_action_btn {
     display: inline-flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 5px 10px;
     position: absolute;
-    top: 6px;
+    margin-top: 7px;
     right: 15px;
     z-index: 9;
 }
 
 
-.add_course_content .accordion-HEADER {
+.add_course_content .accordion-header {
     position: relative;
 }
 
@@ -102,6 +102,27 @@ input, textarea {
     -o-border-radius: 50%;
 }
 
+
+.add_course_content .accordion-item button::before {
+    position: absolute;
+    content: "\f03d";
+    font-family: "font awesome 5 free";
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: var(--colorPrimary);
+    color: var(--colorWhite);
+    margin-top: 5px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
 
 
 

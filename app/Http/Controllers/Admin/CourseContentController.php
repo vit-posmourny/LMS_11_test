@@ -47,7 +47,7 @@ class CourseContentController extends Controller
     {
         $editMode = true;
         $chapter = CourseChapter::where(['id' => $id, 'instructor_id' => Auth::user()->id])->firstOrFail();
-        return view('frontend.instructor-dashboard.course.partials.chapter-modal', compact('chapter', 'editMode'))->render();
+        return view('admin.course.module.partials.chapter-modal', compact('chapter', 'editMode'))->render();
     }
 
 
@@ -142,7 +142,7 @@ class CourseContentController extends Controller
         $lessonId = $request->lesson_id;
         $lesson = CourseChapterLesson::where(['id' => $lessonId, 'chapter_id' => $chapterId, 'course_id' => $courseId, 'instructor_id' => Auth::user()->id])->first();
 
-        return view('frontend.instructor-dashboard.course.partials.chapter-lesson-modal', compact('courseId', 'chapterId', 'lessonId', 'lesson', 'editMode'))->render();
+        return view('admin.course.module.partials.chapter-lesson-modal', compact('courseId', 'chapterId', 'lessonId', 'lesson', 'editMode'))->render();
     }
 
 
@@ -221,7 +221,7 @@ class CourseContentController extends Controller
     function sortChapter(String $courseId): String
     {
         $chapters = CourseChapter::where(['course_id' => $courseId])->orderBy('order')->get();
-        return view('frontend.instructor-dashboard.course.partials.chapter-sort-modal', compact('chapters'))->render();
+        return view('admin.course.module.partials.chapter-sort-modal', compact('chapters'))->render();
     }
 
 
