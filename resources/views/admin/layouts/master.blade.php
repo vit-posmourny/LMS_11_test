@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
+
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -49,7 +50,7 @@
             @include('admin.layouts.footer')
         </div>
     </div>
-    <!-- Modals -->
+    <!-- Delete Modal -->
     <div class="modal modal-blur fade" id="modal-danger" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -93,7 +94,10 @@
 
         </div>
     </div>
-
+    <!--jquery library js-->
+    <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
+    {{-- select2.min.js --}}
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Libs JS -->
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!-- Tabler Core -->
@@ -107,7 +111,7 @@
     <script src="{{ asset('/frontend/assets/js/jquery-ui.min.js') }}" defer></script>
     {{-- 3rd party plugins --}}
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
+
     {{-- dynamic js --}}
     @stack('scripts')
 </body>

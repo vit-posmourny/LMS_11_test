@@ -46,16 +46,16 @@ if ($('.chapter__sortable__list').length)
 
             $.ajax({
                 method: 'POST',
-                url: baseUrl + `/instructor/courses/content/${courseId}/sort-chapter`,
+                url: baseUrl + `/admin/courses/content/${courseId}/sort-chapter`,
                 data: {
                     _token: csrf_token,
                     orderIds: orderIds,
                 },
                 success: function(data) {
-                    notyf.success(data.message);
+                    //notyf.success(data.message);
                 },
                 error: function(xhr, statu, error) {
-                    notyf.error(error);
+                    //notyf.error(error);
                 },
             });
         }

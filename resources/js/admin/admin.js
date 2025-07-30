@@ -1,6 +1,7 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 
+
 // Create an instance of Notyf
 var notyf = new Notyf({
     duration: 5000,
@@ -12,7 +13,7 @@ var delete_url = null;
 
 // initialize Select2 with <select> in resources/views/admin/course/module/create.blade.php
 $(document).ready(function() {
-    $('.select2').select2();
+    $('.select2').prop("disabled");
 });
 
 /** Delete item with confirmation */
