@@ -1,4 +1,4 @@
-{{-- resources\views\frontend\instructor-dashboard\course\content.blade.php --}}
+{{-- resources\views\admin\course\module\content.blade.php --}}
 @extends('admin.course.module.app')
 
 @section('tab_content')
