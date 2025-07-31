@@ -59,8 +59,8 @@ $(function()
     $('.course_tab').on('click', function(e) {
         e.preventDefault();
         let step = $(this).data('step');
-        let objekt = $('.course_form').find(`input[name="next_step"]`);
-        objekt.val(step);
+        let input = $('.course_form').find(`input[name="next_step"]`);
+        input.val(step);
         $('.course_form').trigger('submit');
     });
 
@@ -97,9 +97,9 @@ $(function()
     });
 
 
-    $('.basic_info_update_form').on('submit', function(e) {
+    $('.basic_info_update_form').on('submit', function(e)
+    {
         e.preventDefault();
-
         let formData = new FormData(this);
 
         $.ajax({

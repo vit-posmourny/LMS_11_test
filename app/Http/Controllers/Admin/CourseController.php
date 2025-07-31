@@ -78,7 +78,7 @@ class CourseController extends Controller
     }
 
 
-    function edit(Request $request)
+    function edit(Request $request, Course $course)
     {
         switch ($request->step) {
             case '1':
@@ -140,8 +140,8 @@ class CourseController extends Controller
                 $course->demo_video_source = $request->filled('file') ? $request->file : $request->url;
                 $course->description = $request->description;
                 $course->price = $request->price;
+                $course->instructor_id = $course->instructor->id;
                 $course->discount_price = $request->discount_price;
-                $course->instructor_id = Auth::guard('web')->user()->id;
                 $course->save();
 
                 // save course id to session
@@ -150,7 +150,7 @@ class CourseController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully.',
-                    'redirect' => route('admin.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
@@ -178,7 +178,7 @@ class CourseController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully',
-                    'redirect' => route('admin.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
@@ -186,7 +186,7 @@ class CourseController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully.',
-                    'redirect' => route('admin.courses.edit', ['id' => $request->id,'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $request->id,'step' => $request->next_step])
                 ]);
                 break;
 
@@ -211,7 +211,7 @@ class CourseController extends Controller
                     return response([
                         'status' => 'success',
                         'message' => 'Updated successfully.',
-                        'redirect' => route('admin.courses.edit', ['id' => $request->id,'step' => $request->next_step]),
+                        'redirect' => route('admin.courses.edit', ['course' => $request->id,'step' => $request->next_step]),
                     ]);
                 }
                 break;

@@ -13,7 +13,7 @@
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_input">
                         <label for="#">Title *</label>
-                        <input type="text" name="title" placeholder="Title" value="{{ $course->title }}"
+                        <input type="text" name="title" placeholder="Title" value="{{ $course->title }}">
                     </div>
                 </div>
                 <div class="col-xl-12">
@@ -31,7 +31,7 @@
                 <div class="col-xl-6">
                     <div class="add_course_basic_info_input">
                         <label for="#">Demo Video Storage<b> (optional)</b></label>
-                        <select class="select_js storage" name="demo_video_storage">
+                        <select class="nice-select storage" name="demo_video_storage">
                             <option value=""> Please Select </option>
                             <option @selected($course->demo_video_storage == 'upload') value="upload" name="upload"> Upload </option>
                             <option @selected($course->demo_video_storage == 'youtube') value="youtube" name="youtube"> YouTube </option>
@@ -46,7 +46,7 @@
                         <div class="input-group">
                             <span class="input-group-btn">
                                 <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                    <i class="fa fa-picture-o"></i> Choose
+                                    <i class="fa fa-picture-o"></i>&nbsp; Choose
                                 </a>
                             </span>
                             <input id="thumbnail" class="form-control source_input" type="text" name="file" value="{{ $course->demo_video_source }}">
@@ -84,7 +84,7 @@
 @endsection
 
 @push('scripts')
-<script>
+<script type="module">
     $('#lfm').filemanager('file');
 </script>
 @endpush
