@@ -82,7 +82,6 @@ class CourseController extends Controller
     {
         switch ($request->step) {
             case '1':
-                $course = Course::findOrFail($request->id);
                 return view('admin.course.module.edit', compact('course'));
                 break;
 
@@ -90,18 +89,16 @@ class CourseController extends Controller
                 $categories = CourseCategory::where('status', 1)->get();
                 $levels = CourseLevel::all();
                 $languages = CourseLanguage::all();
-                $course = Course::findOrFail($request->id);
                 return view('admin.course.module.more-info', compact('course', 'categories', 'levels', 'languages'));
                 break;
 
             case '3':
-                $courseId = $request->id;
+                $courseId = $course->id;
                 $chapters = CourseChapter::where(['course_id' => $courseId])->orderBy('order')->get();
                 return view('admin.course.module.content', compact('courseId', 'chapters'));
                 break;
 
             case '4':
-                $course = Course::findOrFail($request->id);
                 $editMode = true;
                 return view('admin.course.module.finish', compact('course', 'editMode'));
                 break;
@@ -183,10 +180,11 @@ class CourseController extends Controller
                 break;
 
             case '3':
+                $course = Course::findOrFail($request->id);
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully.',
-                    'redirect' => route('admin.courses.edit', ['course' => $request->id,'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
