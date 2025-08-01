@@ -11,8 +11,8 @@
     </form>
     <div class="add_course_content">
         <div class="add_course_content_btn_area d-flex flex-wrap justify-content-between">
-            <a class="btn btn-primary dynamic__modal__btn" href="#" data-course-id="{{ $courseId }}">Add New Chapter</a>
-            <a class="btn btn-primary sort__chapter__btn" data-course-id="{{ $courseId }}" href="">Sort Chapter</a>
+            <a class="common_btn dynamic__modal__btn" href="#" data-course-id="{{ $courseId }}">Add New Chapter</a>
+            <a class="common_btn sort__chapter__btn" data-course-id="{{ $courseId }}" href="">Sort Chapter</a>
         </div>
         <div class="accordion" id="accordionExample">
             @foreach ($chapters as $chapter)

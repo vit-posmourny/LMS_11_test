@@ -41,12 +41,12 @@
                     </div>
                 </div>
                 <div class="col-xl-6">
-                    <div class="add_course_basic_info_input upload_source {{ $course->demo_video_storage == 'upload' ? '' : 'd-none' }}">
+                    <div class="add_course_basic_info_input upload_source mt-2 {{ $course->demo_video_storage == 'upload' ? '' : 'd-none' }}">
                         <label for="#">Path</label>
                         <div class="input-group">
                             <span class="input-group-btn">
-                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="btn btn-primary">
-                                    <i class="fa fa-picture-o"></i>&nbsp; Choose
+                                <a id="lfm" data-input="thumbnail" data-preview="holder" class="common_btn">
+                                    <i class="fa fa-picture-o"></i> Choose
                                 </a>
                             </span>
                             <input id="thumbnail" class="form-control source_input" type="text" name="file" value="{{ $course->demo_video_source }}">
