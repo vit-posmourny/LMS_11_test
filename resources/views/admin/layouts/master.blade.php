@@ -96,6 +96,10 @@
     </div>
     <!--jquery library js-->
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
+    <!--bootstrap js-->
+    <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!--font-awesome js-->
+    <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- select2.min.js --}}
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <!-- Libs JS -->
@@ -103,8 +107,6 @@
     <!-- Tabler Core -->
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('admin/assets/dist/js/demo.min.js') }}" defer></script>
-    <!--font-awesome js-->
-    <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- jQuery Core --}}
     <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
     {{-- jquery ui --}}
