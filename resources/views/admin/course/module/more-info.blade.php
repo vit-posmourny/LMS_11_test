@@ -6,7 +6,7 @@
         <div class="add_course_basic_info">
             <form action="" class="more_info_form course_form">
                 @csrf
-                <input type="hidden" name="id" value="{{ request()?->id }}">
+                <input type="hidden" name="id" value="{{ $course->id }}">
                 <input type="hidden" name="current_step" value="2">
                 <input type="hidden" name="next_step" value="3">
                 <div class="row">

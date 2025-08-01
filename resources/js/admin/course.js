@@ -59,15 +59,15 @@ $(function()
     $('.course_tab').on('click', function(e) {
         e.preventDefault();
         let step = $(this).data('step');
-        let objekt = $('.course_form').find(`input[name="next_step"]`);
-        objekt.val(step);
+        let input = $('.course_form').find(`input[name="next_step"]`);
+        input.val(step);
         $('.course_form').trigger('submit');
     });
 
 
-    $('.basic_info_form').on('submit', function(e) {
+    $('.basic_info_form').on('submit', function(e)
+    {
         e.preventDefault();
-
         let formData = new FormData(this);
 
         $.ajax({
@@ -97,9 +97,9 @@ $(function()
     });
 
 
-    $('.basic_info_update_form').on('submit', function(e) {
+    $('.basic_info_update_form').on('submit', function(e)
+    {
         e.preventDefault();
-
         let formData = new FormData(this);
 
         $.ajax({
@@ -129,9 +129,9 @@ $(function()
     });
 
 
-    $('.more_info_form').on('submit', function(e) {
+    $('.more_info_form').on('submit', function(e)
+    {
         e.preventDefault();
-
         let formData = new FormData(this);
 
         $.ajax({
@@ -165,6 +165,7 @@ $(function()
     {
         let value = $(this).val();
         $('.source_input').val('');
+
         if (value === 'upload')
         {
             $('.upload_source').removeClass('d-none');
@@ -178,7 +179,8 @@ $(function()
 
     /** Course Contents */
         // modal showing
-    $('.dynamic__modal__btn').on('click', function(e) {
+    $('.dynamic__modal__btn').on('click', function(e)
+    {
         e.preventDefault();
         $('#id__dynamic__modal').modal('show');
 
@@ -227,29 +229,29 @@ $(function()
 
 
 
-    $('.add__lesson').on('click', function() {
+    $('.add__lesson').on('click', function()
+    {
+        $('#id__dynamic__modal').modal('show');
+        let courseId = $(this).data('course-id');
+        let chapterId = $(this).data('chapter-id');
 
-            $('#id__dynamic__modal').modal('show');
-            let courseId = $(this).data('course-id');
-            let chapterId = $(this).data('chapter-id');
+        $.ajax({
+            method: 'GET',
+            url: baseUrl + '/admin/courses/content/create-lesson',
+            data: {
+                'course_id': courseId,
+                'chapter_id': chapterId,
+            },
+            beforeSend: function() {
+                $('.dynamic__modal__content').html(loader);
+            },
+            success: function(data) {
+                $('.dynamic__modal__content').html(data);
+            },
+            error: function(xhr, status, error) {
 
-            $.ajax({
-                method: 'GET',
-                url: baseUrl + '/admin/courses/content/create-lesson',
-                data: {
-                    'course_id': courseId,
-                    'chapter_id': chapterId,
-                },
-                beforeSend: function() {
-                    $('.dynamic__modal__content').html(loader);
-                },
-                success: function(data) {
-                    $('.dynamic__modal__content').html(data);
-                },
-                error: function(xhr, status, error) {
-
-                },
-            });
+            },
+        });
     });
 
 
@@ -318,6 +320,7 @@ $(function()
         e.preventDefault();
         $('#id__dynamic__modal').modal('show');
         let courseId = $(this).data('course-id');
+
         $.ajax({
             method: 'GET',
             url: baseUrl + `/admin/courses/content/${courseId}/sort-chapter`,

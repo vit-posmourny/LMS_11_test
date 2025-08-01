@@ -78,11 +78,10 @@ class CourseController extends Controller
     }
 
 
-    function edit(Request $request)
+    function edit(Request $request, Course $course)
     {
         switch ($request->step) {
             case '1':
-                $course = Course::findOrFail($request->id);
                 return view('admin.course.module.edit', compact('course'));
                 break;
 
@@ -90,18 +89,16 @@ class CourseController extends Controller
                 $categories = CourseCategory::where('status', 1)->get();
                 $levels = CourseLevel::all();
                 $languages = CourseLanguage::all();
-                $course = Course::findOrFail($request->id);
                 return view('admin.course.module.more-info', compact('course', 'categories', 'levels', 'languages'));
                 break;
 
             case '3':
-                $courseId = $request->id;
+                $courseId = $course->id;
                 $chapters = CourseChapter::where(['course_id' => $courseId])->orderBy('order')->get();
                 return view('admin.course.module.content', compact('courseId', 'chapters'));
                 break;
 
             case '4':
-                $course = Course::findOrFail($request->id);
                 $editMode = true;
                 return view('admin.course.module.finish', compact('course', 'editMode'));
                 break;
@@ -140,8 +137,8 @@ class CourseController extends Controller
                 $course->demo_video_source = $request->filled('file') ? $request->file : $request->url;
                 $course->description = $request->description;
                 $course->price = $request->price;
+                $course->instructor_id = $course->instructor->id;
                 $course->discount_price = $request->discount_price;
-                $course->instructor_id = Auth::guard('web')->user()->id;
                 $course->save();
 
                 // save course id to session
@@ -150,7 +147,7 @@ class CourseController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully.',
-                    'redirect' => route('admin.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
@@ -178,15 +175,16 @@ class CourseController extends Controller
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully',
-                    'redirect' => route('admin.courses.edit', ['id' => $course->id, 'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
             case '3':
+                $course = Course::findOrFail($request->id);
                 return response([
                     'status' => 'success',
                     'message' => 'Updated successfully.',
-                    'redirect' => route('admin.courses.edit', ['id' => $request->id,'step' => $request->next_step])
+                    'redirect' => route('admin.courses.edit', ['course' => $course->id, 'step' => $request->next_step])
                 ]);
                 break;
 
@@ -211,7 +209,7 @@ class CourseController extends Controller
                     return response([
                         'status' => 'success',
                         'message' => 'Updated successfully.',
-                        'redirect' => route('admin.courses.edit', ['id' => $request->id,'step' => $request->next_step]),
+                        'redirect' => route('admin.courses.edit', ['course' => $request->id,'step' => $request->next_step]),
                     ]);
                 }
                 break;

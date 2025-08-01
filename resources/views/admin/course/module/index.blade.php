@@ -6,7 +6,7 @@
         <div class="container-xl">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Course Levels</h3>
+                    <h3 class="card-title">Courses</h3>
                     <div class="card-actions">
                         <a href="{{ route('admin.courses.create') }}" class="btn btn-primary">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
@@ -57,8 +57,7 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.course-levels.edit', $course) }}"
-                                                class="btn-sm btn-primary">
+                                            <a href="{{ route('admin.courses.edit', ['course' => $course, 'step' => '1']) }}" class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
