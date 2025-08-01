@@ -28,7 +28,7 @@
                                 <div class="btn btn-secondary dropdown-toggle"
                                     type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <i class="ti ti-plus"></i>
+                                    <i class="far fa-plus"></i>
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
