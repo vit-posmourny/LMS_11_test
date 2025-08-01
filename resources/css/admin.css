@@ -73,23 +73,11 @@ input, textarea {
     height: .36em;
     border-bottom: 1px var(--tblr-border-style);
     border-left: 1px var(--tblr-border-style);
-    margin-bottom: 0.25em;
+    margin-bottom: .25em;
     margin-right: .1em;
     margin-left: .4em;
     transform: rotate(-45deg);
 }
-
- /* z instruktora */
-/* .add_course_content_action_btn {
-    display: inline-flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 5px 10px;
-    position: absolute;
-    top: 6px;
-    right: 15px;
-    z-index: 9;
-} */
 
 
 .add_course_content .accordion-header {
@@ -97,31 +85,10 @@ input, textarea {
 }
 
 
-/* .add_course_content .accordion-item button::before {
-    position: absolute;
-    content: "\f03d";
-    font-family: "font awesome 5 free";
-    font-size: 18px;
-    font-weight: bold;
-    color: black;
-    width: 35px;
-    height: 35px;
-    line-height: 35px;
-    text-align: center;
-    background: var(--colorPrimary);
-    color: var(--colorWhite);
-    margin-top: 5px;
-    border-radius: 50%;
-    -webkit-border-radius: 50%;
-    -moz-border-radius: 50%;
-    -ms-border-radius: 50%;
-    -o-border-radius: 50%;
-} */
-
-
 .add_course_content .accordion-item button::before {
     position: absolute;
-    content: "\f07c";
+    margin-top: 0.25rem;
+    content: '\f07c';
     font-family: "font awesome 5 free";
     font-size: 16px;
     font-weight: 600;

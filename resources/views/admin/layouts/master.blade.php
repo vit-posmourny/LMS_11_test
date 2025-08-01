@@ -50,6 +50,7 @@
             @include('admin.layouts.footer')
         </div>
     </div>
+    
     <!-- Delete Modal -->
     <div class="modal modal-blur fade" id="modal-danger" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -94,10 +95,9 @@
 
         </div>
     </div>
+
     <!--jquery library js-->
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
-    <!--bootstrap js-->
-    <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--font-awesome js-->
     <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- select2.min.js --}}
