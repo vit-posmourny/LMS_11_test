@@ -57,7 +57,7 @@
                                             </select>
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.courses.edit', ['course' => $course, 'id' => $course->id, 'step' => '1']) }}" class="btn-sm btn-primary">
+                                            <a href="{{ route('admin.courses.edit', ['course' => $course, 'step' => '1']) }}" class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
