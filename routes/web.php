@@ -1,12 +1,13 @@
 <?php
 
-use App\Http\Controllers\Frontend\CourseContentController;
-use App\Http\Controllers\Frontend\CourseController;
-use App\Http\Controllers\Frontend\FrontendController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CourseController;
+use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\CoursePageController;
+use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
-use App\Http\Controllers\Frontend\ProfileController;
 
 /*
 *-----------------------------------------------------------------
@@ -14,6 +15,8 @@ use App\Http\Controllers\Frontend\ProfileController;
 *-----------------------------------------------------------------
 */
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/courses',[CoursePageController::class, 'index'])
+    ->name('courses.index');
 /*
 *-----------------------------------------------------------------
 *   Student Routes
