@@ -2,14 +2,16 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 
 class CoursePageController extends Controller
 {
     function index(): View
     {
-        return view('frontend.pages.courses-page');
+        $courses = Course::where('is_approved', 'approved')->paginate(12);
+        return view('frontend.pages.courses-page', compact('courses'));
     }
 }
