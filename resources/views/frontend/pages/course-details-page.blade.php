@@ -506,11 +506,13 @@
                 <div class="col-lg-4 col-md-8 wow fadeInRight">
                     <div class="wsus__courses_sidebar">
                         <div class="wsus__courses_sidebar_video">
-                            <img src="{{ asset('frontend/assets/images/course_sidebar_video_img.jpg') }}" alt="Video" class="img-fluid">
-                            <a class="play_btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
-                                href="https://youtu.be/sVPYIRF9RCQ?si=labNkx-xlyOWtptr">
-                                <img src="{{ asset('frontend/assets/images/play_icon_white.png') }}" alt="Play" class="img-fluid">
-                            </a>
+                            <img src="{{ asset($course->thumbnail) }}" alt="Video" class="img-fluid">
+                            @if ($course->demo_video_source != null)
+                                <a class="play_btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
+                                    href="{{ asset($course->demo_video_source) }}">
+                                    <img src="{{ asset('frontend/assets/images/play_icon_white.png') }}" alt="Play" class="img-fluid">
+                                </a>
+                            @endif
                         </div>
                         <h3 class="wsus__courses_sidebar_price"><del>$36.00</del>$54.00</h3>
                         <div class="wsus__courses_sidebar_list_info">
@@ -602,9 +604,9 @@
                                     <img src="{{ asset('frontend/assets/images/badge_1.png') }}" alt="Badge" class="img-fluid">
                                 </li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Top Earning"><img
-                                        src="images/badge_2.png" alt="Badge" class="img-fluid"></li>
+                                        src="{{ asset('frontend/assets/images/badge_2.png') }}" alt="Badge" class="img-fluid"></li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Trending"><img
-                                        src="images/badge_3.png" alt="Badge" class="img-fluid"></li>
+                                        src="{{ asset('frontend/assets/images/badge_3.png') }}" alt="Badge" class="img-fluid"></li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
                                     data-bs-title="2 Years of Membership"><img src="{{ asset('frontend/assets/images/badge_4.png') }}" alt="Badge"
                                         class="img-fluid"></li>

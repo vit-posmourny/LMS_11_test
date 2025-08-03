@@ -5,7 +5,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body">
-        <form action="{{ @$editMode === true ? route('admin.content.update-lesson', $lesson->id) : route('admin.content.store-lesson') }}" method="POST">
+        <form action="{{ @$editMode === true ? route('admin.content.update-lesson', $lessonId) : route('admin.content.store-lesson') }}" method="POST">
             @csrf
             <input type="hidden" name="course_id" value="{{ $courseId }}">
             <input type="hidden" name="chapter_id" value="{{ $chapterId }}">
