@@ -17,6 +17,8 @@ use App\Http\Controllers\Frontend\InstructorDashboardContoller;
 Route::get('/', [FrontendController::class, 'index'])->name('home');
 Route::get('/courses',[CoursePageController::class, 'index'])
     ->name('courses.index');
+Route::get('/courses/{slug}', [CoursePageController::class, 'show'])
+    ->name('courses.show');
 /*
 *-----------------------------------------------------------------
 *   Student Routes
