@@ -531,7 +531,7 @@
                                                 class="img-fluid"></span>
                                         Course Duration
                                     </p>
-                                    34 min 54 sec
+                                    {{ convertMinutesToHours(59) }}
                                 </li>
                                 <li>
                                     <p>
