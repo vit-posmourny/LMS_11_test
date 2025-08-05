@@ -1,5 +1,11 @@
 @extends('frontend.layouts.master')
-
+@push('meta')
+    <meta property="og:title" content="{{ $course->title }}">
+    <meta property="og:description" content="{{ $course->seo_description }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ asset($course->thumbnail) }}">
+    <meta property="og:type" content="course">
+@endpush
 @section('content')
     <!--===========================
         BREADCRUMB START
