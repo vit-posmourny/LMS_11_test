@@ -514,7 +514,15 @@
                                 </a>
                             @endif
                         </div>
-                        <h3 class="wsus__courses_sidebar_price"><del>$36.00</del>$54.00</h3>
+                        <h3 class="wsus__courses_sidebar_price">
+                            @if ($course->price == 0)
+                                $free
+                            @elseif ($course->discount_price > 0)
+                                <del>${{ $course->price }}</del> ${{ $course->discount_price }}
+                            @else
+                                ${{ $course->price }}
+                            @endif
+                        </h3>
                         <div class="wsus__courses_sidebar_list_info">
                             <ul>
                                 <li>
@@ -531,7 +539,7 @@
                                                 class="img-fluid"></span>
                                         Skill Level
                                     </p>
-                                    Medium
+                                    {{ $course->level->name }}
                                 </li>
                                 <li>
                                     <p>
@@ -547,7 +555,7 @@
                                                 class="img-fluid"></span>
                                         Language
                                     </p>
-                                    English
+                                    {{ $course->language->name }}
                                 </li>
                             </ul>
                             <a class="common_btn" href="#">Enroll The Course <i class="far fa-arrow-right"></i></a>
@@ -571,16 +579,13 @@
                                     <span><img src="{{ asset('frontend/assets/images/video_icon_black.png') }}" alt="video" class="img-fluid"></span>
                                     54 min 24 sec Video Lectures
                                 </li>
-                                <li>
-                                    <span><img src="{{ asset('frontend/assets/images/file_download_icon_black.png') }}" alt="download"
-                                            class="img-fluid"></span>
-                                    3 Downloadable Resources File
-                                </li>
-                                <li>
-                                    <span><img src="{{ asset('frontend/assets/images/certificate_icon_black.png') }}" alt="Certificate"
-                                            class="img-fluid"></span>
-                                    Certificate of Completion
-                                </li>
+                                @if ($course->certificate)
+                                    <li>
+                                        <span><img src="{{ asset('frontend/assets/images/certificate_icon_black.png') }}" alt="Certificate"
+                                                class="img-fluid"></span>
+                                        Certificate of Completion
+                                    </li>
+                                @endif
                                 <li>
                                     <span><img src="{{ asset('frontend/assets/images/life_time_icon.png') }}" alt="Certificate"
                                             class="img-fluid"></span>

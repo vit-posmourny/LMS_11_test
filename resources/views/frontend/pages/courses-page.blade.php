@@ -420,10 +420,12 @@
                                 </div>
                                 <div class="wsus__single_courses_3_footer">
                                     <a class="common_btn" href="#">Enroll <i class="far fa-arrow-right"></i></a>
-                                    @if ($course->discount_price > 0)
-                                        <p>${{ $course->discount_price }}</p>
+                                    @if ($course->price == 0)
+                                        $free
+                                    @elseif ($course->discount_price > 0)
+                                        <del>${{ $course->price }}</del> ${{ $course->discount_price }}
                                     @else
-                                        <p>${{ $course->price }}</p>
+                                        ${{ $course->price }}
                                     @endif
                                 </div>
                             </div>
