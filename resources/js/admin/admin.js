@@ -1,6 +1,9 @@
 import $ from 'jquery';
 window.$ = window.jQuery = $;
 
+const csrf_token = $('meta[name="csrf_token"]').attr('content');
+var delete_url = null;
+
 
 // Create an instance of Notyf
 var notyf = new Notyf({
@@ -8,13 +11,13 @@ var notyf = new Notyf({
     dismissible: true,
 });
 
-const csrf_token = $('meta[name="csrf_token"]').attr('content');
-var delete_url = null;
+
 
 // initialize Select2 with <select> in resources/views/admin/course/module/create.blade.php
 $(document).ready(function() {
     $('.select2').prop("disabled");
 });
+
 
 /** Delete item with confirmation */
 $('.delete__item').on('click', function(e) {
@@ -26,6 +29,7 @@ $('.delete__item').on('click', function(e) {
 
     $('#modal-danger').modal("show");
 });
+
 
 
 $('.delete-confirm').on('click', function(e) {

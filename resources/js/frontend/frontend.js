@@ -6,6 +6,13 @@ var notyf = new Notyf({
     dismissible: true
 });
 
+
+// Ez share init //
+document.addEventListener("DOMContentLoaded", function() {
+  ezShare.execute();
+});
+
+
 // sweetalert2
 $(".delete__item").on('click', function(e)
 {
