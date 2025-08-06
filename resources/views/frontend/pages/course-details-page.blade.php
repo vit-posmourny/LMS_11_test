@@ -101,19 +101,21 @@
                                     <h3>Course Curriculum</h3>
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
+                                            @foreach ($course->chapters as $chapter)
                                             <h2 class="accordion-header">
                                                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapseOne" aria-expanded="true"
-                                                    aria-controls="collapseOne">
-                                                    Course Prelude & EduCore Learning Presentation
+                                                    data-bs-target="#collapse-{{ $chapter->id }}" aria-expanded="true"
+                                                    aria-controls="collapse-{{ $chapter->id }}">
+                                                    {{ $chapter->title }}
                                                 </button>
                                             </h2>
-                                            <div id="collapseOne" class="accordion-collapse collapse show"
+                                            <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse"
                                                 data-bs-parent="#accordionExample">
                                                 <div class="accordion-body">
+                                                    @foreach ($chapter->lessons as $lesson)
                                                     <ul>
                                                         <li class="active">
-                                                            <p>Brush up on Java concepts</p>
+                                                            <p>{{ $lesson->title }}</p>
                                                             <span class="right_text">Preview</span>
                                                         </li>
                                                         <li>
@@ -129,72 +131,10 @@
                                                             <span class="right_text">21 minutes</span>
                                                         </li>
                                                     </ul>
+                                                    @endforeach
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-                                                    aria-expanded="false" aria-controls="collapseTwo">
-                                                    Essential HTML Building Elements
-                                                </button>
-                                            </h2>
-                                            <div id="collapseTwo" class="accordion-collapse collapse"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <ul>
-                                                        <li class="active">
-                                                            <p>Brush up on Java concepts</p>
-                                                            <span class="right_text">Preview</span>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">User Experience Fundamentals Course</a>
-                                                            <span class="right_text">24 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>Brisk Guide to Using Pivot Tables in Excel</p>
-                                                            <span class="right_text">7 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>User-Centric Design Fundamentals</p>
-                                                            <span class="right_text">21 minutes</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="accordion-item">
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button collapsed" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target="#collapseThree"
-                                                    aria-expanded="false" aria-controls="collapseThree">
-                                                    Fundamental Programming Idea
-                                                </button>
-                                            </h2>
-                                            <div id="collapseThree" class="accordion-collapse collapse"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    <ul>
-                                                        <li class="active">
-                                                            <p>Brush up on Java concepts</p>
-                                                            <span class="right_text">Preview</span>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">User Experience Fundamentals Course</a>
-                                                            <span class="right_text">24 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>Brisk Guide to Using Pivot Tables in Excel</p>
-                                                            <span class="right_text">7 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>User-Centric Design Fundamentals</p>
-                                                            <span class="right_text">21 minutes</span>
-                                                        </li>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -603,10 +543,10 @@
                         <div class="wsus__courses_sidebar_instructor">
                             <div class="image_area d-flex flex-wrap align-items-center">
                                 <div class="img">
-                                    <img src="{{ asset('frontend/assets/images/testimonial_user_1.png') }}" alt="Instructor" class="img-fluid">
+                                    <img src="{{ asset($course->instructor->avatar) }}" alt="Instructor" class="img-fluid">
                                 </div>
                                 <div class="text">
-                                    <h3>Dominic L. Ement</h3>
+                                    <h3>{{ $course->instructor->name }}</h3>
                                     <p><span>Instructor</span> Level 2</p>
                                 </div>
                             </div>
