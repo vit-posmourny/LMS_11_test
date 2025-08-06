@@ -93,7 +93,7 @@ class CourseContentController extends Controller
             'title' => 'required|string|max:255',
             'storage' => 'required|string',
             'file_type' => 'required|in:video,audio,file,pdf,doc',
-            'duration' => 'required',
+            'duration' => 'required|integer',
             'is_preview' => 'boolean',
             'downloadable' => 'boolean',
             'description' => 'required',

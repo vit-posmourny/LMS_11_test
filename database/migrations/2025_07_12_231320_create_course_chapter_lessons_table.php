@@ -23,7 +23,7 @@ return new class extends Migration
             $table->text('file_path');
             $table->enum('storage', ['upload', 'youtube', 'vimeo', 'external_link']);
             $table->string('volume')->nullable();
-            $table->string('duration');
+            $table->int('duration');
             $table->enum('file_type', ['video', 'audio', 'doc', 'pdf', 'file']);
             $table->boolean('is_preview')->default(1);
             $table->boolean('downloadable')->default(0);

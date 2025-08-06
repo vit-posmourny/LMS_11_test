@@ -102,38 +102,30 @@
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
                                             @foreach ($course->chapters as $chapter)
-                                            <h2 class="accordion-header">
-                                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                                    data-bs-target="#collapse-{{ $chapter->id }}" aria-expanded="true"
-                                                    aria-controls="collapse-{{ $chapter->id }}">
-                                                    {{ $chapter->title }}
-                                                </button>
-                                            </h2>
-                                            <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse"
-                                                data-bs-parent="#accordionExample">
-                                                <div class="accordion-body">
-                                                    @foreach ($chapter->lessons as $lesson)
-                                                    <ul>
-                                                        <li class="active">
-                                                            <p>{{ $lesson->title }}</p>
-                                                            <span class="right_text">Preview</span>
-                                                        </li>
-                                                        <li>
-                                                            <a href="">User Experience Fundamentals Course</a>
-                                                            <span class="right_text">24 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>Brisk Guide to Using Pivot Tables in Excel</p>
-                                                            <span class="right_text">7 minutes</span>
-                                                        </li>
-                                                        <li>
-                                                            <p>User-Centric Design Fundamentals</p>
-                                                            <span class="right_text">21 minutes</span>
-                                                        </li>
-                                                    </ul>
-                                                    @endforeach
+                                                <h2 class="accordion-header">
+                                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                                        data-bs-target="#collapse-{{ $chapter->id }}" aria-expanded="true"
+                                                        aria-controls="collapse-{{ $chapter->id }}">
+                                                        {{ $chapter->title }}
+                                                    </button>
+                                                </h2>
+                                                <div id="collapse-{{ $chapter->id }}" class="accordion-collapse collapse"
+                                                    data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        <ul>
+                                                            @foreach ($chapter->lessons as $lesson)
+                                                                <li class="{{ $lesson->is_preview == 1 ? 'active' : '' }}">
+                                                                    <p>{{ $lesson->title }}</p>
+                                                                    @if ($lesson->is_preview == 1)
+                                                                        <span class="right_text">Preview</span>
+                                                                    @else
+                                                                        <span class="right_text">{{ convertMinutesToHours($lesson->duration) }}</span>
+                                                                    @endif
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </div>
                                                 </div>
-                                            </div>
                                             @endforeach
                                         </div>
                                     </div>

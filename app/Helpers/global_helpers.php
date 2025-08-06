@@ -11,7 +11,7 @@ if (!function_exists('convertMinutesToHours'))
 
         if ($hours == 0)
             return sprintf('%02dmin', $minutes);
-        
+
         return sprintf('%dhr %02dmin', $hours, $minutes);
     }
 }
