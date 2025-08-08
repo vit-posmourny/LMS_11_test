@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\CartController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\ProfileController;
@@ -19,6 +20,9 @@ Route::get('/courses',[CoursePageController::class, 'index'])
     ->name('courses.index');
 Route::get('/courses/{slug}', [CoursePageController::class, 'show'])
     ->name('courses.show');
+/* Cart Routes */
+Route::get('cart', [CartController::class, 'index'])->name('cart.index');
+
 /*
 *-----------------------------------------------------------------
 *   Student Routes
@@ -109,10 +113,12 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.update-sort-chapter');
 });
 
+
 /** lfm routes */
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
 });
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/admin.php';
