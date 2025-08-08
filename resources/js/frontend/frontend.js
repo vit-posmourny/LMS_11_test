@@ -1,3 +1,5 @@
+import './cart.js';
+
 var csrf_token = $(`meta[name='csrf_token']`).attr('content');
 
 // Create an instance of Notyf
@@ -8,9 +10,9 @@ var notyf = new Notyf({
 
 
 // Ez share init //
-document.addEventListener("DOMContentLoaded", function() {
-  ezShare.execute();
-});
+// document.addEventListener("DOMContentLoaded", function() {
+//   ezShare.execute();
+// });
 
 
 // sweetalert2
