@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.min.css') }}">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
 
     <link rel=" stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
@@ -77,8 +78,6 @@
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!--bootstrap js-->
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--font-awesome js-->
-    <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script>
     <!--marquee js-->
     <script src="{{ asset('frontend/assets/js/jquery.marquee.min.js') }}"></script>
     <!--slick js-->
@@ -118,6 +117,7 @@
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/all.min.js"></script>
 
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
