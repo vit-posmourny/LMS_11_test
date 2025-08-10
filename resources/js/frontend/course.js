@@ -1,16 +1,10 @@
+// imports
+import { notyf } from '../notyf.js';
+// variables
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseUrl + '/instructor/courses/create';
 const update_url = baseUrl + '/instructor/courses/update';
-
-
-
-// Create an instance of Notyf
-var notyf = new Notyf({
-    duration: 5000,
-    dismissible: true
-});
-
 
 var loader = `
     <div class="modal-content text-center p-3" style="display:inline">
@@ -29,6 +23,7 @@ $('.course_tab').on('click', function(e) {
     objekt.val(step);
     $('.course_form').trigger('submit');
 });
+
 
 
 $('.basic_info_form').on('submit', function(e) {
@@ -61,6 +56,7 @@ $('.basic_info_form').on('submit', function(e) {
         },
     });
 });
+
 
 
 $('.basic_info_update_form').on('submit', function(e) {
@@ -144,7 +140,7 @@ $(document).on('change', '.storage', function()
 });
 
 
-/** Course Contents */
+/** Course Contents **/
 // modal showing
 $('.dynamic__modal__btn').on('click', function(e) {
     e.preventDefault();
@@ -221,6 +217,7 @@ $('.add__lesson').on('click', function() {
 });
 
 
+
 $('.edit__lesson').on('click', function(e)
 {
     e.preventDefault();
@@ -248,6 +245,7 @@ $('.edit__lesson').on('click', function(e)
         },
     });
 });
+
 
 
 if ($('.sortable__list').length)
@@ -279,6 +277,7 @@ if ($('.sortable__list').length)
         }
     });
 }
+
 
 
 $('.sort__chapter__btn').on('click', function(e)

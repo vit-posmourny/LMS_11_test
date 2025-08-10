@@ -1,19 +1,14 @@
+// resources\js\frontend\frontend.js
+// imports
+import { notyf } from '../notyf.js';
 import './cart.js';
-
+// variables
 var csrf_token = $(`meta[name='csrf_token']`).attr('content');
-
-// Create an instance of Notyf
-var notyf = new Notyf({
-    duration: 5000,
-    dismissible: true
-});
-
 
 // Ez share init //
 // document.addEventListener("DOMContentLoaded", function() {
 //   ezShare.execute();
 // });
-
 
 // sweetalert2
 $(".delete__item").on('click', function(e)

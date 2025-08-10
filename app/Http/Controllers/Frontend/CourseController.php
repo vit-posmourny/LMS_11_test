@@ -53,7 +53,7 @@ class CourseController extends Controller
         // save course id to session
         Session::put('course_create_id', $course->id);
 
-        notyf()->success('Basic Info store successfully.');
+        notyf()->info('Basic Info store successfully.');
 
         return response([
             'status' => 'success',
