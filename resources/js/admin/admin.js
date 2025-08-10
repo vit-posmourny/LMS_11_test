@@ -1,5 +1,7 @@
+// imports
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+import { notyf } from '../notyf.js';
 
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 var delete_url = null;

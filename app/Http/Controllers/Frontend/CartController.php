@@ -24,6 +24,10 @@ class CartController extends Controller
         if (!Auth::Guard('web')->check())
             return response(['message' => 'Please login first.'], 401);
 
+        if (Cart::where(['course_id' => $id, 'user_id' => Auth::Guard('web')->user()->id])->exists()) {
+            return response(['message' => 'Already added.'], 401);
+        }
+
         $cart = new Cart();
 
         $cart->course_id = $id;

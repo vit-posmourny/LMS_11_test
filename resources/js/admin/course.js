@@ -1,7 +1,9 @@
-/** Constant Variables */
+// imports
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+import { notyf } from '../notyf.js';
 
+/** Constant Variables */
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const basic_info_url = baseUrl + '/admin/courses/create';

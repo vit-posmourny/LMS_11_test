@@ -8,7 +8,7 @@ export const notyf = new Notyf({
         type: 'success',
         background: '#2ecc71',
         icon: {
-            className: 'fas fa-check',
+            className: 'fas fa-circle-check',
             tagName: 'i',
             text: '',
             color: 'white'
@@ -18,7 +18,7 @@ export const notyf = new Notyf({
         type: 'info',
         background: '#3498db',
         icon: {
-            className: 'fas fa-info',
+            className: 'fas fa-circle-info',
             tagName: 'i',
             text: '',
             color: 'white'
@@ -28,7 +28,7 @@ export const notyf = new Notyf({
         type: 'warning',
         background: '#f39c12',
         icon: {
-            className: 'fas fa-exclamation',
+            className: 'fas fa-circle-exclamation',
             tagName: 'i',
             text: '',
             color: 'white'
@@ -38,7 +38,7 @@ export const notyf = new Notyf({
         type: 'error',
         background: '#e74c3c',
         icon: {
-            className: 'fas fa-xmark',
+            className: 'fas fa-circle-xmark',
             tagName: 'i',
             text: '',
             color: 'white'

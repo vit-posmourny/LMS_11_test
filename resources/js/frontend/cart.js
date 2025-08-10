@@ -19,9 +19,13 @@ function addToCart(courseId)
 
         },
         success: function(data) {
-           notyf.success(data.message);
+            notyf.open({
+                type: 'success',
+                message: data.message,
+            });
         },
-        error: function(xhr, status, error) {
+        error: function(xhr, status, error)
+        {
             let errorMessage = xhr.responseJSON.message;
             if (xhr.status == 401){
                 notyf.open({
@@ -29,7 +33,10 @@ function addToCart(courseId)
                     message: errorMessage,
                 });
             }else {
-                notyf.error(errorMessage);
+                notyf.open({
+                    type: 'error',
+                    message: errorMessage,
+                });
             }
         },
         complete: function() {

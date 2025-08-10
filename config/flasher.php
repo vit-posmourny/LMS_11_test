@@ -18,7 +18,7 @@ return [
                     'background' => '#2ecc71',
                     'icon' => [
                         'tagName' => 'i',
-                        'className' => 'fas fa-check',
+                        'className' => 'fas fa-circle-check',
                         'color' => 'white',
                     ],
                 ],
@@ -27,7 +27,7 @@ return [
                     'background' => '#3498db',
                     'icon' => [
                         'tagName' => 'i',
-                        'className' => 'fas fa-info',
+                        'className' => 'fas fa-circle-info',
                         'text' => '',
                         'color' => 'white',
                     ],
@@ -37,7 +37,7 @@ return [
                     'background' => '#f39c12',
                     'icon' => [
                         'tagName' => 'i',
-                        'className' => 'fas fa-exclamation',
+                        'className' => 'fas fa-circle-exclamation',
                         'text' => '',
                         'color' => 'white',
                     ],
@@ -47,7 +47,7 @@ return [
                     'background' => '#e74c3c',
                     'icon' => [
                         'tagName' => 'i',
-                        'className' => 'fas fa-xmark',
+                        'className' => 'fas fa-circle-xmark',
                         'text' => '',
                         'color' => 'white',
                     ],
