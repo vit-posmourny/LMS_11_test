@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\ProfileController;
@@ -21,14 +22,15 @@ Route::get('/courses',[CoursePageController::class, 'index'])
 Route::get('/courses/{slug}', [CoursePageController::class, 'show'])
     ->name('courses.show');
 /* Cart Routes */
-Route::get('/cart', [CartController::class, 'index'])
+Route::get('cart', [CartController::class, 'index'])
     ->name('cart.index');
-Route::post('/add-to-cart/{courseId}', [CartController::class, 'addToCart'])
+Route::post('add-to-cart/{courseId}', [CartController::class, 'addToCart'])
     ->name('add-to-cart');
-Route::get('/remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])
+Route::get('remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])
     ->name('remove-from-cart');
-
-
+/** Payment Routes */
+Route::get('checkout', CheckoutController::class)
+    ->name('checkout.index');
 /*
 *-----------------------------------------------------------------
 *   Student Routes

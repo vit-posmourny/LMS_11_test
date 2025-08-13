@@ -5,7 +5,7 @@
 <!--===========================
     BREADCRUMB START
 ============================-->
-<section class="wsus__breadcrumb" style="background: url(images/breadcrumb_bg.jpg);">
+<section class="wsus__breadcrumb" style="background: url({{ asset('frontend/assets/images/breadcrumb_bg.jpg') }});">
     <div class="wsus__breadcrumb_overlay">
         <div class="container">
             <div class="row">
@@ -97,7 +97,7 @@
                     <div class="total_price">
                         <div class="subtotal_area">
                             <h5>Total<span>{{ cartTotal() }}</span></h5>
-                            <a href="checkout.html" class="common_btn">proceed checkout</a>
+                            <a href="{{ route('checkout.index') }}" class="common_btn">proceed checkout</a>
                         </div>
                     </div>
                 </div>
