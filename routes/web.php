@@ -25,7 +25,7 @@ Route::get('/cart', [CartController::class, 'index'])
     ->name('cart.index');
 Route::post('/add-to-cart/{courseId}', [CartController::class, 'addToCart'])
     ->name('add-to-cart');
-Route::post('/remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])
+Route::get('/remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])
     ->name('remove-from-cart');
 
 

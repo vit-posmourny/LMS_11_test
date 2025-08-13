@@ -41,13 +41,9 @@
                                 <tr>
                                     <th class="pro_img">Product</th>
 
-                                    <th class="pro_name"></th>
+                                    <th class="pro_name">Name</th>
 
                                     <th class="pro_tk">Price</th>
-
-                                    <th class="pro_select">Quantity</th>
-
-                                    <th class="pro_tk">Subtotal</th>
 
                                     <th class="pro_icon">Remove</th>
                                 </tr>
@@ -63,15 +59,19 @@
                                     <td class="pro_name">
                                         <a href="{{ route('courses.show', $item->course->slug) }}">{{ $item->course->title }}</a>
                                     </td>
-                                    <td class="pro_tk">
-                                        @if ($item->course->discount_price > 0)
-                                            <del><h6>${{ $item->course->price }} </h6>${{ $item->course->discount_price }}</del>
-                                        @else
-                                            <h6>${{ $item->course->price }}</h6>
-                                        @endif
+                                    <td class="pro_tk wsus__single_courses_3_footer">
+                                        <p>
+                                            @if ($item->course->price == 0)
+                                                $free
+                                            @elseif ($item->course->discount_price > 0)
+                                                <del>${{ $item->course->price }}</del> ${{ $item->course->discount_price }}
+                                            @else
+                                                ${{ $item->course->price }}
+                                            @endif
+                                        </p>
                                     </td>
                                     <td class="pro_icon">
-                                        <a href="{{ route('remove-from-cart', ['itemId' => $item->id, 'method' => 'POST']) }}"><i class="fas fa-times" aria-hidden="true"></i></a>
+                                        <a href="{{ route('remove-from-cart', $item->id) }}"><i class="fas fa-times" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
                                 @empty

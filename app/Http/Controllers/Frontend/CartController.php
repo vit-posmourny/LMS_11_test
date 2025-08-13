@@ -41,12 +41,12 @@ class CartController extends Controller
     }
 
 
-    function removeFromCart(int $id): RedirectResponse
+    function removeFromCart(int $itemId): RedirectResponse
     {
-        $cart = Cart::where(['id' => $id, 'user_id' => auth()->guard('web')->user()->id])->firstOrFail();
+        $cart = Cart::where(['id' => $itemId, 'user_id' => auth()->guard('web')->user()->id])->firstOrFail();
         $cart->delete();
 
-        notyf()->success('Removed from Cart Successfully.');
+        notyf()->info('Removed from Cart Successfully.');
 
         return redirect()->back();
     }
