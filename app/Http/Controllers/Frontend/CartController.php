@@ -9,13 +9,15 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
     function index(): View
     {
-        return view('frontend.pages.cart');
+        $cart = Cart::with(['course'])->where(['user_id' => auth()->guard('web')->user()->id])->paginate(10);
+        return view('frontend.pages.cart', compact('cart'));
     }
 
 
@@ -29,11 +31,23 @@ class CartController extends Controller
         }
 
         $cart = new Cart();
-
         $cart->course_id = $id;
         $cart->user_id = Auth::Guard('web')->user()->id;
         $cart->save();
 
-        return response(['message' => 'Added to Cart Successfully.'], 200);
+        $cartCount = 1;
+
+        return response(['message' => 'Added to Cart Successfully.', 'cart_count' => $cartCount], 200);
+    }
+
+
+    function removeFromCart(int $id): RedirectResponse
+    {
+        $cart = Cart::where(['id' => $id, 'user_id' => auth()->guard('web')->user()->id])->firstOrFail();
+        $cart->delete();
+
+        notyf()->success('Removed from Cart Successfully.');
+
+        return redirect()->back();
     }
 }

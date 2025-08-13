@@ -53,127 +53,30 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @forelse ($cart as $item)
                                 <tr>
                                     <td class="pro_img">
-                                        <img src="{{ asset('frontend/assets/images/course_product_img_1.jpg') }}" alt="product"
+                                        <img src="{{ asset($item->course->thumbnail) }}" alt="product"
                                             class="img-fluid w-100">
                                     </td>
 
                                     <td class="pro_name">
-                                        <a href="#">Life Child No Plan B</a>
+                                        <a href="{{ route('courses.show', $item->course->slug) }}">{{ $item->course->title }}</a>
                                     </td>
                                     <td class="pro_tk">
-                                        <h6>$99.00</h6>
+                                        @if ($item->course->discount_price > 0)
+                                            <del><h6>${{ $item->course->price }} </h6>${{ $item->course->discount_price }}</del>
+                                        @else
+                                            <h6>${{ $item->course->price }}</h6>
+                                        @endif
                                     </td>
-
-                                    <td class="pro_select">
-                                        <div class="quentity_btn">
-                                            <button class="btn btn-danger"><i class="fal fa-minus"
-                                                    aria-hidden="true"></i></button>
-                                            <input type="text" placeholder="1">
-                                            <button class="btn btn-success"><i class="fal fa-plus"
-                                                    aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$99.00</h6>
-                                    </td>
-
                                     <td class="pro_icon">
-                                        <a href="#"><i class="fal fa-times" aria-hidden="true"></i></a>
+                                        <a href="{{ route('remove-from-cart', ['itemId' => $item->id, 'method' => 'POST']) }}"><i class="fas fa-times" aria-hidden="true"></i></a>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td class="pro_img">
-                                        <img src="{{ asset('frontend/assets/images/course_product_img_2.jpg') }}" alt="product"
-                                            class="img-fluid w-100">
-                                    </td>
-
-                                    <td class="pro_name">
-                                        <a href="#">Mitch Rapp Novel Kyle</a>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$59.00</h6>
-                                    </td>
-
-                                    <td class="pro_select">
-                                        <div class="quentity_btn">
-                                            <button><i class="fal fa-minus" aria-hidden="true"></i></button>
-                                            <input type="text" placeholder="2">
-                                            <button><i class="fal fa-plus" aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$118.00</h6>
-                                    </td>
-
-                                    <td class="pro_icon">
-                                        <a href="#"><i class="fal fa-times" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="pro_img">
-                                        <img src="{{ asset('frontend/assets/images/course_product_img_3.jpg') }}" alt="product"
-                                            class="img-fluid w-100">
-                                    </td>
-
-                                    <td class="pro_name">
-                                        <a href="#">Run For Life Stephen</a>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$45.00</h6>
-                                    </td>
-
-                                    <td class="pro_select">
-                                        <div class="quentity_btn">
-                                            <button><i class="fal fa-minus" aria-hidden="true"></i></button>
-                                            <input type="text" placeholder="3">
-                                            <button><i class="fal fa-plus" aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$135.00</h6>
-                                    </td>
-
-                                    <td class="pro_icon">
-                                        <a href="#"><i class="fal fa-times" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="pro_img">
-                                        <img src="{{ asset('frontend/assets/images/course_product_img_4.jpg') }}" alt="product"
-                                            class="img-fluid w-100">
-                                    </td>
-
-                                    <td class="pro_name">
-                                        <a href="#">The Hidden Curriculum</a>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$49.00</h6>
-                                    </td>
-
-                                    <td class="pro_select">
-                                        <div class="quentity_btn">
-                                            <button><i class="fal fa-minus" aria-hidden="true"></i></button>
-                                            <input type="text" placeholder="2">
-                                            <button><i class="fal fa-plus" aria-hidden="true"></i></button>
-                                        </div>
-                                    </td>
-
-                                    <td class="pro_tk">
-                                        <h6>$98.00</h6>
-                                    </td>
-
-                                    <td class="pro_icon">
-                                        <a href="#"><i class="fal fa-times" aria-hidden="true"></i></a>
-                                    </td>
-                                </tr>
+                                @empty
+                                <p>No data found</p>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
