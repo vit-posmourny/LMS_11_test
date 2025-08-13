@@ -59,16 +59,17 @@
                                     <td class="pro_name">
                                         <a href="{{ route('courses.show', $item->course->slug) }}">{{ $item->course->title }}</a>
                                     </td>
-                                    <td class="pro_tk wsus__single_courses_3_footer">
-                                        <p>
+                                    <td class="pro_tk">
+
                                             @if ($item->course->price == 0)
                                                 $free
                                             @elseif ($item->course->discount_price > 0)
-                                                <del>${{ $item->course->price }}</del> ${{ $item->course->discount_price }}
+                                                <p><del>${{ $item->course->price }}</del></p>
+                                                ${{ $item->course->discount_price }}
                                             @else
                                                 ${{ $item->course->price }}
                                             @endif
-                                        </p>
+
                                     </td>
                                     <td class="pro_icon">
                                         <a href="{{ route('remove-from-cart', $item->id) }}"><i class="fas fa-times" aria-hidden="true"></i></a>
@@ -93,13 +94,8 @@
             <div class="col-xxl-4 col-md-7 col-lg-6 wow fadeInUp"
                 style="visibility: visible; animation-name: fadeInUp;">
                 <div class="total_price">
-                    <h4>total<span>$999.00</span></h4>
                     <div class="subtotal_area">
-                        <h5>Subtotal<span>$999.00</span></h5>
-                        <h6>Shipping Address</h6>
-                        <p>2801 Lafayette Blvd, Norfolk, Vermont
-                            23509, united state</p>
-                        <h5>Subtotal<span>$999.00</span></h5>
+                        <h5>Total<span>{{ cartTotal() }}</span></h5>
                         <a href="checkout.html" class="common_btn">proceed checkout</a>
                     </div>
                 </div>
