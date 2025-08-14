@@ -41,4 +41,21 @@ class PaymentController extends Controller
             }
         }
     }
+
+
+    function paypalSuccess(Request $request)
+    {
+        $provider = new PayPalClient();
+        $provider->getAccessToken();
+
+        $response = $provider->capturePaymentOrder($request->token);
+
+        if (isset($response['status']) && $response['status'] === "COMPLETED")
+        {
+            $capture = $response['payments']['captures'][0];
+            $transactonId = $capture->id;
+            $paydAmount = $capture['amount']['value'];
+            $currency = $capture['amount']['currency_code'];
+        }
+    }
 }
