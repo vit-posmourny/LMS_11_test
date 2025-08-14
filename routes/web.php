@@ -10,6 +10,7 @@ use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
+use App\Http\Controllers\Frontend\PaymentController;
 
 /*
 *-----------------------------------------------------------------
@@ -31,6 +32,12 @@ Route::get('remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'
 /** Payment Routes */
 Route::get('checkout', CheckoutController::class)
     ->name('checkout.index');
+Route::get('paypal/payment', [PaymentController::class, 'payWithPaypal'])
+    ->name('paypal.payment');
+Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])
+    ->name('paypal.success');
+Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])
+    ->name('paypal.cancel');
 /*
 *-----------------------------------------------------------------
 *   Student Routes

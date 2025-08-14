@@ -30,7 +30,7 @@
                             </a>
                         </div>
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <a href="{{ route('paypal.payment') }}" class="payment_mathod">
                                 <img src="{{ asset('frontend/assets/images/payment_2.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
@@ -89,11 +89,9 @@
             </div>
             <div class="col-xl-4 col-lg-5 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                 <div class="total_payment_price">
-                    <h4>Total Cart <span>(05)</span></h4>
+                    <h4>Total Cart <span>(0{{ cartCount(user()->id) }})</span></h4>
                     <ul>
-                        <li>Subtotal :<span>$755.00</span></li>
-                        <li>Delivery :<span>$55.00</span></li>
-                        <li>Discount :<span>$75.00</span></li>
+                        <li>Subtotal :<span><b>${{ cartTotal() }}</b></span></li>
                     </ul>
                     <a href="#" class="common_btn">now payment</a>
                 </div>
