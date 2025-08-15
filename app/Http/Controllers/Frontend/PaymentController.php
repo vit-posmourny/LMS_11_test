@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use App\Http\Controllers\Controller;
+use App\Service\OrderService;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -52,10 +53,24 @@ class PaymentController extends Controller
 
         if (isset($response['status']) && $response['status'] === "COMPLETED")
         {
-            $capture = $response['payments']['captures'][0];
-            $transactonId = $capture->id;
-            $paydAmount = $capture['amount']['value'];
+            $capture = $response['purchase_units'][0]['payments']['captures'][0];
+            $transactionId = $capture['id'];
+            $paidAmount = $capture['amount']['value'];
             $currency = $capture['amount']['currency_code'];
+
+            try {
+                OrderService::storeOrder(
+                    $transactionId,
+                    user()->id,
+                    'approved',
+                    $paidAmount,
+                    $paidAmount,
+                    $currency,
+                    'paypal',
+                );
+            } catch (\Throwable $th) {
+                throw $th;
+            }
         }
     }
 }
