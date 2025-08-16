@@ -34,7 +34,7 @@ class CartController extends Controller
         $cart->course_id = $id;
         $cart->user_id = user()->id;
         $cart->save();
-        $cartCount = cartCount(user()->id);
+        $cartCount = cartCount();
 
         return response(['message' => 'Added to Cart Successfully.', 'cart_count' => $cartCount], 200);
     }

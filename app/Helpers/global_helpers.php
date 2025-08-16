@@ -58,9 +58,9 @@ if (!function_exists('convertMinutesToHours'))
 
     if (!function_exists('cartCount'))
     {
-        function cartCount(int $userId)
+        function cartCount()
         {
-            return Cart::where(['user_id' => $userId])->count();
+            return Cart::where(['user_id' => user()->id])->count();
         }
     }
 }

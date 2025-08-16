@@ -18,7 +18,9 @@ function addToCart(courseId)
         beforeSend: function() {
 
         },
-        success: function(data) {
+        success: function(data)
+        {
+            $('.cart_count').html(data.cart_count);
             notyf.open({
                 type: 'success',
                 message: data.message,
