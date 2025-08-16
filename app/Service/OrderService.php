@@ -2,7 +2,9 @@
 
 namespace App\Service;
 
+use App\Models\Cart;
 use App\Models\Order;
+use App\Models\OrderItem;
 
 class OrderService
 {
@@ -14,8 +16,7 @@ class OrderService
         float $paid_amount,
         string $currency,
         string $payment_method
-    )
-    {
+    ){
         $order = new Order;
         $order->invoice_id = uniqid();
         $order->buyer_id = $buyer_id;
@@ -26,5 +27,21 @@ class OrderService
         $order->payment_method = $payment_method;
         $order->transaction_id = $transaction_id;
         $order->save();
+
+        // store order items //
+        $cartItems = Cart::where('user_id', $buyer_id)->get();
+
+        foreach ($cartItems as $item)
+        {
+            $orderItem = new OrderItem();
+            $orderItem->order_id = $order->id;
+            if ($item->course->discount_price !== 0) {
+                $orderItem->price = $item->course->discount_price;
+            }else {
+                $orderItem->price = $item->course->price;
+            }
+            $orderItem->course_id = $item->course->id;
+            $orderItem->save();
+        }
     }
 }
