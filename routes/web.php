@@ -38,6 +38,10 @@ Route::get('paypal/success', [PaymentController::class, 'paypalSuccess'])
     ->name('paypal.success');
 Route::get('paypal/cancel', [PaymentController::class, 'paypalCancel'])
     ->name('paypal.cancel');
+Route::get('order-success', [PaymentController::class, 'orderSuccess'])
+    ->name('order-success');
+Route::get('order-failed', [PaymentController::class, 'orderFailed'])
+    ->name('order-failed');
 /*
 *-----------------------------------------------------------------
 *   Student Routes

@@ -5,10 +5,24 @@ namespace App\Http\Controllers\Frontend;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 use App\Http\Controllers\Controller;
 use App\Service\OrderService;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
 {
+
+    function orderSuccess(): View
+    {
+        return view('frontend.pages.order-success');
+    }
+
+
+    function orderFailed(): View
+    {
+        return view('frontend.pages.order-failed');
+    }
+
+
     function payWithPaypal()
     {
         $provider = new PayPalClient();
@@ -68,9 +82,13 @@ class PaymentController extends Controller
                     $currency,
                     'paypal',
                 );
+                return redirect()->route('order-success');
+
             } catch (\Throwable $th) {
-                throw $th;
+                 throw $th;
             }
+
+            return redirect()->route('order-failed');
         }
     }
 }
