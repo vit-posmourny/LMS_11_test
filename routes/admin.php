@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\PaymentSettingController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -133,9 +134,15 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('content.sort-chapter');
     Route::POST('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'updateSortChapter'])
         ->name('content.update-sort-chapter');
+
+    /** Payment settings routes */
+    Route::get('payment-setting', [PaymentSettingController::class, 'index'])
+        ->name('payment-setting.index');
+
+    /** lfm routes */
+    Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
+        \UniSharp\LaravelFilemanager\Lfm::routes();
+    });
 });
 
-/** lfm routes */
-Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
+

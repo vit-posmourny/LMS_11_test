@@ -41,7 +41,7 @@ if (!function_exists('convertMinutesToHours'))
         function cartTotal()
         {
             $total = 0;
-            $cartItems = Cart::where('user_id', user()->id)->get();
+            $cartItems = Cart::where('user_id', @user()->id)->get();
 
             foreach ($cartItems as $item) {
                 if ($item->course->discount_price > 0) {
@@ -60,7 +60,7 @@ if (!function_exists('convertMinutesToHours'))
     {
         function cartCount()
         {
-            return Cart::where(['user_id' => user()->id])->count();
+            return Cart::where(['user_id' => @user()->id])->count();
         }
     }
 }
