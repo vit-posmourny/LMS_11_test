@@ -7,12 +7,9 @@ const csrf_token = $('meta[name="csrf_token"]').attr('content');
 var delete_url = null;
 
 
-// Create an instance of Notyf
-var notyf = new Notyf({
-    duration: 5000,
-    dismissible: true,
+$(function() {
+    $('.select2').select2();
 });
-
 
 
 // initialize Select2 with <select> in resources/views/admin/course/module/create.blade.php

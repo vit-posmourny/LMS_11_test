@@ -13,9 +13,9 @@
     {{-- css plugins --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css"/>
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
@@ -50,7 +50,7 @@
             @include('admin.layouts.footer')
         </div>
     </div>
-    
+
     <!-- Delete Modal -->
     <div class="modal modal-blur fade" id="modal-danger" tabindex="-1" style="display: none;" aria-hidden="true">
         <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
@@ -101,7 +101,7 @@
     <!--font-awesome js-->
     <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- select2.min.js --}}
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script defer src={{ asset('frontend/assets/js/select2.min.js') }}></script>
     <!-- Libs JS -->
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!-- Tabler Core -->

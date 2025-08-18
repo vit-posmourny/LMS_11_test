@@ -41,7 +41,8 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active show" id="paypal-setting" role="tabpanel">
-                                    <form action="">
+                                    <form action="{{ route('admin.paypal-setting.update') }}" method="POST">
+                                        @csrf
                                         <div class="row">
                                             <div class="col-md-5">
                                                 <div class="mb-3">
@@ -56,7 +57,7 @@
                                             <div class="col-md-5">
                                                 <div class="mb-3">
                                                     <label class="form-label">Currency</label>
-                                                    <select name="paypal_currency" class="form-control">
+                                                    <select name="paypal_currency" class="form-control select2">
                                                         @foreach (config('gateway_currencies.paypal_currencies') as $key => $currency)
                                                             <option value="{{ $key }}">{{ $key." — ".$currency['name'] }}</option>
                                                         @endforeach
@@ -94,7 +95,7 @@
                                             </div>
                                         </div>
                                         <div class="text-end">
-                                            <a href="" class="btn btn-primary">Save</a>
+                                            <button type="submit" class="btn btn-primary">Save</button>
                                         </div>
                                     </form>
                                 </div>
