@@ -13,7 +13,7 @@
                 <div class="col-xl-12">
                     <div class="add_course_basic_info_input">
                         <label for="#">Title *</label>
-                        <input type="text" name="title" placeholder="Title" value="{{ $course->title }}"
+                        <input type="text" name="title" placeholder="Title" value="{{ $course->title }}">
                     </div>
                 </div>
                 <div class="col-xl-12">

@@ -7,6 +7,7 @@ use App\Models\PaymentSetting;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class PaymentSettingController extends Controller
 {
@@ -17,7 +18,7 @@ class PaymentSettingController extends Controller
 
 
     function paypalSetting(Request $request): RedirectResponse
-    {//dd($request->all());
+    {
         $validatedData = $request->validate([
             'paypal_mode' => 'required|in:live,sandbox',
             'paypal_client_id' => 'required',
@@ -31,6 +32,7 @@ class PaymentSettingController extends Controller
             PaymentSetting::updateOrCreate(['key' => $key], ['value' => $value]);
         }
 
+        Cache::forget('gatewaySettings');
         notyf()->success('Update payment setting successfully.');
 
         return redirect()->back();

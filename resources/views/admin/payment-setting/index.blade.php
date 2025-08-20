@@ -51,7 +51,7 @@
                                                         <option value="sandbox">Sandbox</option>
                                                         <option value="live">Live</option>
                                                     </select>
-                                                    <x-input-error :messages ="$errors->get('paypal_mode')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_mode')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-5">
@@ -62,35 +62,35 @@
                                                             <option value="{{ $key }}">{{ $key." — ".$currency['name'] }}</option>
                                                         @endforeach
                                                     </select>
-                                                    <x-input-error :messages ="$errors->get('paypal_currency')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_currency')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-2">
                                                 <div class="mb-3">
                                                     <label class="form-label">Rate (USD)</label>
                                                     <input type="text" class="form-control" name="paypal_rate" placeholder="Enter paypal Rate">
-                                                    <x-input-error :messages ="$errors->get('paypal_rate')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_rate')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Client ID</label>
                                                     <input type="text" class="form-control" name="paypal_client_id" placeholder="Enter paypal client ID">
-                                                    <x-input-error :messages ="$errors->get('paypal_client_id')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_client_id')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Client Secret</label>
                                                     <input type="text" class="form-control" name="paypal_client_secret" placeholder="Enter paypal client secret">
-                                                    <x-input-error :messages ="$errors->get('paypal_client_secret')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_client_secret')" class="mt-2" />
                                                 </div>
                                             </div>
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">App ID</label>
                                                     <input type="text" class="form-control" name="paypal_app_id" placeholder="Enter paypal app ID">
-                                                    <x-input-error :messages ="$errors->get('paypal_app_id')" class="mt-2" />
+                                                    <x-input-error :messages="$errors->get('paypal_app_id')" class="mt-2" />
                                                 </div>
                                             </div>
                                         </div>
