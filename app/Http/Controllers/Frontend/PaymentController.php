@@ -23,9 +23,33 @@ class PaymentController extends Controller
     }
 
 
+    function paypalConfig(): array
+    {
+        return [
+            'mode'    => config('gateway_settings.paypal_mode'),
+            'sandbox' => [
+                'client_id'         => config('gateway_settings.paypal_client_id'),
+                'client_secret'     => config('gateway_settings.paypal_client_secret'),
+                'app_id'            => 'APP-80W284485P519543T',
+            ],
+            'live' => [
+                'client_id'         => config('gateway_settings.paypal_client_id'),
+                'client_secret'     => config('gateway_settings.paypal_client_secret'),
+                'app_id'            => config('gateway_settings.paypal_app_id'),
+            ],
+
+            'payment_action' => 'Sale',
+            'currency'       => config('gateway_settings.paypal_currency'),
+            'notify_url'     => '',
+            'locale'         => 'en_US',
+            'validate_ssl'   => env('PAYPAL_VALIDATE_SSL', true),
+        ];
+    }
+
+
     function payWithPaypal()
     {
-        $provider = new PayPalClient();
+        $provider = new PayPalClient($this->paypalConfig());
         $provider->getAccessToken();
 
         $payableAmount = cartTotal();
