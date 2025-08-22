@@ -28,21 +28,21 @@ class PaymentController extends Controller
         return [
             'mode'    => config('gateway_settings.paypal_mode'),
             'sandbox' => [
-                'client_id'         => config('gateway_settings.paypal_client_id'),
-                'client_secret'     => config('gateway_settings.paypal_client_secret'),
-                'app_id'            => 'APP-80W284485P519543T',
+                'client_id'     => config('gateway_settings.paypal_client_id'),
+                'client_secret' => config('gateway_settings.paypal_client_secret'),
+                'app_id'        => 'APP-80W284485P519543T',
             ],
             'live' => [
-                'client_id'         => config('gateway_settings.paypal_client_id'),
-                'client_secret'     => config('gateway_settings.paypal_client_secret'),
-                'app_id'            => config('gateway_settings.paypal_app_id'),
+                'client_id'     => config('gateway_settings.paypal_client_id'),
+                'client_secret' => config('gateway_settings.paypal_client_secret'),
+                'app_id'        => config('gateway_settings.paypal_app_id'),
             ],
 
             'payment_action' => 'Sale',
             'currency'       => config('gateway_settings.paypal_currency'),
             'notify_url'     => '',
             'locale'         => 'en_US',
-            'validate_ssl'   => env('PAYPAL_VALIDATE_SSL', true),
+            'validate_ssl'   => true,
         ];
     }
 
@@ -61,11 +61,9 @@ class PaymentController extends Controller
                 'cancel_url' => route('paypal.cancel'),
             ],
             'purchase_units' => [
-                [
-                    'amount' => [
-                        'currency_code' => config('paypal.currency'),
-                        'value' => $payableAmount,
-                    ]
+                'amount' => [
+                    'currency_code' => config('paypal.currency'),
+                    'value' => $payableAmount,
                 ]
             ]
         ]);

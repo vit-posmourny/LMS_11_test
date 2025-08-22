@@ -51,8 +51,7 @@ function addToCart(courseId)
 // on DOM Loaded //
 $(function()
 {
-    $('.add__to_cart').on('click', function(e)
-    {
+    $('.add__to_cart').on('click', function(e) {
         e.preventDefault();
         let courseId = $(this).data('course-id');
 

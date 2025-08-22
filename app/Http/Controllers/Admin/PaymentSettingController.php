@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Cache;
 
 class PaymentSettingController extends Controller
 {
+    
     function index(): View
     {
         return view('admin.payment-setting.index');
