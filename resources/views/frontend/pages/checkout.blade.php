@@ -25,63 +25,20 @@
                 <div class="payment_area">
                     <div class="row">
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_1.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="{{ route('paypal.payment') }}" class="payment_mathod">
                                 <img src="{{ asset('frontend/assets/images/payment_2.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_3.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
+
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <img src="{{ asset('frontend/assets/images/payment_4.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_4.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
+
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 <img src="{{ asset('frontend/assets/images/payment_5.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_6.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_7.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_8.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_1.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_2.png') }}" alt="payment" class="img-fluid w-100">
-                            </a>
-                        </div>
-                        <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                <img src="{{ asset('frontend/assets/images/payment_3.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>
@@ -89,7 +46,7 @@
             </div>
             <div class="col-xl-4 col-lg-5 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                 <div class="total_payment_price">
-                    <h4>Total Cart <span>(0{{ cartCount(user()->id) }})</span></h4>
+                    <h4>Total Cart <span>(0{{ @cartCount(user()->id) }})</span></h4>
                     <ul>
                         <li>Subtotal :<span><b>${{ cartTotal() }}</b></span></li>
                     </ul>
@@ -141,4 +98,3 @@
     </div>
 </section>
 @endsection
- 

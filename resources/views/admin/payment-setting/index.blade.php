@@ -29,8 +29,8 @@
                                         role="tab">Paypal Settings</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                    <a href="#tabs-profile-5" class="nav-link" data-bs-toggle="tab" aria-selected="false"
-                                        role="tab" tabindex="-1">Profile</a>
+                                    <a href="#stripe-setting" class="nav-link" data-bs-toggle="tab" aria-selected="false"
+                                        role="tab" tabindex="-1">Stripe Settings</a>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <a href="#tabs-activity-5" class="nav-link" data-bs-toggle="tab" aria-selected="false"
@@ -99,15 +99,63 @@
                                         </div>
                                     </form>
                                 </div>
-                                <div class="tab-pane" id="tabs-profile-5" role="tabpanel">
-                                    <h4>Profile tab</h4>
-                                    <div>Fringilla egestas nunc quis tellus diam rhoncus ultricies tristique enim at diam,
-                                        sem nunc amet, pellentesque id egestas velit sed</div>
+                                <div class="tab-pane" id="stripe-setting" role="tabpanel">
+                                    <form action="#" method="POST">
+                                        @csrf
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Stripe Status</label>
+                                                    <select name="stripe_status" class="form-control">
+                                                        <option @selected(config('gateway_settings.stripe_status') === 'sandbox') value="sandbox">Sandbox</option>
+                                                        <option @selected(config('gateway_settings.stripe_status') === 'live') value="live">Live</option>
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('stripe_status')" class="mt-2" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Currency</label>
+                                                    <select name="stripe_currency" class="form-control select2">
+                                                        @foreach (config('gateway_currencies.stripe_currencies') as $key => $currency)
+                                                            <option @selected(config('gateway_settings.stripe_currency') === $currency) value="{{ $currency }}">{{ $currency }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                    <x-input-error :messages="$errors->get('stripe_currency')" class="mt-2" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Rate (USD)</label>
+                                                    <input type="number" class="form-control" name="stripe_rate" value="{{ config('gateway_settings.stripe_rate') }}" placeholder="Enter stripe Rate">
+                                                    <x-input-error :messages="$errors->get('stripe_rate')" class="mt-2" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Publishable Key</label>
+                                                    <input type="text" class="form-control" name="stripe_publishable_key" value="{{ config('gateway_settings.stripe_publishable_key') }}" placeholder="Enter stripe publishable key">
+                                                    <x-input-error :messages="$errors->get('stripe_publishable_key')" class="mt-2" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="mb-3">
+                                                    <label class="form-label">Client Secret</label>
+                                                    <input type="text" class="form-control" name="stripe_secret" value="{{ config('gateway_settings.stripe_secret') }}" placeholder="Enter stripe client secret">
+                                                    <x-input-error :messages="$errors->get('stripe_secret')" class="mt-2" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-end">
+                                            <button type="submit" class="btn btn-primary">Save</button>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="tab-pane" id="tabs-activity-5" role="tabpanel">
                                     <h4>Activity tab</h4>
                                     <div>Donec ac vitae diam amet vel leo egestas consequat rhoncus in luctus amet, facilisi
-                                        sit mauris accumsan nibh habitant senectus</div>
+                                        sit mauris accumsan nibh habitant senectus
+                                    </div>
                                 </div>
                             </div>
                         </div>
