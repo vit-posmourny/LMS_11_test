@@ -57,7 +57,7 @@ class PaymentSettingController extends Controller
         }
 
         Cache::forget('gatewaySettings');
-        notyf()->success('Update payment setting successfully.');
+        notyf()->success('Update stripe setting successfully.');
 
         return redirect()->back();
     }
