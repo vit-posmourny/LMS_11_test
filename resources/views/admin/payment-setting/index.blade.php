@@ -100,15 +100,15 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane" id="stripe-setting" role="tabpanel">
-                                    <form action="#" method="POST">
+                                    <form action="{{ route('admin.stripe-setting.update') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <div class="mb-3">
                                                     <label class="form-label">Stripe Status</label>
                                                     <select name="stripe_status" class="form-control">
-                                                        <option @selected(config('gateway_settings.stripe_status') === 'sandbox') value="sandbox">Sandbox</option>
-                                                        <option @selected(config('gateway_settings.stripe_status') === 'live') value="live">Live</option>
+                                                        <option @selected(config('gateway_settings.stripe_status') === 'active') value="active">Active</option>
+                                                        <option @selected(config('gateway_settings.stripe_status') === 'inactive') value="inactive">Inactive</option>
                                                     </select>
                                                     <x-input-error :messages="$errors->get('stripe_status')" class="mt-2" />
                                                 </div>

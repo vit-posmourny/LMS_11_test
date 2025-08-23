@@ -11,11 +11,12 @@ use Illuminate\Support\Facades\Cache;
 
 class PaymentSettingController extends Controller
 {
-    
+
     function index(): View
     {
         return view('admin.payment-setting.index');
     }
+
 
 
     function paypalSetting(Request $request): RedirectResponse
@@ -27,6 +28,28 @@ class PaymentSettingController extends Controller
             'paypal_currency' => 'required',
             'paypal_rate' => 'required|numeric',
             'paypal_app_id' => 'required',
+        ]);
+
+        foreach ($validatedData as $key => $value) {
+            PaymentSetting::updateOrCreate(['key' => $key], ['value' => $value]);
+        }
+
+        Cache::forget('gatewaySettings');
+        notyf()->success('Update payment setting successfully.');
+
+        return redirect()->back();
+    }
+
+
+
+    function stripeSetting(Request $request): RedirectResponse
+    {
+        $validatedData = $request->validate([
+            'stripe_status' => 'required|in:active,inactive',
+            'stripe_publishable_key' => 'required',
+            'stripe_secret' => 'required',
+            'stripe_currency' => 'required',
+            'stripe_rate' => 'required|numeric',
         ]);
 
         foreach ($validatedData as $key => $value) {
