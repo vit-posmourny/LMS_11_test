@@ -47,7 +47,7 @@ class PaymentSettingController extends Controller
         $validatedData = $request->validate([
             'stripe_status' => 'required|in:active,inactive',
             'stripe_publishable_key' => 'required',
-            'stripe_secret' => 'required',
+            'stripe_secret_key' => 'required',
             'stripe_currency' => 'required',
             'stripe_rate' => 'required|numeric',
         ]);

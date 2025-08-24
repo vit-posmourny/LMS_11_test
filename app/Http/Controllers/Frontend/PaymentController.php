@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use App\Service\OrderService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Stripe\Checkout\Session as StripeSession;
+use Stripe\Stripe;
 
 class PaymentController extends Controller
 {
@@ -22,7 +24,7 @@ class PaymentController extends Controller
         return view('frontend.pages.order-failed');
     }
 
-
+    // PAYPAL //
     function paypalConfig(): array
     {
         return [
@@ -68,11 +70,9 @@ class PaymentController extends Controller
             ]
         ]);
 
-        if (isset($response['id']))
-        {
-            foreach($response['links'] as $link)
-            {
-                if($link['rel'] == 'approve') {
+        if (isset($response['id'])) {
+            foreach ($response['links'] as $link) {
+                if ($link['rel'] == 'approve') {
                     return redirect()->away($link['href']);
                 }
             }
@@ -87,8 +87,7 @@ class PaymentController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        if (isset($response['status']) && $response['status'] === "COMPLETED")
-        {
+        if (isset($response['status']) && $response['status'] === "COMPLETED") {
             $capture = $response['purchase_units'][0]['payments']['captures'][0];
             $transactionId = $capture['id'];
             $paidAmount = $capture['amount']['value'];
@@ -105,12 +104,42 @@ class PaymentController extends Controller
                     'paypal',
                 );
                 return redirect()->route('order-success');
-
             } catch (\Throwable $th) {
-                 throw $th;
+                throw $th;
             }
 
             return redirect()->route('order-failed');
         }
+    }
+
+
+    // STRIPE //
+    function payWithStripe()
+    {
+        Stripe::setApiKey(config('gateway_settings.stripe_secret_key'));
+
+        $payableAmount = cartTotal();
+        // *100, jinak bude cena v centech
+        $quantityCount = (cartCount()*100);
+
+        $response = StripeSession::create([
+            'line_items' => [
+                [
+                    'price_data' => [
+                        'currency' => config('gateway_settings.stripe_currency'),
+                        'product_data' => [
+                            'name' => 'course'
+                        ],
+                        'unit_amount' => $payableAmount
+                    ],
+                    'quantity' => $quantityCount
+                ]
+            ],
+            'mode' => 'payment',
+            'success_url' => route('stripe.success') . '?session_id={CHECKOUT_SESSION_ID}',
+            'cancel_url' => route('stripe.cancel')
+        ]);
+
+        return redirect()->away($response->url);
     }
 }
