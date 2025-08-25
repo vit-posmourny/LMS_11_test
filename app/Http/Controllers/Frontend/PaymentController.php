@@ -25,7 +25,7 @@ class PaymentController extends Controller
         return view('frontend.pages.order-failed');
     }
 
-    // PAYPAL //
+    ///////////////////////////////////// PAYPAL /////////////////////////////////////////
     function paypalConfig(): array
     {
         return [
@@ -114,7 +114,7 @@ class PaymentController extends Controller
     }
 
 
-    // STRIPE //
+    //////////////////////////////////////// STRIPE ////////////////////////////////////////
     function payWithStripe()
     {
         Stripe::setApiKey(config('gateway_settings.stripe_secret_key'));
@@ -180,5 +180,19 @@ class PaymentController extends Controller
     function stripeCancel(Request $request)
     {
         return redirect()->route('order-failed');
+    }
+
+
+    ///////////////////////////////////////// RAZORPAY ////////////////////////////////////////
+    function razorpayRedirect(): View
+    {
+        return view('frontend.pages.razorpay-redirect');
+    }
+
+
+
+    function payWithrazorpay(Request $request)
+    {
+
     }
 }

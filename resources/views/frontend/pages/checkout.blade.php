@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
-                            <a href="#" class="payment_mathod" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <a href="{{ route('razorpay.redirect') }}" class="payment_mathod">
                                 <img src="{{ asset('frontend/assets/images/payment_9.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>

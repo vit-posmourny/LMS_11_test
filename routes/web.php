@@ -46,6 +46,11 @@ Route::get('stripe/success', [PaymentController::class, 'stripeSuccess'])
 Route::get('stripe/cancel', [PaymentController::class, 'stripeCancel'])
     ->name('stripe.cancel');
 
+Route::get('razorpay/redirect', [PaymentController::class, 'razorpayRedirect'])
+    ->name('razorpay.redirect');
+Route::get('razorpay/payment', [PaymentController::class, 'payWithrazorpay'])
+    ->name('razorpay.payment');
+
 Route::get('order-success', [PaymentController::class, 'orderSuccess'])
     ->name('order-success');
 Route::get('order-failed', [PaymentController::class, 'orderFailed'])
