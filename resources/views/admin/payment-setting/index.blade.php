@@ -33,8 +33,8 @@
                                     role="tab" tabindex="-1">Stripe Settings</a>
                             </li>
                             <li class="nav-item" role="presentation">
-                                <a href="#tabs-activity-5" class="nav-link" data-bs-toggle="tab" aria-selected="false"
-                                    role="tab" tabindex="-1">Activity</a>
+                                <a href="#razorpay-setting" class="nav-link" data-bs-toggle="tab" aria-selected="false"
+                                    role="tab" tabindex="-1">Razorpay Settings</a>
                             </li>
                         </ul>
                     </div>
@@ -68,7 +68,7 @@
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Rate (USD)</label>
-                                                <input type="number" class="form-control" name="paypal_rate" value="{{ config('gateway_settings.paypal_rate') }}" placeholder="Enter paypal Rate">
+                                                <input type="number" class="form-control" name="paypal_rate" value="{{ config('gateway_settings.paypal_rate') }}" placeholder="Enter paypal rate">
                                                 <x-input-error :messages="$errors->get('paypal_rate')" class="mt-2" />
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Rate (USD)</label>
-                                                <input type="number" class="form-control" name="stripe_rate" value="{{ config('gateway_settings.stripe_rate') }}" placeholder="Enter stripe Rate">
+                                                <input type="number" class="form-control" name="stripe_rate" value="{{ config('gateway_settings.stripe_rate') }}" placeholder="Enter stripe rate">
                                                 <x-input-error :messages="$errors->get('stripe_rate')" class="mt-2" />
                                             </div>
                                         </div>
@@ -151,11 +151,57 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="tab-pane" id="tabs-activity-5" role="tabpanel">
-                                <h4>Activity tab</h4>
-                                <div>Donec ac vitae diam amet vel leo egestas consequat rhoncus in luctus amet, facilisi
-                                    sit mauris accumsan nibh habitant senectus
-                                </div>
+                            <div class="tab-pane" id="razorpay-setting" role="tabpanel">
+                                <form action="{{ route('admin.razorpay-setting.update') }}" method="POST">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Razorpay Status</label>
+                                                <select name="razorpay_status" class="form-control">
+                                                    <option @selected(config('gateway_settings.razorpay_status') === 'active') value="active">Active</option>
+                                                    <option @selected(config('gateway_settings.razorpay_status') === 'inactive') value="inactive">Inactive</option>
+                                                </select>
+                                                <x-input-error :messages="$errors->get('razorpay_status')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Currency</label>
+                                                <select name="razorpay_currency" class="form-control select2">
+                                                    @foreach (config('gateway_currencies.razorpay_currencies') as $key => $currency)
+                                                        <option @selected(config('gateway_settings.razorpay_currency') === $currency) value="{{ $currency }}">{{ $currency }}</option>
+                                                    @endforeach
+                                                </select>
+                                                <x-input-error :messages="$errors->get('razorpay_currency')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Rate (USD)</label>
+                                                <input type="number" class="form-control" name="razorpay_rate" value="{{ config('gateway_settings.razorpay_rate') }}" placeholder="Enter razorpay rate">
+                                                <x-input-error :messages="$errors->get('razorpay_rate')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Publishable Key</label>
+                                                <input type="text" class="form-control" name="razorpay_key" value="{{ config('gateway_settings.razorpay_key') }}" placeholder="Enter razorpay key">
+                                                <x-input-error :messages="$errors->get('razorpay_key')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="mb-3">
+                                                <label class="form-label">Secret Key</label>
+                                                <input type="text" class="form-control" name="razorpay_secret" value="{{ config('gateway_settings.razorpay_secret') }}" placeholder="Enter razorpay client secret">
+                                                <x-input-error :messages="$errors->get('razorpay_secret')" class="mt-2" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-end">
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

@@ -142,6 +142,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('paypal-setting.update');
     Route::post('stripe-setting', [PaymentSettingController::class, 'stripeSetting'])
         ->name('stripe-setting.update');
+    Route::post('razorpay-setting', [PaymentSettingController::class, 'razorpaySetting'])
+        ->name('razorpay-setting.update');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
