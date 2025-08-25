@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Service\OrderService;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Stripe\Checkout\Session as StripeSession;
 use Stripe\Stripe;
 
@@ -117,10 +118,10 @@ class PaymentController extends Controller
     function payWithStripe()
     {
         Stripe::setApiKey(config('gateway_settings.stripe_secret_key'));
-
-        $payableAmount = cartTotal();
         // *100, jinak bude cena v centech
-        $quantityCount = (cartCount()*100);
+        $payableAmount = cartTotal()*100;
+
+        $quantityCount = 1;
 
         $response = StripeSession::create([
             'line_items' => [
@@ -141,5 +142,43 @@ class PaymentController extends Controller
         ]);
 
         return redirect()->away($response->url);
+    }
+
+
+    function stripeSuccess(Request $request)
+    {
+        Stripe::setApiKey(config('gateway_settings.stripe_secret_key'));
+        $response = StripeSession::retrieve($request->session_id);
+
+        if ($response->payment_status == 'paid')
+        {
+            $transactionId = $response->payment_intent;
+            $paidAmount = $response->amount_total/100;
+            $currency = $response->currency;
+
+            try {
+                OrderService::storeOrder(
+                    $transactionId,
+                    user()->id,
+                    'approved',
+                    $paidAmount,
+                    $paidAmount,
+                    $currency,
+                    'stripe',
+                );
+
+                return redirect()->route('order-success');
+
+            } catch (\Throwable $th) {
+                throw $th;
+            }
+        }
+        return redirect()->route('order-failed');
+    }
+
+
+    function stripeCancel(Request $request)
+    {
+        return redirect()->route('order-failed');
     }
 }
