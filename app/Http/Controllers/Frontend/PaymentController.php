@@ -55,7 +55,7 @@ class PaymentController extends Controller
         $provider = new PayPalClient($this->paypalConfig());
         $provider->getAccessToken();
 
-        $payableAmount = cartTotal();
+        $payableAmount = cartTotal() * config('gateway_settings.paypal_rate');
 
         $response = $provider->createOrder([
             'intent' => "CAPTURE",
@@ -119,7 +119,7 @@ class PaymentController extends Controller
     {
         Stripe::setApiKey(config('gateway_settings.stripe_secret_key'));
         // *100, jinak bude cena v centech
-        $payableAmount = cartTotal()*100;
+        $payableAmount = cartTotal() * 100 * config('gateway_settings.stripe_rate');
 
         $quantityCount = 1;
 
@@ -198,7 +198,7 @@ class PaymentController extends Controller
             config('gateway_settings.razorpay_secret'),
         );
 
-        $payableAmount = cartTotal()*100;
+        $payableAmount = cartTotal() * 100 * config('gateway_settings.razorpay_rate');
 
         try {
             $response = $api->payment->fetch($request->razorpay_payment_id)->capture(['amount' => $payableAmount]);
@@ -225,6 +225,5 @@ class PaymentController extends Controller
         catch (\Throwable $th) {
             throw $th;
         }
-
     }
 }

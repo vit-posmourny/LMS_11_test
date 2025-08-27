@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .razorpay-payment-button {display: none;}
+    </style>
     <title>Razorpay Payment</title>
 </head>
 <body>
     @php
-        $payableAmount = cartTotal()*100;
+        $payableAmount = cartTotal() * 100 * config('gateway_settings.razorpay_rate');
     @endphp
     <form action="{{ route('razorpay.payment') }}" method="POST">
         @csrf
@@ -22,5 +25,13 @@
             data-theme.color="#ff7529">
         </script>
     </form>
+
+    <script>
+        //alert({{ config('gateway_settings.razorpay_secret') }});
+        document.addEventListener('DOMContentLoaded', function() {
+            var button = document.querySelector('.razorpay-payment-button');
+            button.click();
+        })
+    </script>
 </body>
 </html>
