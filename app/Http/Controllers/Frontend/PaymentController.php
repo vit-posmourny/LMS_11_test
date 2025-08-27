@@ -88,9 +88,11 @@ class PaymentController extends Controller
 
         $response = $provider->capturePaymentOrder($request->token);
 
-        if (isset($response['status']) && $response['status'] === "COMPLETED") {
+        if (isset($response['status']) && $response['status'] === "COMPLETED")
+        {
             $capture = $response['purchase_units'][0]['payments']['captures'][0];
             $transactionId = $capture['id'];
+            $mainAmount = cartTotal();
             $paidAmount = $capture['amount']['value'];
             $currency = $capture['amount']['currency_code'];
 
@@ -99,7 +101,7 @@ class PaymentController extends Controller
                     $transactionId,
                     user()->id,
                     'approved',
-                    $paidAmount,
+                    $mainAmount,
                     $paidAmount,
                     $currency,
                     'paypal',
@@ -153,6 +155,7 @@ class PaymentController extends Controller
         if ($response->payment_status == 'paid')
         {
             $transactionId = $response->payment_intent;
+            $mainAmount = cartTotal();
             $paidAmount = $response->amount_total/100;
             $currency = $response->currency;
 
@@ -161,7 +164,7 @@ class PaymentController extends Controller
                     $transactionId,
                     user()->id,
                     'approved',
-                    $paidAmount,
+                    $mainAmount,
                     $paidAmount,
                     $currency,
                     'stripe',
@@ -204,6 +207,7 @@ class PaymentController extends Controller
             $response = $api->payment->fetch($request->razorpay_payment_id)->capture(['amount' => $payableAmount]);
 
             $transactionId = $response->payment_intent;
+            $mainAmount = cartTotal();
             $paidAmount = $response->amount/100;
             $currency = $response->currency;
 
@@ -213,7 +217,7 @@ class PaymentController extends Controller
                     $transactionId,
                     user()->id,
                     'approved',
-                    $paidAmount,
+                    $mainAmount,
                     $paidAmount,
                     $currency,
                     'razorpay',
