@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Srmklive\PayPal\Services\PayPal as PayPalClient;
-use App\Http\Controllers\Controller;
+use Stripe\Stripe;
+use Razorpay\Api\Api;
+use Illuminate\Http\Request;
 use App\Service\OrderService;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
+use App\Http\Controllers\Controller;
 use Stripe\Checkout\Session as StripeSession;
-use Stripe\Stripe;
+use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 class PaymentController extends Controller
 {
@@ -193,6 +193,38 @@ class PaymentController extends Controller
 
     function payWithrazorpay(Request $request)
     {
+        $api = new Api(
+            config('gateway_settings.razorpay_key'),
+            config('gateway_settings.razorpay_secret'),
+        );
+
+        $payableAmount = cartTotal()*100;
+
+        try {
+            $response = $api->payment->fetch($request->razorpay_payment_id)->capture(['amount' => $payableAmount]);
+
+            $transactionId = $response->payment_intent;
+            $paidAmount = $response->amount/100;
+            $currency = $response->currency;
+
+            if ($response['status'] == 'captured')
+            {
+                 OrderService::storeOrder(
+                    $transactionId,
+                    user()->id,
+                    'approved',
+                    $paidAmount,
+                    $paidAmount,
+                    $currency,
+                    'razorpay',
+                 );
+                 return redirect()->route('order-success');
+            }
+            return redirect()->route('order-failed');
+        }
+        catch (\Throwable $th) {
+            throw $th;
+        }
 
     }
 }
