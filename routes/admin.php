@@ -149,6 +149,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Order Routes */
     Route::get('orders', [OrderController::class, 'index'])
         ->name('orders.index');
+    Route::get('orders/{order}', [OrderController::class, 'show'])
+        ->name('orders.show');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
