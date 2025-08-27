@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
@@ -144,6 +145,10 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('stripe-setting.update');
     Route::post('razorpay-setting', [PaymentSettingController::class, 'razorpaySetting'])
         ->name('razorpay-setting.update');
+
+    /** Order Routes */
+    Route::get('orders', [OrderController::class, 'index'])
+        ->name('orders.index');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
