@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
+use App\Http\Controllers\Admin\SettingController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -136,6 +137,12 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::POST('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'updateSortChapter'])
         ->name('content.update-sort-chapter');
 
+    /** Order Routes */
+    Route::get('orders', [OrderController::class, 'index'])
+        ->name('orders.index');
+    Route::get('orders/{order}', [OrderController::class, 'show'])
+        ->name('orders.show');
+
     /** Payment settings routes */
     Route::get('payment-setting', [PaymentSettingController::class, 'index'])
         ->name('payment-setting.index');
@@ -146,11 +153,9 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::post('razorpay-setting', [PaymentSettingController::class, 'razorpaySetting'])
         ->name('razorpay-setting.update');
 
-    /** Order Routes */
-    Route::get('orders', [OrderController::class, 'index'])
-        ->name('orders.index');
-    Route::get('orders/{order}', [OrderController::class, 'show'])
-        ->name('orders.show');
+    /** Site Settings Route */
+    Route::get('settings', [SettingController::class, 'index'])
+        ->name('settings.index');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
