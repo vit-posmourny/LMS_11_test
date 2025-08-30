@@ -63,4 +63,14 @@ if (!function_exists('convertMinutesToHours'))
             return Cart::where(['user_id' => @user()->id])->count();
         }
     }
+
+
+
+    if (!function_exists('calculateCommission'))
+    {
+        function calculateCommission($amount, $commission)
+        {
+            return $amount * $commission / 100;
+        }
+    }
 }
