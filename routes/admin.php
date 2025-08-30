@@ -156,6 +156,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Site Settings Route */
     Route::get('settings', [SettingController::class, 'index'])
         ->name('settings.main');
+    Route::post('main-settings', [SettingController::class, 'updateMainSettings'])
+        ->name('main-settings.update');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

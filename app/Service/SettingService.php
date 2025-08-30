@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Cache;
 
 class SettingService
 {
-        // Get all Payment gateway settings and store into cache
+    // Get all Payment gateway settings and store into cache
     function getSettings(): array
     {
         return Cache::rememberForever('settings', function() {
@@ -16,7 +16,8 @@ class SettingService
     }
 
     // set the settings in config
-    function setGlobalSettings() {
+    function setGlobalSettings()
+    {
         $settings = $this->getSettings();
         config()->set('settings', $settings);
     }

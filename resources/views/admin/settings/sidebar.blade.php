@@ -3,7 +3,7 @@
         <h4 class="subheader">General Settings</h4>
         <div class="list-group list-group-transparent">
             <a href="{{ route('admin.settings.main') }}"
-                class="list-group-item list-group-item-action d-flex align-items-center active">General Settings</a>
+                class="list-group-item list-group-item-action d-flex align-items-center active">Main Settings</a>
             <a href="#"
                 class="list-group-item list-group-item-action d-flex align-items-center">My
                 Notifications</a>
@@ -18,8 +18,7 @@
         </div>
         <h4 class="subheader mt-4">Experience</h4>
         <div class="list-group list-group-transparent">
-            <a href="#" class="list-group-item list-group-item-action">Give
-                Feedback</a>
+            <a href="#" class="list-group-item list-group-item-action">Give Feedback</a>
         </div>
     </div>
 </div>
