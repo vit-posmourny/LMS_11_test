@@ -19,13 +19,41 @@ class SettingController extends Controller
 
 
     function  updateMainSettings(Request $request): RedirectResponse
-    {   //dd($request->all());
+    {
         $validateData = $request->validate([
             'site_name' => 'required',
             'phone_number' => 'nullable',
             'location' => 'nullable',
             'default_currency' => 'required',
             'currency_icon' => 'nullable',
+        ]);
+
+        foreach ($validateData as $key => $value)
+        {
+            Setting::updateOrCreate([
+                'key' => $key
+            ],[
+                'value' => $value
+            ]);
+        }
+
+        Cache::forget('settings');
+
+        notyf()->success('Update Main-Settings Successfully.');
+        return redirect()->back();
+    }
+
+
+    function commissionSettingsIndex(): View
+    {
+        return view('admin.settings.commission');
+    }
+
+
+    function commissionSettingsUpdate(Request $request) : RedirectResponse
+    {
+        $validateData = $request->validate([
+            'commission_rate' => 'required|numeric',
         ]);
 
         foreach ($validateData as $key => $value)

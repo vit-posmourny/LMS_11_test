@@ -6,7 +6,6 @@
         @csrf
         <div class="card-body">
             <h3 class="card-title mt-4">Main Settings</h3>
-
             <div class="row g-3">
                 <div class="col-md-12">
                     <div class="form-label">Site Name</div>
@@ -40,7 +39,6 @@
                     <x-input-error :messages="$errors->get('currency_icon')" class="mt-2" />
                 </div>
             </div>
-
         </div>
         <div class="card-footer bg-transparent mt-auto">
             <div class="btn-list justify-content-end">
