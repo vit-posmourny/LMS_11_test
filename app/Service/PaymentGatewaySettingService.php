@@ -10,7 +10,7 @@ class PaymentGatewaySettingService
     // Get all Payment gateway settings and store into cache
     function getSettings(): array
     {
-        return Cache::rememberForever('gatewaySettings', function() {
+        return Cache::rememberForever('gateway_settings', function() {
             return PaymentSetting::pluck('value', 'key')->toArray(); // ['KEY' => 'VALUE']
         });
     }

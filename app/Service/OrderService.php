@@ -30,19 +30,20 @@ class OrderService
             $order->transaction_id = $transaction_id;
             $order->save();
 
+            // store order items //
             $cart = Cart::where('user_id', $buyer_id);
             $cartItems = $cart->get();
             foreach ($cartItems as $item)
             {
-                // store order items //
                 $orderItem = new OrderItem();
                 $orderItem->order_id = $order->id;
-                if ($item->course->discount_price !== 0) {
+                if ($item->course->discount_price > 0) {
                     $orderItem->price = $item->course->discount_price;
                 } else {
                     $orderItem->price = $item->course->price;
                 }
                 $orderItem->course_id = $item->course->id;
+                $orderItem->commission_rate = config('settings.commission_rate');
                 $orderItem->save();
 
                 // store enrollments //
@@ -51,6 +52,11 @@ class OrderService
                 $enrollment->course_id = $item->course_id;
                 $enrollment->instructor_id = $item->course->instructor_id;
                 $enrollment->save();
+
+                // add commission to instructor wallet //
+                $instructorWallet = $item->course->instructor;
+                $instructorWallet->wallet += calculateCommission($item->course->discount_price > 0 ? $item->course->discount_price : $item->course->price , config('settings.commission_rate'));
+                $instructorWallet->save();
             }
             // delete cart items //
             $cart->delete();
