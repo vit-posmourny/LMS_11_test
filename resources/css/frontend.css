@@ -53,3 +53,16 @@
     height: 120px !important;
     object-fit: cover !important;
 }
+
+
+/* pouzivam pro pawelkuna menu v admin casti */
+.responsive_margin {
+  margin-right: 1rem;
+}
+
+/* pouzivam pro pawelkuna menu v admin casti */
+@media (min-width: 992px) {
+  .responsive_margin {
+    margin-right: 16rem;
+  }
+}

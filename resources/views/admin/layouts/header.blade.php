@@ -19,8 +19,8 @@
             </form>
         </div>
     </div>
-    <div style="margin-right: 16rem">
-        <div class="navbar-nav flex-row d-none d-md-">
+    <div class="responsive_margin">
+        <div class="navbar-nav flex-row">
             <div class="d-flex">
                 <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
                     data-bs-toggle="tooltip" data-bs-placement="bottom">
