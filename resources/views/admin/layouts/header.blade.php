@@ -1,7 +1,26 @@
 <header class="navbar">
-    <div class="container">
-
-        <div class="navbar-nav flex-row order-last">
+    <div class="d-flex px-2 pt-1">
+        <div class="d-flex flex-grow-1">
+            <form action="./" method="get" autocomplete="off" novalidate>
+                <div class="input-icon">
+                    <span class="input-icon-addon">
+                        <!-- Download SVG icon from http://tabler-icons.io/i/search -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                            <path d="M21 21l-6 -6" />
+                        </svg>
+                    </span>
+                    <input type="text" value="" class="form-control" placeholder="Search…"
+                        aria-label="Search in website">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="responsive_margin">
+        <div class="navbar-nav flex-row">
             <div class="d-flex">
                 <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" title="Enable dark mode"
                     data-bs-toggle="tooltip" data-bs-placement="bottom">
@@ -61,26 +80,6 @@
                         @csrf
                     </form>
                 </div>
-            </div>
-        </div>
-        <div class="d-flex order-first" id="navbar-menu">
-            <div>
-                <form action="./" method="get" autocomplete="off" novalidate>
-                    <div class="input-icon">
-                        <span class="input-icon-addon">
-                            <!-- Download SVG icon from http://tabler-icons.io/i/search -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                stroke-linecap="round" stroke-linejoin="round">
-                                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
-                                <path d="M21 21l-6 -6" />
-                            </svg>
-                        </span>
-                        <input type="text" value="" class="form-control" placeholder="Search…"
-                            aria-label="Search in website">
-                    </div>
-                </form>
             </div>
         </div>
     </div>
