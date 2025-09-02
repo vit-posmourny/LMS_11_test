@@ -1,4 +1,3 @@
-{{-- resources\views\frontend\layouts\master.blade.php --}}
 <!DOCTYPE html>
 <html lang="en">
 

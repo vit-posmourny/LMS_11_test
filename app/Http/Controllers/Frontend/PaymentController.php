@@ -54,8 +54,7 @@ class PaymentController extends Controller
     {
         $provider = new PayPalClient($this->paypalConfig());
         $provider->getAccessToken();
-
-        $payableAmount = cartTotal() * config('gateway_settings.paypal_rate');
+        $payableAmount = number_format(cartTotal() * config('gateway_settings.paypal_rate'), 2, '.', '');
 
         $response = $provider->createOrder([
             'intent' => "CAPTURE",
@@ -63,15 +62,15 @@ class PaymentController extends Controller
                 'return_url' => route('paypal.success'),
                 'cancel_url' => route('paypal.cancel'),
             ],
-            'purchase_units' => [
+            'purchase_units' => [[
                 'amount' => [
                     'currency_code' => config('paypal.currency'),
                     'value' => $payableAmount,
                 ]
-            ]
+            ]]
         ]);
 
-        if (isset($response['id'])) {
+        if (isset($response['id']) && $response['id'] != NULL) {
             foreach ($response['links'] as $link) {
                 if ($link['rel'] == 'approve') {
                     return redirect()->away($link['href']);
