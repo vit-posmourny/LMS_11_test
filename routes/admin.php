@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
+use App\Http\Controllers\Admin\PayoutGatewayController;
 use App\Http\Controllers\Admin\SettingController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
@@ -164,6 +165,9 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('commission-settings.index');
     Route::post('commission-settings', [SettingController::class, 'commissionSettingsUpdate'])
         ->name('commission-settings.update');
+
+    /** Payout Gateway Routes */
+    Route::resource('payout-gateway', PayoutGatewayController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

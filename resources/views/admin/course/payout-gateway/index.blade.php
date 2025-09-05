@@ -5,7 +5,7 @@
         <div class="container-xl">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Course Levels</h3>
+                    <h3 class="card-title">Payment Gateways</h3>
                     <div class="card-actions">
                         <a href="{{ route('admin.course-levels.create') }}" class="btn btn-primary">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
@@ -26,17 +26,23 @@
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Slug</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($levels as $level)
+                                @forelse ($gateways as $gateway)
                                     <tr>
-                                        <td>{{ $level->name }}</td>
-                                        <td>{{ $level->slug }}</td>
+                                        <td>{{ $gateway->name }}</td>
                                         <td>
-                                            <a href="{{ route('admin.course-levels.edit', $level) }}"
+                                            @if ($gateway->status === 1)
+                                                <span class="badge bg-green text-green-fg">Active</span>
+                                            @elseif ($gateway->status === 0)
+                                                <span class="badge bg-red text-red-fg">Inactive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.course-levels.edit', $gateway) }}"
                                                 class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -49,7 +55,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-levels.destroy', $level->id) }}" class="text-red delete-item">
+                                            <a href="{{ route('admin.course-levels.destroy', $gateway->id) }}" class="text-red delete-item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -65,13 +71,10 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="3" class="text-center">No data found!</td></tr>
+                                    <tr><td colspan="3" class="text-center">No Data Found</td></tr>
                                 @endforelse
                             </tbody>
                         </table>
-                        <div class="mt-5">
-                            {{ $levels->links() }}
-                        </div>
                     </div>
                 </div>
             </div>
