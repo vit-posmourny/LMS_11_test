@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use Illuminate\Support\Facades\Route;
@@ -86,7 +87,7 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
 */
 Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'], 'prefix' => 'instructor', 'as' => 'instructor.'], function()
 {
-    Route::get('/dashboard', [InstructorDashboardContoller::class, 'index'])->name('dashboard');
+    Route::get('dashboard', [InstructorDashboardContoller::class, 'index'])->name('dashboard');
 
     /* Profile Routes */
     Route::get('profile', [ProfileController::class, 'instructorIndex'])
@@ -143,6 +144,10 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('content.sort-chapter');
     Route::POST('courses/content/{courseId}/sort-chapter', [CourseContentController::class, 'updateSortChapter'])
         ->name('content.update-sort-chapter');
+
+    /** Orders Routes */
+    Route::get('orders', [OrderController::class, 'index'])
+        ->name('orders.index');
 });
 
 

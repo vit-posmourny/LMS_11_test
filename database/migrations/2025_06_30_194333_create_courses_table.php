@@ -27,7 +27,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('capacity')->nullable();
             $table->double('price')->default(0);
-            $table->double('discount_price')->nullable();
+            $table->double('discount_price')->default(0)->nullable();
             $table->boolean('certificate')->default(0)->nullable();
             $table->boolean('qna')->default(0)->nullable();
             $table->text('message_for_reviewer')->nullable();

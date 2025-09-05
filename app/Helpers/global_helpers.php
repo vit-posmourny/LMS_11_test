@@ -70,7 +70,8 @@ if (!function_exists('convertMinutesToHours'))
     {
         function calculateCommission($amount, $commission)
         {
-            return $amount === 0 ? 0 : ($amount * $commission / 100);
+            $result = $amount === 0 ? 0 : ($amount * $commission / 100);
+            return number_format($result, 2, '.', '');
         }
     }
 }
