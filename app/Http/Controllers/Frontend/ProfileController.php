@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Traits\FileUpload;
+use Illuminate\Http\Request;
+use App\Models\PayoutGateway;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
+use App\Models\InstructorPayoutInformation;
+use App\Http\Requests\Frontend\SocialUpdateRequest;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
-use App\Http\Requests\Frontend\SocialUpdateRequest;
-use App\Models\PayoutGateway;
-use App\Traits\FileUpload;
-use Flasher\Laravel\Facade\Flasher;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
@@ -80,5 +82,21 @@ class ProfileController extends Controller
         flash()->option('position', 'bottom-right')->success('Your socials has been updated successfully.');
 
         return redirect()->back();
+    }
+
+
+    function updateGatewayInfo(Request $request): RedirectResponse
+    {
+        InstructorPayoutInformation::updateOrCreate(
+            ['instructor_id' => user()->id],
+            [
+                'gateway' => $request->gateway_name,
+                'information' => $request->gateway_info,
+            ]
+         );
+
+         notyf()->success('Payout Gateway Info Updated Successfully.');
+
+         return redirect()->back();
     }
 }

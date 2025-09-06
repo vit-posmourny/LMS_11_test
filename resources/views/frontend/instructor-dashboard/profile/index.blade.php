@@ -120,7 +120,7 @@
                                 <p>Put your payout information here.</p>
                             </div>
                         </div>
-                        <form action="{{ route('instructor.profile.update-password') }}" method="POST"
+                        <form action="{{ route('instructor.profile.update-gateway-info') }}" method="POST"
                             class="wsus__dashboard_profile_update">
                             @csrf
                             <div class="row">
@@ -130,26 +130,26 @@
                                             <span class="d-none gateway-{{ $gateway->id }}">{!! $gateway->description !!}</span>
                                         @endforeach
                                         <label class="form-label">Gateway</label>
-                                        <select class="form-select gateway">
+                                        <select name="gateway_name" class="form-select gateway">
                                             <option value="">Select</option>
                                             @foreach ($gateways as $gateway)
-                                                <option value="{{ $gateway->name }}" data-gateway="{{ $gateway->id }}">
+                                                <option @selected(user()?->gatewayInfo?->gateway === $gateway->name) value="{{ $gateway->name }}" data-gateway="{{ $gateway->id }}">
                                                     {{ $gateway->name }}</option>
                                             @endforeach
                                         </select>
-                                        <x-input-error :messages="$errors->get('current_password')" class="mt-2" />
+                                        <x-input-error :messages="$errors->get('gateway_name')" class="mt-2" />
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label class="form-label">Gateway Description</label>
-                                        <textarea class="gateway__description" name="gateway_info" style="height: 300px;"></textarea>
+                                        <textarea class="gateway__description form-control" name="gateway_info" style="height: 300px;" readonly>{!! user()?->gatewayInfo?->information !!}</textarea>
                                         <x-input-error :messages="$errors->get('gateway_info')" class="mt-2" />
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_btn">
-                                        <button type="submit" class="common_btn">Update Gateway Settings</button>
+                                        <button type="submit" class="common_btn">Update Payout Settings</button>
                                     </div>
                                 </div>
                             </div>
@@ -258,8 +258,8 @@
         $(function() {
             $('.gateway').on('change', function() {
                 let id = $(this).find(':selected').data('gateway');
-             // $('.gateway__description').val($('.gateway-'+id).html());
-                $('.gateway__description').attr('placeholder' ,$('.gateway-'+id).html());
+                $('.gateway__description').val($('.gateway-'+id).html());
+                //$('.gateway__description').attr('placeholder' ,$('.gateway-'+id).html());
             })
         });
     </script>

@@ -3,3 +3,11 @@ textarea.form-control {
     font-family: 'Courier New', Courier, monospace;
     resize: vertical;
 }
+
+
+textarea.form-control.gateway__description {
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+    user-select: none;
+}

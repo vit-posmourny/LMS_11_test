@@ -3,7 +3,7 @@
 import { notyf } from '../notyf.js';
 import './cart.js';
 // variables
-var csrf_token = $(`meta[name='csrf_token']`).attr('content');
+const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 
 // Ez share init //
 // document.addEventListener("DOMContentLoaded", function() {

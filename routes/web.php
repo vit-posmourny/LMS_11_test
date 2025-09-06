@@ -98,6 +98,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
         ->name('profile.update-password');
     Route::post('profile/update-social', [ProfileController::class, 'updateSocial'])
         ->name('profile.update-social');
+    Route::post('profile/update-gateway-info', [ProfileController::class, 'updateGatewayInfo'])
+        ->name('profile.update-gateway-info');
 
     /** Course Routes */
     Route::get('courses', [CourseController::class, 'index'])
