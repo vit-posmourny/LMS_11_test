@@ -34,7 +34,7 @@
     <link rel=" stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js'])
+    @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css'])
     {{-- dynamic js --}}
     @stack('header_scripts')
 </head>

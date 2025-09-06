@@ -1,0 +1,5 @@
+textarea.form-control {
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+}
