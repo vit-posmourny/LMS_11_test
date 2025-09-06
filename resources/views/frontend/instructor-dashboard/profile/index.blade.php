@@ -111,6 +111,44 @@
                 <div class="wsus__dashboard_contant">
                     <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                         <div class="wsus__dashboard_heading">
+                            <h5>Payout Settings</h5>
+                            <p>Put your payout information here.</p>
+                        </div>
+                    </div>
+
+                    <form action="{{ route('instructor.profile.update-password') }}" method="POST" class="wsus__dashboard_profile_update">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="wsus__dashboard_profile_update_info">
+                                    <label class="form-label">Gateway</label>
+                                    <select name="" class="form-select">
+                                        <option value="">Select</option>
+                                    @foreach ($gateways as $gateway )
+                                        <option value="{{ $gateway->name }}">{{ $gateway->name }}</option>
+                                    @endforeach
+                                    </select>
+                                    <x-input-error :messages="$errors->get('current_password')" class="mt-2"/>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="wsus__dashboard_profile_update_info">
+                                    <label class="form-label">Gateway Information</label>
+                                    <textarea class="form-control" name="gateway_info" style="height: 300px">{!! $gateway->description !!}</textarea>
+                                    <x-input-error :messages="$errors->get('gateway_info')" class="mt-2"/>
+                                </div>
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="wsus__dashboard_profile_update_btn">
+                                    <button type="submit" class="common_btn">Update Gateway Settings</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="wsus__dashboard_contant">
+                    <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
+                        <div class="wsus__dashboard_heading">
                             <h5>Update Your Password</h5>
                             <p>Add your new email or password here to update.</p>
                         </div>

@@ -35,11 +35,13 @@ class PayoutGatewayController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'status' => 'required|boolean',
+            'description' => 'required|string|max:1000',
         ]);
 
         $gateway = new PayoutGateway();
         $gateway->name = $request->name;
         $gateway->status = $request->status;
+        $gateway->description = $request->description;
         $gateway->save();
 
         notyf()->success('Payout Gateway created successfully.');
@@ -63,10 +65,12 @@ class PayoutGatewayController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'status' => 'required|boolean',
+            'description' => 'required|string|max:1000',
         ]);
 
         $payout_gateway->name = $request->name;
         $payout_gateway->status = $request->status;
+        $payout_gateway->description = $request->description;
         $payout_gateway->save();
 
         notyf()->success('Payout Gateway updated successfully.');

@@ -23,6 +23,11 @@
                         <x-input-error :messages ="$errors->get('name')" class="mt-2" />
                     </div>
                     <div class="mb-3">
+                        <label class="form-label">Description</label>
+                        <textarea name="description" class="form-control" style="height: 300px"></textarea>
+                        <x-input-error :messages ="$errors->get('description')" class="mt-2" />
+                    </div>
+                    <div class="mb-3">
                         <label class="form-label">Status</label>
                         <select name="status" class="form-select">
                             <option value="1" class="form-option">Active</option>

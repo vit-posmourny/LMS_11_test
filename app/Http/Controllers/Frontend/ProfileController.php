@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\Frontend\ProfileUpdateRequest;
 use App\Http\Requests\Frontend\PasswordUpdateRequest;
 use App\Http\Requests\Frontend\SocialUpdateRequest;
+use App\Models\PayoutGateway;
 use App\Traits\FileUpload;
 use Flasher\Laravel\Facade\Flasher;
 
@@ -25,7 +26,8 @@ class ProfileController extends Controller
 
     function instructorIndex(): View
     {
-        return view('frontend.instructor-dashboard.profile.index');
+        $gateways = PayoutGateway::where('status', 1)->get();
+        return view('frontend.instructor-dashboard.profile.index', compact('gateways'));
     }
 
 
@@ -74,7 +76,7 @@ class ProfileController extends Controller
         $user->linkedin = $request->linkedin;
         $user->website = $request->website;
         $user->save();
-        
+
         flash()->option('position', 'bottom-right')->success('Your socials has been updated successfully.');
 
         return redirect()->back();
