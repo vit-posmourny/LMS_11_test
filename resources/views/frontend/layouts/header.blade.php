@@ -219,7 +219,7 @@
         <form action="#">
             <input type="text" placeholder="Search School, Online.....">
             <button class="common_btn" type="submit">Search</button>
-            <span class="close_search"><i class="far fa-times"></i></span>
+            <span class="close_search"><i class="fas fa-times"></i></span>
         </form>
     </div>
     <!--===========================
@@ -237,24 +237,24 @@
             </a>
             <div class="mobile_menu_icon d-block d-lg-none" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
-                <span class="mobile_menu_icon"><i class="far fa-stream menu_icon_bar"></i></span>
+                <span class="mobile_menu_icon"><i class="fas fa-stream menu_icon_bar"></i></span>
             </div>
         </div>
 
         <div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasWithBothOptions">
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"><i
-                    class="fal fa-times"></i></button>
+                    class="fas fa-times"></i></button>
             <div class="offcanvas-body">
 
                 <ul class="mobile_menu_header d-flex flex-wrap">
-                    <li><a href="cart_view.html"><i class="far fa-shopping-basket"></i> <span>2</span></a>
+                    <li><a href="cart_view.html"><i class="fas fa-shopping-basket"></i> <span>2</span></a>
                     </li>
-                    <li><a href="dashboard.html"><i class="far fa-user"></i></a></li>
+                    <li><a href="dashboard.html"><i class="fas fa-user"></i></a></li>
                 </ul>
 
                 <form class="mobile_menu_search">
                     <input type="text" placeholder="Search">
-                    <button type="submit"><i class="far fa-search"></i></button>
+                    <button type="submit"><i class="fas fa-search"></i></button>
                 </form>
 
                 <div class="mobile_menu_item_area">

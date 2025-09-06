@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animated_barfiller.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.min.css') }}">
@@ -77,6 +78,8 @@
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!--bootstrap js-->
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- tabler -->
+    {{-- <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}"></script> --}}
     <!--marquee js-->
     <script src="{{ asset('frontend/assets/js/jquery.marquee.min.js') }}"></script>
     <!--slick js-->
