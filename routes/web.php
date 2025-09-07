@@ -1,17 +1,19 @@
 <?php
 
-use App\Http\Controllers\Frontend\OrderController;
-use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\CheckoutController;
+use App\Models\Withdraw;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CourseController;
+use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Controllers\Frontend\WithdrawController;
 use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
-use App\Http\Controllers\Frontend\PaymentController;
 
 /*
 *-----------------------------------------------------------------
@@ -150,6 +152,12 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:instructor'],
     /** Orders Routes */
     Route::get('orders', [OrderController::class, 'index'])
         ->name('orders.index');
+
+    /** Withdrawal Routes */
+    Route::get('withdrawals', [WithdrawController::class, 'index'])
+        ->name('withdraw.index');
+    Route::get('withdrawals/request-payout', [WithdrawController::class, 'requestPayout'])
+        ->name('withdraw.request-payout');
 });
 
 

@@ -50,7 +50,7 @@
                     <form action="#" class="wsus__dash_course_searchbox">
                         <div class="input">
                             <input type="text" placeholder="Search our Courses">
-                            <button><i class="far fa-search"></i></button>
+                            <button><i class="fas fa-search"></i></button>
                         </div>
                         <div class="selector">
                             <select class="select_js">
