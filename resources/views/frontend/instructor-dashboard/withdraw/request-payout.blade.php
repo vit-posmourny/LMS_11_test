@@ -66,7 +66,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <div class="card overflow-hidden">
+                                    <div class="card rounded-3 overflow-hidden">
                                     <table class="table mb-0">
                                         <tr>
                                             <td><b>Gateway</b></td>

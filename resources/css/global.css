@@ -11,3 +11,8 @@ textarea.form-control.gateway__description {
     resize: vertical;
     user-select: none;
 }
+
+/* vybírá buňky v posledním řádku a odebere okraj (spodní zobrazoval dvojitě) */
+tr:nth-last-child(1) td {
+    border-style: none !important;
+}
