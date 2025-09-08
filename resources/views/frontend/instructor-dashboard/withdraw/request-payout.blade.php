@@ -1,4 +1,4 @@
-{{-- resources\views\frontend\instructor-dashboard\profile\index.blade.php --}}
+<!-- resources\views\frontend\instructor-dashboard\profile\index.blade.php -->
 @extends('frontend.layouts.master')
 
 @section('content')
@@ -35,26 +35,59 @@
             <div class="row">
                 @include('frontend.instructor-dashboard.sidebar')
                 <div class="col-xl-9 col-md-8 wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
+                    <div class="row">
+                        <div class="col-xl-4 col-sm-6 wow fadeInUp">
+                            <div class="wsus__dash_earning">
+                                <h6>CURRENT BALANCE</h6>
+                                <h3>{{ config('settings.currency_icon') }} {{ $currentBallance }}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-sm-6 wow fadeInUp">
+                            <div class="wsus__dash_earning">
+                                <h6>PENDING PAYOUTS</h6>
+                                <h3>{{ config('settings.currency_icon') }} {{ $pendingBallance }}</h3>
+                            </div>
+                        </div>
+                        <div class="col-xl-4 col-sm-6 wow fadeInUp">
+                            <div class="wsus__dash_earning">
+                                <h6>TOTAL PAYOUTS</h6>
+                                <h3>{{ config('settings.currency_icon') }} {{ $totalPayouts }}</h3>
+                            </div>
+                        </div>
+                    </div>
                     <div class="wsus__dashboard_contant">
                         <div class="wsus__dashboard_contant_top d-flex flex-wrap justify-content-between">
                             <div class="wsus__dashboard_heading">
-                                <h5>Update Your Information</h5>
-                                <p>Manage your courses and its update like live, draft and insight.</p>
+                                <h5>Request Payout</h5>
                             </div>
                         </div>
-
                         <form action="{{ route('instructor.profile.update') }}" method="POST"
                             class="wsus__dashboard_profile_update" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
                                 <div class="col-xl-12">
+                                    <div class="card overflow-hidden">
+                                    <table class="table mb-0">
+                                        <tr>
+                                            <td><b>Gateway</b></td>
+                                            <td>{{ user()?->gatewayInfo->gateway }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Information</b></td>
+                                            <td>{{ user()?->gatewayInfo->information }}</td>
+                                        </tr>
+                                    </table>
+                                </div>
                                     <div class="wsus__dashboard_profile_update_info">
-                                        <label>Your Name</label>
-                                        <input type="text" name="name" value="{{ auth()->user()->name }}"
-                                            placeholder="Enter your full name">
-                                        <x-input-error :messages="$errors->get('name')" class="mt-2" />
+                                        <label class="form-label">Payout Amount</label>
+                                        <input type="text" class="form-control" name="amount" value=""
+                                            placeholder="Enter your amount">
+                                        <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                                     </div>
                                 </div>
+                            </div>
+                            <div class="mt-5">
+                                <button type="submit" class="common_btn">Request Payout</button>
                             </div>
                         </form>
                     </div>
