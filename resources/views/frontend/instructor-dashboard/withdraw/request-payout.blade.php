@@ -45,7 +45,7 @@
                         <div class="col-xl-4 col-sm-6 wow fadeInUp">
                             <div class="wsus__dash_earning">
                                 <h6>PENDING PAYOUTS</h6>
-                                <h3>{{ config('settings.currency_icon') }} {{ $pendingBallance }}</h3>
+                                <h3>{{ config('settings.currency_icon') }} {{ number_format($pendingBallance, 2, '.', '') }}</h3>
                             </div>
                         </div>
                         <div class="col-xl-4 col-sm-6 wow fadeInUp">
@@ -61,7 +61,7 @@
                                 <h5>Request Payout</h5>
                             </div>
                         </div>
-                        <form action="{{ route('instructor.profile.update') }}" method="POST"
+                        <form action="{{ route('instructor.withdraw.request-payout') }}" method="POST"
                             class="wsus__dashboard_profile_update" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
@@ -78,9 +78,10 @@
                                         </tr>
                                     </table>
                                 </div>
+                                <div class="col-2">
                                     <div class="wsus__dashboard_profile_update_info">
                                         <label class="form-label">Payout Amount</label>
-                                        <input type="text" class="form-control" name="amount" value=""
+                                        <input type="number" step="0.01" class="form-control text-end" name="amount" value=""
                                             placeholder="Enter your amount">
                                         <x-input-error :messages="$errors->get('amount')" class="mt-2" />
                                     </div>
