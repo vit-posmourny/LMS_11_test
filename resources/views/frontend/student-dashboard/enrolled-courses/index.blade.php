@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col-12 wow fadeInUp">
                         <div class="wsus__breadcrumb_text">
-                            <h1>Become Instructor</h1>
+                            <h1>Student Dashboard</h1>
                             <ul>
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li>Become Instructor</li>
+                                <li>Student Dashboard / Enrolled Courses</li>
                             </ul>
                         </div>
                     </div>

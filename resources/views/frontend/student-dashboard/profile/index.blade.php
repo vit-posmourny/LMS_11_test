@@ -5,7 +5,7 @@
     <!--===========================
             BREADCRUMB START
     ============================-->
-    <section class="wsus__breadcrumb" style="background: url(images/breadcrumb_bg.jpg);">
+    <section class="wsus__breadcrumb" style="background: url({{ asset('frontend/assets/images/breadcrumb_bg.jpg') }});">
         <div class="wsus__breadcrumb_overlay">
             <div class="container">
                 <div class="row">
@@ -59,7 +59,7 @@
                                     <p>PNG or JPG no bigger than 400px wide and tall.</p>
                                 </div>
                             </div>
-                            
+
                             <div class="row">
                                 <div class="col-xl-12">
                                     <div class="wsus__dashboard_profile_update_info">

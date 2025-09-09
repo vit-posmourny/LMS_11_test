@@ -50,7 +50,7 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('instructor.withdraw.index') }}" class="{{ request()->routeIs('instructor.orders.index') ? 'active' : '' }}">
+                <a href="{{ route('instructor.withdraw.index') }}" class="{{ request()->routeIs('instructor.withdraw.index') ? 'active' : '' }}">
                     <div class="img">
                         <img src="{{ asset('frontend/assets/images/dash_icon_8.png') }}" alt="icon"
                             class="img-fluid w-100">

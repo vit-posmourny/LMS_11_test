@@ -5,16 +5,16 @@
     <!--===========================
             BREADCRUMB START
     ============================-->
-    <section class="wsus__breadcrumb" style="background: url(images/breadcrumb_bg.jpg);">
+    <section class="wsus__breadcrumb" style="background: url({{ asset('frontend/assets/images/breadcrumb_bg.jpg') }});">
         <div class="wsus__breadcrumb_overlay">
             <div class="container">
                 <div class="row">
                     <div class="col-12 wow fadeInUp">
                         <div class="wsus__breadcrumb_text">
-                            <h1>Become Instructor</h1>
+                            <h1>Student Dashboard</h1>
                             <ul>
                                 <li><a href="{{ url('/') }}">Home</a></li>
-                                <li>Become Instructor</li>
+                                <li>Student Dashboard / Become Instructor</li>
                             </ul>
                         </div>
                     </div>
