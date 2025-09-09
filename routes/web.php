@@ -12,6 +12,7 @@ use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WithdrawController;
 use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Frontend\CourseContentController;
+use App\Http\Controllers\Frontend\EnrolledCourseController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
 
@@ -81,6 +82,10 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('profile.update-password');
     Route::post('profile/update-social', [ProfileController::class, 'updateSocial'])
         ->name('profile.update-social');
+
+    /** Enrolled Courses Routes */
+    Route::get('enrolled-courses', [EnrolledCourseController::class, 'index'])
+        ->name('enrolled-courses.index');
 });
 /*
 *-----------------------------------------------------------------
