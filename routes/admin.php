@@ -173,6 +173,10 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Withdrawal Routes */
     Route::get('withdraw-requests', [WithdrawRequestController::class, 'index'])
         ->name('withdraw-request.index');
+    Route::get('withdraw-requests/{withdraw}/details', [WithdrawRequestController::class, 'show'])
+        ->name('withdraw-request.show');
+    Route::post('withdraw-requests/{withdraw}/status', [WithdrawRequestController::class, 'updateStatus'])
+        ->name('withdraw-request.status.update');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

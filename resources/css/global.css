@@ -16,3 +16,10 @@ textarea.form-control.gateway__description {
 .card.rounded-3 tr:nth-last-child(1) td {
     border-style: none !important;
 }
+
+
+@media (orientation: portrait) {
+    .navbar-nav.flex-row {
+        display: none;
+    }
+}
