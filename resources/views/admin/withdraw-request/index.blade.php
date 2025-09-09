@@ -27,9 +27,9 @@
                                             @if ($withdraw->status === 'pending')
                                                 <span class="badge bg-yellow text-yellow-fg">Pending</span>
                                             @elseif ($withdraw->status === 'approved')
-                                                <span class="badge bg-green text-green-fg">Pending</span>
+                                                <span class="badge bg-green text-green-fg">Approved</span>
                                             @elseif ($withdraw->status === 'rejected')
-                                                <span class="badge bg-red text-red-fg">Pending</span>
+                                                <span class="badge bg-red text-red-fg">Rejected</span>
                                             @endif
                                         </td>
                                         <td>
