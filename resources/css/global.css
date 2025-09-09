@@ -13,6 +13,6 @@ textarea.form-control.gateway__description {
 }
 
 /* vybírá buňky v posledním řádku a odebere okraj (spodní zobrazoval dvojitě) */
-tr:nth-last-child(1) td {
+.card.rounded-3 tr:nth-last-child(1) td {
     border-style: none !important;
 }

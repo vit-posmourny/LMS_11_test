@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PayoutGatewayController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\WithdrawRequestController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -168,6 +169,10 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     /** Payout Gateway Routes */
     Route::resource('payout-gateway', PayoutGatewayController::class);
+
+    /** Withdrawal Routes */
+    Route::get('withdraw-requests', [WithdrawRequestController::class, 'index'])
+        ->name('withdraw-request.index');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
