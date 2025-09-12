@@ -89,12 +89,12 @@
                                                             <i class="fas fa-star" aria-hidden="true"></i>
                                                             <span>(5.0)</span>
                                                         </p>
-                                                        <a class="title" href="#">{{ $enrollment->course->title }}</a>
+                                                        <a class="title" href="{{ route('student.player.index', $enrollment->course->slug) }}">{{ $enrollment->course->title }}</a>
                                                         <div class="mb-1"><small class="text-muted">By</small> {{ $enrollment->course->instructor->name }}</div>
                                                         <span>{{ $enrollment->course->seo_description }}</span>
                                                     </td>
                                                     <td class="text-center col-2">
-                                                        <a href="" class="btn btn-outline-info">Watch Course</a>
+                                                        <a href="{{ route('student.player.index', $enrollment->course->slug) }}" class="btn btn-outline-info">Watch Course</a>
                                                     </td>
                                                     <td class="col-3"></td>
                                                 </tr>

@@ -23,3 +23,14 @@ textarea.form-control.gateway__description {
         display: none;
     }
 }
+
+/* frontend/assets/css/video_player.css */
+.video-js .vjs-big-play-button span {
+    font-size: 50px !important;
+    color: var(--colorWhite);
+}
+
+/* frontend/assets/css/style.css */
+.video-js {
+    width: 100%;
+}
