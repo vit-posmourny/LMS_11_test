@@ -516,47 +516,41 @@
             <h2 class="video_heading">Course Content</h2>
             <div class="accordion" id="accordionExample">
                 <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            <b>Introduction</b>
-                            <span>5/5</span>
-                        </button>
-                    </h2>
-                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <label class="form-check-label">
-                                    1_Setting up Environment (Part - 1)
-                                    <span>
-                                        <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
-                                        06.03
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="">
-                                <label class="form-check-label">
-                                    2_Environment Setup for Project (Part - 1)
-                                    <span>
-                                        <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
-                                        06.03
-                                    </span>
-                                </label>
-                            </div>
-                            <div class="dropdown">
-                                <button class="btn btn-secondary" type="button">
-                                    <i class="fas fa-folder-open"></i> Resources
-                                </button>
-                                <ul>
-                                    <li><a class="dropdown-item" href="#">Resources File 01</a></li>
-                                    <li><a class="dropdown-item" href="#">Resources 02</a></li>
-                                    <li><a class="dropdown-item" href="#">Resources 03</a></li>
-                                </ul>
+                    @foreach ($course->chapters as $chapter )
+                        <h2 class="accordion-header">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapse{{ $chapter->id }}" aria-expanded="true" aria-controls="collapse-{{ $chapter->id }}">
+                                <b>{{ $chapter->title }}</b>
+                                <span>5/5</span>
+                            </button>
+                        </h2>
+                        <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                @foreach ($chapter->lessons as $lesson )
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="">
+                                    <label class="form-check-label">
+                                        {{ $lesson->title }}
+                                        <span>
+                                            <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
+                                            {{ convertMinutesToHours($lesson->duration) }}
+                                        </span>
+                                    </label>
+                                </div>
+                                @endforeach
+                                {{-- <div class="dropdown">
+                                    <button class="btn btn-secondary" type="button">
+                                        <i class="fas fa-folder-open"></i> Resources
+                                    </button>
+                                    <ul>
+                                        <li><a class="dropdown-item" href="#">Resources File 01</a></li>
+                                        <li><a class="dropdown-item" href="#">Resources 02</a></li>
+                                        <li><a class="dropdown-item" href="#">Resources 03</a></li>
+                                    </ul>
+                                </div> --}}
                             </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
