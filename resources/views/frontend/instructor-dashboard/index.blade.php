@@ -48,9 +48,12 @@
                         </div>
                     </div>
                 @endif
-                <div class="text-end">
-                    <a href="{{ route('student.become-instructor') }}" class="btn btn-primary">Become an Instructor</a>
-                </div>
+                @if (user()->role !== 'instructor')
+                    <div class="text-end">
+                        <a href="{{ route('student.become-instructor') }}" class="btn btn-primary">Become an Instructor</a>
+                    </div>
+                @endif
+
                 <div class="row">
                     <div class="col-xl-4 col-sm-6 wow fadeInUp">
                         <div class="wsus__dash_earning">

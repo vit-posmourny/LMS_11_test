@@ -14,7 +14,7 @@
                         <h1>Instructor Dashboard</h1>
                         <ul>
                             <li><a href="{{ url('/') }}">Home</a></li>
-                            <li>Instructor Dashboard</li>
+                            <li>Instructor Dashboard / Courses</li>
                         </ul>
                     </div>
                 </div>

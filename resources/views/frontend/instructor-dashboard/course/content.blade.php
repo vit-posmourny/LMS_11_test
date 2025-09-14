@@ -28,7 +28,7 @@
                                 <div class="btn btn-secondary dropdown-toggle"
                                     type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    <i class="far fa-plus"></i>
+                                    <i class="fas fa-plus"></i>
                                 </div>
                                 <ul class="dropdown-menu dropdown-menu-end">
                                     <li>
@@ -40,8 +40,8 @@
                                     </li>
                                 </ul>
                             </div>
-                            <a class="edit edit__chapter" data-course-id="{{ $chapter->course_id }}" data-chapter-id="{{ $chapter->id }}" href="#"><i
-                                    class="far fa-edit"></i></a>
+                            <a class="edit edit__chapter" style="color: rgba(var(--bs-link-color-rgb)" data-course-id="{{ $chapter->course_id }}" data-chapter-id="{{ $chapter->id }}" href="#"><i
+                                    class="fas fa-edit"></i></a>
                             <a class="del delete__item" href="{{ route('instructor.content.delete-chapter', $chapter->id) }}"><i
                                     class="fas fa-trash-alt"></i></a>
                         </div>
@@ -54,7 +54,7 @@
                                     <span>{{ $lesson->title }}</span>
                                     <div class="add_course_content_action_btn">
                                         <a class="edit__lesson" href="#" data-lesson-id="{{ $lesson->id }}" data-course-id="{{ $chapter->course_id }}"
-                                            data-chapter-id="{{ $chapter->id }}"><i class="far fa-edit"></i></a>
+                                            data-chapter-id="{{ $chapter->id }}"><i class="fas fa-edit"></i></a>
                                         <a class="del delete__item" href="{{ route('instructor.content.destroy-lesson', $lesson->id) }}"><i
                                                 class="fas fa-trash-alt"></i></a>
                                         <a class="arrow dragger" href="javascript:; "><i
