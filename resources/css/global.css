@@ -34,3 +34,8 @@ textarea.form-control.gateway__description {
 .video-js {
     width: 100%;
 }
+
+
+.wsus__course_sidebar .form-check :hover {
+    cursor: pointer;
+}
