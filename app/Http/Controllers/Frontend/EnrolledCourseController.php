@@ -26,4 +26,10 @@ class EnrolledCourseController extends Controller
 
         return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course'));
     }
+
+
+    function getLessonContent(Request $request)
+    {
+        dd($request->all());
+    }
 }

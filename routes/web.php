@@ -88,6 +88,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('enrolled-courses.index');
     Route::get('enrolled-courses/player/{slug}', [EnrolledCourseController::class, 'playerIndex'])
         ->name('player.index');
+    Route::get('get-lesson-content', [EnrolledCourseController::class, 'getLessonContent'])
+        ->name('get-lesson-content');
 });
 /*
 *-----------------------------------------------------------------
