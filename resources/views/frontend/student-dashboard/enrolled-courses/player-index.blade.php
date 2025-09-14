@@ -63,9 +63,9 @@
                 <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/webm" />
             </video> -->
 
-            <video id="vid1" class="video-js vjs-default-skin" controls autoplay width="640" height="264"
-                data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/fsSN6jDtJdY?si=E5_FJf6kT2d679GO"}] }'>
-            </video>
+            <div class="_video_holder">
+                {{-- here will be returns from frontend/player.js --}}
+            </div>
 
             <div class="video_tabs_area">
                 <ul class="nav nav-pills" id="pills-tab2" role="tablist">

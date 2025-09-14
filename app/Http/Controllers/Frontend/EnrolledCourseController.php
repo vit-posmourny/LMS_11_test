@@ -7,6 +7,7 @@ use App\Models\Enrollment;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\CourseChapterLesson;
 
 class EnrolledCourseController extends Controller
 {
@@ -30,6 +31,12 @@ class EnrolledCourseController extends Controller
 
     function getLessonContent(Request $request)
     {
-        dd($request->all());
+        $lesson = CourseChapterLesson::where([
+            'course_id' => $request->course_id,
+            'chapter_id' => $request->chapter_id,
+            'id' => $request->lesson_id,
+        ])->first();
+
+        return response()->json($lesson);
     }
 }
