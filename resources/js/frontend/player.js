@@ -16,8 +16,7 @@ function playerHtml(source_type, source)
         let player = `<video id="vid1" class="video-js vjs-default-skin" controls autoplay width="640" height="264"
                           data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "${source}"}] }'>
                       </video>`;
-
-        $('._video_holder').html(player);
+        return player;
     }
 }
 
@@ -39,8 +38,19 @@ $('._lesson').on('click', function()
             'csrf_token': csrf_token,
         },
         beforeSend: function() {},
-        success: function(data) {
-            playerHtml(data.storage, data.file_path);
+        success: function(data)
+        {
+            $('._video_holder').html(playerHtml(data.storage, data.file_path));
+            // resetting any existing player
+            if (videojs.getPlayers()['vid1']) {
+                videojs.getPlayers()['vid1'].dispose();
+            }
+            // initializing player
+            if ($('#vid1').length > 0)
+                videojs('vid1').ready(function() {
+                    this.play();
+            })
+
         },
         error: function(xhr, status, error) {},
     })
