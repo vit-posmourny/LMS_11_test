@@ -602,6 +602,24 @@
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
+    <script>
+        $(function() {
+            lessons = $('._lesson');
+            lessons.each(function(index, lesson)
+            {
+                let courseId = $(lesson).data('course-id');
+                let chapterId = $(lesson).data('chapter-id');
+                let lessonId = $(lesson).data('lesson-id');
+                if (courseId == {{ $lastWatchHistory->course_id }}
+                    && chapterId == {{ $lastWatchHistory->chapter_id }}
+                    && lessonId == {{ $lastWatchHistory->lesson_id }})
+                {
+                    $(lesson).click();
+                }
+            })
+        })
+    </script>
+
 </body>
 
 </html>
