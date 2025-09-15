@@ -39,4 +39,10 @@ class EnrolledCourseController extends Controller
 
         return response()->json($lesson);
     }
+
+
+    function updateWatchHistory(Request $request)
+    {
+        dd($request->all());
+    }
 }

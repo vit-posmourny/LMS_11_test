@@ -1,7 +1,8 @@
 // Variables
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
-const getLessonContentURL = '/student/get-lesson-content'
+const getLessonContentURL = '/student/get-lesson-content';
+const _updateWatchHistory = '/student/update-watch-history';
 
 // htmls
 
@@ -27,10 +28,30 @@ function playerHtml(source_type, source)
     }
     else if (source_type === 'upload' || 'external_link')
     {
-        let player = `<iframe src="${source}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+        let player = `<iframe src="${source}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
 
         return player;
     }
+}
+
+
+function updateWatchHistory(courseId, chapterId, lessonId)
+{
+    $.ajax({
+        method: 'POST',
+        url: baseUrl + _updateWatchHistory,
+        data: {
+            'course_id': courseId,
+            'chapter_id': chapterId,
+            'lesson_id': lessonId,
+            '_token': csrf_token,
+        },
+        beforeSend: function() {},
+        success: function(data)
+        {
+        },
+        error: function(xhr, status, error) {},
+    })
 }
 
 // On DOM Load
@@ -48,7 +69,7 @@ $('._lesson').on('click', function()
             'course_id': courseId,
             'chapter_id': chapterId,
             'lesson_id': lessonId,
-            'csrf_token': csrf_token,
+            '_token': csrf_token,
         },
         beforeSend: function() {},
         success: function(data)
@@ -63,7 +84,8 @@ $('._lesson').on('click', function()
                 videojs('vid1').ready(function() {
                     this.play();
             })
-
+            // update watch history
+            updateWatchHistory(courseId, chapterId, lessonId);
         },
         error: function(xhr, status, error) {},
     })
