@@ -25,6 +25,12 @@ function playerHtml(source_type, source)
                       </video>`;
         return player;
     }
+    else if (source_type === 'upload' || 'external_link')
+    {
+        let player = `<iframe src="${source}" width="100%" height="100%" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
+
+        return player;
+    }
 }
 
 // On DOM Load
