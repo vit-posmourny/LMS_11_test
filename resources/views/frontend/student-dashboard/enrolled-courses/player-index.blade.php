@@ -525,7 +525,7 @@
                                 <span>5/5</span>
                             </button>
                         </h2>
-                        <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
@@ -614,7 +614,10 @@
                     && chapterId == {{ $lastWatchHistory->chapter_id }}
                     && lessonId == {{ $lastWatchHistory->lesson_id }})
                 {
+                    // autoplay
                     $(lesson).click();
+                    // uncollapse only accordion including last watch lesson
+                    $(lesson).closest('.accordion-collapse').addClass('show');
                 }
             })
         })
