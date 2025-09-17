@@ -101,7 +101,7 @@
     <!--font-awesome js-->
     <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
     {{-- select2.min.js --}}
-    <script defer src={{ asset('frontend/assets/js/select2.min.js') }}></script>
+    <script src={{ asset('frontend/assets/js/select2.min.js') }} defer></script>
     <!-- Libs JS -->
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!-- Tabler Core -->

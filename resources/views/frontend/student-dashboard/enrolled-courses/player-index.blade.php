@@ -11,6 +11,7 @@
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animated_barfiller.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.min.css') }}">
@@ -520,18 +521,19 @@
                     @foreach ($course->chapters as $chapter )
                         <h2 class="accordion-header">
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapse{{ $chapter->id }}" aria-expanded="true" aria-controls="collapse-{{ $chapter->id }}">
+                                data-bs-target="#collapse{{ $chapter->id }}" aria-expanded="true" aria-controls="collapse{{ $chapter->id }}">
                                 <b>{{ $chapter->title }}</b>
                                 <span>5/5</span>
                             </button>
                         </h2>
-                        <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+                        <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse {{ $lastWatchHistory->chapter_id === $chapter->id ? 'show' : 'hide' }}" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                     <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">
-                                        {{ $lesson->title }}
+                                    <label class="form-check-label form-selectgroup-item">
+                                        <input id="{{ $lesson->title }}" type="radio" class="form-selectgroup-input" {{ $lastWatchHistory->lesson_id === $lesson->id ? 'checked' : '' }}/>
+                                        <span class="form-selectgroup-label">{{ $lesson->title }}</span>
                                         <span>
                                             <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
                                             {{ convertMinutesToHours($lesson->duration) }}
@@ -565,6 +567,8 @@
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!--bootstrap js-->
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Tabler Core -->
+    <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}"></script>
     <!--font-awesome js-->
     <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script>
     <!--marquee js-->
