@@ -11,10 +11,7 @@ if (!function_exists('convertMinutesToHours'))
         $hours = floor($minutes / 60);
         $minutes = $minutes % 60;
 
-        if ($hours == 0)
-            return sprintf('%02dmin', $minutes);
-
-        return sprintf('%dhr %02dmin', $hours, $minutes);
+        return sprintf('%dh %02dm', $hours, $minutes);
     }
 
 

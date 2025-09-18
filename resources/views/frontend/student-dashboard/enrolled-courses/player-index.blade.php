@@ -528,9 +528,9 @@
                         <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
-                                <div class="form-check _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
-                                    <input class="form-check-input" type="checkbox" value="">
-                                    <label class="form-check-label">
+                                <div class="form-check">
+                                    <input class="form-check-input _make_complete" type="checkbox" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <label class="form-check-label _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
                                             <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">

@@ -3,6 +3,7 @@ const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const getLessonContentURL = '/student/get-lesson-content';
 const _updateWatchHistory = '/student/update-watch-history';
+const _updateLessonCompletion = '/student/update-lesson-completion';
 
 // htmls
 
@@ -89,6 +90,32 @@ $('._lesson').on('click', function()
             })
             // update watch history
             updateWatchHistory(courseId, chapterId, lessonId);
+        },
+        error: function(xhr, status, error) {},
+    })
+});
+
+
+
+$('._make_complete').on('click', function()
+{
+    let courseId = $(this).data('course-id');
+    let chapterId = $(this).data('chapter-id');
+    let lessonId = $(this).data('lesson-id');
+
+    $.ajax({
+        method: 'POST',
+        url: baseUrl + _updateLessonCompletion,
+        data: {
+            'course_id': courseId,
+            'chapter_id': chapterId,
+            'lesson_id': lessonId,
+            '_token': csrf_token,
+        },
+        beforeSend: function() {},
+        success: function(data)
+        {
+
         },
         error: function(xhr, status, error) {},
     })

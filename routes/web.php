@@ -92,6 +92,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('get-lesson-content');
     Route::post('update-watch-history', [EnrolledCourseController::class, 'updateWatchHistory'])
         ->name('update-watch-history');
+    Route::post('update-lesson-completion', [EnrolledCourseController::class, 'updateLessonCompletion'])
+        ->name('update-lesson-completion');
 });
 /*
 *-----------------------------------------------------------------

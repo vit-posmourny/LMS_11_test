@@ -9,6 +9,7 @@ use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\CourseChapterLesson;
 use App\Models\WatchHistory;
+use Illuminate\Http\Response;
 
 class EnrolledCourseController extends Controller
 {
@@ -55,5 +56,12 @@ class EnrolledCourseController extends Controller
         ]);
 
         $watchHistory->touch();
+    }
+
+
+
+    function updateLessonCompletion(Request $request): Response
+    {
+        dd($request->all());
     }
 }
