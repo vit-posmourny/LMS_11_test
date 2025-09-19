@@ -1,7 +1,9 @@
+import { notyf } from '../notyf.js';
+
 // Variables
-const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
-const baseUrl = $(`meta[name="base_url"]`).attr('content');
-const getLessonContentURL = '/student/get-lesson-content';
+const _csrf_token = $(`meta[name="csrf_token"]`).attr('content');
+const _baseUrl = $(`meta[name="base_url"]`).attr('content');
+const _getLessonContentURL = '/student/get-lesson-content';
 const _updateWatchHistory = '/student/update-watch-history';
 const _updateLessonCompletion = '/student/update-lesson-completion';
 
@@ -40,12 +42,12 @@ function updateWatchHistory(courseId, chapterId, lessonId)
 {
     $.ajax({
         method: 'POST',
-        url: baseUrl + _updateWatchHistory,
+        url: _baseUrl + _updateWatchHistory,
         data: {
             'course_id': courseId,
             'chapter_id': chapterId,
             'lesson_id': lessonId,
-            '_token': csrf_token,
+            '_token': _csrf_token,
         },
         beforeSend: function() {},
         success: function(data)
@@ -65,15 +67,16 @@ $('._lesson').on('click', function()
     let courseId = $(this).data('course-id');
     let chapterId = $(this).data('chapter-id');
     let lessonId = $(this).data('lesson-id');
+    //alert(courseId +' '+ chapterId +' '+ lessonId);
 
     $.ajax({
         method: 'GET',
-        url: baseUrl + getLessonContentURL,
+        url: _baseUrl + _getLessonContentURL,
         data: {
             'course_id': courseId,
             'chapter_id': chapterId,
             'lesson_id': lessonId,
-            '_token': csrf_token,
+            '_token': _csrf_token,
         },
         beforeSend: function() {},
         success: function(data)
@@ -105,17 +108,17 @@ $('._make_complete').on('click', function()
 
     $.ajax({
         method: 'POST',
-        url: baseUrl + _updateLessonCompletion,
+        url: _baseUrl + _updateLessonCompletion,
         data: {
             'course_id': courseId,
             'chapter_id': chapterId,
             'lesson_id': lessonId,
-            '_token': csrf_token,
+            '_token': _csrf_token,
         },
         beforeSend: function() {},
         success: function(data)
         {
-
+            notyf.success(data.message);
         },
         error: function(xhr, status, error) {},
     })

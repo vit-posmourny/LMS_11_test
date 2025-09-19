@@ -24,10 +24,12 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/sticky_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
-
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+
     @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css', 'resources/js/frontend/player.js'])
 </head>
 
@@ -529,7 +531,7 @@
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check">
-                                    <input class="form-check-input _make_complete" type="checkbox" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <input class="form-check-input _make_complete" type="checkbox" @checked(in_array($lesson->id, $watched)) data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                     <label class="form-check-label _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
@@ -567,6 +569,8 @@
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--font-awesome js-->
     <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script>
+    <!-- Libs JS -->
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!--marquee js-->
     <script src="{{ asset('frontend/assets/js/jquery.marquee.min.js') }}"></script>
     <!--slick js-->
@@ -610,9 +614,9 @@
                 let courseId = $(lesson).data('course-id');
                 let chapterId = $(lesson).data('chapter-id');
                 let lessonId = $(lesson).data('lesson-id');
-                if (courseId == {{ $lastWatchHistory->course_id }}
-                    && chapterId == {{ $lastWatchHistory->chapter_id }}
-                    && lessonId == {{ $lastWatchHistory->lesson_id }})
+                if (courseId == {{ @$lastWatchHistory->course_id }}
+                    && chapterId == {{ @$lastWatchHistory->chapter_id }}
+                    && lessonId == {{ @$lastWatchHistory->lesson_id }})
                 {
                     // autoplay
                     $(lesson).click();
