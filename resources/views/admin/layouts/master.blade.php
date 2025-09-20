@@ -11,7 +11,9 @@
     <title>Dashboard</title>
     {{-- css plugins --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
@@ -99,7 +101,9 @@
     <!--jquery library js-->
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!--font-awesome js-->
-    <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script>
+    {{-- <script src="{{ asset('admin/assets/dist/js/Font-Awesome.js') }}"></script> --}}
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
     {{-- select2.min.js --}}
     <script defer src={{ asset('frontend/assets/js/select2.min.js') }}></script>
     <!-- Libs JS -->

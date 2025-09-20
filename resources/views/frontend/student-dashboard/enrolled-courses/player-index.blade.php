@@ -27,7 +27,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css">
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> --}}
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
 
     @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css', 'resources/js/frontend/player.js'])
@@ -561,7 +563,9 @@
     <!--bootstrap js-->
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
     <!--font-awesome js-->
-    <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script>
+    {{-- <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script> --}}
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
     <!-- Libs JS -->
     <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!--marquee js-->
