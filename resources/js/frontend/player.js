@@ -118,6 +118,8 @@ $('._make_complete').on('click', function()
         beforeSend: function() {},
         success: function(data)
         {
+            $('#watched').html(data.watched_count);
+            $('#percentage').html(data.percentage);
             notyf.success(data.message);
         },
         error: function(xhr, status, error) {},

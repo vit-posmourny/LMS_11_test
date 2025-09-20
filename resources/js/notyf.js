@@ -8,7 +8,7 @@ export const notyf = new Notyf({
         type: 'success',
         background: '#2ecc71',
         icon: {
-            className: 'fas fa-circle-check',
+            className: 'success_icon',
             tagName: 'i',
             text: '',
             color: 'white'

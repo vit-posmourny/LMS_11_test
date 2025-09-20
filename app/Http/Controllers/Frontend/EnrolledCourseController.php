@@ -27,11 +27,11 @@ class EnrolledCourseController extends Controller
 
         if (!Enrollment::where('user_id', user()->id)->where('course_id', $course->id)->where('have_access', 1)->exists())
             return abort(404);
-
+        $lesson_count = CourseChapterLesson::where('course_id', $course->id)->count();
         $lastWatchHistory = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->orderBy('updated_at', 'desc')->first();
         $watched = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('lesson_id')->toArray();
-
-        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'watched'));
+        $watched_count = count($watched);
+        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'watched', 'lesson_count', 'watched_count'));
     }
 
 
@@ -80,7 +80,12 @@ class EnrolledCourseController extends Controller
                 'is_completed' => $watchedLesson->is_completed == 0 ? 1 : 0,
             ]);
 
-            return response(['status' => 'success', 'message' => 'Updated Sucessfully.']);
+            $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
+            $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
+            $percentage = "(".number_format($watched_count/$lesson_count*100, 0, '.', '')."%)";
+            
+            return response(['status' => 'success', 'message' => 'Updated Sucessfully.', 'watched_count' => $watched_count,
+                            'lesson_count' => $lesson_count, 'percentage' => $percentage]);
         }
         return response(['status' => 'error', 'message' => 'is_completed is not defined.']);
     }

@@ -52,18 +52,11 @@
         <div class="col-12">
             <div class="wsus__course_header">
                 <a href="index.html"><i class="fas fa-angle-left"></i> Speaking English for Beginners</a>
-                <p>Your Progress: 20 of 15 (75%)</p>
+                <p>Your Progress: <span id="watched" style="color:var(--colorWhite);">{{ $watched_count }}</span> of {{ $lesson_count }} <span id="percentage" style="color:var(--colorWhite);">({{ number_format($watched_count/$lesson_count*100, 0, '.', '') }}%)</span></p>
             </div>
         </div>
 
         <div class="wsus__course_video_player">
-
-            <!-- <video id="my-video" class="video-js" controls preload="auto" width="640" height="264"
-                poster="images/video_thumb.jpg" data-setup="{}">
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
-                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/webm" />
-            </video> -->
-
             <div class="_video_holder">
                 {{-- here will be returns from frontend/player.js --}}
             </div>
@@ -513,8 +506,8 @@
                     </div>
                 </div>
             </div>
-
         </div>
+
         <div class="wsus__course_sidebar d-none d-lg-block">
             <h2 class="video_heading">Course Content</h2>
             <div class="accordion" id="accordionExample">
