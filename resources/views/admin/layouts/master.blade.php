@@ -12,8 +12,8 @@
     {{-- css plugins --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
     {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> --}}
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
