@@ -30,8 +30,10 @@ class EnrolledCourseController extends Controller
         $lesson_count = CourseChapterLesson::where('course_id', $course->id)->count();
         $lastWatchHistory = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->orderBy('updated_at', 'desc')->first();
         $watched = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('lesson_id')->toArray();
+        $result = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('chapter_id')->toArray();
+        $watched_by_Chapters = array_count_values($result);
         $watched_count = count($watched);
-        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'watched', 'lesson_count', 'watched_count'));
+        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'watched', 'lesson_count', 'watched_count', 'watched_by_Chapters'));
     }
 
 
@@ -83,7 +85,7 @@ class EnrolledCourseController extends Controller
             $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
             $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
             $percentage = "(".number_format($watched_count/$lesson_count*100, 0, '.', '')."%)";
-            
+
             return response(['status' => 'success', 'message' => 'Updated Sucessfully.', 'watched_count' => $watched_count,
                             'lesson_count' => $lesson_count, 'percentage' => $percentage]);
         }

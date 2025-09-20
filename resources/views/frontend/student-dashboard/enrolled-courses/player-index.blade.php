@@ -519,7 +519,7 @@
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse{{ $chapter->id }}" aria-expanded="true" aria-controls="collapse-{{ $chapter->id }}">
                                 <b>{{ $chapter->title }}</b>
-                                <span>5/5</span>
+                                <span>{{ $watched_by_Chapters[$chapter->id] ?? '0' }}/{{ $chapter->lessons->count() }}</span>
                             </button>
                         </h2>
                         <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
