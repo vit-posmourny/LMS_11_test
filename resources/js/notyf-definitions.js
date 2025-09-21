@@ -1,4 +1,3 @@
-// resources\js\notyf.js
 // Create an instance of Notyf
 export const notyf = new Notyf({
     duration: 5000,
@@ -45,3 +44,10 @@ export const notyf = new Notyf({
         }
     }]
 });
+
+// Nebo si přidat malé wrappery (doporučuji — pak můžeš volat stejně jako success/error)
+notyf.info = (message, opts = {}) =>
+    notyf.open(Object.assign({ type: 'info', message }, opts));
+
+notyf.warning = (message, opts = {}) =>
+    notyf.open(Object.assign({ type: 'warning', message }, opts));

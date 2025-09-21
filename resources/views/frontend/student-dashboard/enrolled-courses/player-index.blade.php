@@ -7,7 +7,9 @@
         content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="base_url" content="{{ url('') }}">
     <meta name="csrf_token" content="{{ csrf_token() }}">
+
     <title>EduCore - Online Courses & Education HTML Template</title>
+
     <link rel="icon" type="image/png" href="images/favicon.png">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
@@ -27,10 +29,10 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> --}}
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.min.css') }}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
 
     @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css', 'resources/js/frontend/player.js'])
 </head>
@@ -526,8 +528,8 @@
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check">
-                                    <input class="form-check-input _make_complete" type="checkbox" @checked(in_array($lesson->id, $watched)) data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
-                                    <label class="form-check-label _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <input class="form-check-input _make_complete" type="checkbox" @disabled(false) @checked(in_array($lesson->id, $watched)) data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <label class="_lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
                                             <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
@@ -562,12 +564,6 @@
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!--bootstrap js-->
     <script src="{{ asset('frontend/assets/js/bootstrap.bundle.min.js') }}"></script>
-    <!--font-awesome js-->
-    {{-- <script src="{{ asset('frontend/assets/js/Font-Awesome.js') }}"></script> --}}
-    <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
-    <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
-    <!-- Libs JS -->
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
     <!--marquee js-->
     <script src="{{ asset('frontend/assets/js/jquery.marquee.min.js') }}"></script>
     <!--slick js-->
@@ -599,7 +595,12 @@
     <script src="{{ asset('frontend/assets/js/videojs-vimeo.umd.js') }}"></script>
     <!--wow js-->
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
-
+    <!-- notyf js -->
+    <script src="{{ asset('assets/notyf.min.js') }}"></script>
+    <script src="{{ asset('vendor/flasher/flasher-notyf.min.js') }}"></script>
+    <!--font-awesome js-->
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 

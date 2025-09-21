@@ -7,11 +7,12 @@
     <meta name="base_url" content="{{ url('') }}">
     <meta name="csrf_token" content="{{ csrf_token() }}">
     @stack('meta')
+
     <title>EduCore - Online Courses & Education HTML Template</title>
+
     <link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"> --}}
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animated_barfiller.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.min.css') }}">
@@ -26,14 +27,14 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/sticky_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.min.css') }}">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.css">
-    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"> --}}
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('public/fontawesome-free-7.0.1-web/css/solid.min.css') }}">
-    <link rel=" stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
+
     @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css'])
     {{-- dynamic js --}}
     @stack('header_scripts')
@@ -112,15 +113,15 @@
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
     <!-- jquery ui -->
     <script src="{{ asset('/frontend/assets/js/jquery-ui.min.js') }}"></script>
-
-    <!-- 3rd party plugins -->
-    <script src="https://cdn.jsdelivr.net/npm/notyf@3/notyf.min.js"></script>
+    <!-- CDN plugins -->
     <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/all.min.js"></script> --}}
+    <!-- fontawsome js -->
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
-
+    <!-- notyf js -->
+    <script src="{{ asset('assets/notyf.min.js') }}"></script>
+    <script src="{{ asset('vendor/flasher/flasher-notyf.min.js') }}"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 

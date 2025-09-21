@@ -29,11 +29,13 @@ class EnrolledCourseController extends Controller
             return abort(404);
         $lesson_count = CourseChapterLesson::where('course_id', $course->id)->count();
         $lastWatchHistory = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->orderBy('updated_at', 'desc')->first();
+        $played = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->pluck('lesson_id')->toArray();
         $watched = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('lesson_id')->toArray();
         $result = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('chapter_id')->toArray();
         $watched_by_Chapters = array_count_values($result);
         $watched_count = count($watched);
-        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'watched', 'lesson_count', 'watched_count', 'watched_by_Chapters'));
+        return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'played', 'watched',
+                                                                                        'lesson_count', 'watched_count', 'watched_by_Chapters'));
     }
 
 
@@ -89,6 +91,6 @@ class EnrolledCourseController extends Controller
             return response(['status' => 'success', 'message' => 'Updated Sucessfully.', 'watched_count' => $watched_count,
                             'lesson_count' => $lesson_count, 'percentage' => $percentage]);
         }
-        return response(['status' => 'error', 'message' => 'is_completed is not defined.']);
+        return response(['status' => 'error', 'message' => "Lesson not yet viewed."], 404);
     }
 }

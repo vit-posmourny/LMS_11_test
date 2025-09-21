@@ -1,6 +1,6 @@
 // resources\js\frontend\cart.js
 // imports
-import { notyf } from '../notyf.js';
+import { notyf } from '../notyf-definitions.js';
 // variables
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');

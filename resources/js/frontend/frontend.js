@@ -1,6 +1,6 @@
-// resources\js\frontend\frontend.js
+// resources/js/frontend/frontend.js
 // imports
-import { notyf } from '../notyf.js';
+import { notyf } from '../notyf-definitions.js';
 import './cart.js';
 // variables
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');

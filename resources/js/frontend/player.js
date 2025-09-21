@@ -1,4 +1,4 @@
-import { notyf } from '../notyf.js';
+import { notyf } from '../notyf-definitions.js';
 
 // Variables
 const _csrf_token = $(`meta[name="csrf_token"]`).attr('content');
@@ -29,7 +29,7 @@ function playerHtml(source_type, source)
                       </video>`;
         return player;
     }
-    else if (source_type === 'upload' || 'external_link')
+    else if (source_type === 'upload' || source_type === 'external_link')
     {
         let player = `<iframe src="${source}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
 
@@ -67,7 +67,6 @@ $('._lesson').on('click', function()
     let courseId = $(this).data('course-id');
     let chapterId = $(this).data('chapter-id');
     let lessonId = $(this).data('lesson-id');
-    //alert(courseId +' '+ chapterId +' '+ lessonId);
 
     $.ajax({
         method: 'GET',
@@ -120,8 +119,10 @@ $('._make_complete').on('click', function()
         {
             $('#watched').html(data.watched_count);
             $('#percentage').html(data.percentage);
-            notyf.success(data.message);
         },
-        error: function(xhr, status, error) {},
+        error: function(xhr, status, error)
+        {
+            notyf.warning(xhr.responseJSON.message);
+        },
     })
 });
