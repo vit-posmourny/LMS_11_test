@@ -27,6 +27,7 @@ class EnrolledCourseController extends Controller
 
         if (!Enrollment::where('user_id', user()->id)->where('course_id', $course->id)->where('have_access', 1)->exists())
             return abort(404);
+
         $lesson_count = CourseChapterLesson::where('course_id', $course->id)->count();
         $lastWatchHistory = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->orderBy('updated_at', 'desc')->first();
         $played = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id])->pluck('lesson_id')->toArray();
@@ -34,6 +35,7 @@ class EnrolledCourseController extends Controller
         $result = WatchHistory::where(['user_id' => user()->id, 'course_id' => $course->id, 'is_completed' => 1])->pluck('chapter_id')->toArray();
         $watched_by_Chapters = array_count_values($result);
         $watched_count = count($watched);
+
         return view('frontend.student-dashboard.enrolled-courses.player-index', compact('course', 'lastWatchHistory', 'played', 'watched',
                                                                                         'lesson_count', 'watched_count', 'watched_by_Chapters'));
     }
@@ -74,15 +76,19 @@ class EnrolledCourseController extends Controller
             'lesson_id' => $request->lesson_id,
         ])->first();
 
-        if (isset($watchedLesson->is_completed)) {
-            WatchHistory::updateOrCreate([
-                'user_id' => user()->id,
-                'course_id' => $request->course_id,
-                'chapter_id' => $request->chapter_id,
-                'lesson_id' => $request->lesson_id,
-            ],[
-                'is_completed' => $watchedLesson->is_completed == 0 ? 1 : 0,
-            ]);
+        if (isset($watchedLesson->is_completed))
+        {
+            WatchHistory::withoutTimestamps(function () use ($request, $watchedLesson)
+            {
+                WatchHistory::updateOrCreate([
+                    'user_id' => user()->id,
+                    'course_id' => $request->course_id,
+                    'chapter_id' => $request->chapter_id,
+                    'lesson_id' => $request->lesson_id,
+                ],[
+                    'is_completed' => !$watchedLesson->is_completed,
+                ]);
+            });
 
             $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
             $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
@@ -91,6 +97,6 @@ class EnrolledCourseController extends Controller
             return response(['status' => 'success', 'message' => 'Updated Sucessfully.', 'watched_count' => $watched_count,
                             'lesson_count' => $lesson_count, 'percentage' => $percentage]);
         }
-        return response(['status' => 'error', 'message' => "Lesson not yet viewed."], 404);
+        return response(['status' => 'error', 'message' => "Lesson not yet viewed.", 'lessonId' => $request->lesson_id], 404);
     }
 }

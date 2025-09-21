@@ -64,6 +64,15 @@ $('._lesson').on('click', function()
     $('._lesson.active').removeClass('active');
     $(this).addClass('active');
 
+    let checkbox = $(this).siblings('._make_complete');
+    checkbox.removeClass('_inactive');
+
+    // $.each($('._make_complete'), function(index, value)
+    // {
+    //     if (value.data('lesson-id') === $(this).data('lesson-id'))
+    //         value.disabled = false;
+    // });
+
     let courseId = $(this).data('course-id');
     let chapterId = $(this).data('chapter-id');
     let lessonId = $(this).data('lesson-id');
@@ -104,6 +113,9 @@ $('._make_complete').on('click', function()
     let courseId = $(this).data('course-id');
     let chapterId = $(this).data('chapter-id');
     let lessonId = $(this).data('lesson-id');
+    let updatedAt = $(this).data('updated-at');
+    console.log(updatedAt);
+
 
     $.ajax({
         method: 'POST',
@@ -122,7 +134,7 @@ $('._make_complete').on('click', function()
         },
         error: function(xhr, status, error)
         {
-            notyf.warning(xhr.responseJSON.message);
+
         },
     })
 });

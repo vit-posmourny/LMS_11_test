@@ -511,7 +511,6 @@
                 </div>
             </div>
         </div>
-
         <div class="wsus__course_sidebar d-none d-lg-block">
             <h2 class="video_heading">Course Content</h2>
             <div class="accordion" id="accordionExample">
@@ -528,7 +527,8 @@
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check">
-                                    <input class="form-check-input _make_complete" type="checkbox" @disabled(false) @checked(in_array($lesson->id, $watched)) data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <input class="form-check-input _make_complete {{ in_array($lesson->id, $played) ? '' : '_inactive' }}" type="checkbox" @checked(in_array($lesson->id, $watched))
+                                        data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}" data-updated-at="">
                                     <label class="_lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
