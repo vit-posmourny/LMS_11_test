@@ -67,12 +67,6 @@ $('._lesson').on('click', function()
     let checkbox = $(this).siblings('._make_complete');
     checkbox.removeClass('_inactive');
 
-    // $.each($('._make_complete'), function(index, value)
-    // {
-    //     if (value.data('lesson-id') === $(this).data('lesson-id'))
-    //         value.disabled = false;
-    // });
-
     let courseId = $(this).data('course-id');
     let chapterId = $(this).data('chapter-id');
     let lessonId = $(this).data('lesson-id');
@@ -90,6 +84,9 @@ $('._lesson').on('click', function()
         success: function(data)
         {
             $('._video_holder').html(playerHtml(data.storage, data.file_path));
+
+            // load _about_lecture description
+            $('._about_lecture').html(data.description);
             // resetting any existing player
             if (videojs.getPlayers()['vid1']) {
                 videojs.getPlayers()['vid1'].dispose();
