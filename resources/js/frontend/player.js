@@ -129,8 +129,9 @@ $('._make_complete').on('click', function()
         beforeSend: function() {},
         success: function(data)
         {
-            $('#watched').html(data.watched_count);
+            $('#watched-in-total').html(data.watched_count);
             $('#percentage').html(data.percentage);
+            $('#watched-by-chapter-'+chapterId).html(data.watched_per_lessons_by_Chapter);
         },
         error: function(xhr, status, error)
         {

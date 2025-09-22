@@ -55,8 +55,8 @@
     <section class="wsus__course_video">
         <div class="col-12">
             <div class="wsus__course_header">
-                <a href="index.html"><i class="fas fa-angle-left"></i> Speaking English for Beginners</a>
-                <p>Your Progress: <span id="watched" style="color:var(--colorWhite);">{{ $watched_count }}</span> of {{ $lesson_count }} <span id="percentage" style="color:var(--colorWhite);">({{ number_format($watched_count/$lesson_count*100, 0, '.', '') }}%)</span></p>
+                <a href="{{ route('student.enrolled-courses.index') }}"><i class="fas fa-angle-left"></i> {{ $course->title }}</a>
+                <p>Your Progress: <span id="watched-in-total" style="color:var(--colorWhite);">{{ $watched_count }}</span> of {{ $lesson_count }} <span id="percentage" style="color:var(--colorWhite);">({{ number_format($watched_count/$lesson_count*100, 0, '.', '') }}%)</span></p>
             </div>
         </div>
 
@@ -520,16 +520,16 @@
                             <button class="accordion-button" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapse{{ $chapter->id }}" aria-expanded="true" aria-controls="collapse-{{ $chapter->id }}">
                                 <b>{{ $chapter->title }}</b>
-                                <span>{{ $watched_by_Chapters[$chapter->id] ?? '0' }}/{{ $chapter->lessons->count() }}</span>
+                                <span id="watched-by-chapter-{{ $chapter->id }}">{{ $watched_by_Chapters[$chapter->id] ?? '0' }}/{{ $chapter->lessons->count() }}</span>
                             </button>
                         </h2>
                         <div id="collapse{{ $chapter->id }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
                                 @foreach ($chapter->lessons as $lesson )
                                 <div class="form-check">
-                                    <input class="form-check-input _make_complete {{ in_array($lesson->id, $played) ? '' : '_inactive' }}" type="checkbox" @checked(in_array($lesson->id, $watched))
+                                    <input id="chkbx-{{ $lesson->id }}" class="form-check-input _make_complete {{ in_array($lesson->id, $played) ? '' : '_inactive' }}" type="checkbox" @checked(in_array($lesson->id, $watched))
                                         data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}" data-updated-at="">
-                                    <label class="_lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
+                                    <label class="form-check-label _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
                                             <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">

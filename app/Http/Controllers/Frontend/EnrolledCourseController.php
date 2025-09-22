@@ -69,6 +69,7 @@ class EnrolledCourseController extends Controller
 
     function updateLessonCompletion(Request $request): Response
     {
+
         $watchedLesson = WatchHistory::where([
             'user_id' => user()->id,
             'course_id' => $request->course_id,
@@ -89,13 +90,20 @@ class EnrolledCourseController extends Controller
                     'is_completed' => !$watchedLesson->is_completed,
                 ]);
             });
-
+            // pro info v zahlavi playeru, napr: Your Progress: 3 of 4 (75%)
             $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
             $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
             $percentage = "(".number_format($watched_count/$lesson_count*100, 0, '.', '')."%)";
+            // pro pocitadlo zhlednutych lekci na kapitolu v zahlavich akordeonu, napr: 1/2
+            $lessons_by_Chapter = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'chapter_id' => $request->chapter_id])->pluck('lesson_id')->count();
+            $result1 = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->pluck('chapter_id')->toArray();
+            $result2 = array_count_values($result1);
+            $watched_by_Chapters = $result2[$request->chapter_id] ?? '0';
+            $watched_per_lessons_by_Chapter = $watched_by_Chapters.'/'.$lessons_by_Chapter;
 
             return response(['status' => 'success', 'message' => 'Updated Sucessfully.', 'watched_count' => $watched_count,
-                            'lesson_count' => $lesson_count, 'percentage' => $percentage]);
+                            'lesson_count' => $lesson_count, 'percentage' => $percentage, 'watched_by_Chapters' => $watched_by_Chapters,
+                            'watched_per_lessons_by_Chapter' => $watched_per_lessons_by_Chapter]);
         }
         return response(['status' => 'error', 'message' => "Lesson not yet viewed.", 'lessonId' => $request->lesson_id], 404);
     }
