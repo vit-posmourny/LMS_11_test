@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/v4-shims.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
@@ -58,7 +59,7 @@
     <!-- Modal -->
     <div class="modal fade" id="id__dynamic__modal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-lg dynamic__modal__content">
-
+        <!-- resources\views\frontend\instructor-dashboard\course\partials\...modal.blade.php -->
         </div>
     </div>
 
@@ -119,6 +120,7 @@
     <!-- fontawsome js -->
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/v4-shims.min.js') }}"></script>
     <!-- notyf js -->
     <script src="{{ asset('assets/notyf.min.js') }}"></script>
     <script src="{{ asset('vendor/flasher/flasher-notyf.min.js') }}"></script>

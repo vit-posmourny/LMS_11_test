@@ -1,5 +1,5 @@
 // imports
-import { notyf } from '../notyf.js';
+import { notyf } from '../notyf-definitions.js';
 // variables
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');

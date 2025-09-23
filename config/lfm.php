@@ -61,6 +61,8 @@ return [
                 'video/mkv',
                 'audio/mp3',
                 'audio/ogg',
+                'audio/wav',
+                'audio/mpeg', // taky pro mp3
             ],
         ],
         'image' => [
@@ -164,6 +166,7 @@ return [
         'png'  => 'PNG Image',
         'ppt'  => 'Microsoft PowerPoint',
         'pptx' => 'Microsoft PowerPoint',
+        'mp3'  => 'Mpeg Layer 3'
     ],
 
     /*
