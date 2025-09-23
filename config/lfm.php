@@ -55,14 +55,16 @@ return [
             'thumb_height' => 80,
             'valid_mime'   => [
                 'application/pdf',
+                'application/msword', // pro doc
+                'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // pro docx
                 'text/plain',
                 'video/mp4',
                 'video/avi',
                 'video/mkv',
                 'audio/mp3',
+                'audio/mpeg', // taky pro mp3
                 'audio/ogg',
                 'audio/wav',
-                'audio/mpeg', // taky pro mp3
             ],
         ],
         'image' => [

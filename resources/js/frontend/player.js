@@ -12,9 +12,8 @@ const _updateLessonCompletion = '/student/update-lesson-completion';
 
 // Reusable Functions
 
-function playerHtml(source_type, source)
+function playerHtml(source_type, source, file_type)
 {
-
     if (source_type === 'youtube')
     {
         let player = `<video id="vid1" class="video-js vjs-default-skin" controls autoplay width="640" height="264"
@@ -31,10 +30,33 @@ function playerHtml(source_type, source)
     }
     else if (source_type === 'upload' || source_type === 'external_link')
     {
+        if (file_type === 'doc')
+        {
+            renderDocPreview(source);
+            return;
+        }
+
         let player = `<iframe src="${source}" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>`;
 
         return player;
     }
+}
+
+
+async function renderDocPreview(url)
+{
+    const response = await fetch(url);
+
+    if (!response.ok)
+    {
+        throw new Error(`Error: ${response.status}`);
+    }
+
+    const blob = await response.blob();
+
+    docx.renderAsync(blob, $(".video_holder"))
+        .then(x => console.log("docx: finished"));
+
 }
 
 
@@ -83,7 +105,7 @@ $('._lesson').on('click', function()
         beforeSend: function() {},
         success: function(data)
         {
-            $('._video_holder').html(playerHtml(data.storage, data.file_path));
+            $('._video_holder').html(playerHtml(data.storage, data.file_path, data.file_type));
 
             // load _about_lecture description
             $('._about_lecture').html(data.description);

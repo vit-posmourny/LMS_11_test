@@ -341,6 +341,9 @@
     <!--font-awesome js-->
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
+    <!-- docx-preview -->
+    <script src="{{ asset('docxjs/jszip.min.js') }}"></script>
+    <script src="{{ asset('docxjs/docx-preview.min.js') }}"></script>
     <!--main/custom js-->
     <script src="{{ asset('frontend/assets/js/main.js') }}"></script>
 
