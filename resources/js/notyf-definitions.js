@@ -45,9 +45,15 @@ export const notyf = new Notyf({
     }]
 });
 
-// Nebo si přidat malé wrappery (doporučuji — pak můžeš volat stejně jako success/error)
-notyf.info = (message, opts = {}) =>
-    notyf.open(Object.assign({ type: 'info', message }, opts));
+//Nebo si přidat malé wrappery (doporučuji — pak můžeš volat stejně jako success/error)
+notyf.info = (message) =>
+    notyf.open({ type: 'info', message: message });
 
-notyf.warning = (message, opts = {}) =>
-    notyf.open(Object.assign({ type: 'warning', message }, opts));
+notyf.warning = (message) =>
+    notyf.open({ type: 'warning', message: message });
+
+// notyf.info = (message, opts = {}) =>
+//     notyf.open(Object.assign({ type: 'info', message }, opts));
+
+// notyf.warning = (message, opts = {}) =>
+//     notyf.open(Object.assign({ type: 'warning', message }, opts));
