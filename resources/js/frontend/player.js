@@ -54,7 +54,7 @@ async function renderDocPreview(url)
 
     const blob = await response.blob();
 
-    docx.renderAsync(blob, $(".video_holder"))
+    docx.renderAsync(blob, $("._video_holder")[0])
         .then(x => console.log("docx: finished"));
 
 }
