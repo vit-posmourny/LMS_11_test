@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animated_barfiller.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/venobox.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/scroll_button.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/nice-select.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery.calendar.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/range_slider.css') }}">
@@ -315,8 +314,6 @@
     <script src="{{ asset('frontend/assets/js/venobox.min.js') }}"></script>
     <!--nice-select js-->
     <script src="{{ asset('frontend/assets/js/jquery.nice-select.min.js') }}"></script>
-    <!--Scroll Button js-->
-    <script src="{{ asset('frontend/assets/js/scroll_button.js') }}"></script>
     <!--range slider js-->
     <script src="{{ asset('frontend/assets/js/range_slider.js') }}"></script>
     <!--barfiller js-->
