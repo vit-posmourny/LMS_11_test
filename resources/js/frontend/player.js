@@ -12,7 +12,7 @@ const _updateLessonCompletion = '/student/update-lesson-completion';
 
 // Reusable Functions
 
-function playerHtml(source_type, source, file_type)
+function playerHtml(id, source_type, source, file_type)
 {
     if (source_type === 'youtube')
     {
@@ -41,7 +41,7 @@ function playerHtml(source_type, source, file_type)
                                     <img src="${_baseUrl}/default-files/folder.png" alt="file_type">
                                     <div class="text-center">
                                         <h5>Type: file</h5><br>
-                                        <a href="" class="btn btn-primary">Download</a>
+                                        ${source_type === 'external_link' ? `<a href="${source}" target="_blank" class="btn btn-primary">Download</a>` : `<a href="${_baseUrl}/student/file-download/${id}" class="btn btn-primary">Download</a>`}
                                     </div>
                                 </div>
                         </div>`;
@@ -117,7 +117,7 @@ $('._lesson').on('click', function()
         beforeSend: function() {},
         success: function(data)
         {
-            $('._video_holder').html(playerHtml(data.storage, data.file_path, data.file_type));
+            $('._video_holder').html(playerHtml(data.id, data.storage, data.file_path, data.file_type));
 
             // load _about_lecture description
             $('._about_lecture').html(data.description);

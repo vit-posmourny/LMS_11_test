@@ -4,12 +4,13 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Course;
 use App\Models\Enrollment;
+use App\Models\WatchHistory;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use App\Models\CourseChapterLesson;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Models\CourseChapterLesson;
-use App\Models\WatchHistory;
-use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Storage;
 
 class EnrolledCourseController extends Controller
 {
@@ -94,7 +95,7 @@ class EnrolledCourseController extends Controller
             $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
             $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
             $percentage = "(".number_format($watched_count/$lesson_count*100, 0, '.', '')."%)";
-            
+
             // pro pocitadlo zhlednutych lekci na kapitolu v zahlavich akordeonu, napr: 1/2
             $lessons_by_Chapter = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'chapter_id' => $request->chapter_id])->pluck('lesson_id')->count();
             $result1 = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->pluck('chapter_id')->toArray();
@@ -107,5 +108,25 @@ class EnrolledCourseController extends Controller
                             'watched_per_lessons_by_Chapter' => $watched_per_lessons_by_Chapter]);
         }
         return response(['status' => 'error', 'message' => "Lesson not yet viewed.", 'lessonId' => $request->lesson_id], 404);
+    }
+
+
+    function fileDownload(string $id)
+    {
+        dd(public_path());
+        $lesson = CourseChapterLesson::findOrFail($id);
+        // 1. Získání cesty k souboru, jak je uložena v DB
+        $fileUrl = $lesson->file_path; // např. /storage/files/6/archives/....zip
+
+        // 2. Odebrání veřejného prefixu '/storage' (pokud tam je)
+        // Cílem je získat interní cestu disku 'public', např. 'files/6/archives/....zip'
+        $internalPath = str_replace('/storage', '', $fileUrl);
+
+        // 3. Použijte metodu 'path()' na disku 'public' k získání plné lokální cesty
+        $fullLocalPath = Storage::disk('public')->path($internalPath);
+
+        // 4. Stáhněte soubor pomocí plné lokální cesty
+        // Dále můžete přidat volitelný druhý argument pro název, pod kterým se soubor stáhne
+        return response()->download($fullLocalPath, 'guma.zip');
     }
 }

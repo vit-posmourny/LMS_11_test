@@ -94,6 +94,8 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('update-watch-history');
     Route::post('update-lesson-completion', [EnrolledCourseController::class, 'updateLessonCompletion'])
         ->name('update-lesson-completion');
+    Route::get('file-download/{id}', [EnrolledCourseController::class, 'fileDownload'])
+        ->name('file-download');
 });
 /*
 *-----------------------------------------------------------------
