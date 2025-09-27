@@ -57,6 +57,10 @@ return [
                 'application/pdf',
                 'application/msword', // pro doc
                 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', // pro docx
+                'application/zip',
+                'application/rar',
+                'application/x-zip-compressed',
+                'application/x-rar-compressed',
                 'text/plain',
                 'video/mp4',
                 'video/avi',
@@ -162,6 +166,7 @@ return [
         'xls'  => 'Microsoft Excel',
         'xlsx' => 'Microsoft Excel',
         'zip'  => 'Archive',
+        'rar'  => 'Archive',
         'gif'  => 'GIF Image',
         'jpg'  => 'JPEG Image',
         'jpeg' => 'JPEG Image',
