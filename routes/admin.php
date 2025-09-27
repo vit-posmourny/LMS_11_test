@@ -18,6 +18,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\CertificateBuilderController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\PayoutGatewayController;
@@ -177,6 +178,10 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('withdraw-request.show');
     Route::post('withdraw-requests/{withdraw}/status', [WithdrawRequestController::class, 'updateStatus'])
         ->name('withdraw-request.status.update');
+
+    /** Certificate Builder */
+        Route::get('certificate-builder', [CertificateBuilderController::class, 'index'])
+        ->name('certificate-builder.index');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

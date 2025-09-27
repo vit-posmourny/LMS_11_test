@@ -113,7 +113,6 @@ class EnrolledCourseController extends Controller
 
     function fileDownload(string $id)
     {
-        dd(public_path());
         $lesson = CourseChapterLesson::findOrFail($id);
         // 1. Získání cesty k souboru, jak je uložena v DB
         $fileUrl = $lesson->file_path; // např. /storage/files/6/archives/....zip

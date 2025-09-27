@@ -54,7 +54,7 @@
     <section class="wsus__course_video">
         <div class="col-12">
             <div class="wsus__course_header">
-                <a href="{{ route('student.enrolled-courses.index') }}"><i class="fas fa-angle-left"></i> {{ $course->title }}</a>
+                <a href="{{ route('student.dashboard') }}"><i class="fas fa-angle-left"></i> Dashboard</a>
                 <p>Your Progress: <span id="watched-in-total" style="color:var(--colorWhite);">{{ $watched_count }}</span> of {{ $lesson_count }} <span id="percentage" style="color:var(--colorWhite);">({{ number_format($watched_count/$lesson_count*100, 0, '.', '') }}%)</span></p>
             </div>
         </div>
