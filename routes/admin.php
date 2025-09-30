@@ -182,6 +182,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Certificate Builder */
         Route::get('certificate-builder', [CertificateBuilderController::class, 'index'])
         ->name('certificate-builder.index');
+        Route::post('certificate-builder', [CertificateBuilderController::class, 'update'])
+        ->name('certificate-builder.update');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
