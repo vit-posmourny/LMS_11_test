@@ -57,3 +57,10 @@ $('.delete-confirm').on('click', function(e) {
     })
 });
 
+
+// Certificate js
+$(function()
+{
+    $('._draggable_element').draggable();
+})
+

@@ -62,9 +62,16 @@
                                     <h4>{{ $certificate->subtitle }}</h4>
                                     <p class="pt-3">{{ $certificate->description }}</p>
                                 </div>
-                                <div class="d-flex flex-row align-items-center gap-3 _signature_box">
-                                    <span>signature: </span>
-                                    <img src="{{ asset($certificate->signature) }}" alt="signature-image">
+                                <div style="
+                                        width: 10%;
+                                        position: absolute;
+                                        text-align: center;
+                                        top: 58%;
+                                        left: 47%;
+                                        transform: translate(-50%, -50%);"
+                                    class="d-flex flex-row align-items-center gap-3 _draggable_element _signature_box">
+                                        <span>signature: </span>
+                                        <img src="{{ asset($certificate->signature) }}" alt="signature-image">
                                 </div>
                             </div>
                         </div>
