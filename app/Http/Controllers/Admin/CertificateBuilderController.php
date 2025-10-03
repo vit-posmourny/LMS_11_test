@@ -17,23 +17,29 @@ class CertificateBuilderController extends Controller
 
     function index(): View
     {
-        return view('admin.certificate-builder.index');
+        $certificate = CertificateBuilder::first();
+        return view('admin.certificate-builder.index', compact('certificate'));
     }
 
-
+    /**
+     * Update the certificate settings.
+     *
+     * @param CertificateBuilderUpdateRequest $request
+     * @return RedirectResponse
+    */
     function update(CertificateBuilderUpdateRequest $request): RedirectResponse
     {
         $data = ['title' => $request->title, 'subtitle' => $request->subtitle, 'description' => $request->description];
 
         if ($request->hasFile('signature'))
         {
-            $signature = $this->uploadFile($request->file('signature'));
+            $signature = $this->fileUpload($request->file('signature'));
             $data['signature'] = $signature;
         }
 
         if ($request->hasFile('background'))
         {
-            $background = $this->uploadFile($request->file('background'));
+            $background = $this->fileUpload($request->file('background'));
             $data['background'] = $background;
         }
 
@@ -41,6 +47,8 @@ class CertificateBuilderController extends Controller
             ['id' => 1],
             $data,
         );
+
+        notyf()->success("Create or Update Certificate sucessfully.");
 
         return redirect()->back();
     }

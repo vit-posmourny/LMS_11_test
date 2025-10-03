@@ -61,8 +61,13 @@ class CourseCategoryController extends Controller
         return view('admin.course.category.edit', compact('course_category'));
     }
 
+
     /**
      * Update the specified resource in storage.
+     *
+     * @param CourseCategoryUpdateRequest $request
+     * @param CourseCategory $course_category
+     * @return void
      */
     public function update(CourseCategoryUpdateRequest $request, CourseCategory $course_category)
     {
@@ -89,6 +94,9 @@ class CourseCategoryController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     *
+     * @param CourseCategory $course_category
+     * @return Response
      */
     public function destroy(CourseCategory $course_category): Response
     {

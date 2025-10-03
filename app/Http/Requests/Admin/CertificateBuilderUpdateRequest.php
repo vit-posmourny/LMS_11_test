@@ -17,8 +17,8 @@ class CertificateBuilderUpdateRequest extends FormRequest
             'title' => 'nullable|max:255|string',
             'subtitle' => 'nullable|max:255|string',
             'description' => 'nullable|string',
-            'background' => 'nullable|string',
-            'signature' => 'nullable|string',
+            'background' => 'nullable|image|max:2000',
+            'signature' => 'nullable|image|max:500',
         ];
     }
 }

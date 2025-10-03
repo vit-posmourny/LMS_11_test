@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\File;
 
+
 trait FileUpload
 {
     public function fileUpload(UploadedFile $file , string $directory = 'uploads'): string
