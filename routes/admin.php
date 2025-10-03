@@ -180,10 +180,12 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('withdraw-request.status.update');
 
     /** Certificate Builder */
-        Route::get('certificate-builder', [CertificateBuilderController::class, 'index'])
+    Route::get('certificate-builder', [CertificateBuilderController::class, 'index'])
         ->name('certificate-builder.index');
-        Route::post('certificate-builder', [CertificateBuilderController::class, 'update'])
+    Route::post('certificate-builder', [CertificateBuilderController::class, 'update'])
         ->name('certificate-builder.update');
+    Route::post('certificate-item', [CertificateBuilderController::class, 'itemUpdate'])
+        ->name('certificate-item.update');
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
