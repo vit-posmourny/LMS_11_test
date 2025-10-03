@@ -56,7 +56,17 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-
+                            <div class="_certificate_body container-fluid" style="background-image: url({{ asset($certificate->background) }})">
+                                <div class="_text_box">
+                                    <h1>{{ $certificate->title }}</h1>
+                                    <h4>{{ $certificate->subtitle }}</h4>
+                                    <p class="pt-3">{{ $certificate->description }}</p>
+                                </div>
+                                <div class="d-flex flex-row align-items-center gap-3 _signature_box">
+                                    <span>signature: </span>
+                                    <img src="{{ asset($certificate->signature) }}" alt="signature-image">
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
