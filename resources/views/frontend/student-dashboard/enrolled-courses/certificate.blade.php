@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
     <style>
         ._certificate_body  {
-            position: inherit;
+            position: relative;
             width: 54.1%;
             height: 80%;
             background-size: cover;
@@ -50,7 +50,7 @@
             </div>
             {{-- pres css se to nechytalo, proto inline styles --}}
             <div id="signature" class="d-flex flex-row align-items-center gap-3 _draggable_element" style="
-                    position: relative;
+                    position: absolute;
                     text-align: center;
                     width: 10%;
                     left: {{ $certificateItem->x_position ?? '43%' }};
