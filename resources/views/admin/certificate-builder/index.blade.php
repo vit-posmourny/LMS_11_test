@@ -57,7 +57,7 @@
                         </div>
                         <div class="card-body">
                             <div class="_certificate_body" style="background-image: url({{ asset($certificate->background) }})">
-                                <div class="_certificate_boundary w-full h-full ps-7 pe-8 py-8">
+                                <div class="_certificate_boundary w-full h-full ps-7 pe-8 py-8" style="position: absolute">
                                     <div class="_text_box">
                                         <h1>{{ $certificate->title }}</h1>
                                         <h4>{{ $certificate->subtitle }}</h4>
@@ -65,12 +65,12 @@
                                     </div>
                                     {{-- pres css se to nechytalo, proto inline styles --}}
                                     <div id="signature" class="d-flex flex-row align-items-center gap-3 _draggable_element" style="
-                                            position: absolute;
+                                            position: relative;
                                             text-align: center;
                                             cursor: grab;
                                             width: 10%;
-                                            left: {{ $certificateItems->x_position ?? '43%' }};
-                                            top: {{ $certificateItems->y_position ?? '58%' }};" data-position-saved="{{ $certificateItems->saved ?? 'false' }}">
+                                            left: {{ $certificateItem->x_position ?? '43%' }};
+                                            top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
                                         <span>signature: </span>
                                         <img src="{{ asset($certificate->signature) }}" alt="signature-image">
                                     </div>

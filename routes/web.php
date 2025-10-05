@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CertificateController;
 use App\Models\Withdraw;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
@@ -96,6 +97,10 @@ Route::group(['middleware' => ['auth:web', 'verified', 'check_role:student'], 'p
         ->name('update-lesson-completion');
     Route::get('file-download/{id}', [EnrolledCourseController::class, 'fileDownload'])
         ->name('file-download');
+
+    /** Certificate Routes */
+    Route::get('certificate', [CertificateController::class, 'index'])
+        ->name('certificate.index');
 });
 /*
 *-----------------------------------------------------------------

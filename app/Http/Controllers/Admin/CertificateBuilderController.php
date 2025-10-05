@@ -19,9 +19,9 @@ class CertificateBuilderController extends Controller
     function index(): View
     {
         $certificate = CertificateBuilder::first();
-        $certificateItems = CertificateBuilderItem::first();
+        $certificateItem = CertificateBuilderItem::first();
 
-        return view('admin.certificate-builder.index', compact('certificate', 'certificateItems'));
+        return view('admin.certificate-builder.index', compact('certificate', 'certificateItem'));
     }
 
     /**
@@ -62,7 +62,7 @@ class CertificateBuilderController extends Controller
         $request->validate([
             'elementId' => 'required|in:signature',
         ]);
-        
+
         CertificateBuilderItem::updateOrCreate([
             'elementId' => $request->elementId,
         ],[
