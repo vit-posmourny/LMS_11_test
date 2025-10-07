@@ -15665,6 +15665,7 @@ select {
 
 
 ._certificate_body  {
+    position: relative;
     width: 100%;
     height: 80vh;
     background-size: cover;
@@ -15679,4 +15680,9 @@ select {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+
+._text_box > p {
+    font-size: 15px !important;
 }

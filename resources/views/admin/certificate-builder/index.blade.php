@@ -65,7 +65,7 @@
                                     </div>
                                     {{-- pres css se to nechytalo, proto inline styles --}}
                                     <div id="signature" class="d-flex flex-row align-items-center gap-3 _draggable_element" style="
-                                            position: relative;
+                                            position: absolute;
                                             text-align: center;
                                             cursor: grab;
                                             width: 10%;
