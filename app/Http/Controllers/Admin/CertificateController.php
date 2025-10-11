@@ -2,20 +2,22 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Models\CertificateBuilder;
-use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\CertificateBuilderItem;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class CertificateController extends Controller
 {
 
-    function index(): View
+    function index()
     {
         $certificate = CertificateBuilder::first();
         $certificateItem = CertificateBuilderItem::first();
 
-        return view('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItem'));
+        $pdf = Pdf::loadView('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItem'))->stream();
+        return $pdf;
+
+       // return view('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItem'));
     }
 }

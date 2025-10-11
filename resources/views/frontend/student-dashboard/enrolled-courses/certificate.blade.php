@@ -9,27 +9,71 @@
     {{-- pridano kvuli Roboto fontu --}}
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
     <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        @page {
+            size: 930px 657.6px;
+            margin: 0;
+        }
+
         ._certificate_body  {
-            position: relative;
-            width: 54.1%;
-            height: 80%;
-            background-size: cover;
+            width: 930px;
+            height: 657.6px;
+            background: gray;
             background-repeat: no-repeat;
             background-position: center;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
+            text-align: center;
         }
 
         ._text_box {
             position: absolute;
-            text-align: center;
             top: 40%;
             left: 50%;
             transform: translate(-50%, -50%);
         }
+
+        ._title {
+            font-family: "Roboto", sans-serif;
+            font-size: 22px;
+            font-weight: 500;
+            margin: 0.5rem;
+        }
+
+        ._subtitle {
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin: 0;
+        }
+
+        ._description {
+            font-family: "Roboto", sans-serif;
+            font-size: 14px;
+            margin-top: 1.5rem;
+            color: rgb(120, 120, 130);
+        }
+        ._signature {
+            position: absolute;
+            transform: translate(-25%, -50%);
+        }
+
+        ._signature span, ._signature img {
+            font-size: 0.75rem;
+            color: rgb(120, 120, 130);
+            display: inline-block;
+            vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
+        }
+
+        ._signature img {
+            width: 104px;
+            height: 66px;
+            margin-left: 0.5rem;
+        }
     </style>
-        <style>
+    <style>
         @import url('https://rsms.me/inter/inter.css');
 
         :root {
@@ -42,26 +86,21 @@
     </style>
 </head>
 <body>
-    <div class="_certificate_body" style="background-image: url({{ asset($certificate->background) }})">
-        <div class="_certificate_boundary w-full h-full ps-7 pe-8 py-8" style="position: absolute">
-            <div class="_text_box">
-                <h1>{{ $certificate->title }}</h1>
-                <h4>{{ $certificate->subtitle }}</h4>
-                <p class="pt-3">{{ $certificate->description }}</p>
+    <div class="_certificate_body" style="background-image: url({{ public_path($certificate->background) }})">
+        <div class="_certificate_boundary" >
+            <div class="_text_box" style="position: absolute">
+                <h1 class="_title">{{ $certificate->title }}</h1>
+                <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
+                <p class="_description">{{ $certificate->description }}</p>
             </div>
-            {{-- pres css se to nechytalo, proto inline styles --}}
-            <div id="signature" class="d-flex flex-row align-items-center gap-3 _draggable_element" style="
-                    position: absolute;
-                    text-align: center;
-                    width: 10%;
+            <div id="signature" class="_signature _draggable_element" style="
                     left: {{ $certificateItem->x_position ?? '43%' }};
                     top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
                 <span>signature: </span>
-                <img src="{{ asset($certificate->signature) }}" alt="signature-image">
+                <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
             </div>
         </div>
     </div>
-
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
 </body>
 </html>

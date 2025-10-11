@@ -10,6 +10,10 @@
                             <h3 class="card-title">Certificate Content</h3>
                         </div>
                         <div class="card-body">
+                            <div class="alert alert-primary">
+                                <h4 class="alert-heading">Default Variables</h4>
+                                <p>[student_name], [course_name], [date], [platform_mame], [instructor_name]</p>
+                            </div>
                             <form action="{{ route('admin.certificate-builder.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset class="form-fieldset">
