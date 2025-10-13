@@ -15,13 +15,13 @@
         }
 
         @page {
-            size: 930px 657.6px;
+            size: 900px 709px;
             margin: 0;
         }
 
         ._certificate_body  {
-            width: 930px;
-            height: 657.6px;
+            width: 900px;
+            height: 709px;
             background: gray;
             background-repeat: no-repeat;
             background-position: center;
@@ -52,16 +52,21 @@
         ._description {
             font-family: "Roboto", sans-serif;
             font-size: 14px;
+            font-weight: 400;
             margin-top: 1.5rem;
             color: rgb(120, 120, 130);
         }
+
         ._signature {
             position: absolute;
-            transform: translate(-25%, -50%);
+        }
+
+        ._signature span {
+            margin-right: 0.5rem;
         }
 
         ._signature span, ._signature img {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: rgb(120, 120, 130);
             display: inline-block;
             vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
@@ -87,18 +92,16 @@
 </head>
 <body>
     <div class="_certificate_body" style="background-image: url({{ public_path($certificate->background) }})">
-        <div class="_certificate_boundary" >
-            <div class="_text_box" style="position: absolute">
-                <h1 class="_title">{{ $certificate->title }}</h1>
-                <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
-                <p class="_description">{{ $certificate->description }}</p>
-            </div>
-            <div id="signature" class="_signature _draggable_element" style="
-                    left: {{ $certificateItem->x_position ?? '43%' }};
-                    top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
-                <span>signature: </span>
-                <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
-            </div>
+        <div class="_text_box" style="position: absolute">
+            <h1 class="_title">{{ $certificate->title }}</h1>
+            <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
+            <p class="_description">{{ $certificate->description }}</p>
+        </div>
+        <div id="signature" class="_signature _draggable_element" style="
+                left: {{ $certificateItem->x_position ?? '43%' }};
+                top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
+            <span>signature: </span>
+            <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
         </div>
     </div>
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
