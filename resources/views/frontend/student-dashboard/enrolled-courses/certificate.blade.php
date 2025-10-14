@@ -20,6 +20,7 @@
         }
 
         ._certificate_body  {
+            position: relative;
             width: 900px;
             height: 709px;
             background: gray;
@@ -92,7 +93,7 @@
 </head>
 <body>
     <div class="_certificate_body" style="background-image: url({{ public_path($certificate->background) }})">
-        <div class="_text_box" style="position: absolute">
+        <div class="_text_box">
             <h1 class="_title">{{ $certificate->title }}</h1>
             <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
             <p class="_description">{{ $certificate->description }}</p>
