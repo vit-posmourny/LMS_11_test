@@ -4,36 +4,52 @@ namespace App\Traits;
 
 use Exception;
 use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Storage;
 
 trait FileUpload
 {
-    public function fileUpload(UploadedFile $file , string $directory = 'uploads'): string
+    /**
+     * Nahraje soubor na určený disk (defaultně 'public/uploads')
+     *
+     * @param UploadedFile $file
+     * @param string $directory - cílový adresář (bez /storage/)
+     * @param string $disk - Laravel disk (defaultně 'public')
+     * @return string - veřejná URL nebo cesta
+     * @throws Exception
+     */
+    public function fileUpload(UploadedFile $file, string $directory = 'uploads', string $disk = 'public2'): string
     {
-        // důvod try-catch je chyba asi v laravelu, potřeba přeskočit tuto chybu
         try {
-            $filename = 'educore_'.uniqid().'.'.$file->getClientOriginalExtension();
+            // Unikátní název souboru
+            $filename = 'educore_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
-            // move a file to the storage
-            $file->move(public_path($directory), $filename);
-
-            return '/'.$directory.'/'.$filename;
-
+            // Uloží soubor do /public/uploads
+            return $path = $file->storeAs($directory, $filename, $disk);
         }
-        catch(Exception $e) {
-            throw $e;
+        catch (Exception $e) {
+            throw new Exception('File upload failed: ' . $e->getMessage());
         }
     }
 
-
-    public function deleteFile(?string $path): bool
+    /**
+     * Smaže soubor ze storage (např. /storage/uploads/...)
+     *
+     * @param string|null $path - cesta nebo URL souboru
+     * @param string $disk - Laravel disk
+     * @return bool
+     */
+    public function deleteFile(?string $path, string $disk = 'public2'): bool
     {
-        if (File::exists(public_path($path)))
+        if (!$path) {
+            return false;
+        }
+
+        if (Storage::disk($disk)->exists($path))
         {
-            File::delete(public_path($path));
+            Storage::disk($disk)->delete($path);
             return true;
         }
+
         return false;
     }
 }

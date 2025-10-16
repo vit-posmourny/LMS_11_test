@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Symfony\Component\Mailer\Transport\Dsn;
 
 class CertificateBuilderController extends Controller
 {
@@ -33,24 +34,41 @@ class CertificateBuilderController extends Controller
     */
     function update(CertificateBuilderUpdateRequest $request): RedirectResponse
     {
+        $certificate = CertificateBuilder::first();
         $data = ['title' => $request->title, 'subtitle' => $request->subtitle, 'description' => $request->description];
         $imageInfo = [];
 
         if ($request->hasFile('signature'))
         {
-            $signature = $this->fileUpload($request->file('signature'));
-            $data['signature'] = $signature;
+            if (isset($certificate->signature)) {
+                $this->deleteFile($certificate->signature);
+            }
 
+            $file = $request->file('signature');
+
+            if ($file->isValid())
+            {
+                $signatureUrl = $this->fileUpload($file);
+                $data['signature'] = $signatureUrl;
+            }
         }
 
         if ($request->hasFile('background'))
         {
+            if (isset($certificate->background)) {
+                $this->deleteFile($certificate->background);
+            }
+
             $file = $request->file('background');
-            $imageInfo = getimagesize($file->getRealPath());
-            $background = $this->fileUpload($file);
-            $data['background'] = $background;
-            $data['bg_width'] = $imageInfo[0];
-            $data['bg_height'] = $imageInfo[1];
+
+            if ($file->isValid())
+            {
+                $imageInfo = getimagesize($file->getRealPath());
+                $backgroundUrl = $this->fileUpload($file);
+                $data['background'] = $backgroundUrl;
+                $data['bg_width'] = $imageInfo[0];
+                $data['bg_height'] = $imageInfo[1];
+            }
         }
 
         CertificateBuilder::updateOrCreate(
