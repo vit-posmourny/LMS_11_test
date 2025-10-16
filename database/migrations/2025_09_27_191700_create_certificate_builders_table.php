@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->string('background')->nullable();
             $table->string('signature')->nullable();
+            $table->string('bg_width')->nullable();
+            $table->string('bg_height')->nullable();
             $table->timestamps();
         });
     }

@@ -14,33 +14,33 @@
                                 <h4 class="alert-heading">Default Variables</h4>
                                 <p>[student_name], [course_name], [date], [platform_mame], [instructor_name]</p>
                             </div>
-                            <form action="{{ route('admin.certificate-builder.update') }}" method="POST" enctype="multipart/form-data">
+                            <form action="" class="_certificate_builder_form" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <fieldset class="form-fieldset">
                                     <div class="mt-1">
                                         <label class="form-label">Certificate Title</label>
-                                        <input type="text" class="form-control" name="title" value="{{ $certificate->title }}" placeholder="Enter certificate title">
+                                        <input type="text" class="form-control" name="title" value="{{ @$certificate->title }}" placeholder="Enter certificate title">
                                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Subtitle</label>
-                                        <input type="text" class="form-control" name="subtitle" value="{{ $certificate->subtitle }}" placeholder="Enter certificate subtitle">
+                                        <input type="text" class="form-control" name="subtitle" value="{{ @$certificate->subtitle }}" placeholder="Enter certificate subtitle">
                                         <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Description</label>
-                                        <textarea class="form-control" name="description" placeholder="Enter certificate description">{{ $certificate->description }}</textarea>
+                                        <textarea class="form-control" name="description" placeholder="Enter certificate description">{{ @$certificate->description }}</textarea>
                                     </div>
                                     <div class="mt-3">
-                                        @if ($certificate->background)
-                                            <x-image-preview src="{{ asset($certificate->background) }}" alt="background_img"></x-image-preview>
+                                        @if (@$certificate->background)
+                                            <x-image-preview src="{{ asset(@$certificate->background) }}" alt="background_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Background</label>
-                                        <input type="file" class="form-control" name="background" placeholder="Enter certificate background"/>
+                                        <input type="file" class="form-control" name="background" value="{{ old('background') }}" placeholder="Enter certificate background"/>
                                     </div>
                                     <div class="mt-3">
-                                        @if ($certificate->signature)
-                                            <x-image-preview src="{{ asset($certificate->signature) }}" alt="signature_img"></x-image-preview>
+                                        @if (@$certificate->signature)
+                                            <x-image-preview src="{{ asset(@$certificate->signature) }}" alt="signature_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Signature</label>
                                         <input type="file" class="form-control" name="signature" placeholder="Enter certificate signature"/>
@@ -60,17 +60,17 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-                            <div class="_certificate_body" style="background-image: url({{ asset($certificate->background) }})">
+                            <div class="_certificate_body" style="background-image: url({{ asset(@$certificate->background) }})">
                                 <div class="_text_box">
-                                    <h1 class="_title">{{ $certificate->title }}</h1>
-                                    <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
-                                    <p class="_description">{{ $certificate->description }}</p>
+                                    <h1 class="_title">{{ @$certificate->title }}</h1>
+                                    <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
+                                    <p class="_description">{{ @$certificate->description }}</p>
                                 </div>
                                 <div id="signature" class="_signature _draggable_element" style="
-                                        left: {{ $certificateItem->x_position ?? '43%' }};
-                                        top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
+                                        left: {{ @$certificateItem->x_position ?? '43%' }};
+                                        top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
                                     <span>signature: </span>
-                                        <img src="{{ asset($certificate->signature) }}" alt="signature-image">
+                                        <img src="{{ asset(@$certificate->signature) }}" alt="signature-image">
                                     </div>
                                 </div>
 

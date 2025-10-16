@@ -10,6 +10,7 @@ use App\Traits\FileUpload;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CertificateBuilderController extends Controller
 {
@@ -30,18 +31,22 @@ class CertificateBuilderController extends Controller
      * @param CertificateBuilderUpdateRequest $request
      * @return RedirectResponse
     */
-    function update(CertificateBuilderUpdateRequest $request): RedirectResponse
+    function update(CertificateBuilderUpdateRequest $request): Response
     {
         $data = ['title' => $request->title, 'subtitle' => $request->subtitle, 'description' => $request->description];
+        $imageInfo = [];
 
         if ($request->hasFile('signature'))
         {
             $signature = $this->fileUpload($request->file('signature'));
             $data['signature'] = $signature;
+
         }
 
         if ($request->hasFile('background'))
         {
+            $file = $request->file('background');
+            $imageInfo = getimagesize($file->getRealPath());
             $background = $this->fileUpload($request->file('background'));
             $data['background'] = $background;
         }
@@ -51,9 +56,13 @@ class CertificateBuilderController extends Controller
             $data,
         );
 
-        notyf()->success("Create or Update Certificate sucessfully.");
-
-        return redirect()->back();
+       //return redirect()->back();
+        return response([
+            'status' => 'success',
+            'message' => 'Certificate updated successfully',
+            'imageInfo' => $imageInfo,
+            'redirect' => route('admin.certificate-builder.index'),
+        ]);
     }
 
 
