@@ -14,10 +14,12 @@ trait FileUpload
         // důvod try-catch je chyba asi v laravelu, potřeba přeskočit tuto chybu
         try {
             $filename = 'educore_'.uniqid().'.'.$file->getClientOriginalExtension();
+
             // move a file to the storage
             $file->move(public_path($directory), $filename);
 
             return '/'.$directory.'/'.$filename;
+
         }
         catch(Exception $e) {
             throw $e;

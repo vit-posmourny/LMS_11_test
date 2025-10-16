@@ -31,7 +31,7 @@ class CertificateBuilderController extends Controller
      * @param CertificateBuilderUpdateRequest $request
      * @return RedirectResponse
     */
-    function update(CertificateBuilderUpdateRequest $request): Response
+    function update(CertificateBuilderUpdateRequest $request): RedirectResponse
     {
         $data = ['title' => $request->title, 'subtitle' => $request->subtitle, 'description' => $request->description];
         $imageInfo = [];
@@ -47,8 +47,10 @@ class CertificateBuilderController extends Controller
         {
             $file = $request->file('background');
             $imageInfo = getimagesize($file->getRealPath());
-            $background = $this->fileUpload($request->file('background'));
+            $background = $this->fileUpload($file);
             $data['background'] = $background;
+            $data['bg_width'] = $imageInfo[0];
+            $data['bg_height'] = $imageInfo[1];
         }
 
         CertificateBuilder::updateOrCreate(
@@ -56,13 +58,7 @@ class CertificateBuilderController extends Controller
             $data,
         );
 
-       //return redirect()->back();
-        return response([
-            'status' => 'success',
-            'message' => 'Certificate updated successfully',
-            'imageInfo' => $imageInfo,
-            'redirect' => route('admin.certificate-builder.index'),
-        ]);
+        return redirect()->route('admin.certificate-builder.index');
     }
 
 
