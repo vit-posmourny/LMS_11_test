@@ -75,7 +75,7 @@
                                         left: {{ @$certificateItem->x_position ?? '43%' }};
                                         top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
                                     <span>signature: </span>
-                                        <img src="{{ asset(@$certificate->signature) }}" height="{{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};" alt="signature-image">
+                                        <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
                                     </div>
                                 </div>
                             </div>

@@ -52,7 +52,12 @@ class CertificateBuilderController extends Controller
 
                 $width = $imageInfo[0];
                 $height = $imageInfo[1];
-                $aspectRatioHeight = $width / $height * 100;
+
+                if ($width < $height) {
+                    $aspectRatioHeight = $width / $height * 104;
+                }else{
+                    $aspectRatioHeight = $height / $width * 104;
+                }
                 $data['aspectRatioHeight'] = $aspectRatioHeight;
 
                 $signatureUrl = $this->fileUpload($file);
