@@ -15,5 +15,6 @@ class CertificateBuilder extends Model
         'signature',
         'bg_width',
         'bg_height',
+        'aspectRatioHeight',
     ];
 }

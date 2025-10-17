@@ -75,7 +75,7 @@
 
         ._signature img {
             width: 104px;
-            height: 66px;
+            height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};
             margin-left: 0.5rem;
         }
     </style>

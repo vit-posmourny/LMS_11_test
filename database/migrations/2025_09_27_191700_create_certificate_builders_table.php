@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('signature')->nullable();
             $table->string('bg_width')->nullable();
             $table->string('bg_height')->nullable();
+            $table->string('aspectRatioHeight')->nullable();
             $table->timestamps();
         });
     }

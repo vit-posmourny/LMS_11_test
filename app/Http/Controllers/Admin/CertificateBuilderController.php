@@ -48,6 +48,13 @@ class CertificateBuilderController extends Controller
 
             if ($file->isValid())
             {
+                $imageInfo = getimagesize($file->getRealPath());
+
+                $width = $imageInfo[0];
+                $height = $imageInfo[1];
+                $aspectRatioHeight = $width / $height * 100;
+                $data['aspectRatioHeight'] = $aspectRatioHeight;
+
                 $signatureUrl = $this->fileUpload($file);
                 $data['signature'] = $signatureUrl;
             }
@@ -64,6 +71,7 @@ class CertificateBuilderController extends Controller
             if ($file->isValid())
             {
                 $imageInfo = getimagesize($file->getRealPath());
+
                 $backgroundUrl = $this->fileUpload($file);
                 $data['background'] = $backgroundUrl;
                 $data['bg_width'] = $imageInfo[0];
