@@ -60,6 +60,7 @@
         ._signature {
             position: absolute;
             /* margin-top: 0.85rem; */
+            margin-left: 0.5rem;
         }
 
         ._signature span {
