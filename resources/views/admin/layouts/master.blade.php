@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
-
+    @stack('header_styles')
     <style>
         @import url('https://rsms.me/inter/inter.css');
 

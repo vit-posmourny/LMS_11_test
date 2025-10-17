@@ -117,6 +117,7 @@ $(function()
 });
 
 
+// Grabbing bg image in certificate builder
 $(function() {
     const overflowElement = $("._div_overflow");
     let isDown = false;

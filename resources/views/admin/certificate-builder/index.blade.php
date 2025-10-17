@@ -89,3 +89,12 @@
     </div>
 @endsection
 
+@push('header_styles')
+<style>
+    @media (min-width: 992px) {
+        .footer {
+            padding: 2rem 0rem 2rem 15rem;
+        }
+    }
+</style>
+@endpush
