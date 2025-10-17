@@ -15665,7 +15665,7 @@ select {
 
 /* CERTIFICATE */
 
-._certificate_body  {
+._certificate_boundary  {
     position: relative;
     margin: auto;
     background: gray;
