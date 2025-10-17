@@ -10,8 +10,6 @@ use App\Traits\FileUpload;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
-use Symfony\Component\Mailer\Transport\Dsn;
 
 class CertificateBuilderController extends Controller
 {
@@ -54,6 +52,7 @@ class CertificateBuilderController extends Controller
                 $height = $imageInfo[1];
 
                 if ($width < $height) {
+                    // pokud má být 104 změněno, tak i v public\admin\assets\dist\css\style.css v pravidlu ._signature img
                     $aspectRatioHeight = $width / $height * 104;
                 }else{
                     $aspectRatioHeight = $height / $width * 104;

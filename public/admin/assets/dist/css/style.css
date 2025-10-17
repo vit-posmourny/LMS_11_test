@@ -15665,7 +15665,6 @@ select {
 
 /* CERTIFICATE */
 
-
 ._certificate_body  {
     position: relative;
     margin: auto;
@@ -15720,6 +15719,7 @@ select {
 }
 
 ._signature img {
+    /* pokud má být width změněno, tak i v CertificateBuilderController - řádek cca 55 */
     width: 104px !important;
     margin-left: 0.5rem;
 }

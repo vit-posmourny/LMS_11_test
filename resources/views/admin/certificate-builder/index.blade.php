@@ -61,7 +61,7 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-                            <div class="_certificate_body" style="
+                            <div class="_certificate_boundary" style="
                                 background-image: url({{ asset(@$certificate->background) }});
                                 width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
                                 height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
