@@ -15,14 +15,14 @@
         }
 
         @page {
-            size: 900px 709px;
+            size: {{ data_get($certificate, 'bg_width', 1024) . 'px' }} {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             margin: 0;
         }
 
         ._certificate_body  {
             position: relative;
-            width: 900px;
-            height: 709px;
+            width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+            height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             background: gray;
             background-repeat: no-repeat;
             background-position: center;

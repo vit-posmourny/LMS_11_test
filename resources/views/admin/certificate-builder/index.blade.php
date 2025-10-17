@@ -36,14 +36,15 @@
                                             <x-image-preview src="{{ asset(@$certificate->background) }}" alt="background_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Background</label>
-                                        <input type="file" class="form-control" name="background" value="{{ old('background') }}" placeholder="Enter certificate background"/>
+                                        <input type="file" class="form-control" name="background"/>
+                                        <x-input-error :messages="$errors->get('background')" class="mt-2"/>
                                     </div>
                                     <div class="mt-3">
                                         @if (@$certificate->signature)
                                             <x-image-preview src="{{ asset(@$certificate->signature) }}" alt="signature_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Signature</label>
-                                        <input type="file" class="form-control" name="signature" placeholder="Enter certificate signature"/>
+                                        <input type="file" class="form-control" name="signature"/>
                                         <x-input-error :messages="$errors->get('signature')" class="mt-2" />
                                     </div>
                                 </fieldset>
@@ -60,7 +61,11 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-                            <div class="_certificate_body" style="background-image: url({{ asset(@$certificate->background) }})">
+                            <div class="_certificate_body" style="
+                                background-image: url({{ asset(@$certificate->background) }});
+                                width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+                                height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+                                ">
                                 <div class="_text_box">
                                     <h1 class="_title">{{ @$certificate->title }}</h1>
                                     <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
@@ -73,7 +78,6 @@
                                         <img src="{{ asset(@$certificate->signature) }}" alt="signature-image">
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>

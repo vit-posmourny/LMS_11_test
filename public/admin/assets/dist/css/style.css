@@ -15665,14 +15665,9 @@ select {
 
 /* CERTIFICATE */
 
-.card-body {
-
-}
 
 ._certificate_body  {
     position: relative;
-    width: 900px;
-    height: 709px;
     margin: auto;
     background: gray;
     background-repeat: no-repeat;
