@@ -15664,11 +15664,14 @@ select {
 }
 
 /* CERTIFICATE */
+._div_overflow {
+    overflow: auto;
+    margin: 0 auto;
+}
 
 ._certificate_boundary  {
     position: relative;
-    margin: auto;
-    background: gray;
+    margin: 0 auto;
     background-repeat: no-repeat;
     background-position: center;
     text-align: center;

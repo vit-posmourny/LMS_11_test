@@ -61,21 +61,23 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-                            <div class="_certificate_boundary" style="
-                                background-image: url({{ asset(@$certificate->background) }});
-                                width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
-                                height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
-                                ">
-                                <div class="_text_box">
-                                    <h1 class="_title">{{ @$certificate->title }}</h1>
-                                    <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
-                                    <p class="_description">{{ @$certificate->description }}</p>
-                                </div>
-                                <div id="signature" class="_signature _draggable_element" style="
-                                        left: {{ @$certificateItem->x_position ?? '43%' }};
-                                        top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
-                                    <span>signature: </span>
-                                        <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
+                            <div class="_div_overflow">
+                                <div class="_certificate_boundary" style="
+                                    background-image: url({{ asset(@$certificate->background) }});
+                                    width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+                                    height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+                                    ">
+                                    <div class="_text_box">
+                                        <h1 class="_title">{{ @$certificate->title }}</h1>
+                                        <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
+                                        <p class="_description">{{ @$certificate->description }}</p>
+                                    </div>
+                                    <div id="signature" class="_signature _draggable_element" style="
+                                            left: {{ @$certificateItem->x_position ?? '43%' }};
+                                            top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
+                                        <span>signature: </span>
+                                            <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
+                                        </div>
                                     </div>
                                 </div>
                             </div>

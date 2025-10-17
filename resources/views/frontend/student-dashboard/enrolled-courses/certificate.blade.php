@@ -19,11 +19,10 @@
             margin: 0;
         }
 
-        ._certificate_body  {
+        ._certificate_boundary  {
             position: relative;
             width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
             height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
-            background: gray;
             background-repeat: no-repeat;
             background-position: center;
             text-align: center;
@@ -60,7 +59,7 @@
 
         ._signature {
             position: absolute;
-            margin-top: 0.85rem;
+            /* margin-top: 0.85rem; */
         }
 
         ._signature span {
@@ -93,7 +92,7 @@
     </style>
 </head>
 <body>
-    <div class="_certificate_body" style="background-image: url({{ public_path($certificate->background) }})">
+    <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
         <div class="_text_box">
             <h1 class="_title">{{ $certificate->title }}</h1>
             <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
