@@ -68,9 +68,9 @@
                                     height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
                                     ">
                                     <div class="_text_box">
-                                        <h1 class="_title">{{ @$certificate->title }}</h1>
-                                        <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
-                                        <p class="_description">{{ @$certificate->description }}</p>
+                                        <h1 id="title" class="_title _draggable_element">{{ @$certificate->title }}</h1>
+                                        <h4 id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</h4>
+                                        <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
                                     </div>
                                     <div id="signature" class="_signature _draggable_element" style="
                                             left: {{ @$certificateItem->x_position ?? '43%' }};

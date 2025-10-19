@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('certificate_builder_items', function (Blueprint $table) {
             $table->id();
-            $table->string('elementId')->nullable();
+            $table->string('element_id')->nullable();
             $table->string('x_position')->nullable();
             $table->string('y_position')->nullable();
             $table->string('saved')->default('false');

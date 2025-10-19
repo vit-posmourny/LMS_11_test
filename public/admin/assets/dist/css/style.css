@@ -15677,6 +15677,10 @@ select {
     text-align: center;
 }
 
+._certificate_boundary div, h1, h4 {
+    display: inline-block;
+}
+
 ._text_box {
     position: absolute;
     top: 40%;

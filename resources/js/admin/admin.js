@@ -58,51 +58,75 @@ $('.delete-confirm').on('click', function(e) {
 
 
 // Certificate
+// $(function()
+// {
+//     let element = $("._draggable_element");
+//     let elementId = element.attr('id');
+//     let certBound = $("._certificate_boundary");
+
+//     // 🔹 1. Po načtení stránky převeď procenta na pixely (jen pokud zatím nejsou uložené pozice)
+//     if (elementId === 'signature' && element.data("position-saved") == 'false')
+//     {
+//         let certWidth = certBound.outerWidth();
+//         let certHeight = certBound.outerHeight();
+
+//         let elWidth = element.outerWidth();
+//         let elHeight = element.outerHeight();
+
+//         // Spočítáme pozici na střed
+//         let left = certWidth * 0.43 - elWidth / 2;
+//         let top = certHeight * 0.58 - elHeight / 2;
+
+//         element.css({
+//             left: left + "px",
+//             top: top + "px",
+//         });
+//     }
+// })
+
 $(function()
 {
-    const element = $("#signature");
-    const certBound = $("._certificate_boundary");
-
-    // 🔹 1. Po načtení stránky převeď procenta na pixely (jen pokud zatím nejsou uložené pozice)
-    if (element.data("position-saved") == 'false')
+    $("._draggable_element").draggable(
     {
-        //const certOffset = certBound.offset();
-        const certWidth = certBound.outerWidth();
-        const certHeight = certBound.outerHeight();
-        console.log(certWidth, certHeight);
-
-        const elWidth = element.outerWidth();
-        const elHeight = element.outerHeight();
-
-        // Spočítáme pozici na střed
-        const left = certWidth * 0.43 - elWidth / 2;
-        const top = certHeight * 0.58 - elHeight / 2;
-
-        element.css({
-            left: left + "px",
-            top: top + "px",
-        });
-    }
-
-    // 🔹 2. Inicializuj draggable s měněním kurzoru
-    element.draggable({
         containment: "._certificate_boundary",
         start: function() {
             $(this).css("cursor", "grabbing");
         },
-        stop: function(event, ui) {
+        stop: function(event, ui)
+        {
+            let elementId = $(this).attr('id');
+            let certBound = $("._certificate_boundary");
+
+            if (elementId === 'signature' && $(this).data("position-saved") == 'false')
+            {
+                let certWidth = certBound.outerWidth();
+                let certHeight = certBound.outerHeight();
+
+                let elWidth = element.outerWidth();
+                let elHeight = element.outerHeight();
+
+                // Spočítáme pozici na střed
+                let left = certWidth * 0.43 - elWidth / 2;
+                let top = certHeight * 0.58 - elHeight / 2;
+
+                $(this).css({
+                    left: left + "px",
+                    top: top + "px",
+                });
+            }
+
             $(this).css("cursor", "grab");
+            let x = ui.position.left;
+            let y = ui.position.top;
+            console.log(elementId);
 
-            const x = ui.position.left;
-            const y = ui.position.top;
 
-            // 🔹 3. AJAX uložení nové pozice do DB
             $.ajax({
                 method: 'POST',
                 url: `${base_url}/admin/certificate-item`,
                 data: {
                     _token: csrf_token,
-                    elementId: "signature",
+                    element_id: elementId,
                     x_position: x,
                     y_position: y,
                     saved: 'true',
@@ -114,12 +138,12 @@ $(function()
             });
         }
     });
-});
+})
 
 
 // GRABBING BG IMAGE IN CERTIFICATE BUILDER
 $(function() {
-    const overflowElement = $("._div_overflow");
+    let overflowElement = $("._div_overflow");
     let isDown = false;
     let startX;
     let startY;
@@ -151,8 +175,8 @@ $(function() {
     overflowElement.on("mousemove", function(e) {
         if (!isDown) return;
 
-        const x = e.pageX - this.offsetLeft;
-        const y = e.pageY - this.offsetTop;
+        let x = e.pageX - this.offsetLeft;
+        let y = e.pageY - this.offsetTop;
 
         // Výpočet a nastavení posunu
         this.scrollLeft = scrollLeft - (x - startX);
