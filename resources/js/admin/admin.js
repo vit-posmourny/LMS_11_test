@@ -116,3 +116,46 @@ $(function()
     });
 });
 
+
+// Grabbing bg image in certificate builder
+$(function() {
+    const overflowElement = $("._div_overflow");
+    let isDown = false;
+    let startX;
+    let startY;
+    let scrollLeft;
+    let scrollTop;
+
+    overflowElement.on("mousedown", function(e) {
+        isDown = true;
+        $(this).css("cursor", "grabbing");
+        startX = e.pageX - this.offsetLeft;
+        startY = e.pageY - this.offsetTop;
+        scrollLeft = this.scrollLeft;
+        scrollTop = this.scrollTop;
+
+        // Důležité: zabránit výchozímu chování (např. výběru textu)
+        e.preventDefault();
+    });
+
+    overflowElement.on("mouseleave", function() {
+        isDown = false;
+        $(this).css("cursor", "grab");
+    });
+
+    overflowElement.on("mouseup", function() {
+        isDown = false;
+        $(this).css("cursor", "grab");
+    });
+
+    overflowElement.on("mousemove", function(e) {
+        if (!isDown) return;
+
+        const x = e.pageX - this.offsetLeft;
+        const y = e.pageY - this.offsetTop;
+
+        // Výpočet a nastavení posunu
+        this.scrollLeft = scrollLeft - (x - startX);
+        this.scrollTop = scrollTop - (y - startY);
+    });
+});

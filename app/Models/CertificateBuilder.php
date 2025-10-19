@@ -13,5 +13,8 @@ class CertificateBuilder extends Model
         'description',
         'background',
         'signature',
+        'bg_width',
+        'bg_height',
+        'aspectRatioHeight',
     ];
 }

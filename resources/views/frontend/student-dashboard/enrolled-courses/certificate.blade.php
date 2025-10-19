@@ -15,14 +15,14 @@
         }
 
         @page {
-            size: 900px 709px;
+            size: {{ data_get($certificate, 'bg_width', 1024) . 'px' }} {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             margin: 0;
         }
 
-        ._certificate_body  {
-            width: 900px;
-            height: 709px;
-            background: gray;
+        ._certificate_boundary  {
+            position: relative;
+            width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+            height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             background-repeat: no-repeat;
             background-position: center;
             text-align: center;
@@ -59,6 +59,8 @@
 
         ._signature {
             position: absolute;
+            /* margin-top: 0.85rem; */
+            margin-left: 0.5rem;
         }
 
         ._signature span {
@@ -74,7 +76,7 @@
 
         ._signature img {
             width: 104px;
-            height: 66px;
+            height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};
             margin-left: 0.5rem;
         }
     </style>
@@ -91,8 +93,8 @@
     </style>
 </head>
 <body>
-    <div class="_certificate_body" style="background-image: url({{ public_path($certificate->background) }})">
-        <div class="_text_box" style="position: absolute">
+    <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
+        <div class="_text_box">
             <h1 class="_title">{{ $certificate->title }}</h1>
             <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
             <p class="_description">{{ $certificate->description }}</p>

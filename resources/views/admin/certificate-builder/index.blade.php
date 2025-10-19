@@ -19,31 +19,32 @@
                                 <fieldset class="form-fieldset">
                                     <div class="mt-1">
                                         <label class="form-label">Certificate Title</label>
-                                        <input type="text" class="form-control" name="title" value="{{ $certificate->title }}" placeholder="Enter certificate title">
+                                        <input type="text" class="form-control" name="title" value="{{ @$certificate->title }}" placeholder="Enter certificate title">
                                         <x-input-error :messages="$errors->get('title')" class="mt-2" />
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Subtitle</label>
-                                        <input type="text" class="form-control" name="subtitle" value="{{ $certificate->subtitle }}" placeholder="Enter certificate subtitle">
+                                        <input type="text" class="form-control" name="subtitle" value="{{ @$certificate->subtitle }}" placeholder="Enter certificate subtitle">
                                         <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Description</label>
-                                        <textarea class="form-control" name="description" placeholder="Enter certificate description">{{ $certificate->description }}</textarea>
+                                        <textarea class="form-control" name="description" placeholder="Enter certificate description">{{ @$certificate->description }}</textarea>
                                     </div>
                                     <div class="mt-3">
-                                        @if ($certificate->background)
-                                            <x-image-preview src="{{ asset($certificate->background) }}" alt="background_img"></x-image-preview>
+                                        @if (@$certificate->background)
+                                            <x-image-preview src="{{ asset(@$certificate->background) }}" alt="background_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Background</label>
-                                        <input type="file" class="form-control" name="background" placeholder="Enter certificate background"/>
+                                        <input type="file" class="form-control" name="background"/>
+                                        <x-input-error :messages="$errors->get('background')" class="mt-2"/>
                                     </div>
                                     <div class="mt-3">
-                                        @if ($certificate->signature)
-                                            <x-image-preview src="{{ asset($certificate->signature) }}" alt="signature_img"></x-image-preview>
+                                        @if (@$certificate->signature)
+                                            <x-image-preview src="{{ asset(@$certificate->signature) }}" alt="signature_img"></x-image-preview>
                                         @endif
                                         <label class="form-label">Certificate Signature</label>
-                                        <input type="file" class="form-control" name="signature" placeholder="Enter certificate signature"/>
+                                        <input type="file" class="form-control" name="signature"/>
                                         <x-input-error :messages="$errors->get('signature')" class="mt-2" />
                                     </div>
                                 </fieldset>
@@ -60,23 +61,23 @@
                             <h3 class="card-title">Certificate Builder</h3>
                         </div>
                         <div class="card-body">
-                            <div class="_certificate_body" style="background-image: url({{ asset($certificate->background) }})">
-                                <div class="_certificate_boundary w-full h-full ps-7 pe-8 py-8" style="position: absolute">
+                            <div class="_div_overflow">
+                                <div class="_certificate_boundary" style="
+                                    background-image: url({{ asset(@$certificate->background) }});
+                                    width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+                                    height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+                                    ">
                                     <div class="_text_box">
-                                        <h1>{{ $certificate->title }}</h1>
-                                        <h4>{{ $certificate->subtitle }}</h4>
-                                        <p class="pt-3">{{ $certificate->description }}</p>
+                                        <h1 class="_title">{{ @$certificate->title }}</h1>
+                                        <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
+                                        <p class="_description">{{ @$certificate->description }}</p>
                                     </div>
-                                    {{-- pres css se to nechytalo, proto inline styles --}}
-                                    <div id="signature" class="d-flex flex-row align-items-center gap-3 _draggable_element" style="
-                                            position: absolute;
-                                            text-align: center;
-                                            cursor: grab;
-                                            width: 10%;
-                                            left: {{ $certificateItem->x_position ?? '43%' }};
-                                            top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
+                                    <div id="signature" class="_signature _draggable_element" style="
+                                            left: {{ @$certificateItem->x_position ?? '43%' }};
+                                            top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
                                         <span>signature: </span>
-                                        <img src="{{ asset($certificate->signature) }}" alt="signature-image">
+                                            <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,3 +89,12 @@
     </div>
 @endsection
 
+@push('header_styles')
+<style>
+    @media (min-width: 992px) {
+        .footer {
+            padding: 2rem 0rem 2rem 15rem;
+        }
+    }
+</style>
+@endpush

@@ -15663,26 +15663,66 @@ select {
     margin-top: 5px !important;
 }
 
-
-._certificate_body  {
-    position: relative;
-    width: 900px;
-    height: 709px;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
+/* CERTIFICATE */
+._div_overflow {
+    overflow: auto;
+    margin: 0 auto;
 }
 
+._certificate_boundary  {
+    position: relative;
+    margin: 0 auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+}
 
 ._text_box {
     position: absolute;
-    text-align: center;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
+._title {
+    font-family: "Roboto", sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0.5rem;
+}
 
-._text_box > p {
-    font-size: 15px !important;
+._subtitle {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin: 0;
+}
+
+._description {
+    font-family: "Roboto", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 1.5rem;
+    color: rgb(120, 120, 130);
+}
+
+._signature {
+    position: absolute;
+}
+
+._signature span {
+    margin-right: 0.5rem;
+}
+
+._signature span, ._signature img {
+    font-size: 0.85rem;
+    color: rgb(120, 120, 130);
+    display: inline-block;
+    vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
+}
+
+._signature img {
+    /* pokud má být width změněno, tak i v CertificateBuilderController - řádek cca 55 */
+    width: 104px !important;
+    margin-left: 0.5rem;
 }
