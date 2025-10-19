@@ -109,7 +109,7 @@ $(function()
                 },
                 success: function() {
                 },
-                error: function(err) {
+                error: function() {
                 }
             });
         }
@@ -117,7 +117,7 @@ $(function()
 });
 
 
-// Grabbing bg image in certificate builder
+// GRABBING BG IMAGE IN CERTIFICATE BUILDER
 $(function() {
     const overflowElement = $("._div_overflow");
     let isDown = false;

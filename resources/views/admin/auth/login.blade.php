@@ -29,12 +29,12 @@
 </head>
 
 <body class=" d-flex flex-column">
-    <script src="./dist/js/demo-theme.min.js?1692870487"></script>
+    <script src="{{ asset('admin/assets/dist/js/demo-theme.min.js?1692870487') }}"></script>
     <div class="page page-center">
         <div class="container container-tight py-4">
             <div class="text-center mb-4">
-                <a href="." class="navbar-brand navbar-brand-autodark">
-                    <img src="./static/logo.svg" width="110" height="32" alt="Tabler"
+                <a href="https://preview.tabler.io/" class="navbar-brand navbar-brand-autodark">
+                    <img src="{{ asset('admin/assets/static/logo.svg') }}" width="110" height="32" alt="Tabler"
                         class="navbar-brand-image">
                 </a>
             </div>
