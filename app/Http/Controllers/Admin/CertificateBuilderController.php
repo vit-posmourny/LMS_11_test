@@ -20,9 +20,8 @@ class CertificateBuilderController extends Controller
     function index(): View
     {
         $certificate = CertificateBuilder::first();
-        $certificateItem = CertificateBuilderItem::first();
-
-        return view('admin.certificate-builder.index', compact('certificate', 'certificateItem'));
+        $certificateItems = CertificateBuilderItem::all();
+        return view('admin.certificate-builder.index', compact('certificate', 'certificateItems'));
     }
 
     /**

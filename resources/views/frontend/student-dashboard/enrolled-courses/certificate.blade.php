@@ -100,8 +100,8 @@
             <p class="_description">{{ $certificate->description }}</p>
         </div>
         <div id="signature" class="_signature _draggable_element" style="
-                left: {{ $certificateItem->x_position ?? '43%' }};
-                top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
+                left: {{ $certificateItems->x_position ?? '43%' }};
+                top: {{ $certificateItems->y_position ?? '58%' }};" data-position-saved="{{ $certificateItems->saved ?? 'false' }}">
             <span>signature: </span>
             <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
         </div>

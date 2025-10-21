@@ -72,9 +72,7 @@
                                         <h4 id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</h4>
                                         <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
                                     </div>
-                                    <div id="signature" class="_signature _draggable_element" style="
-                                            left: {{ @$certificateItem->x_position ?? '43%' }};
-                                            top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
+                                    <div id="signature" class="_signature _draggable_element">
                                         <span>signature: </span>
                                             <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
                                         </div>
@@ -96,5 +94,12 @@
             padding: 2rem 0rem 2rem 15rem;
         }
     }
+
+    @foreach ($certificateItems as $item)
+        #{{ $item->element_id }} {
+            left: {{ $item->x_position }};
+            top: {{ $item->y_position }};
+        }
+    @endforeach
 </style>
 @endpush
