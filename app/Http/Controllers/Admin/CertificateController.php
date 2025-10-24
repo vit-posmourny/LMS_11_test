@@ -7,17 +7,19 @@ use App\Http\Controllers\Controller;
 use App\Models\CertificateBuilderItem;
 use Barryvdh\DomPDF\Facade\Pdf;
 
+use Dompdf\Dompdf;
+
+require '../vendor/autoload.php';
+
 class CertificateController extends Controller
 {
 
     function index()
     {
         $certificate = CertificateBuilder::first();
-        $certificateItem = CertificateBuilderItem::first();
+        $certificateItems = CertificateBuilderItem::all();
 
-        $pdf = Pdf::loadView('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItem'))->stream();
+        $pdf = Pdf::loadView('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItems'))->stream();
         return $pdf;
-
-       // return view('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItem'));
     }
 }

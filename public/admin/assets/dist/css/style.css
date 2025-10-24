@@ -15674,40 +15674,36 @@ select {
     margin: 0 auto;
     background-repeat: no-repeat;
     background-position: center;
-    text-align: center;
 }
 
-._certificate_boundary div, h1, h4 {
-    display: inline-block;
+._certificate_boundary div, mh1, mh4 {
+
 }
 
 ._text_box {
     position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
 ._title {
     font-family: "Roboto", sans-serif;
     font-size: 22px;
     font-weight: 500;
-    margin: 0.5rem;
 }
 
 ._subtitle {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    margin: 0;
 }
 
 ._description {
     font-family: "Roboto", sans-serif;
     font-size: 14px;
     font-weight: 400;
-    margin-top: 1.5rem;
     color: rgb(120, 120, 130);
+    text-align: center;
 }
 
 ._signature {

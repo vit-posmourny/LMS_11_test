@@ -120,7 +120,6 @@ $(function()
             let y = ui.position.top;
             console.log(elementId);
 
-
             $.ajax({
                 method: 'POST',
                 url: `${base_url}/admin/certificate-item`,

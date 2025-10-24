@@ -21,46 +21,46 @@
 
         ._certificate_boundary  {
             position: relative;
-            width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
-            height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+            margin: 0 auto;
             background-repeat: no-repeat;
             background-position: center;
-            text-align: center;
+            width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
+            height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+        }
+
+        ._certificate_boundary div, mh1, mh4 {
+
+
         }
 
         ._text_box {
             position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            padding-left: 25%;
+            padding-right: 25%;
         }
 
         ._title {
-            font-family: "Roboto", sans-serif;
             font-size: 22px;
-            font-weight: 500;
-            margin: 0.5rem;
+            transform: translateX(-0.5rem)
         }
 
         ._subtitle {
-            font-family: "Roboto", sans-serif;
+            position: absolute;
             font-size: 14px;
             font-weight: 400;
-            margin: 0;
+            transform: translateX(-1.5rem)
         }
 
         ._description {
-            font-family: "Roboto", sans-serif;
             font-size: 14px;
             font-weight: 400;
-            margin-top: 1.5rem;
             color: rgb(120, 120, 130);
+            transform: translateY(-0.8rem);
+            text-align: center;
         }
 
         ._signature {
             position: absolute;
-            /* margin-top: 0.85rem; */
-            margin-left: 0.5rem;
         }
 
         ._signature span {
@@ -81,27 +81,26 @@
         }
     </style>
     <style>
-        @import url('https://rsms.me/inter/inter.css');
+        @foreach ($certificateItems as $item)
+            #{{ $item->element_id }} {
+                left: {{ $item->x_position }};
+                top: {{ $item->y_position }};
+                position: relative;
+            }
+        @endforeach
+    </style>
+    <style>
 
-        :root {
-            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-        }
-
-        body {
-            font-feature-settings: "cv03", "cv04", "cv11";
-        }
     </style>
 </head>
 <body>
     <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
         <div class="_text_box">
-            <h1 class="_title">{{ $certificate->title }}</h1>
-            <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
-            <p class="_description">{{ $certificate->description }}</p>
+            <mh1 id="title" class="_title _draggable_element">{{ @$certificate->title }}</mh1>
+            <mh4 id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</mh4>
+            <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
         </div>
-        <div id="signature" class="_signature _draggable_element" style="
-                left: {{ $certificateItems->x_position ?? '43%' }};
-                top: {{ $certificateItems->y_position ?? '58%' }};" data-position-saved="{{ $certificateItems->saved ?? 'false' }}">
+        <div id="signature" class="_signature _draggable_element">
             <span>signature: </span>
             <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
         </div>
