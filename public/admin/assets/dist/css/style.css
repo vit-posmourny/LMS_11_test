@@ -15676,25 +15676,21 @@ select {
     background-position: center;
 }
 
-._certificate_boundary div, mh1, mh4 {
-
-}
-
 ._text_box {
     position: absolute;
-    padding-left: 25%;
-    padding-right: 25%;
+    padding-left: 18%;
+    padding-right: 18%;
 }
 
 ._title {
     font-family: "Roboto", sans-serif;
-    font-size: 22px;
+    font-size: 22px !important;
     font-weight: 500;
 }
 
 ._subtitle {
     font-family: "Roboto", sans-serif;
-    font-size: 14px;
+    font-size: 14px !important;
     font-weight: 400;
 }
 

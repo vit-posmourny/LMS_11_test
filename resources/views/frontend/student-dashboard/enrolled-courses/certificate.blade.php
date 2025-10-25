@@ -28,34 +28,24 @@
             height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
         }
 
-        ._certificate_boundary div, mh1, mh4 {
-
-
-        }
-
         ._text_box {
             position: absolute;
-            padding-left: 25%;
-            padding-right: 25%;
+            padding-left: 18%;
+            padding-right: 18%;
         }
 
         ._title {
             font-size: 22px;
-            transform: translateX(-0.5rem)
         }
 
         ._subtitle {
             position: absolute;
             font-size: 14px;
-            font-weight: 400;
-            transform: translateX(-1.5rem)
         }
 
         ._description {
             font-size: 14px;
-            font-weight: 400;
             color: rgb(120, 120, 130);
-            transform: translateY(-0.8rem);
             text-align: center;
         }
 
@@ -96,8 +86,8 @@
 <body>
     <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
         <div class="_text_box">
-            <mh1 id="title" class="_title _draggable_element">{{ @$certificate->title }}</mh1>
-            <mh4 id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</mh4>
+            <span id="title" class="_title _draggable_element">{{ @$certificate->title }}</span>
+            <span id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</span>
             <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
         </div>
         <div id="signature" class="_signature _draggable_element">
