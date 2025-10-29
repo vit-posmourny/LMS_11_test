@@ -45,6 +45,10 @@
             color: rgb(120, 120, 130);
         }
 
+        ._signature span {
+            margin-right: 0.5rem;
+        }
+
         ._signature span, ._signature img {
             display: inline-block;
             vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
