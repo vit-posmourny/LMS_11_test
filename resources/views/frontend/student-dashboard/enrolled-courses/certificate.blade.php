@@ -9,6 +9,15 @@
     {{-- pridano kvuli Roboto fontu --}}
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
     <style>
+    @foreach ($certificateItems as $item)
+        #{{ $item->element_id }} {
+            left: {{ $item->x_position }};
+            top: {{ $item->y_position }};
+            position: relative;
+        }
+    @endforeach
+</style>
+    <style>
         body {
             margin: 0;
             padding: 0;
@@ -29,7 +38,6 @@
         }
 
         ._text_box {
-            position: absolute;
             padding-left: 18%;
             padding-right: 18%;
         }
@@ -69,18 +77,6 @@
             height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};
             margin-left: 0.5rem;
         }
-    </style>
-    <style>
-        @foreach ($certificateItems as $item)
-            #{{ $item->element_id }} {
-                left: {{ $item->x_position }};
-                top: {{ $item->y_position }};
-                position: relative;
-            }
-        @endforeach
-    </style>
-    <style>
-
     </style>
 </head>
 <body>

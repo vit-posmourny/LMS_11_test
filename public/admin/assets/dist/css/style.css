@@ -15718,7 +15718,6 @@ select {
 }
 
 ._signature img {
-    /* pokud má být width změněno, tak i v CertificateBuilderController - řádek cca 55 */
-    width: 104px !important;
+    width: 104px !important; /* pokud má být width změněno, tak i v CertificateBuilderController - řádek cca 55 */
     margin-left: 0.5rem;
 }

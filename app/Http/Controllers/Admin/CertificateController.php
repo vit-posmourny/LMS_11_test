@@ -28,9 +28,6 @@ class CertificateController extends Controller
         $html = str_replace("[instructor_name]", $course->instructor->name, $html);
 
         $pdf = pdf::loadHTML($html);
-        return $pdf->download('certificate.pdf');
-
-        // $pdf = Pdf::loadView('frontend.student-dashboard.enrolled-courses.certificate', compact('certificate', 'certificateItems'))->stream();
-        // return $pdf;
+        return $pdf->stream('certificate.pdf');
     }
 }
