@@ -9,15 +9,6 @@
     {{-- pridano kvuli Roboto fontu --}}
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
     <style>
-    @foreach ($certificateItems as $item)
-        #{{ $item->element_id }} {
-            left: {{ $item->x_position }};
-            top: {{ $item->y_position }};
-            position: relative;
-        }
-    @endforeach
-</style>
-    <style>
         body {
             margin: 0;
             padding: 0;
@@ -27,47 +18,34 @@
             size: {{ data_get($certificate, 'bg_width', 1024) . 'px' }} {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             margin: 0;
         }
-
-        ._certificate_boundary  {
+    </style>
+    <style>
+        /* rodič (má pevnou šířku a height) */
+        ._certificate_boundary {
             position: relative;
-            margin: 0 auto;
-            background-repeat: no-repeat;
-            background-position: center;
             width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
             height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
+            background-repeat: no-repeat;
+            background-position: center;
         }
 
-        ._text_box {
-            padding-left: 18%;
-            padding-right: 18%;
+        ._title, ._subtitle, ._description {
+            position: absolute;               /* zachová top z DB */
+            left: 18%;                        /* místo paddingu kontejneru */
+            width: calc(100% - 36%);          /* 100% minus 2 * 18% */
+            text-align: center;               /* vystředí text horizontálně v rámci šířky */
+            display: block;
+            overflow: visible;                /* začíná u levého okraje kontejneru */
         }
 
-        ._title {
-            font-size: 22px;
-        }
-
-        ._subtitle {
+        #signature {
             position: absolute;
-            font-size: 14px;
-        }
-
-        ._description {
-            font-size: 14px;
+            width: 100%;
+            font-size: 0.85rem;
             color: rgb(120, 120, 130);
-            text-align: center;
-        }
-
-        ._signature {
-            position: absolute;
-        }
-
-        ._signature span {
-            margin-right: 0.5rem;
         }
 
         ._signature span, ._signature img {
-            font-size: 0.85rem;
-            color: rgb(120, 120, 130);
             display: inline-block;
             vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
         }
@@ -77,8 +55,24 @@
             height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};
             margin-left: 0.5rem;
         }
+
+        /* výška (top) pro každou položku nastavíme z DB - bez leftu */
+        @foreach ($certificateItems as $item)
+            #{{ $item->element_id }} {
+                top: {{ $item->y_position }};
+                @if ($item->element_id == 'signature')
+                    left: {{ $item->x_position }};
+                @endif
+            }
+        @endforeach
+
+        /* specifika (velikost písma, bílé mezery apod.) */
+        #title { font-size: 22px; white-space: nowrap; }
+        #subtitle { font-size: 14px; }
+        #description { font-size: 14px; color: rgb(120,120,130); }
     </style>
 </head>
+
 <body>
     <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
         <div class="_text_box">
@@ -93,4 +87,5 @@
     </div>
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
 </body>
+
 </html>
