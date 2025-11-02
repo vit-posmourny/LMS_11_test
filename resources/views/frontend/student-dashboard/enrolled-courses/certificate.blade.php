@@ -18,49 +18,30 @@
             size: {{ data_get($certificate, 'bg_width', 1024) . 'px' }} {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             margin: 0;
         }
-
+    </style>
+    <style>
         ._certificate_boundary  {
             position: relative;
             width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
             height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
             background-repeat: no-repeat;
             background-position: center;
-            text-align: center;
         }
 
-        ._text_box {
+        ._title, ._subtitle, ._description {
+            position: absolute;               /* zachová top z DB */
+            left: 18%;                        /* místo paddingu kontejneru */
+            width: calc(100% - 36%);          /* 100% minus 2 * 18% */
+            text-align: center;               /* vystředí text horizontálně v rámci šířky */
+            display: block;
+            overflow: visible;                /* začíná u levého okraje kontejneru */
+        }
+
+        #signature {
             position: absolute;
-            top: 40%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        ._title {
-            font-family: "Roboto", sans-serif;
-            font-size: 22px;
-            font-weight: 500;
-            margin: 0.5rem;
-        }
-
-        ._subtitle {
-            font-family: "Roboto", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin: 0;
-        }
-
-        ._description {
-            font-family: "Roboto", sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-top: 1.5rem;
+            width: 100%;
+            font-size: 0.85rem;
             color: rgb(120, 120, 130);
-        }
-
-        ._signature {
-            position: absolute;
-            /* margin-top: 0.85rem; */
-            margin-left: 0.5rem;
         }
 
         ._signature span {
@@ -68,8 +49,6 @@
         }
 
         ._signature span, ._signature img {
-            font-size: 0.85rem;
-            color: rgb(120, 120, 130);
             display: inline-block;
             vertical-align: middle; /* Pro lepší vertikální zarovnání textu s obrázkem */
         }
@@ -79,33 +58,37 @@
             height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }};
             margin-left: 0.5rem;
         }
-    </style>
-    <style>
-        @import url('https://rsms.me/inter/inter.css');
 
-        :root {
-            --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
-        }
+        /* výška (top) pro každou položku nastavíme z DB - bez leftu */
+        @foreach ($certificateItems as $item)
+            #{{ $item->element_id }} {
+                top: {{ $item->y_position }};
+                @if ($item->element_id == 'signature')
+                    left: {{ $item->x_position }};
+                @endif
+            }
+        @endforeach
 
-        body {
-            font-feature-settings: "cv03", "cv04", "cv11";
-        }
+        /* specifika (velikost písma, bílé mezery apod.) */
+        #title { font-size: 22px; white-space: nowrap; }
+        #subtitle { font-size: 14px; }
+        #description { font-size: 14px; color: rgb(120,120,130); }
     </style>
 </head>
+
 <body>
     <div class="_certificate_boundary" style="background-image: url({{ public_path($certificate->background) }})">
         <div class="_text_box">
-            <h1 class="_title">{{ $certificate->title }}</h1>
-            <h4 class="_subtitle">{{ $certificate->subtitle }}</h4>
-            <p class="_description">{{ $certificate->description }}</p>
+            <span id="title" class="_title _draggable_element">{{ @$certificate->title }}</span>
+            <span id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</span>
+            <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
         </div>
-        <div id="signature" class="_signature _draggable_element" style="
-                left: {{ $certificateItem->x_position ?? '43%' }};
-                top: {{ $certificateItem->y_position ?? '58%' }};" data-position-saved="{{ $certificateItem->saved ?? 'false' }}">
+        <div id="signature" class="_signature _draggable_element">
             <span>signature: </span>
             <img src="{{ public_path($certificate->signature) }}" alt="signature-image">
         </div>
     </div>
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
 </body>
+
 </html>

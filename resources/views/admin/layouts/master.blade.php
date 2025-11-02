@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
-    @stack('header_styles')
+
     <style>
         @import url('https://rsms.me/inter/inter.css');
 
@@ -32,6 +32,8 @@
             font-feature-settings: "cv03", "cv04", "cv11";
         }
     </style>
+    @stack('header_styles')
+    
     @vite(['resources/css/admin.css', 'resources/js/admin/admin.js', 'resources/css/frontend.css', 'resources/css/global.css'])
     @stack('header_scripts')
 </head>

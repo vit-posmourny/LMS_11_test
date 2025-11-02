@@ -10,6 +10,7 @@ use App\Traits\FileUpload;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class CertificateBuilderController extends Controller
 {
@@ -19,9 +20,8 @@ class CertificateBuilderController extends Controller
     function index(): View
     {
         $certificate = CertificateBuilder::first();
-        $certificateItem = CertificateBuilderItem::first();
-
-        return view('admin.certificate-builder.index', compact('certificate', 'certificateItem'));
+        $certificateItems = CertificateBuilderItem::all();
+        return view('admin.certificate-builder.index', compact('certificate', 'certificateItems'));
     }
 
     /**
@@ -92,20 +92,20 @@ class CertificateBuilderController extends Controller
     }
 
 
-    function itemUpdate(Request $request): RedirectResponse
+    function itemUpdate(Request $request): Response
     {
         $request->validate([
-            'elementId' => 'required|in:signature',
+            'element_id' => 'required|in:title,subtitle,description,signature',
         ]);
 
         CertificateBuilderItem::updateOrCreate([
-            'elementId' => $request->elementId,
+            'element_id' => $request->element_id,
         ],[
             'x_position' => $request->x_position.'px',
             'y_position' => $request->y_position.'px',
             'saved' => $request->saved,
         ]);
 
-        return redirect()->back();
+        return response(['success' => true]);
     }
 }

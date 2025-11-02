@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <div class="alert alert-primary">
                                 <h4 class="alert-heading">Default Variables</h4>
-                                <p>[student_name], [course_name], [date], [platform_mame], [instructor_name]</p>
+                                <p>[student_name], [course_name], [date], [platform_name], [instructor_name]</p>
                             </div>
                             <form action="{{ route('admin.certificate-builder.update') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
@@ -68,13 +68,11 @@
                                     height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
                                     ">
                                     <div class="_text_box">
-                                        <h1 class="_title">{{ @$certificate->title }}</h1>
-                                        <h4 class="_subtitle">{{ @$certificate->subtitle }}</h4>
-                                        <p class="_description">{{ @$certificate->description }}</p>
+                                        <span id="title" class="_title _draggable_element">{{ @$certificate->title }}</span>
+                                        <span id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</span>
+                                        <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
                                     </div>
-                                    <div id="signature" class="_signature _draggable_element" style="
-                                            left: {{ @$certificateItem->x_position ?? '43%' }};
-                                            top: {{ @$certificateItem->y_position ?? '58%' }};" data-position-saved="{{ @$certificateItem->saved ?? 'false' }}">
+                                    <div id="signature" class="_signature _draggable_element">
                                         <span>signature: </span>
                                             <img src="{{ asset(@$certificate->signature) }}" style="height: {{ data_get($certificate, 'aspectRatioHeight', 66) . 'px' }} !important;" alt="signature-image">
                                         </div>
@@ -96,5 +94,12 @@
             padding: 2rem 0rem 2rem 15rem;
         }
     }
+
+    @foreach ($certificateItems as $item)
+        #{{ $item->element_id }} {
+            left: {{ $item->x_position }};
+            top: {{ $item->y_position }};
+        }
+    @endforeach
 </style>
 @endpush
