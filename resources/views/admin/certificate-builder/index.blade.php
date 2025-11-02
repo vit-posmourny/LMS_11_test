@@ -67,9 +67,11 @@
                                     width: {{ data_get($certificate, 'bg_width', 1024) . 'px' }};
                                     height: {{ data_get($certificate, 'bg_height', 724) . 'px' }};
                                     ">
-                                    <div class="_text_box">
+                                    <div class="_text_box_1">
                                         <span id="title" class="_title _draggable_element">{{ @$certificate->title }}</span>
                                         <span id="subtitle" class="_subtitle _draggable_element">{{ @$certificate->subtitle }}</span>
+                                    </div>
+                                    <div class="_text_box_2">
                                         <p id="description" class="_description _draggable_element">{{ @$certificate->description }}</p>
                                     </div>
                                     <div id="signature" class="_signature _draggable_element">

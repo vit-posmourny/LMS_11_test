@@ -95,7 +95,7 @@ class EnrolledCourseController extends Controller
             $watched_count = WatchHistory::where(['user_id' => user()->id, 'course_id' => $request->course_id, 'is_completed' => 1])->count();
             $lesson_count = CourseChapterLesson::where('course_id', $request->course_id)->count();
             $percentage = "(".number_format($watched_count/$lesson_count*100, 0, '.', '')."%)";
-
+            // bude použito v resources\views\frontend\student-dashboard\enrolled-courses\index.blade.php na zobrazení "Download certificate" button
             $enrollments = Enrollment::where('user_id', user()->id)->where('course_id', $request->course_id)->get();
 
             foreach ($enrollments as $enrollment)
