@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\Admin\CertificateController;
-use App\Models\Withdraw;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\OrderController;

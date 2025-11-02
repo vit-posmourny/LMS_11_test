@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('course_id');
             $table->foreignId('instructor_id');
             $table->boolean('have_access')->default(true);
+            $table->boolean('completed')->default(false);
             $table->timestamps();
         });
     }

@@ -7,6 +7,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\CertificateBuilder;
 use App\Http\Controllers\Controller;
 use App\Models\CertificateBuilderItem;
+use App\Models\Enrollment;
 
 
 require '../vendor/autoload.php';
@@ -17,6 +18,11 @@ class CertificateController extends Controller
     function download($id)
     {
         $course = Course::findOrFail($id);
+
+        if (!Enrollment::where('user_id', user()->id)->where('course_id', $id)->where('completed', true)->exists()) {
+            return abort(404);
+        }
+
         $certificate = CertificateBuilder::first();
         $certificateItems = CertificateBuilderItem::all();
 
