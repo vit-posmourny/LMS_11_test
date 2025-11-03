@@ -92,12 +92,14 @@
                                                         <a class="title" href="{{ route('student.player.index', $enrollment->course->slug) }}">{{ $enrollment->course->title }}</a>
                                                         <div class="mb-1"><small class="text-muted">By</small> {{ $enrollment->course->instructor->name }}</div>
                                                         <span>{{ $enrollment->course->seo_description }}</span>
-                                                        <p>
-                                                            <a href="{{ route('student.certificate.download', $enrollment->course) }}" class="btn btn-sm btn-warning mt-2"
-                                                                style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
-                                                                Download certificate
-                                                            </a>
-                                                        </p>
+                                                        @if($enrollment->completed)
+                                                            <p>
+                                                                <a href="{{ route('student.certificate.download', $enrollment->course) }}" class="btn btn-sm btn-warning mt-2"
+                                                                    style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;">
+                                                                    Download certificate
+                                                                </a>
+                                                            </p>
+                                                        @endif
                                                     </td>
                                                     <td class="text-center col-2">
                                                         <a href="{{ route('student.player.index', $enrollment->course->slug) }}" class="btn btn-primary">Watch Course</a>

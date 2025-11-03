@@ -28,7 +28,16 @@
             background-position: center;
         }
 
-        ._title, ._subtitle, ._description {
+        ._title, ._subtitle {
+            position: absolute;               /* zachová top z DB */
+            left: 12%;                        /* místo paddingu kontejneru */
+            width: calc(100% - 24%);          /* 100% minus 2 * 18% */
+            text-align: center;               /* vystředí text horizontálně v rámci šířky */
+            display: block;
+            overflow: visible;
+        }
+
+        ._description {
             position: absolute;               /* zachová top z DB */
             left: 18%;                        /* místo paddingu kontejneru */
             width: calc(100% - 36%);          /* 100% minus 2 * 18% */

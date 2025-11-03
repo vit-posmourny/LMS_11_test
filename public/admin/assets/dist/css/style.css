@@ -15676,7 +15676,13 @@ select {
     background-position: center;
 }
 
-._text_box {
+._text_box_1 {
+    position: absolute;
+    padding-left: 12%;
+    padding-right: 12%;
+}
+
+._text_box_2 {
     position: absolute;
     padding-left: 18%;
     padding-right: 18%;
