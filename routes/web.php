@@ -13,6 +13,7 @@ use App\Http\Controllers\Frontend\WithdrawController;
 use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\EnrolledCourseController;
+use App\Http\Controllers\Frontend\HeroController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
 
@@ -59,6 +60,7 @@ Route::get('order-success', [PaymentController::class, 'orderSuccess'])
     ->name('order-success');
 Route::get('order-failed', [PaymentController::class, 'orderFailed'])
     ->name('order-failed');
+
 /*
 *-----------------------------------------------------------------
 *   Student Routes

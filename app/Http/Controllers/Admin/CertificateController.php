@@ -10,8 +10,6 @@ use App\Models\CertificateBuilderItem;
 use App\Models\Enrollment;
 
 
-require '../vendor/autoload.php';
-
 class CertificateController extends Controller
 {
 
@@ -33,7 +31,8 @@ class CertificateController extends Controller
         $html = str_replace("[platform_name]", 'EduCore', $html);
         $html = str_replace("[instructor_name]", $course->instructor->name, $html);
 
-        $pdf = pdf::loadHTML($html);
+        Pdf::setOption(['dpi' => 150, 'defaultFont' => 'Roboto']);
+        $pdf = Pdf::loadHTML($html);
         return $pdf->stream('certificate.pdf');
     }
 }
