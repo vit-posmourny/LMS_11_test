@@ -22,8 +22,8 @@ return new class extends Migration
             $table->string('video_button_url')->nullable();
             $table->string('banner_item_title')->nullable();
             $table->string('banner_item_subtitle')->nullable();
-            $table->string('image')->nullable();
-            $table->string('round_text')->nullable();
+            $table->string('hero_image')->nullable();
+            $table->string('rounded_text')->nullable();
             $table->timestamps();
         });
     }

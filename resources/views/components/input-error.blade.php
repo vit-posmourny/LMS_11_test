@@ -1,9 +1,9 @@
-@props(['messages'])
+@props(['for'])
 
-@if ($messages)
-    <ul {{ $attributes->merge(['class' => 'list-unstyled-nowrap']) }}>
-        @foreach ((array) $messages as $message)
-            <li class="text-danger">{{ $message }}</li>
+@error($for)
+    <ul {{ $attributes->merge(['class' => 'list-unstyled-nowrap text-danger']) }}>
+        @foreach ((array) $message as $error)
+            <li>{{ $error }}</li>
         @endforeach
     </ul>
-@endif
+@enderror
