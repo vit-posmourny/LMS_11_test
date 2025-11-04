@@ -51,7 +51,7 @@
                                                     <option @selected(config('gateway_settings.paypal_mode') === 'sandbox') value="sandbox">Sandbox</option>
                                                     <option @selected(config('gateway_settings.paypal_mode') === 'live') value="live">Live</option>
                                                 </select>
-                                                <x-input-error :messages="$errors->get('paypal_mode')" class="mt-2" />
+                                                <x-input-error for="paypal_mode" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -62,35 +62,35 @@
                                                         <option @selected(config('gateway_settings.paypal_currency') === $currency['code']) value="{{ $key }}">{{ $key." — ".$currency['name'] }}</option>
                                                     @endforeach
                                                 </select>
-                                                <x-input-error :messages="$errors->get('paypal_currency')" class="mt-2" />
+                                                <x-input-error for="paypal_currency" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Rate (USD)</label>
                                                 <input type="number" class="form-control" name="paypal_rate" value="{{ config('gateway_settings.paypal_rate') }}" placeholder="Enter paypal rate">
-                                                <x-input-error :messages="$errors->get('paypal_rate')" class="mt-2" />
+                                                <x-input-error for="paypal_rate" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Client ID</label>
                                                 <input type="text" class="form-control" name="paypal_client_id" value="{{ config('gateway_settings.paypal_client_id') }}" placeholder="Enter paypal client ID">
-                                                <x-input-error :messages="$errors->get('paypal_client_id')" class="mt-2" />
+                                                <x-input-error for="paypal_client_id" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Client Secret</label>
                                                 <input type="text" class="form-control" name="paypal_client_secret" value="{{ config('gateway_settings.paypal_client_secret') }}" placeholder="Enter paypal client secret">
-                                                <x-input-error :messages="$errors->get('paypal_client_secret')" class="mt-2" />
+                                                <x-input-error for="paypal_client_secret" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">App ID</label>
                                                 <input type="text" class="form-control" name="paypal_app_id" value="{{ config('gateway_settings.paypal_app_id') }}" placeholder="Enter paypal app ID">
-                                                <x-input-error :messages="$errors->get('paypal_app_id')" class="mt-2" />
+                                                <x-input-error for="paypal_app_id" class="mt-2"/>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +110,7 @@
                                                     <option @selected(config('gateway_settings.stripe_status') === 'active') value="active">Active</option>
                                                     <option @selected(config('gateway_settings.stripe_status') === 'inactive') value="inactive">Inactive</option>
                                                 </select>
-                                                <x-input-error :messages="$errors->get('stripe_status')" class="mt-2" />
+                                                <x-input-error for="stripe_status" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -121,28 +121,28 @@
                                                         <option @selected(config('gateway_settings.stripe_currency') === $currency) value="{{ $currency }}">{{ $currency }}</option>
                                                     @endforeach
                                                 </select>
-                                                <x-input-error :messages="$errors->get('stripe_currency')" class="mt-2" />
+                                                <x-input-error for="stripe_currency" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Rate (USD)</label>
                                                 <input type="number" class="form-control" name="stripe_rate" value="{{ config('gateway_settings.stripe_rate') }}" placeholder="Enter stripe rate">
-                                                <x-input-error :messages="$errors->get('stripe_rate')" class="mt-2" />
+                                                <x-input-error for="stripe_rate" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Publishable Key</label>
                                                 <input type="text" class="form-control" name="stripe_publishable_key" value="{{ config('gateway_settings.stripe_publishable_key') }}" placeholder="Enter stripe publishable key">
-                                                <x-input-error :messages="$errors->get('stripe_publishable_key')" class="mt-2" />
+                                                <x-input-error for="stripe_publishable_key" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Secret Key</label>
                                                 <input type="text" class="form-control" name="stripe_secret_key" value="{{ config('gateway_settings.stripe_secret_key') }}" placeholder="Enter stripe client secret key">
-                                                <x-input-error :messages="$errors->get('stripe_secret_key')" class="mt-2" />
+                                                <x-input-error for="stripe_secret_key" class="mt-2"/>
                                             </div>
                                         </div>
                                     </div>
@@ -162,7 +162,7 @@
                                                     <option @selected(config('gateway_settings.razorpay_status') === 'active') value="active">Active</option>
                                                     <option @selected(config('gateway_settings.razorpay_status') === 'inactive') value="inactive">Inactive</option>
                                                 </select>
-                                                <x-input-error :messages="$errors->get('razorpay_status')" class="mt-2" />
+                                                <x-input-error for="razorpay_status" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -173,28 +173,28 @@
                                                         <option @selected(config('gateway_settings.razorpay_currency') === $currency) value="{{ $currency }}">{{ $currency }}</option>
                                                     @endforeach
                                                 </select>
-                                                <x-input-error :messages="$errors->get('razorpay_currency')" class="mt-2" />
+                                                <x-input-error for="razorpay_currency" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Rate (USD)</label>
                                                 <input type="number" class="form-control" name="razorpay_rate" value="{{ config('gateway_settings.razorpay_rate') }}" placeholder="Enter razorpay rate">
-                                                <x-input-error :messages="$errors->get('razorpay_rate')" class="mt-2" />
+                                                <x-input-error for="razorpay_rate" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Publishable Key</label>
                                                 <input type="text" class="form-control" name="razorpay_key" value="{{ config('gateway_settings.razorpay_key') }}" placeholder="Enter razorpay key">
-                                                <x-input-error :messages="$errors->get('razorpay_key')" class="mt-2" />
+                                                <x-input-error for="razorpay_key" class="mt-2"/>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
                                             <div class="mb-3">
                                                 <label class="form-label">Secret Key</label>
                                                 <input type="text" class="form-control" name="razorpay_secret" value="{{ config('gateway_settings.razorpay_secret') }}" placeholder="Enter razorpay client secret">
-                                                <x-input-error :messages="$errors->get('razorpay_secret')" class="mt-2" />
+                                                <x-input-error for="razorpay_secret" class="mt-2"/>
                                             </div>
                                         </div>
                                     </div>

@@ -51,7 +51,7 @@
                             <label class="form-label">Email address</label>
                             <input type="email" name="email" value="{{ old('email') }}" class="form-control"
                                 placeholder="your@email.com" autocomplete="off" required>
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            <x-input-error for="email" class="mt-2"/>
                         </div>
 
                         <div class="form-footer">

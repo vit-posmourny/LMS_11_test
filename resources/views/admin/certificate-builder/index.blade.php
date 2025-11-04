@@ -20,12 +20,12 @@
                                     <div class="mt-1">
                                         <label class="form-label">Certificate Title</label>
                                         <input type="text" class="form-control" name="title" value="{{ @$certificate->title }}" placeholder="Enter certificate title">
-                                        <x-input-error :messages="$errors->get('title')" class="mt-2" />
+                                        <x-input-error for="title" class="mt-2"/>
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Subtitle</label>
                                         <input type="text" class="form-control" name="subtitle" value="{{ @$certificate->subtitle }}" placeholder="Enter certificate subtitle">
-                                        <x-input-error :messages="$errors->get('subtitle')" class="mt-2" />
+                                        <x-input-error for="subtitle" class="mt-2"/>
                                     </div>
                                     <div class="mt-3">
                                         <label class="form-label">Certificate Description</label>
@@ -37,7 +37,7 @@
                                         @endif
                                         <label class="form-label">Certificate Background</label>
                                         <input type="file" class="form-control" name="background"/>
-                                        <x-input-error :messages="$errors->get('background')" class="mt-2"/>
+                                        <x-input-error for="background" class="mt-2"/>
                                     </div>
                                     <div class="mt-3">
                                         @if (@$certificate->signature)
@@ -45,7 +45,7 @@
                                         @endif
                                         <label class="form-label">Certificate Signature</label>
                                         <input type="file" class="form-control" name="signature"/>
-                                        <x-input-error :messages="$errors->get('signature')" class="mt-2" />
+                                        <x-input-error for="signature" class="mt-2"/>
                                     </div>
                                 </fieldset>
                                 <div class="d-flex justify-content-end pe-2">

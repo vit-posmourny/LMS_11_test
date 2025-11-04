@@ -28,14 +28,14 @@
                                     <div class="wsus__login_form_input">
                                         <label>Email</label>
                                         <input type="email" name="email" value="{{ old('email')}}" placeholder="Email" required>
-                                        <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                        <x-input-error for="email" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">
                                     <div class="wsus__login_form_input">
                                         <label>Password<a href="{{ route('password.request') }}">Forgot Password?</a></label>
                                         <input type="password" name="password" placeholder="Password" required>
-                                        <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                        <x-input-error for="password" class="mt-2"/>
                                     </div>
                                 </div>
                                 <div class="col-xl-12">

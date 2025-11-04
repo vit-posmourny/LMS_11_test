@@ -83,7 +83,7 @@
                                         <label class="form-label">Payout Amount</label>
                                         <input type="number" step="0.01" class="form-control text-end" name="amount" value=""
                                             placeholder="Enter your amount">
-                                        <x-input-error :messages="$errors->get('amount')" class="mt-2" />
+                                        <x-input-error for="amount" class="mt-2"/>
                                     </div>
                                 </div>
                             </div>
