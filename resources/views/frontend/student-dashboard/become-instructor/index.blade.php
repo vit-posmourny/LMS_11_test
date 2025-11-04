@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label for="document">Document</label>
                                     <input type="file" name="document">
-                                    <x-input-error :messages="$errors->get('document')" class="mt-2"/>
+                                    <x-input-error for="document" class="mt-2"/>
                                 </div>
                                 <div class="form-group mt-3">
                                     <button type="submit" class="common_btn">Submit</button>

@@ -50,7 +50,7 @@
                             <label class="form-label">Email address</label>
                             <input type="email" name="email" value="{{ old('email', $request->email) }}"
                                 class="form-control" placeholder="your@email.com" autocomplete="off" required>
-                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                            <x-input-error for="email" class="mt-2"/>
                         </div>
 
                         <div class="mb-2">
@@ -74,7 +74,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                            <x-input-error for="password" class="mt-2"/>
                         </div>
 
                         <div class="mb-2">
@@ -98,7 +98,7 @@
                                     </a>
                                 </span>
                             </div>
-                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                            <x-input-error for="password_confirmation" class="mt-2"/>
                         </div>
 
                         <div class="form-footer">

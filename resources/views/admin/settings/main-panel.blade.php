@@ -10,18 +10,18 @@
                 <div class="col-md-12">
                     <div class="form-label">Site Name</div>
                     <input type="text" class="form-control" name="site_name" value="{{ config('settings.site_name') }}">
-                    <x-input-error :messages="$errors->get('site_name')" class="mt-2" />
+                    <x-input-error for="site_name" class="mt-2"/>
                 </div>
                 <div class="col-md-6">
                     <div class="form-label">Phone Number</div>
                     <input type="tel" class="form-control" name="phone_number"
                         pattern="+[0-9]{3} [0-9]{3} [0-9]{3} " value="{{ config('settings.phone_number') }}">
-                    <x-input-error :messages="$errors->get('phone_number')" class="mt-2" />
+                    <x-input-error for="phone_number" class="mt-2"/>
                 </div>
                 <div class="col-md-6">
                     <div class="form-label">Location</div>
                     <input type="text" class="form-control" name="location" value="{{ config('settings.location') }}">
-                    <x-input-error :messages="$errors->get('location')" class="mt-2" />
+                    <x-input-error for="location" class="mt-2"/>
                 </div>
 
                 <div class="col-md-6">
@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <div class="form-label">Currency Icon</div>
                     <input type="text" class="form-control" name="currency_icon" value="{{ config('settings.currency_icon') }}">
-                    <x-input-error :messages="$errors->get('currency_icon')" class="mt-2" />
+                    <x-input-error for="currency_icon" class="mt-2"/>
                 </div>
             </div>
         </div>

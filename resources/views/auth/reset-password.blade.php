@@ -32,21 +32,21 @@
                                             <label>Email</label>
                                             <input type="email" name="email" value="{{ old('email', $request->email) }}"
                                                 placeholder="Email" required>
-                                            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                                            <x-input-error for="email" class="mt-2"/>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="wsus__login_form_input">
                                             <label>Password</label>
                                             <input type="password" name="password" placeholder="Password" required>
-                                            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                                            <x-input-error for="password" class="mt-2"/>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
                                         <div class="wsus__login_form_input">
                                             <label>Confirm Password</label>
                                             <input type="password" name="password_confirmation" placeholder="password_confirmation" required>
-                                            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                                            <x-input-error for="password_confirmation" class="mt-2"/>
                                         </div>
                                     </div>
                                     <div class="col-xl-12">
