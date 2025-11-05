@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\Frontend\HeroController;
+use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CourseLevelController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
