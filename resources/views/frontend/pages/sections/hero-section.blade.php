@@ -3,20 +3,18 @@
     <div class="row justify-content-between">
         <div class="col-xl-6 col-lg-6 wow fadeInUp">
             <div class="wsus__banner_3_text">
-                <h5>Show Up For Learning</h5>
-                <h1>Premier E-Learning Courses From <span>EduCore</span></h1>
-                <p class="description">Nullam tincidunt tortor est, ac maximus justo gravida non phasellus dignissim
-                    quam odio ipsum
-                    sollicitudin rhoncus venenatis ex metus in turpis.</p>
+                <h5>{{ $hero->label }}</h5>
+                <h1>{{ $hero->title }}</h1>
+                <p class="description">{{ $hero->subtitle }}</p>
                 <div class="wsus__banner_2_btn_area mt_60">
-                    <a class="common_btn" href="#">Start Free Trial <i class="far fa-arrow-right"
+                    <a class="common_btn" href="#">{{ $hero->button_text }} <i class="far fa-arrow-right"
                             aria-hidden="true"></i></a>
                     <div class="play_btn_area">
                         <a class="play_btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
                             href="https://youtu.be/sVPYIRF9RCQ?si=labNkx-xlyOWtptr">
                             <img src="{{ asset('frontend/assets/images/play_icon.png') }}" alt="Play" class="img-fluid">
                         </a>
-                        <h4>See Our Lesson Showcase</h4>
+                        <h4>{{ $hero->video_button_text }}</h4>
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Frontend;
+namespace App\Http\Requests\Admin;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -14,7 +14,7 @@ class HeroStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'label' => 'nullable|max:255|string',
+            'label' => 'required|max:255|string',
             'title' => 'required|max:255|string',
             'subtitle' => 'required|max:255|string',
             'button_text' => 'nullable|max:255|string',
