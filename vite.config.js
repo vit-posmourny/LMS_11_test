@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import createSvgSpritePlugin from 'vite-plugin-svg-sprite';
+import path from 'path';
 
 export default defineConfig({
     plugins: [
@@ -19,5 +21,27 @@ export default defineConfig({
             ],
             refresh: true,
         }),
+        createSvgSpritePlugin({
+        // Určete, kde jsou Vaše zdrojové SVG ikony
+        include: 'frontend/assets/images/social media/*.svg',
+
+        // Cesta k adresáři s ikony (relativně k root adresáři projektu)
+        // např. /src/assets/icons/*.svg
+
+        // Volitelné: Nastavení ID pro jednotlivé symboly
+        // [name] bude nahrazeno názvem souboru ikony (např. home.svg -> icon-home)
+        symbolId: 'icon-[name]',
+
+        // Volitelné: Optimalizace SVG pomocí SVGO (doporučeno)
+        svgo: true,
+
+        // ExportType 'vanilla' vrátí ID symbolu, který použijete v <use>
+        exportType: 'vanilla',
+
+        outputDir: 'public/build/assets',
+    }),
     ],
 });
+
+
+

@@ -15,14 +15,7 @@
                                     <li>
                                         <a href="#">
                                             <svg class="icon icon-tabler-social">
-                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-twitter"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <svg class="icon icon-tabler-social">
-                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-facebook"></use>
+                                                <use href="{{ asset('public/frontend/assets/svg sprites/brands.svg') }}#facebook"></use>
                                             </svg>
                                         </a>
                                     </li>
