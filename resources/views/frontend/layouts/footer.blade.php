@@ -12,9 +12,27 @@
                                 <p>Nunc in sollicitudin diam, ut bibendum malesuada sodales porttitor.</p>
                                 <h2>Follow Us On</h2>
                                 <ul class="d-flex flex-wrap">
-                                    <li><a href="#"><i class="fas fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="ti ti-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-linkedin-in"></i></a></li>
+                                    <li>
+                                        <a href="#">
+                                            <svg class="icon icon-tabler-social">
+                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-twitter"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <svg class="icon icon-tabler-social">
+                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-facebook"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <svg class="icon icon-tabler-social">
+                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-linkedin"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>

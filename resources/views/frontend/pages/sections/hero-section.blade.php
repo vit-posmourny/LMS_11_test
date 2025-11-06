@@ -11,7 +11,7 @@
                             aria-hidden="true"></i></a>
                     <div class="play_btn_area">
                         <a class="play_btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
-                            href="https://youtu.be/sVPYIRF9RCQ?si=labNkx-xlyOWtptr">
+                            href="{{ asset($hero->video_button_url) }}">
                             <img src="{{ asset('frontend/assets/images/play_icon.png') }}" alt="Play" class="img-fluid">
                         </a>
                         <h4>{{ $hero->video_button_text }}</h4>
@@ -22,25 +22,26 @@
         <div class="col-xl-4 col-lg-6 wow fadeInRight">
             <div class="wsus__banner_3_img">
                 <div class="img">
-                    <img src="{{ asset('frontend/assets/images/banner_3_img_1.png') }}" alt="Banner" class="img-fluid">
+                    <img src="{{ asset($hero->hero_image) }}" alt="Banner" class="img-fluid">
 
                     <div class="text">
-                        <h4>250+ Popular Course</h4>
-                        <p>Explore a variety of fresh topics</p>
+                        <h4>{{ $hero->banner_item_title }}</h4>
+                        <p>{{ $hero->banner_item_subtitle }}</p>
                     </div>
 
                     <div class="circle_box">
                         <svg viewBox="0 0 100 100">
                             <defs>
                                 <path id="circle" d="
-                        M 50, 50
-                        m -37, 0
-                        a 37,37 0 1,1 74,0
-                        a 37,37 0 1,1 -74,0"></path>
+                                    M 50, 50
+                                    m -37, 0
+                                    a 37,37 0 1,1 74,0
+                                    a 37,37 0 1,1 -74,0">
+                                </path>
                             </defs>
                             <text>
                                 <textPath xlink:href="#circle">
-                                    take the worldwide best online course
+                                    {{ $hero->rounded_text }}
                                 </textPath>
                             </text>
                         </svg>
