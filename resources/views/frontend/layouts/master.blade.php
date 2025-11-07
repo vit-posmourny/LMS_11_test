@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/v4-shims.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/brands.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
@@ -121,6 +122,7 @@
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/v4-shims.min.js') }}"></script>
+    <script src="{{ asset('fontawesome-free-7.0.1-web/js/brands.min.js') }}"></script>
     <!-- notyf js -->
     <script src="{{ asset('assets/notyf.min.js') }}"></script>
     <script src="{{ asset('vendor/flasher/flasher-notyf.min.js') }}"></script>
