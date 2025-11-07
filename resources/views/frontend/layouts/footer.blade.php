@@ -14,7 +14,7 @@
                                 <ul class="d-flex flex-wrap">
                                     <li>
                                         <a href="#">
-                                            <svg class="icon icon-tabler-social">
+                                            <svg class="icon icon-tabler-social" data-fa-transform="shrink-8 up-6">
                                                 <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#twitter"></use>
                                             </svg>
                                         </a>
