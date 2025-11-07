@@ -15,21 +15,21 @@
                                     <li>
                                         <a href="#">
                                             <svg class="icon icon-tabler-social">
-                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-twitter"></use>
+                                                <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#twitter"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <svg class="icon icon-tabler-social" >
+                                                <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#facebook-f"></use>
                                             </svg>
                                         </a>
                                     </li>
                                     <li>
                                         <a href="#">
                                             <svg class="icon icon-tabler-social">
-                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-facebook"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <svg class="icon icon-tabler-social">
-                                                <use href="{{ asset('frontend/assets/images/icons.svg') }}#icon-linkedin"></use>
+                                                <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#linkedin-in"></use>
                                             </svg>
                                         </a>
                                     </li>
