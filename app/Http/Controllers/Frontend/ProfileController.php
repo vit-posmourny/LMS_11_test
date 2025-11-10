@@ -39,8 +39,15 @@ class ProfileController extends Controller
 
         if ($request->hasFile('avatar'))
         {
-            $this->deleteFile($user->avatar);
-            $user->avatar = $this->fileUpload($request->file('avatar'));
+            if (isset($user->avatar)) {
+                $this->deleteFile($user->avatar);
+            }
+
+            $file = $request->file('avatar');
+
+            if ($file->isValid()) {
+                $user->avatar = $this->fileUpload($file);
+            }
         }
 
         $user->name = $request->name;

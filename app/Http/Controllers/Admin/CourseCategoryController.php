@@ -75,9 +75,15 @@ class CourseCategoryController extends Controller
 
         if ($request->hasFile('image'))
         {
-            $imagepath = $this->fileUpload($request->file('image'));
-            $this->deleteFile($category->image);
-            $category->image = $imagepath;
+            if (isset($category->image)) {
+                $this->deleteFile($category->image);
+            }
+
+            $file = $request->file('image');
+
+            if ($file->isValid()) {
+                $category->image = $this->fileUpload($file);
+            }
         }
 
         $category->icon = $request->icon;

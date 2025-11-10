@@ -57,8 +57,7 @@ class FeatureController extends Controller
 
             $file = $request->file('image_one');
 
-            if ($file->isValid())
-            {
+            if ($file->isValid()) {
                 $image_one = $this->fileUpload($file);
                 $data['image_one'] = $image_one;
             }
@@ -72,13 +71,12 @@ class FeatureController extends Controller
 
             $file = $request->file('image_two');
 
-            if ($file->isValid())
-            {
+            if ($file->isValid()) {
                 $image_two = $this->fileUpload($file);
                 $data['image_two'] = $image_two;
             }
         }
-        
+
         if ($request->hasFile('image_three'))
         {
             if (isset($feature->image_three)) {
@@ -87,8 +85,7 @@ class FeatureController extends Controller
 
             $file = $request->file('image_three');
 
-            if ($file->isValid())
-            {
+            if ($file->isValid()) {
                 $image_three = $this->fileUpload($file);
                 $data['image_three'] = $image_three;
             }

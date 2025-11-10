@@ -125,11 +125,19 @@ class CourseController extends Controller
 
                 $course = Course::findOrFail($request->id);
 
-                if ($request->hasFile('thumbnail')) {
-                    $thumbPath = $this->fileUpload($request->file('thumbnail'));
-                    $this->deleteFile($course->thumbnail);
-                    $course->thumbnail = $thumbPath;
+                if ($request->hasFile('thumbnail'))
+                {
+                    if (isset($course->thumbnail)) {
+                        $this->deleteFile($course->thumbnail);
+                    }
+
+                    $file = $request->file('thumbnail');
+
+                    if ($file->isValid()) {
+                        $course->thumbnail = $this->fileUpload($file);
+                    }
                 }
+
                 $course->title = $request->title;
                 $course->slug = Str::slug($request->title);
                 $course->seo_description = $request->seo_description;

@@ -37,11 +37,20 @@ class CourseSubCategoryController extends Controller
     public function store(CourseSubCategoryStoreRequest $request, CourseCategory $course_category)
     {
         $category = new CourseCategory();
+
         if ($request->hasFile('image'))
         {
-            $imagepath = $this->fileUpload($request->file('image'));
-            $category->image = $imagepath;
+            if (isset($category->image)) {
+                $this->deleteFile($category->image);
+            }
+
+            $file = $request->file('image');
+
+            if ($file->isValid()) {
+                $category->image = $this->fileUpload($file);
+            }
         }
+
         $category->icon = $request->icon;
         $category->name = $request->name;
         $category->slug = \Str::slug($request->name);
@@ -77,12 +86,20 @@ class CourseSubCategoryController extends Controller
     public function update(CourseSubCategoryUpdateRequest $request, CourseCategory $course_category, CourseCategory $course_sub_category)
     {
         $category = $course_sub_category;
+
         if ($request->hasFile('image'))
         {
-            $imagepath = $this->fileUpload($request->file('image'));
-            $this->deleteFile($category->image);
-            $category->image = $imagepath;
+            if (isset($category->image)) {
+                $this->deleteFile($category->image);
+            }
+
+            $file = $request->file('image');
+
+            if ($file->isValid()) {
+                $category->image = $this->fileUpload($file);
+            }
         }
+
         $category->icon = $request->icon;
         $category->name = $request->name;
         $category->slug = \Str::slug($request->name);
