@@ -24,7 +24,7 @@ trait FileUpload
             $filename = 'educore_' . uniqid() . '.' . $file->getClientOriginalExtension();
 
             // Uloží soubor do /public/uploads
-            return $path = $file->storeAs($directory, $filename, $disk);
+            return $file->storeAs($directory, $filename, $disk);
         }
         catch (Exception $e) {
             throw new Exception('File upload failed: ' . $e->getMessage());
