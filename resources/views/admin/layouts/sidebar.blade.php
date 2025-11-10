@@ -376,6 +376,13 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('admin.feature.index') }}">
+                                    Feature
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
