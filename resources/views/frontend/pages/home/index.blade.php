@@ -13,7 +13,7 @@
     <!--===========================
         CATEGORY 4 START
     ============================-->
-    {{-- @include('frontend.pages.sections.category-section') --}}
+    @include('frontend.pages.sections.category-section')
     <!--===========================
         CATEGORY 4 END
     ============================-->
@@ -107,5 +107,5 @@
     <!--===========================
         FOOTER 3 END
     ============================-->
-    
+
 @endsection

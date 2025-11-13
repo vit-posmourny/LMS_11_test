@@ -11,6 +11,20 @@ class CourseCategory extends Model
     use HasFactory;
 
     function subCategories(): HasMany {
-        return $this->hasMany(CourseCategory::class, 'parent_id');
+        return $this->hasMany(CourseCategory::class, 'parent_id', 'id');
     }
+
+
+    // function course():
+
+
+    // function courseCount()
+    // {
+    //     if (Course::where('is')
+    //         ->where(['is_approved' => 'approved', 'status' => 'active'])) {
+    //         return $this->subCategories()->count();
+    //     }
+
+    //     return 0;
+    // }
 }
