@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Admin;
 use App\Traits\FileUpload;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\CourseCategory;
 use Illuminate\Contracts\View\View;

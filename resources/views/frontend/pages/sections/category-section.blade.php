@@ -18,7 +18,7 @@
                             </svg>
                             <div class="text">
                                 <h4>{{ $category->name }}</h4>
-                                <p>{{ $category->subCategories }} Courses</p>
+                                <p>{{ $category->course_count }} Courses</p>
                             </div>
                         </a>
                     </div>
