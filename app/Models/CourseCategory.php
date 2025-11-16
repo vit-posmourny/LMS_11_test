@@ -18,10 +18,9 @@ class CourseCategory extends Model
     }
 
 
-    public function getCourseCountAttribute(): int
+    public function approvedActiveCourses(): int
     {
         $count = 0;
-
         foreach ($this->subCategories()->get() as $category)
         {
             $exists = Course::where('slug', $category->slug)
@@ -35,4 +34,14 @@ class CourseCategory extends Model
         }
         return $count;
     }
+
+    // public function approvedActiveCourses()
+    // {
+    //     $query = Course::query()
+    //         ->whereIn('slug', $this->subCategories()->pluck('slug'))
+    //         ->where('is_approved', 'approved')
+    //         ->where('status', 'active');
+
+    //     // dd($query);
+    // }
 }
