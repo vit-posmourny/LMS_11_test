@@ -11,37 +11,17 @@ class CourseCategory extends Model
 {
     use HasFactory;
 
-    // private $count = 1;
 
     function subCategories(): HasMany {
         return $this->hasMany(CourseCategory::class, 'parent_id', 'id');
     }
 
-
-    public function approvedActiveCourses(): int
+    public function approvedActiveCourses()
     {
-        $count = 0;
-        foreach ($this->subCategories()->get() as $category)
-        {
-            $exists = Course::where('slug', $category->slug)
-                ->where('is_approved', 'approved')
-                ->where('status', 'active')
-                ->exists();
+        $subCategoryIds = $this->subCategories()->pluck('id');
 
-            if ($exists) {
-                $count++;
-            }
-        }
-        return $count;
+        return Course::query()
+            ->whereIn('category_id', $subCategoryIds)
+            ->where(['is_approved' => 'approved', 'status' => 'active']);
     }
-
-    // public function approvedActiveCourses()
-    // {
-    //     $query = Course::query()
-    //         ->whereIn('slug', $this->subCategories()->pluck('slug'))
-    //         ->where('is_approved', 'approved')
-    //         ->where('status', 'active');
-
-    //     // dd($query);
-    // }
 }
