@@ -14,7 +14,6 @@ use App\Models\CourseCategory;
 use App\Models\CourseLanguage;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Admin\CourseBasicInfoCreateRequest;
 

@@ -15,7 +15,6 @@ class FrontendController extends Controller
         $hero = Hero::first();
         $feature = Feature::first();
         $featuredCategories = CourseCategory::where(['parent_id' => null, 'show_at_trending' => 1])->limit(12)->get();
-
         return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories'));
     }
 }
