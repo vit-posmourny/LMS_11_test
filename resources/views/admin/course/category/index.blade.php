@@ -35,7 +35,11 @@
                             <tbody>
                                 @forelse ($categories as $category)
                                     <tr>
-                                        <td><i class="{{ $category->icon }}"></i></td>
+                                        <td>
+                                            <svg class="icon icon-tabler-course-categories">
+                                                <use href="{{ asset('tabler/icons-sprite/tabler-sprite.svg') }}#{{ $category->icon }}"></use>
+                                            </svg>
+                                        </td>
                                         <td>{{ $category->name }}</td>
                                         <td>
                                             @if ($category->show_at_trending)

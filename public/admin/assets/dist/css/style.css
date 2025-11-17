@@ -15727,3 +15727,22 @@ select {
     width: 104px !important; /* pokud má být width změněno, tak i v CertificateBuilderController - řádek cca 55 */
     margin-left: 0.5rem;
 }
+
+svg.icon-tabler-course-categories {
+    width: 35px;
+    height: 35px;
+    color: var(--tblr-primary);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+svg.icon-tabler-course-categories-as-image {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 1rem;
+    color: var(--tblr-primary);
+    stroke-width: 1.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
