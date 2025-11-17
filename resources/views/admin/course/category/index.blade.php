@@ -1,4 +1,4 @@
-{{-- resources\views\admin\course\category\index.blade.php --}}
+<!-- resources\views\admin\course\category\index.blade.php  -->
 @extends('admin.layouts.master')
 
 @section('content')
