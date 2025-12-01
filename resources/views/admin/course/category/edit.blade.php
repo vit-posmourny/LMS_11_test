@@ -18,19 +18,27 @@
                 <form action="{{ route('admin.course-categories.update', $course_category) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
-                    <div class="row">
-                        <x-image-preview src="{{ asset($course_category->image) }}"/>
 
-                        <div class="col-md-6">
-                            <x-input-file-block name="image"/>
+                    <div class="row">
+                        <div class="d-flex flex-column col-md-6">
+                            <x-image-preview src="{{ asset($course_category->image) }}"/>
+                            <div class="">
+                                <x-input-file-block name="image"/>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <x-input-block name="icon" :value="$course_category->icon" placeholder="Enter icon class name">
-                                <x-slot name="hint">
-                                    <small class="hint">You can get icon classes from: <a target="__blank" href="https://tabler.io/icons">https://tabler.io/icons</a></small>
-                                </x-slot>
-                            </x-input-block>
+                        <div class="d-flex flex-column col-md-6">
+                            <svg class="icon icon-tabler-course-categories-as-image">
+                                <use href="{{ asset('tabler/icons-sprite/tabler-sprite.svg') }}#{{ $course_category->icon }}"></use>
+                            </svg>
+                            <div class="">
+                                <x-input-block name="icon" :value="$course_category->icon" placeholder="Enter icon class name">
+                                    <x-slot name="hint">
+                                        <small class="hint">You can get icon classes from: <a target="__blank" href="https://tabler.io/icons">https://tabler.io/icons</a></small>
+                                    </x-slot>
+                                </x-input-block>
+                            </div>
                         </div>
+
                         <div class="col-md-12">
                             <x-input-block for="name" name="name" :value="$course_category->name"/>
                         </div>
