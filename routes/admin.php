@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsSectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
@@ -81,7 +82,7 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
 
     /* Course Categories Routes */
     Route::resource('course-categories', CourseCategoryController::class);
-    
+
     Route::get('{course_category}/sub-categories', [CourseSubCategoryController::class, 'index'])
         ->name('sub-categories.index');
     Route::get('{course_category}/sub-categories/create', [CourseSubCategoryController::class, 'create'])
@@ -190,10 +191,13 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::post('certificate-item', [CertificateBuilderController::class, 'itemUpdate'])
         ->name('certificate-item.update');
 
+    /** SECTIONS */
     /** Hero Routes */
     Route::resource('hero', HeroController::class);
     /** Feature Routes */
     Route::resource('feature', FeatureController::class);
+    /** About Us Routes */
+    Route::resource('about-section', AboutUsSectionController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
