@@ -14,22 +14,89 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.feature.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.about-section.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <x-image-preview src="" style="background-color: #b3b3b3"/>
-                                <label class="form-label">Image One</label>
-                                <input type="file" class="form-control" name="image_one" placeholder="">
-                                <x-input-error for="image_one" class="mt-2"/>
+                                <label class="form-label">Image</label>
+                                <input type="file" class="form-control" name="image">
+                                <input type="hidden" name="old_image" value="">
+                                <x-input-error for="image" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Rounded Text</label>
+                                <input type="text" class="form-control" name="rounded_text">
+                                <x-input-error for="rounded_text" class="mt-2"/>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label class="form-label">Title One</label>
-                                <input type="text" class="form-control" name="title_one" value="" placeholder="">
-                                <x-input-error for="title_one" class="mt-2"/>
+                                <label class="form-label">Learner Count</label>
+                                <input type="text" class="form-control" name="learner_count">
+                                <x-input-error for="learner_count" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Learner Count Text</label>
+                                <input type="text" class="form-control" name="learner_count_text">
+                                <x-input-error for="learner_count_text" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <x-image-preview src="" style="background-color: #b3b3b3"/>
+                                <label class="form-label">Learner Image</label>
+                                <input type="file" class="form-control" name="learner_image">
+                                <input type="hidden" name="old_learner_image" value="">
+                                <x-input-error for="learner_image" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">About Title</label>
+                                <input type="text" class="form-control" name="about_title">
+                                <x-input-error for="about_title" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">About Description</label>
+                                <textarea name="about_description"></textarea>
+                                <x-input-error for="about_description" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Button Text</label>
+                                <input type="text" class="form-control" name="button_text">
+                                <x-input-error for="button_text" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Button Url</label>
+                                <input type="text" class="form-control" name="button_url">
+                                <x-input-error for="button_url" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <x-image-preview src="" style="background-color: #b3b3b3"/>
+                                <label class="form-label">Video Image</label>
+                                <input type="file" class="form-control" name="video_image">
+                                <x-input-error for="video_image" class="mt-2"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="mb-3">
+                                <label class="form-label">Video Url</label>
+                                <input type="text" class="form-control" name="video_url">
+                                <x-input-error for="video_url" class="mt-2"/>
                             </div>
                         </div>
                         <div class="my-3 ms-2">

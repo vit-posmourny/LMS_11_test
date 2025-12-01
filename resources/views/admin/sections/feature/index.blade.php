@@ -22,6 +22,7 @@
                                 <x-image-preview src="{{ asset($feature->image_one) }}" style="background-color: #b3b3b3"/>
                                 <label class="form-label">Image One</label>
                                 <input type="file" class="form-control" name="image_one" placeholder="">
+                                <input type="hidden" name="old_image_one" value="">
                                 <x-input-error for="image_one" class="mt-2"/>
                             </div>
                         </div>
