@@ -1,3 +1,4 @@
+<!-- resources\views\admin\sections\about-section\index.blade.php -->
 @extends('admin.layouts.master')
 
 @section('content')
