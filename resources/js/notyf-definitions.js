@@ -1,6 +1,6 @@
 // Create an instance of Notyf
 export const notyf = new Notyf({
-    duration: 5000,
+    duration: 8000,
     dismissible: true,
     types: [
     {
