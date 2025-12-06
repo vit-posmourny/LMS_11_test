@@ -6,6 +6,7 @@ use App\Models\Hero;
 use App\Models\Feature;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\AboutUsSection;
 use App\Models\CourseCategory;
 
 class FrontendController extends Controller
@@ -14,7 +15,8 @@ class FrontendController extends Controller
     {
         $hero = Hero::first();
         $feature = Feature::first();
+        $about = AboutUsSection::first();
         $featuredCategories = CourseCategory::where(['parent_id' => null, 'show_at_trending' => 1])->limit(12)->get();
-        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories'));
+        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories', 'about'));
     }
 }

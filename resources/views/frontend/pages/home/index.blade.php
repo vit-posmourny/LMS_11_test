@@ -22,7 +22,7 @@
     <!--===========================
         ABOUT 3 START
     ============================-->
-    {{-- @include('frontend.pages.sections.about-section') --}}
+    @include('frontend.pages.sections.about-section')
     <!--===========================
         ABOUT 3 END
     ============================-->
