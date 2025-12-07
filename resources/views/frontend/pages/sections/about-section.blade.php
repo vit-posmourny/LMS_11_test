@@ -15,11 +15,7 @@
                     <div class="circle_box">
                         <svg viewBox="0 0 100 100">
                             <defs>
-                                <path id="circle2" d="
-                        M 50, 50
-                        m -37, 0
-                        a 37,37 0 1,1 74,0
-                        a 37,37 0 1,1 -74,0"></path>
+                                <path id="circle2" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"></path>
                             </defs>
                             <text>
                                 <textPath xlink:href="#circle">
@@ -36,12 +32,9 @@
                         <h5>Learn More About Us</h5>
                         <h2>{{ $about->title }}</h2>
                     </div>
-                    <p>{!! $about->description !!}</p>
-                    <ul>
-                        <li>Expert Trainers</li>
-                        <li>Online Remote Learning</li>
-                        <li>Lifetime Access</li>
-                    </ul>
+                    <p>
+                        {!! $about->description !!}
+                    </p>
                     @if ($about->button_text)
                         <a class="common_btn" href="{{ $about->button_url }}">{{ $about->button_text }}</a>
                     @endif

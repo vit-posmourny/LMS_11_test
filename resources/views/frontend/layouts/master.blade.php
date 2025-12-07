@@ -115,8 +115,9 @@
     <script src="{{ asset('frontend/assets/js/wow.min.js') }}"></script>
     <!-- jquery ui -->
     <script src="{{ asset('/frontend/assets/js/jquery-ui.min.js') }}"></script>
+    <!-- filemanager -->
+    <script src="{{ asset('vendor/laravel-filemanager/js/stand-alone-button.js') }}"></script>
     <!-- CDN plugins -->
-    <script src="/vendor/laravel-filemanager/js/stand-alone-button.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- fontawsome js -->
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
@@ -143,7 +144,5 @@
             @endforeach
         @endif
     </script>
-
 </body>
-
 </html>

@@ -23,7 +23,7 @@ class HeroStoreRequest extends FormRequest
             'video_button_url' => 'nullable|max:255|string',
             'banner_item_title' => 'nullable|max:255|string',
             'banner_item_subtitle' => 'nullable|max:255|string',
-            'hero_image' => 'required|image|max:600',
+            'hero_image' => 'image|max:600',
             'rounded_text' => 'nullable|max:255|string',
         ];
     }

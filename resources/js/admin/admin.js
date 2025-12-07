@@ -5,6 +5,7 @@ import { notyf } from '../notyf-definitions.js';
 
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 const base_url = $('meta[name="base_url"]').attr('content');
+
 var delete_url = null;
 
 
@@ -31,7 +32,6 @@ $('.delete__item').on('click', function(e) {
 });
 
 
-
 $('.delete-confirm').on('click', function(e) {
 
     e.preventDefault();
@@ -56,33 +56,6 @@ $('.delete-confirm').on('click', function(e) {
     })
 });
 
-
-// Certificate
-// $(function()
-// {
-//     let element = $("._draggable_element");
-//     let elementId = element.attr('id');
-//     let certBound = $("._certificate_boundary");
-
-//     // 🔹 1. Po načtení stránky převeď procenta na pixely (jen pokud zatím nejsou uložené pozice)
-//     if (elementId === 'signature' && element.data("position-saved") == 'false')
-//     {
-//         let certWidth = certBound.outerWidth();
-//         let certHeight = certBound.outerHeight();
-
-//         let elWidth = element.outerWidth();
-//         let elHeight = element.outerHeight();
-
-//         // Spočítáme pozici na střed
-//         let left = certWidth * 0.43 - elWidth / 2;
-//         let top = certHeight * 0.58 - elHeight / 2;
-
-//         element.css({
-//             left: left + "px",
-//             top: top + "px",
-//         });
-//     }
-// })
 
 $(function()
 {

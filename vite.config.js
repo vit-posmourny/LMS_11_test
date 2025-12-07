@@ -16,6 +16,8 @@ export default defineConfig({
                 'resources/js/frontend/course.js',
                 'resources/js/frontend/player.js',
                 'resources/js/frontend/frontend.js',
+                'resources/js/admin/tinymce-init.js',
+                'resources/js/analyzeImages.js',
             ],
             refresh: true,
         }),

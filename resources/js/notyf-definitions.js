@@ -51,9 +51,3 @@ notyf.info = (message) =>
 
 notyf.warning = (message) =>
     notyf.open({ type: 'warning', message: message });
-
-// notyf.info = (message, opts = {}) =>
-//     notyf.open(Object.assign({ type: 'info', message }, opts));
-
-// notyf.warning = (message, opts = {}) =>
-//     notyf.open(Object.assign({ type: 'warning', message }, opts));

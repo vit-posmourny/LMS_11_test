@@ -22,7 +22,7 @@ class AboutUsSectionUpdateRequest extends FormRequest
             'learner_count' => 'nullable|string|max:255',
             'learner_count_text' => 'nullable|string|max:255',
             'about_title' => 'nullable|string|max:255',
-            'about_description' => 'nullable|string|max:1000',
+            'about_description' => 'nullable|string|max:2000',
             'button_text' => 'nullable|string|max:255',
             'button_url' => 'nullable|string|max:255',
             'video_url' => 'nullable|string|max:255',

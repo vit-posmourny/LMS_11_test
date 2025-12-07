@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\Frontend\HeroStoreRequest;
+use App\Http\Requests\Admin\HeroStoreRequest;
 
 class HeroController extends Controller
 {
