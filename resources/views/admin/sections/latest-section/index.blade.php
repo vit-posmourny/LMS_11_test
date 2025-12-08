@@ -20,7 +20,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="category_one" class="form-label">Category One</label>
-                                <select class="form-select" name="category_one">
+                                <select class="form-select is-tom-select" name="category_one">
                                     <option value=""> Please Select </option>
                                     @foreach ($categories as $category)
                                         @if ($category->subCategories->isNotEmpty())
@@ -39,7 +39,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="category_two" class="form-label">Category Two</label>
-                                <select class="form-select" name="category_two">
+                                <select class="form-select is-tom-select" name="category_two">
                                     <option value=""> Please Select </option>
                                     @foreach ($categories as $category)
                                         @if ($category->subCategories->isNotEmpty())
@@ -58,7 +58,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="category_three" class="form-label">Category Three</label>
-                                <select class="form-select" name="category_three">
+                                <select class="form-select is-tom-select" name="category_three">
                                     <option value=""> Please Select </option>
                                     @foreach ($categories as $category)
                                         @if ($category->subCategories->isNotEmpty())
@@ -77,7 +77,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="category_four" class="form-label">Category Four</label>
-                                <select class="form-select" name="category_four">
+                                <select class="form-select is-tom-select" name="category_four">
                                     <option value=""> Please Select </option>
                                     @foreach ($categories as $category)
                                         @if ($category->subCategories->isNotEmpty())
@@ -96,7 +96,7 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label for="category_five" class="form-label">Category Five</label>
-                                <select class="form-select" name="category_five">
+                                <select class="form-select is-tom-select" name="category_five">
                                     <option value=""> Please Select </option>
                                     @foreach ($categories as $category)
                                         @if ($category->subCategories->isNotEmpty())
@@ -125,3 +125,7 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    @vite('resources/js/tom-select-ini.js')
+@endpush
