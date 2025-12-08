@@ -22,11 +22,10 @@ var loader = `
         <div class="spinner-border" role="status">
             <span class="visually-hidden">Loading...</span>
         </div>
-    </div>
-`;
+    </div>`;
+
 
 /** Reusable Functions */
-
 function updateApproveStatus(courseId, approval)
 {
     $.ajax({
@@ -45,8 +44,8 @@ function updateApproveStatus(courseId, approval)
     });
 }
 
-/** on DOM load */
 
+/** on DOM load */
 $(function()
 {   /** change course approval status */
     $('.update-approval-status').on('change', function()
