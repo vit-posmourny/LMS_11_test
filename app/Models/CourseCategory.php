@@ -11,7 +11,6 @@ class CourseCategory extends Model
 {
     use HasFactory;
 
-
     function subCategories(): HasMany {
         return $this->hasMany(CourseCategory::class, 'parent_id', 'id');
     }

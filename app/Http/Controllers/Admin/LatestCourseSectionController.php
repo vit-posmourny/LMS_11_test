@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CourseCategory;
+use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,8 @@ class LatestCourseSectionController extends Controller
     public function index(): View
     {
         $categories = CourseCategory::all();
-        return view('admin.sections.latest-section.index', compact('categories'));
+        $latestCourseSection = LatestCourseSection::first();
+        return view('admin.sections.latest-section.index', compact('categories', 'latestCourseSection'));
     }
 
     /**
@@ -31,7 +33,28 @@ class LatestCourseSectionController extends Controller
      */
     public function store(Request $request)
     {
-        
+        $validatedData = $request->validate([
+            'category_one' => 'nullable|integer|exists:course_categories,id',
+            'category_two' => 'nullable|integer|exists:course_categories,id',
+            'category_three' => 'nullable|integer|exists:course_categories,id',
+            'category_four' => 'nullable|integer|exists:course_categories,id',
+            'category_five' => 'nullable|integer|exists:course_categories,id',
+        ]);
+
+        $filteredData = array_filter($validatedData);
+
+        if (empty($filteredData)) {
+            // Všechna data jsou null, zobrazí se notifikace a přesměruje zpět
+            notyf()->info('Nothing was stored to Latest Course Section.');
+        } else {
+            // Některé hodnoty nejsou null, uloží se data
+            // Používá se updateOrCreate s fixním ID 1 (předpoklad pro singleton záznam)
+            LatestCourseSection::updateOrCreate(['id' => 1], $filteredData);
+            // Volitelně můžete přidat notifikaci o úspěšném uložení
+            notyf()->success('Latest Course Section updated successfully!');
+        }
+        // Přesměrování zpět
+        return redirect()->back();
     }
 
     /**

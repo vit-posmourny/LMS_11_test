@@ -31,7 +31,7 @@
     <!--===========================
         COURSES 3 START
     ============================-->
-    {{-- @include('frontend.pages.sections.courses-section') --}}
+    @include('frontend.pages.sections.courses-section')
     <!--===========================
         COURSES 3 END
     ============================-->
