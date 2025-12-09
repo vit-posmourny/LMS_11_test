@@ -82,7 +82,7 @@ textarea.form-control.gateway__description {
 
 /* 3. Vytvoření nové vlastní šipky a úprava Inputu */
 .ts-wrapper.form-select .ts-control {
-    padding-right: 2rem !important;
+    padding: 0.5625rem 2rem 0.5625rem 0.75rem !important;
     position: relative;
     /* Nové: Mírné zaoblení inputu */
     border-radius: 4px !important;
@@ -124,7 +124,8 @@ textarea.form-control.gateway__description {
 .ts-dropdown .optgroup-header {
     background-color: var(--tblr-bg-surface-secondary, #f8fafc);
     color: var(--tblr-body-color);
-    font-family: var(--tblr-font-sans-serif);
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
     font-weight: 700;
 
     /* Úprava: Capitalize (První Velké Ostatní Malá) */
@@ -135,8 +136,9 @@ textarea.form-control.gateway__description {
     border-bottom: 1px solid var(--tblr-border-color-light, #f0f0f0);
 }
 
-.ts-dropdown .optgroup .option {
-    font-family: var(--tblr-font-sans-serif);
+.ts-dropdown .dropdown-item {
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.9rem;
     padding-left: 1.5rem;
 }
 
@@ -147,4 +149,11 @@ textarea.form-control.gateway__description {
     opacity: 0 !important;
     position: absolute !important; /* Vyhodíme ho z toku dokumentu */
     pointer-events: none;
+}
+
+/* Přepisuje horizontální dělicí čáru nad optgroup definovanou v Tom Select Bootstrap 5 CSS */
+.ts-dropdown .optgroup:before {
+    content: none !important; /* Odstraní obsah pseudo-elementu */
+    border-top: none !important; /* Odstraní horní rámeček (vlastní čáru) */
+    display: none !important; /* Zajištění, že se element vůbec nezobrazí */
 }

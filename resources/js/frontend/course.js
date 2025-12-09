@@ -103,7 +103,7 @@ $('.more_info_form').on('submit', function(e) {
         contentType: false,
         processData: false,
         beforeSend: function() {
-
+            
         },
         success: function(data) {
             if (data.status == 'success') {

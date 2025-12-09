@@ -15,12 +15,12 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/tom-select/dist/css/tom-select.bootstrap5.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
-    {{-- <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/> --}}
+    <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/tom-select/dist/css/tom-select.bootstrap5.min.css') }}"/>
 
     <style>
         @import url('https://rsms.me/inter/inter.css');
@@ -112,12 +112,11 @@
     <!-- select2.min.js -->
     <script src={{ asset('frontend/assets/js/select2.min.js') }} defer></script>
     <!-- jQuery Core -->
-    {{-- <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script> --}}
+    <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
     <!-- jquery ui -->
     <script src="{{ asset('frontend/assets/js/jquery-ui.min.js') }}" defer></script>
     <!-- 3rd party plugins -->
     <script src={{ asset("vendor/laravel-filemanager/js/stand-alone-button.js") }} defer></script>
-
     <!-- dynamic js -->
     @stack('scripts')
 </body>

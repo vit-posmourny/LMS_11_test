@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-xl-6">
                         <div class="add_course_more_info_input">
-                            <label for="#">Capacity</label>
+                            <label for="capacity">Capacity</label>
                             <input type="text" name="capacity" value="{{ $course?->capacity }}" placeholder="Capacity">
                             <p>leave blank for unlimited</p>
                         </div>
@@ -39,9 +39,9 @@
                     </div>
                     <div class="col-12">
                         <div class="add_course_more_info_input">
-                            <label for="#">Category *</label>
-                            <select class="select_2" name="category">
-                                <option value=""> Please Select </option>
+                            <label for="category">Category *</label>
+                            <select class="form-select is-tom-select" name="category">
+                                <option> Please Select </option>
                                 @foreach ($categories as $category)
                                     @if ($category->subCategories->isNotEmpty())
                                         <optgroup label="{{ $category->name }}">
@@ -90,3 +90,7 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    @vite('resources/js/tom-select-ini.js')
+@endpush

@@ -12,7 +12,7 @@ const update_url = baseUrl + '/admin/courses/update';
 
 // Create an instance of Notyf
 var notyf = new Notyf({
-    duration: 5000,
+    duration: 8000,
     dismissible: true
 });
 
@@ -142,7 +142,7 @@ $(function()
             contentType: false,
             processData: false,
             beforeSend: function() {
-
+        
             },
             success: function(data) {
                 if (data.status == 'success') {
