@@ -18,6 +18,7 @@ export default defineConfig({
                 'resources/js/frontend/frontend.js',
                 'resources/js/admin/tinymce-init.js',
                 'resources/js/analyzeImages.js',
+                'resources/js/tom-select-ini.js',
             ],
             refresh: true,
         }),

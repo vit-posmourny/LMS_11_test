@@ -10,7 +10,7 @@ return [
                 '/vendor/flasher/flasher-notyf.min.css',
             ],
             'options' => [
-                'duration' => 5000,
+                'duration' => 8000,
                 'dismissible' => true,
                 'types' => [
                 [

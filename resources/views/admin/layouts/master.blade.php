@@ -9,17 +9,18 @@
     <meta name="base_url" content="{{ url('') }}">
     <meta name="csrf_token" content="{{ csrf_token() }}">
     <title>Dashboard</title>
-    <!-- css plugins -->
+    <!-- CSS plugins -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/dist/tabler-icons.min.css"/>
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
-    <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
+    <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/tom-select/dist/css/tom-select.bootstrap5.min.css') }}"/>
 
     <style>
         @import url('https://rsms.me/inter/inter.css');
@@ -31,7 +32,7 @@
         }
     </style>
     @stack('header_styles')
-    @vite(['resources/css/admin.css', 'resources/js/admin/admin.js', 'resources/css/frontend.css', 'resources/css/global.css'])
+    @vite(['resources/css/admin.css', 'resources/css/frontend.css', 'resources/css/global.css'])
     @stack('header_scripts')
 </head>
 
@@ -95,25 +96,27 @@
         </div>
     </div>
 
+    @vite(['resources/js/admin/admin.js'])
     <!-- jquery library js -->
     <script src="{{ asset('frontend/assets/js/jquery-3.7.1.min.js') }}"></script>
     <!-- font-awesome js -->
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/fontawesome.min.js') }}"></script>
     <script src="{{ asset('fontawesome-free-7.0.1-web/js/solid.min.js') }}"></script>
-    <!-- select2.min.js -->
-    <script defer src={{ asset('frontend/assets/js/select2.min.js') }}></script>
     <!-- Libs JS -->
     <script src="{{ asset('assets/notyf.min.js') }}"></script>
     <!-- Tabler Core -->
     <script src="{{ asset('admin/assets/dist/js/tabler.min.js') }}" defer></script>
     <script src="{{ asset('admin/assets/dist/js/demo.min.js') }}" defer></script>
+    <!-- tom-select.js -->
+    <script src="{{ asset('admin/assets/dist/libs/tom-select/dist/js/tom-select.base.min.js') }}" defer></script>
+    <!-- select2.min.js -->
+    <script src={{ asset('frontend/assets/js/select2.min.js') }} defer></script>
     <!-- jQuery Core -->
     <script src="{{ asset('admin/assets/dist/js/jquery.nice-select.min.js') }}" defer></script>
     <!-- jquery ui -->
     <script src="{{ asset('frontend/assets/js/jquery-ui.min.js') }}" defer></script>
     <!-- 3rd party plugins -->
     <script src={{ asset("vendor/laravel-filemanager/js/stand-alone-button.js") }} defer></script>
-
     <!-- dynamic js -->
     @stack('scripts')
 </body>
