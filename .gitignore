@@ -3,6 +3,9 @@
 /public/build
 /public/hot
 /public/storage
+# Ignoruje vsechny soubory uvnitr slozky resource/css/images
+/resource/css/images/*
+# Ignoruje i samotnou slozku, pokud je prazdna
 /resource/css/images/
 /storage/*.key
 /storage/pail
