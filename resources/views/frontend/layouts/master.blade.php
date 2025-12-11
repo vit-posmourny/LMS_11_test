@@ -36,7 +36,6 @@
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
 
     @vite(['resources/css/frontend/style.css', 'resources/css/frontend.css', 'resources/js/frontend/frontend.js',])
