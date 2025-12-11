@@ -39,7 +39,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
 
-    @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css'])
+    @vite(['resources/css/frontend/style.css', 'resources/css/frontend.css', 'resources/js/frontend/frontend.js',])
     {{-- dynamic js --}}
     @stack('header_scripts')
 </head>
