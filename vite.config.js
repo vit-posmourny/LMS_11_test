@@ -9,6 +9,8 @@ export default defineConfig({
                 'resources/css/admin.css',
                 'resources/css/frontend.css',
                 'resources/css/global.css',
+                'resources/css/admin/style.css',
+                'resources/css/frontend/style.css',
                 'resources/js/app.js',
                 'resources/js/admin/login.js',
                 'resources/js/admin/admin.js',
