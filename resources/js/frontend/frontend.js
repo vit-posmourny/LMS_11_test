@@ -1,8 +1,9 @@
 // resources/js/frontend/frontend.js
-// imports
+// IMPORTS
+import.meta.glob(['../../images/**',]);
 import { notyf } from '../notyf-definitions.js';
 import './cart.js';
-// variables
+// VARIABLES
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 
 // Ez share init //
