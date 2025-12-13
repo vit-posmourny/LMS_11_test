@@ -4,7 +4,7 @@
 /public/hot
 /public/storage
 # Ignoruje vsechny soubory uvnitr slozky resource/css/images
-/resources/css/images/*
+/resources/images/*
 /storage/*.key
 /storage/pail
 /vendor

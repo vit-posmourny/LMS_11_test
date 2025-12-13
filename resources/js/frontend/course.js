@@ -1,5 +1,5 @@
 // imports
-import { notyf } from '../notyf-definitions.js';
+// import { notyf } from '../notyf-definitions.js';
 // variables
 const csrf_token = $(`meta[name="csrf_token"]`).attr('content');
 const baseUrl = $(`meta[name="base_url"]`).attr('content');
@@ -103,7 +103,7 @@ $('.more_info_form').on('submit', function(e) {
         contentType: false,
         processData: false,
         beforeSend: function() {
-            
+
         },
         success: function(data) {
             if (data.status == 'success') {
