@@ -40,7 +40,7 @@
     <!--===========================
         OFFER START
     ============================-->
-    {{-- @include('frontend.pages.sections.offer-section') --}}
+    @include('frontend.pages.sections.offer-section')
     <!--===========================
         OFFER END
     ============================-->
