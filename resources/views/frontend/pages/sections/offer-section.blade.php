@@ -1,5 +1,5 @@
 {{-- resources\views\frontend\pages\sections\offer-section.blade.php --}}
-<section class="wsus__offer" style="background: url(images/offer_bg.jpg);">
+<section class="wsus__offer" style="background: url({{ Vite::asset('resources/images/offer_bg.jpg') }});">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-xl-4 col-md-6 wow fadeInLeft">

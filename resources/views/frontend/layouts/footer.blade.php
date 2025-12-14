@@ -1,5 +1,5 @@
     {{-- resources\views\frontend\layouts\footer.blade.php --}}
-    <footer class="footer_3" style="background: url(images/footer_3_bg.jpg);">
+    <footer class="footer_3" style="background: url({{ Vite::asset('resources/images/footer_3_bg.jpg);">
         <div class="footer_3_overlay pt_120 xs_pt_100">
             <div class="wsus__footer_bottom">
                 <div class="container">
