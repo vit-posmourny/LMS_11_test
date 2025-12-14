@@ -1,6 +1,7 @@
-// imports
+// IMPORTS
 import $ from 'jquery';
 window.$ = window.jQuery = $;
+import.meta.glob(['../../images/**',]);
 import { notyf } from '../notyf-definitions.js';
 
 const csrf_token = $('meta[name="csrf_token"]').attr('content');

@@ -44,7 +44,7 @@
                             <span>live</span>
                             <a class="play_btn venobox" data-autoplay="true" data-vbtype="video"
                                 href="{{ $about->video_url }}">
-                                <img src="{{ asset('frontend\assets\images\play_icon.png') }}" alt="Play" class="img-fluid">
+                                <img src="{{ Vite::asset('resources/images/play_icon.png') }}" alt="Play" class="img-fluid">
                             </a>
                         </div>
                     @endif

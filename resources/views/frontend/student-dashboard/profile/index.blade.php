@@ -50,7 +50,7 @@
                                 <div class="img">
                                     <img src="{{ asset(auth()->user()->avatar) }}" alt="profile" class="img-fluid w-100">
                                     <label for="profile_photo">
-                                        <img src="{{ asset('frontend/assets/images/dash_camera.png') }}" alt="camera" class="img-fluid w-100">
+                                        <img src="{{ Vite::asset('resources/images/dash_camera.png') }}" alt="camera" class="img-fluid w-100">
                                     </label>
                                     <input type="file" id="profile_photo" name="avatar" hidden="">
                                 </div>

@@ -398,7 +398,7 @@ button {
 .home_3 .wsus__section_heading h5::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon_2.png);
+    background: url(../../imagesbook_icon_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -428,7 +428,7 @@ button {
 .wsus__breadcrumb::after {
     position: absolute;
     content: "";
-    background: url(../images/breadcrumb_shapes.png);
+    background: url(../../imagesbreadcrumb_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -449,7 +449,7 @@ button {
 .wsus__breadcrumb::before {
     position: absolute;
     content: "";
-    background: url(../images/breadcrumb_shapes_3.png);
+    background: url(../../imagesbreadcrumb_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -465,7 +465,7 @@ button {
 .wsus__breadcrumb_overlay::after {
     position: absolute;
     content: "";
-    background: url(../images/breadcrumb_shapes_2.png);
+    background: url(../../imagesbreadcrumb_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1277,7 +1277,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__banner_text::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_shapes_1.png);
+    background: url(../../imagesbanner_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1310,7 +1310,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__banner::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_shapes_2.png);
+    background: url(../../imagesbanner_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1343,7 +1343,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__banner::before {
     position: absolute;
     content: "";
-    background: url(../images/banner_shapes_3.png);
+    background: url(../../imagesbanner_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1414,7 +1414,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__banner_image .text::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_img_icon.png);
+    background: url(../../imagesbanner_img_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1436,7 +1436,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__about_img::after {
     position: absolute;
     content: "";
-    background: url(../images/about_shapes.png);
+    background: url(../../imagesabout_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1463,7 +1463,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__about_text ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green.png);
+    background: url(../../imagescheck_icon_green.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1885,7 +1885,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__single_courses_text ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon.png);
+    background: url(../../imagesbook_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -1896,7 +1896,7 @@ header .wsus__header_right li .nice-select .list {
 }
 
 .wsus__single_courses_text ul li:last-child:after {
-    background: url(../images/user_icon_gray.png);
+    background: url(../../imagesuser_icon_gray.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2128,7 +2128,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__become_instructor::after {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_1.png);
+    background: url(../../imagesabout_3_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2141,7 +2141,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__become_instructor::before {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_4.png);
+    background: url(../../imagesabout_3_shapes_4.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2163,7 +2163,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__become_instructor .wsus__section_heading h5::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon_2.png);
+    background: url(../../imagesbook_icon_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2186,7 +2186,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__become_instructor_img::after {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_2.png);
+    background: url(../../imagesabout_3_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2456,7 +2456,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__faq_img::after {
     position: absolute;
     content: "";
-    background: url(../images/faq_shapes_3.png);
+    background: url(../../imagesfaq_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2469,7 +2469,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__faq_img::before {
     position: absolute;
     content: "";
-    background: url(../images/faq_shapes_4.png);
+    background: url(../../imagesfaq_shapes_4.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2521,7 +2521,7 @@ header .wsus__header_right li .nice-select .list {
 
 .accordion-button::after {
     background: var(--colorWhite);
-    background-image: url(../images/arrow_down.png);
+    background-image: url(../../imagesarrow_down.png);
     width: 32px;
     height: 32px;
     text-align: center;
@@ -2537,7 +2537,7 @@ header .wsus__header_right li .nice-select .list {
 }
 
 .accordion-button:not(.collapsed)::after {
-    background-image: url(../images/arrow_up.png);
+    background-image: url(../../imagesarrow_up.png);
     border-color: var(--colorWhite);
 }
 
@@ -2548,7 +2548,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__faq_text::after {
     position: absolute;
     content: "";
-    background: url(../images/faq_shapes_1.png);
+    background: url(../../imagesfaq_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2561,7 +2561,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__faq_text::before {
     position: absolute;
     content: "";
-    background: url(../images/faq_shapes_2.png);
+    background: url(../../imagesfaq_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2673,7 +2673,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__single_testimonial::after {
     position: absolute;
     content: "";
-    background: url(../images/testimonial_shapes.png);
+    background: url(../../imagestestimonial_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2741,7 +2741,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__single_blog_text .date::after {
     position: absolute;
     content: "";
-    background: url(../images/calendar_blue.png);
+    background: url(../../imagescalendar_blue.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -2841,7 +2841,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__subscription_text::after {
     position: absolute;
     content: "";
-    background: url(../images/subscription_shapes.png);
+    background: url(../../imagessubscription_shapes.png);
     background-position: center !important;
     background-repeat: no-repeat !important;
     background-size: cover !important;
@@ -3379,7 +3379,7 @@ footer {
 .wsus__banner_2::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_2_shapes_1.png);
+    background: url(../../imagesbanner_2_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3394,7 +3394,7 @@ footer {
 .wsus__banner_text_2::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_2_shapes_2.png);
+    background: url(../../imagesbanner_2_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3424,7 +3424,7 @@ footer {
 .wsus__banner_image_2 .img::before {
     position: absolute;
     content: "";
-    background: url(../images/banner_2_shapes_3.jpg);
+    background: url(../../imagesbanner_2_shapes_3.jpg);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3437,7 +3437,7 @@ footer {
 .wsus__banner_image_2 .img::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_2_shapes_4.gif);
+    background: url(../../imagesbanner_2_shapes_4.gif);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3492,7 +3492,7 @@ footer {
 .wsus__headline_slider .marquee_animi ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/headline_animi_shapes.png);
+    background: url(../../imagesheadline_animi_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3673,7 +3673,7 @@ footer {
 }
 
 .wsus__single_courses_2 .wsus__single_courses_text ul li:last-child:after {
-    background: url(../images/clock_icon_gray.png);
+    background: url(../../imagesclock_icon_gray.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3833,7 +3833,7 @@ footer {
 .wsus__about_2_img::after {
     position: absolute;
     content: "";
-    background: url(../images/about_2_shapes.png);
+    background: url(../../imagesabout_2_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3893,7 +3893,7 @@ footer {
 .wsus__about_2_text::after {
     position: absolute;
     content: "";
-    background: url(../images/about_2_shapes_2.png);
+    background: url(../../imagesabout_2_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -3926,7 +3926,7 @@ footer {
 .wsus__about_2_text::before {
     position: absolute;
     content: "";
-    background: url(../images/about_2_shapes_3.png);
+    background: url(../../imagesabout_2_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4053,7 +4053,7 @@ footer {
 .wsus__single_event_img span::after {
     position: absolute;
     content: "";
-    background: url(../images/calendar_black.png);
+    background: url(../../imagescalendar_black.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4312,7 +4312,7 @@ footer {
 }
 
 .wsus__single_testimonial_2::after {
-    background: url(../images/testimonial_shapes_2.png);
+    background: url(../../imagestestimonial_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4741,7 +4741,7 @@ footer {
 .wsus__banner_3_text h5::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon_2.png);
+    background: url(../../imagesbook_icon_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4827,7 +4827,7 @@ footer {
 .wsus__banner_3::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_3_shapes.png);
+    background: url(../../imagesbanner_3_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -4871,7 +4871,7 @@ footer {
 .wsus__banner_3_img .text::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_img_icon.png);
+    background: url(../../imagesbanner_img_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5016,7 +5016,7 @@ footer {
     content: "";
     width: 50px;
     height: 50px;
-    background: url(../images/banner_3_img_shapes.png);
+    background: url(../../imagesbanner_3_img_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5147,7 +5147,7 @@ footer {
 .wsus__about_3::before {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_1.png);
+    background: url(../../imagesabout_3_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5160,7 +5160,7 @@ footer {
 .wsus__about_3::after {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_2.png);
+    background: url(../../imagesabout_3_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5248,7 +5248,7 @@ footer {
     content: "";
     width: 50px;
     height: 50px;
-    background: url(../images/banner_3_img_shapes.png);
+    background: url(../../imagesbanner_3_img_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5264,7 +5264,7 @@ footer {
 .wsus__about_3_img::before {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_4.png);
+    background: url(../../imagesabout_3_shapes_4.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5277,7 +5277,7 @@ footer {
 .wsus__about_3_img::after {
     position: absolute;
     content: "";
-    background: url(../images/about_3_shapes_3.png);
+    background: url(../../imagesabout_3_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5314,7 +5314,7 @@ footer {
 .wsus__about_3_text ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green_2.png);
+    background: url(../../imagescheck_icon_green_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5615,7 +5615,7 @@ footer {
 .wsus__single_courses_text_3 ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon.png);
+    background: url(../../imagesbook_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5626,7 +5626,7 @@ footer {
 }
 
 .wsus__single_courses_text_3 ul li:last-child:after {
-    background: url(../images/user_icon_gray.png);
+    background: url(../../imagesuser_icon_gray.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -5955,7 +5955,7 @@ footer {
 .wsus__video .play_btn::after {
     position: absolute;
     content: "";
-    background: url(../images/play_btn_text.png);
+    background: url(../../imagesplay_btn_text.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6556,7 +6556,7 @@ footer {
 .wsus__banner_4_text h1::after {
     position: absolute;
     content: "";
-    background: url(../images/banner_shapes_1.png);
+    background: url(../../imagesbanner_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6707,7 +6707,7 @@ footer {
 .wsus__category_4::before {
     position: absolute;
     content: "";
-    background: url(../images/category_4_shapes_1.png);
+    background: url(../../imagescategory_4_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6721,7 +6721,7 @@ footer {
 .wsus__category_4::after {
     position: absolute;
     content: "";
-    background: url(../images/category_4_shapes_2.png);
+    background: url(../../imagescategory_4_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6788,7 +6788,7 @@ footer {
 .wsus__top_courses::before {
     position: absolute;
     content: "";
-    background: url(../images/top_courses_shapes_1.png);
+    background: url(../../imagestop_courses_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6801,7 +6801,7 @@ footer {
 .wsus__top_courses::after {
     position: absolute;
     content: "";
-    background: url(../images/faq_shapes_1.png);
+    background: url(../../imagesfaq_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6859,7 +6859,7 @@ footer {
 .wsus__call_to_action_4::before {
     position: absolute;
     content: "";
-    background: url(../images/category_4_shapes_1.png);
+    background: url(../../imagescategory_4_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -6874,7 +6874,7 @@ footer {
 .wsus__call_to_action_4::after {
     position: absolute;
     content: "";
-    background: url(../images/category_4_shapes_2.png);
+    background: url(../../imagescategory_4_shapes_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7183,7 +7183,7 @@ footer {
 .wsus__testimonial_4_text::after {
     position: absolute;
     content: "";
-    background: url(../images/testimonial_4_shapes_5.png);
+    background: url(../../imagestestimonial_4_shapes_5.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7226,7 +7226,7 @@ footer {
 .wsus__testimonial_4 .wsus__section_heading::before {
     position: absolute;
     content: "";
-    background: url(../images/testimonial_4_shapes.png);
+    background: url(../../imagestestimonial_4_shapes.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7240,7 +7240,7 @@ footer {
 .wsus__testimonial_4::before {
     position: absolute;
     content: "";
-    background: url(../images/testimonial_4_shapes_4.png);
+    background: url(../../imagestestimonial_4_shapes_4.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7254,7 +7254,7 @@ footer {
 .wsus__testimonial_4::after {
     position: absolute;
     content: "";
-    background: url(../images/testimonial_4_shapes_3.png);
+    background: url(../../imagestestimonial_4_shapes_3.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7337,7 +7337,7 @@ footer {
 .wsus__single_blog_4_img .date::after {
     position: absolute;
     content: "";
-    background: url(../images/calendar_black.png);
+    background: url(../../imagescalendar_black.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7632,7 +7632,7 @@ footer {
 }
 
 .home_dark .wsus__banner::before {
-    background: url(../images/banner_shapes_3.1.png);
+    background: url(../../imagesbanner_shapes_3.1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7755,7 +7755,7 @@ footer {
 
 .home_dark .accordion-button::after {
     background: rgba(255, 255, 255, 0.10);
-    background-image: url(../images/arrow_down_2.png);
+    background-image: url(../../imagesarrow_down_2.png);
     background-position: center;
     background-repeat: no-repeat;
     border: none;
@@ -7826,7 +7826,7 @@ footer {
 .wsus__about_3_text .wsus__section_heading h5::after {
     position: absolute;
     content: "";
-    background: url(../images/book_icon_2.png);
+    background: url(../../imagesbook_icon_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -7988,7 +7988,7 @@ footer {
 .wsus__sidebar_category ul li::before {
     position: absolute;
     content: "";
-    background: url(../images/minus_icon.png);
+    background: url(../../imagesminus_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8246,7 +8246,7 @@ footer {
 .wsus__courses_overview ol li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green_2.png);
+    background: url(../../imagescheck_icon_green_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8559,7 +8559,7 @@ footer {
 .wsus__courses_curriculum .accordion-body ul li::before {
     position: absolute;
     content: "";
-    background: url(../images/file_icon.png);
+    background: url(../../imagesfile_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8570,7 +8570,7 @@ footer {
 }
 
 .wsus__courses_curriculum .accordion-body ul li:first-child:before {
-    background: url(../images/play_icon_round.png);
+    background: url(../../imagesplay_icon_round.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8579,7 +8579,7 @@ footer {
 .wsus__courses_curriculum .accordion-body ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/lock_icon.png);
+    background: url(../../imageslock_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8590,7 +8590,7 @@ footer {
 }
 
 .wsus__courses_curriculum .accordion-body ul li.active::after {
-    background: url(../images/check_icon_gray.png);
+    background: url(../../imagescheck_icon_gray.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8634,12 +8634,12 @@ footer {
 }
 
 .wsus__courses_curriculum .accordion-button::after {
-    background-image: url(../images/plus_icon_black.png);
+    background-image: url(../../imagesplus_icon_black.png);
     border: 1px solid rgba(30, 30, 47, 0.12);
 }
 
 .wsus__courses_curriculum .accordion-button:not(.collapsed)::after {
-    background-image: url(../images/minus_icon_black.png);
+    background-image: url(../../imagesminus_icon_black.png);
     border-color: rgba(30, 30, 47, 0.12);
 }
 
@@ -9663,7 +9663,7 @@ footer {
 .wsus__blog_details_text ol li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green_2.png);
+    background: url(../../imagescheck_icon_green_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -9705,7 +9705,7 @@ footer {
 .details_quot_text::after {
     position: absolute;
     content: "";
-    background: url(../images/blog_det_quot.png);
+    background: url(../../imagesblog_det_quot.png);
     width: 50px;
     height: 40px;
     top: 45px;
@@ -10965,7 +10965,7 @@ footer {
 .wsus__forum_categories::before {
     position: absolute;
     content: "";
-    background: url(../images/category_4_shapes_1.png);
+    background: url(../../imagescategory_4_shapes_1.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11645,7 +11645,7 @@ footer {
 .single_topic_text .topic_header h5::after {
     position: absolute;
     content: "";
-    background: url(../images/topic_quot_icon.png);
+    background: url(../../imagestopic_quot_icon.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11984,7 +11984,7 @@ footer {
 .wsus__pricing_tabs_area p::after {
     position: absolute;
     content: "";
-    background: url(../images/pricing_arrow.png);
+    background: url(../../imagespricing_arrow.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -11997,7 +11997,7 @@ footer {
 .wsus__single_pricing ul li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green_2.png);
+    background: url(../../imagescheck_icon_green_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -12617,7 +12617,7 @@ footer {
     left: 0;
     width: 20px;
     height: 20px;
-    background: url(../images/check_mark_2.png);
+    background: url(../../imagescheck_mark_2.png);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -15194,7 +15194,7 @@ footer {
 .become_instructor_page_text ol li::after {
     position: absolute;
     content: "";
-    background: url(../images/check_icon_green_2.png);
+    background: url(../../imagescheck_icon_green_2.png);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

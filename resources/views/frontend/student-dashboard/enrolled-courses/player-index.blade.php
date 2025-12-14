@@ -42,7 +42,7 @@
     <!--============ PRELOADER START ===========-->
     {{-- <div id="preloader"> --}}
         {{-- <div class="preloader_icon"> --}}
-            {{-- <img src="{{ asset('frontend/assets/images/preloader.png') }}" alt="Preloader" class="img-fluid"> --}}
+            {{-- <img src="{{ Vite::asset('resources/images/preloader.png') }}" alt="Preloader" class="img-fluid"> --}}
         {{-- </div> --}}
     {{-- </div> --}}
     <!--============ PRELOADER START ===========-->
@@ -111,7 +111,7 @@
                                                     <label class="form-check-label">
                                                         1_Setting up Environment (Part - 1)
                                                         <span>
-                                                            <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video"
+                                                            <img src="{{ Vite::asset('resources/images/video_icon_black_2.png') }}" alt="video"
                                                                 class="img-fluid">
                                                             06.03
                                                         </span>
@@ -122,7 +122,7 @@
                                                     <label class="form-check-label">
                                                         2_Environment Setup for Project (Part - 1)
                                                         <span>
-                                                            <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video"
+                                                            <img src="{{ Vite::asset('resources/images/video_icon_black_2.png') }}" alt="video"
                                                                 class="img-fluid">
                                                             06.03
                                                         </span>
@@ -166,7 +166,7 @@
                             <h2>Reviews (09)</h2>
                             <div class="course-review-head">
                                 <div class="review-author-thumb">
-                                    <img src="{{ asset('frontend/assets/images/review-author.png') }}" alt="img">
+                                    <img src="{{ Vite::asset('resources/images/review-author.png') }}" alt="img">
                                 </div>
                                 <div class="review-author-content">
                                     <div class="author-name">
@@ -187,7 +187,7 @@
                             </div>
                             <div class="course-review-head">
                                 <div class="review-author-thumb">
-                                    <img src="{{ asset('frontend/assets/images/review-author.png') }}" alt="img">
+                                    <img src="{{ Vite::asset('resources/images/review-author.png') }}" alt="img">
                                 </div>
                                 <div class="review-author-content">
                                     <div class="author-name">
@@ -208,7 +208,7 @@
                             </div>
                             <div class="course-review-head">
                                 <div class="review-author-thumb">
-                                    <img src="{{ asset('frontend/assets/images/review-author.png') }}" alt="img">
+                                    <img src="{{ Vite::asset('resources/images/review-author.png') }}" alt="img">
                                 </div>
                                 <div class="review-author-content">
                                     <div class="author-name">
@@ -271,7 +271,7 @@
                                     <label class="form-check-label _lesson" data-course-id="{{ $course->id }}" data-chapter-id="{{ $chapter->id }}" data-lesson-id="{{ $lesson->id }}">
                                         {{ $lesson->title }}
                                         <span>
-                                            <img src="{{ asset('frontend/assets/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
+                                            <img src="{{ Vite::asset('resources/images/video_icon_black_2.png') }}" alt="video" class="img-fluid">
                                             {{ convertMinutesToHours($lesson->duration) }}
                                         </span>
                                     </label>

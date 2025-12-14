@@ -10,7 +10,7 @@
 
     <title>EduCore - Online Courses & Education HTML Template</title>
 
-    <link rel="icon" type="image/png" href="{{ asset('frontend/assets/images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ Vite::asset('resources/images/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/tom-select.bootstrap5.min.css') }}">
@@ -49,7 +49,7 @@
     <!--============ PRELOADER START ===========-->
     <div id="preloader">
         <div class="preloader_icon">
-            <img src="{{ asset('frontend/assets/images/preloader.png') }}" alt="Preloader" class="img-fluid">
+            <img src="{{ Vite::asset('resources/images/preloader.png') }}" alt="Preloader" class="img-fluid">
         </div>
     </div>
     <!--============ PRELOADER START ===========-->

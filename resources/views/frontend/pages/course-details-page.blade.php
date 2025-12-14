@@ -31,11 +31,11 @@
                                     By {{ $course->instructor->name }}
                                 </li>
                                 <li>
-                                    <span><img src="{{ asset('frontend/assets/images/globe_icon_blue.png') }}" alt="Globe" class="img-fluid"></span>
+                                    <span><img src="{{ Vite::asset('resources/images/globe_icon_blue.png') }}" alt="Globe" class="img-fluid"></span>
                                     {{ $course->category->name }}
                                 </li>
                                 <li>
-                                    <span><img src="{{ asset('frontend/assets/images/calendar_blue.png') }}" alt="Calendar" class="img-fluid"></span>
+                                    <span><img src="{{ Vite::asset('resources/images/calendar_blue.png') }}" alt="Calendar" class="img-fluid"></span>
                                     Last updated {{ date('d/M/Y', strtotime($course->updated_at)) }}
                                 </li>
                             </ul>
@@ -146,12 +146,12 @@
                                                     <li><i class="fas fa-star"></i> <b>74,537 Reviews</b></li>
                                                     <li><strong>4.7 Rating</strong></li>
                                                     <li>
-                                                        <span><img src="{{ asset('frontend/assets/images/book_icon.png') }}" alt="book"
+                                                        <span><img src="{{ Vite::asset('resources/images/book_icon.png') }}" alt="book"
                                                                 class="img-fluid"></span>
                                                         {{ $course->instructor->courses()->count() }} courses
                                                     </li>
                                                     <li>
-                                                        <span><img src="{{ asset('frontend/assets/images/user_icon_gray.png') }}" alt="user"
+                                                        <span><img src="{{ Vite::asset('resources/images/user_icon_gray.png') }}" alt="user"
                                                                 class="img-fluid"></span>
                                                         32 Students
                                                     </li>
@@ -159,20 +159,20 @@
                                                 <ul class="badge d-flex flex-wrap">
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         data-bs-title="Exclusive Author">
-                                                        <img src="{{ asset('frontend/assets/images/badge_1.png') }}" alt="Badge" class="img-fluid">
+                                                        <img src="{{ Vite::asset('resources/images/badge_1.png') }}" alt="Badge" class="img-fluid">
                                                     </li>
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        data-bs-title="Top Earning"><img src="{{ asset('frontend/assets/images/badge_2.png') }}"
+                                                        data-bs-title="Top Earning"><img src="{{ Vite::asset('resources/images/badge_2.png') }}"
                                                             alt="Badge" class="img-fluid"></li>
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        data-bs-title="Trending"><img src="{{ asset('frontend/assets/images/badge_3.png') }}"
+                                                        data-bs-title="Trending"><img src="{{ Vite::asset('resources/images/badge_3.png') }}"
                                                             alt="Badge" class="img-fluid"></li>
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         data-bs-title="2 Years of Membership"><img
-                                                            src="{{ asset('frontend/assets/images/badge_4.png') }}" alt="Badge" class="img-fluid"></li>
+                                                            src="{{ Vite::asset('resources/images/badge_4.png') }}" alt="Badge" class="img-fluid"></li>
                                                     <li data-bs-toggle="tooltip" data-bs-placement="top"
                                                         data-bs-title="Collector Lavel 1">
-                                                        <img src="{{ asset('frontend/assets/images/badge_5.png') }}" alt="Badge" class="img-fluid">
+                                                        <img src="{{ Vite::asset('resources/images/badge_5.png') }}" alt="Badge" class="img-fluid">
                                                     </li>
                                                 </ul>
                                                 <p class="description">
@@ -278,7 +278,7 @@
                                     <h3>Reviews</h3>
                                     <div class="wsus__course_single_reviews">
                                         <div class="wsus__single_review_img">
-                                            <img src="{{ asset('frontend/assets/images/testimonial_user_1.png') }}" alt="user" class="img-fluid">
+                                            <img src="{{ Vite::asset('resources/images/testimonial_user_1.png') }}" alt="user" class="img-fluid">
                                         </div>
                                         <div class="wsus__single_review_text">
                                             <h4>Dominic L. Ement</h4>
@@ -299,7 +299,7 @@
                                     </div>
                                     <div class="wsus__course_single_reviews">
                                         <div class="wsus__single_review_img">
-                                            <img src="{{ asset('frontend/assets/images/testimonial_user_2.png') }}" alt="user" class="img-fluid">
+                                            <img src="{{ Vite::asset('resources/images/testimonial_user_2.png') }}" alt="user" class="img-fluid">
                                         </div>
                                         <div class="wsus__single_review_text">
                                             <h4>Smith jhon</h4>
@@ -362,7 +362,7 @@
                             @if ($course->demo_video_source != null)
                                 <a class="play_btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
                                     href="{{ asset($course->demo_video_source) }}">
-                                    <img src="{{ asset('frontend/assets/images/play_icon_white.png') }}" alt="Play" class="img-fluid">
+                                    <img src="{{ Vite::asset('resources/images/play_icon_white.png') }}" alt="Play" class="img-fluid">
                                 </a>
                             @endif
                         </div>
@@ -379,7 +379,7 @@
                             <ul>
                                 <li>
                                     <p>
-                                        <span><img src="{{ asset('frontend/assets/images/clock_icon_black.png') }}" alt="clock"
+                                        <span><img src="{{ Vite::asset('resources/images/clock_icon_black.png') }}" alt="clock"
                                                 class="img-fluid"></span>
                                         Course Duration
                                     </p>
@@ -387,7 +387,7 @@
                                 </li>
                                 <li>
                                     <p>
-                                        <span><img src="{{ asset('frontend/assets/images/network_icon_black.png') }}" alt="network"
+                                        <span><img src="{{ Vite::asset('resources/images/network_icon_black.png') }}" alt="network"
                                                 class="img-fluid"></span>
                                         Skill Level
                                     </p>
@@ -395,7 +395,7 @@
                                 </li>
                                 <li>
                                     <p>
-                                        <span><img src="{{ asset('frontend/assets/images/user_icon_black_2.png') }}" alt="User"
+                                        <span><img src="{{ Vite::asset('resources/images/user_icon_black_2.png') }}" alt="User"
                                                 class="img-fluid"></span>
                                         Student Enrolled
                                     </p>
@@ -403,7 +403,7 @@
                                 </li>
                                 <li>
                                     <p>
-                                        <span><img src="{{ asset('frontend/assets/images/language_icon_black.png') }}" alt="Language"
+                                        <span><img src="{{ Vite::asset('resources/images/language_icon_black.png') }}" alt="Language"
                                                 class="img-fluid"></span>
                                         Language
                                     </p>
@@ -428,18 +428,18 @@
                             <h3>This Course Includes</h3>
                             <ul>
                                 <li>
-                                    <span><img src="{{ asset('frontend/assets/images/video_icon_black.png') }}" alt="video" class="img-fluid"></span>
+                                    <span><img src="{{ Vite::asset('resources/images/video_icon_black.png') }}" alt="video" class="img-fluid"></span>
                                     54 min 24 sec Video Lectures
                                 </li>
                                 @if ($course->certificate)
                                     <li>
-                                        <span><img src="{{ asset('frontend/assets/images/certificate_icon_black.png') }}" alt="Certificate"
+                                        <span><img src="{{ Vite::asset('resources/images/certificate_icon_black.png') }}" alt="Certificate"
                                                 class="img-fluid"></span>
                                         Certificate of Completion
                                     </li>
                                 @endif
                                 <li>
-                                    <span><img src="{{ asset('frontend/assets/images/life_time_icon.png') }}" alt="Certificate"
+                                    <span><img src="{{ Vite::asset('resources/images/life_time_icon.png') }}" alt="Certificate"
                                             class="img-fluid"></span>
                                     Course Lifetime Access
                                 </li>
@@ -458,17 +458,17 @@
                             </div>
                             <ul class="d-flex flex-wrap">
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Exclusive Author">
-                                    <img src="{{ asset('frontend/assets/images/badge_1.png') }}" alt="Badge" class="img-fluid">
+                                    <img src="{{ Vite::asset('resources/images/badge_1.png') }}" alt="Badge" class="img-fluid">
                                 </li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Top Earning"><img
-                                        src="{{ asset('frontend/assets/images/badge_2.png') }}" alt="Badge" class="img-fluid"></li>
+                                        src="{{ Vite::asset('resources/images/badge_2.png') }}" alt="Badge" class="img-fluid"></li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Trending"><img
-                                        src="{{ asset('frontend/assets/images/badge_3.png') }}" alt="Badge" class="img-fluid"></li>
+                                        src="{{ Vite::asset('resources/images/badge_3.png') }}" alt="Badge" class="img-fluid"></li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top"
-                                    data-bs-title="2 Years of Membership"><img src="{{ asset('frontend/assets/images/badge_4.png') }}" alt="Badge"
+                                    data-bs-title="2 Years of Membership"><img src="{{ Vite::asset('resources/images/badge_4.png') }}" alt="Badge"
                                         class="img-fluid"></li>
                                 <li data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Collector Lavel 1">
-                                    <img src="{{ asset('frontend/assets/images/badge_5.png') }}" alt="Badge" class="img-fluid">
+                                    <img src="{{ Vite::asset('resources/images/badge_5.png') }}" alt="Badge" class="img-fluid">
                                 </li>
                             </ul>
                         </div>
