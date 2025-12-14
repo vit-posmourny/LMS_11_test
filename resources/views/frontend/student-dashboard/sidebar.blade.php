@@ -2,7 +2,7 @@
     <div class="wsus__dashboard_sidebar">
         <div class="wsus__dashboard_sidebar_top">
             <div class="dashboard_banner">
-                <img src="{{ asset('frontend/assets/images/single_topic_sidebar_banner.jpg') }}"
+                <img src="{{ Vite::asset('resources/images/single_topic_sidebar_banner.jpg') }}"
                     alt="img" class="img-fluid">
             </div>
             <div class="img">
@@ -16,7 +16,7 @@
             <li>
                 <a href="{{ route('student.dashboard') }}" class="{{ request()->routeIs('student.dashboard') ? 'active' : "" }}">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/images/dash_icon_8.png') }}" alt="icon"
+                        <img src="{{ Vite::asset('resources/images/dash_icon_8.png') }}" alt="icon"
                             class="img-fluid w-100">
                     </div>
                     Dashboard
@@ -25,7 +25,7 @@
             <li>
                 <a href="{{ route('student.profile.index') }}" class="{{ request()->routeIs('student.profile.index') ? 'active' : "" }}">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/images/dash_icon_8.png') }}" alt="icon"
+                        <img src="{{ Vite::asset('resources/images/dash_icon_8.png') }}" alt="icon"
                             class="img-fluid w-100">
                     </div>
                     Profile
@@ -34,7 +34,7 @@
             <li>
                 <a href="{{ route('student.enrolled-courses.index') }}" class="{{ request()->routeIs('student.enrolled-courses.index') ? 'active' : "" }}">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/images/dash_icon_8.png') }}" alt="icon"
+                        <img src="{{ Vite::asset('resources/images/dash_icon_8.png') }}" alt="icon"
                             class="img-fluid w-100">
                     </div>
                     Enrolled Courses
@@ -43,7 +43,7 @@
             <li>
                 <a href="javascript:;" onclick="event.preventDefault(); $('#logout').submit();">
                     <div class="img">
-                        <img src="{{ asset('frontend/assets/images/dash_icon_16.png') }}"
+                        <img src="{{ Vite::asset('resources/images/dash_icon_16.png') }}"
                             alt="icon" class="img-fluid w-100">
                     </div>
                     Sign Out

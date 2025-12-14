@@ -38,7 +38,7 @@
                             <div class="wsus__sidebar_search">
                                 <input type="text" placeholder="Search Course">
                                 <button type="submit">
-                                    <img src="{{ asset('frontend/assets/images/search_icon.png') }}" alt="Search" class="img-fluid">
+                                    <img src="{{ Vite::asset('resources/images/search_icon.png') }}" alt="Search" class="img-fluid">
                                 </button>
                             </div>
 
@@ -376,18 +376,18 @@
                                     <ul>
                                         <li>
                                             <a href="#">
-                                                <img src="{{ asset('frontend/assets/images/love_icon_black.png') }}" alt="Love" class="img-fluid">
+                                                <img src="{{ Vite::asset('resources/images/love_icon_black.png') }}" alt="Love" class="img-fluid">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img src="{{ asset('frontend/assets/images/compare_icon_black.png') }}" alt="Compare"
+                                                <img src="{{ Vite::asset('resources/images/compare_icon_black.png') }}" alt="Compare"
                                                     class="img-fluid">
                                             </a>
                                         </li>
                                         <li>
                                             <a href="#">
-                                                <img src="{{ asset('frontend/assets/images/cart_icon_black_2.png') }}" alt="Cart" class="img-fluid">
+                                                <img src="{{ Vite::asset('resources/images/cart_icon_black_2.png') }}" alt="Cart" class="img-fluid">
                                             </a>
                                         </li>
                                     </ul>

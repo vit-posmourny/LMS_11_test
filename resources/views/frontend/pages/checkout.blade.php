@@ -26,19 +26,19 @@
                     <div class="row">
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="{{ route('paypal.payment') }}" class="payment_mathod">
-                                <img src="{{ asset('frontend/assets/images/payment_2.png') }}" alt="payment" class="img-fluid w-100">
+                                <img src="{{ Vite::asset('resources/images/payment_2.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
 
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="{{ route('stripe.payment') }}" class="payment_mathod">
-                                <img src="{{ asset('frontend/assets/images/payment_4.png') }}" alt="payment" class="img-fluid w-100">
+                                <img src="{{ Vite::asset('resources/images/payment_4.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
 
                         <div class="col-xl-3 col-6 col-md-4 wow fadeInUp" style="visibility: visible; animation-name: fadeInUp;">
                             <a href="{{ route('razorpay.redirect') }}" class="payment_mathod">
-                                <img src="{{ asset('frontend/assets/images/payment_9.png') }}" alt="payment" class="img-fluid w-100">
+                                <img src="{{ Vite::asset('resources/images/payment_9.png') }}" alt="payment" class="img-fluid w-100">
                             </a>
                         </div>
                     </div>

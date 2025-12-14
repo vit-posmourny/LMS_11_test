@@ -9,9 +9,9 @@
     <div class="row align-items-center">
         <div class="col-xxl-5 col-xl-6 col-lg-6 wow fadeInLeft">
             <div class="wsus__sign_img">
-                <img src="{{ asset('frontend/assets/images/login_img_1.jpg') }}" alt="login" class="img-fluid">
+                <img src="{{ Vite::asset('resources/images/login_img_1.jpg') }}" alt="login" class="img-fluid">
                 <a href="index.html">
-                    <img src="{{ asset('frontend/assets/images/logo.png') }}" alt="EduCore" class="img-fluid">
+                    <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="EduCore" class="img-fluid">
                 </a>
             </div>
         </div>
@@ -56,7 +56,7 @@
                         <ul class="social_login d-flex flex-wrap">
                             <li>
                                 <a href="#">
-                                    <span><img src="{{ asset('frontend/assets/images/google_icon.png') }}" alt="Google" class="img-fluid"></span>
+                                    <span><img src="{{ Vite::asset('resources/images/google_icon.png') }}" alt="Google" class="img-fluid"></span>
                                     Google
                                 </a>
                             </li>

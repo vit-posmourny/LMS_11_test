@@ -7,7 +7,7 @@
                         <div class="col-lg-3 wow fadeInUp">
                             <div class="wsus__footer_3_logo_area">
                                 <a class="logo" href="index.html">
-                                    <img src="{{ asset('frontend/assets/images/footer_logo.png') }}" alt="EduCore" class="img-fluid">
+                                    <img src="{{ Vite::asset('resources/images/footer_logo.png') }}" alt="EduCore" class="img-fluid">
                                 </a>
                                 <p>Nunc in sollicitudin diam, ut bibendum malesuada sodales porttitor.</p>
                                 <h2>Follow Us On</h2>
@@ -70,7 +70,7 @@
                                 <ul>
                                     <li>
                                         <div class="icon">
-                                            <img src="{{ asset('frontend/assets/images/call_icon_white.png') }}" alt="Call" class="img-fluid">
+                                            <img src="{{ Vite::asset('resources/images/call_icon_white.png') }}" alt="Call" class="img-fluid">
                                         </div>
                                         <div class="text">
                                             <h4>Call us:</h4>
@@ -79,7 +79,7 @@
                                     </li>
                                     <li>
                                         <div class="icon">
-                                            <img src="{{ asset('frontend/assets/images/location_icon_white.png') }}" alt="Call" class="img-fluid">
+                                            <img src="{{ Vite::asset('resources/images/location_icon_white.png') }}" alt="Call" class="img-fluid">
                                         </div>
                                         <div class="text">
                                             <h4>Office:</h4>
