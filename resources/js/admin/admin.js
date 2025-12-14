@@ -3,7 +3,7 @@ import $ from 'jquery';
 window.$ = window.jQuery = $;
 import.meta.glob(['../../images/**',]);
 import { notyf } from '../notyf-definitions.js';
-
+// CONSTANTS
 const csrf_token = $('meta[name="csrf_token"]').attr('content');
 const base_url = $('meta[name="base_url"]').attr('content');
 

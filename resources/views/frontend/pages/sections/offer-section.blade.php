@@ -10,9 +10,10 @@
             <div class="col-xl-6 col-md-6 wow fadeInRight">
                 <div class="wsus__offer_text">
                     <h2>Eager to Receive Special Offers & Updates on Courses?</h2>
-                    <form action="#">
-                        <input type="text" placeholder="Your email address...">
-                        <button type="submit" class="common_btn">Subscribe</button>
+                    <form action="#" class="newsletter" method="POST">
+                        @csrf
+                        <input type="text" placeholder="Your email address..." name="email">
+                        <button type="submit" class="common_btn newsletter-btn">Subscribe</button>
                     </form>
                 </div>
             </div>
