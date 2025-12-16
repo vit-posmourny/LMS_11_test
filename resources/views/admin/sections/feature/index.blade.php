@@ -22,7 +22,7 @@
                                 <x-image-preview src="{{ asset($feature->image_one) }}" style="background-color: #b3b3b3"/>
                                 <label class="form-label">Image One</label>
                                 <input type="file" class="form-control" name="image_one" placeholder="">
-                                <input type="hidden" name="old_image_one" value="">
+                                <input type="hidden" name="old_image_one" value="{{ $feature->image_one }}">
                                 <x-input-error for="image_one" class="mt-2"/>
                             </div>
                         </div>
@@ -46,6 +46,7 @@
                                 <x-image-preview src="{{ asset($feature->image_two) }}" style="background-color: #b3b3b3"/>
                                 <label class="form-label">Image Two</label>
                                 <input type="file" class="form-control" name="image_two" placeholder="">
+                                <input type="hidden" name="old_image_two" value="{{ $feature->image_two }}>
                                 <x-input-error for="image_two" class="mt-2"/>
                             </div>
                         </div>
@@ -69,6 +70,7 @@
                                 <x-image-preview src="{{ asset($feature->image_three) }}" style="background-color: #b3b3b3"/>
                                 <label class="form-label">Image Three</label>
                                 <input type="file" class="form-control" name="image_three" placeholder="">
+                                <input type="hidden" name="old_image_three" value="{{ $feature->image_three }}>
                                 <x-input-error for="image_three" class="mt-2"/>
                             </div>
                         </div>

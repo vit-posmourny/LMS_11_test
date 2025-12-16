@@ -12,6 +12,7 @@ use App\Models\CourseCategory;
 use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\BecomeInstructorSection;
 
 class FrontendController extends Controller
 {
@@ -28,7 +29,8 @@ class FrontendController extends Controller
         }])->where(['parent_id' => null, 'show_at_trending' => 1])->limit(12)->get();
 
         $latestCourses = LatestCourseSection::first();
-        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories', 'about', 'latestCourses'));
+        $becomeInstructor = BecomeInstructorSection::first();
+        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories', 'about', 'latestCourses', 'becomeInstructor'));
     }
 
 

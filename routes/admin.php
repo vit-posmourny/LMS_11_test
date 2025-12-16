@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\BecomeInstructorSectionController;
 use App\Http\Controllers\Admin\LatestCourseSectionController;
 use App\Models\LatestCourseSection;
 
@@ -198,6 +199,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('hero', HeroController::class);
     /** Feature Routes */
     Route::resource('feature', FeatureController::class);
+    /** Feature Routes */
+    Route::resource('become-instructor-section', BecomeInstructorSectionController::class);
     /** About Us Routes */
     Route::resource('about-section', AboutUsSectionController::class);
     /** Latest Courses */

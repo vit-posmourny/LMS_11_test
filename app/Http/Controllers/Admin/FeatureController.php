@@ -7,8 +7,9 @@ use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\FeatureUpdateRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Requests\Admin\FeatureUpdateRequest;
 
 class FeatureController extends Controller
 {
@@ -49,46 +50,69 @@ class FeatureController extends Controller
             'subtitle_three' =>  $request->subtitle_three,
         ];
 
-        if ($request->hasFile('image_one'))
-        {
-            if (isset($feature->image_one)) {
-                $this->deleteFile($feature->image_one);
-            }
+        // Pole pro uchování cest ke starým souborům, které smažeme až na konci, když vše klapne
+        $filesToDelete = [];
+        // Pole pro sběr chyb obrázků
+        $errors = [];
 
-            $file = $request->file('image_one');
+        // --- MANUÁLNÍ VALIDACE OBRÁZKU 1 (Main Image) ---
+        if ($request->hasFile('image_one')) {
+            $validator = Validator::make($request->all(), [
+                'image_one' => 'image|max:600',
+            ]);
 
-            if ($file->isValid()) {
-                $image_one = $this->fileUpload($file);
-                $data['image_one'] = $image_one;
-            }
-        }
+            if ($validator->fails()) {
+                $errors[] = "Main Image: " . $validator->errors()->first('image_one');
+            } else {
+                // Validace OK -> nahrát
+                $file = $request->file('image_one');
+                $data['image_one'] = $this->fileUpload($file);
 
-        if ($request->hasFile('image_two'))
-        {
-            if (isset($feature->image_two)) {
-                $this->deleteFile($feature->image_two);
-            }
-
-            $file = $request->file('image_two');
-
-            if ($file->isValid()) {
-                $image_two = $this->fileUpload($file);
-                $data['image_two'] = $image_two;
+                if (!empty($request->old_image_one)) {
+                    $filesToDelete[] = $request->old_image_one;
+                }
             }
         }
 
-        if ($request->hasFile('image_three'))
-        {
-            if (isset($feature->image_three)) {
-                $this->deleteFile($feature->image_three);
-            }
+        if ($request->hasFile('image_two')) {
+            $validator = Validator::make($request->all(), [
+                'image_two' => 'image|max:600',
+            ]);
 
-            $file = $request->file('image_three');
+            if ($validator->fails()) {
+                $errors[] = "Main Image: " . $validator->errors()->first('image_two');
+            } else {
+                // Validace OK -> nahrát
+                $file = $request->file('image_two');
+                $data['image_two'] = $this->fileUpload($file);
 
-            if ($file->isValid()) {
-                $image_three = $this->fileUpload($file);
-                $data['image_three'] = $image_three;
+                if (!empty($request->old_image_two)) {
+                    $filesToDelete[] = $request->old_image_two;
+                }
             }
+        }
+
+        if ($request->hasFile('image_three')) {
+            $validator = Validator::make($request->all(), [
+                'image_three' => 'image|max:600',
+            ]);
+
+            if ($validator->fails()) {
+                $errors[] = "Main Image: " . $validator->errors()->first('image_three');
+            } else {
+                // Validace OK -> nahrát
+                $file = $request->file('image_three');
+                $data['image_three'] = $this->fileUpload($file);
+
+                if (!empty($request->old_image_three)) {
+                    $filesToDelete[] = $request->old_image_three;
+                }
+            }
+        }
+
+        // Bezpečné smazání starých souborů (až teď, když víme, že DB a nové soubory jsou OK)
+        foreach ($filesToDelete as $oldImage) {
+            $this->deleteFile($oldImage);
         }
 
         Feature::updateOrCreate(['id' => 1], $data);
