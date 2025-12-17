@@ -13,6 +13,7 @@ use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\BecomeInstructorSection;
+use App\Models\VideoSection;
 
 class FrontendController extends Controller
 {
@@ -30,7 +31,9 @@ class FrontendController extends Controller
 
         $latestCourses = LatestCourseSection::first();
         $becomeInstructor = BecomeInstructorSection::first();
-        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories', 'about', 'latestCourses', 'becomeInstructor'));
+        $video = VideoSection::first();
+        return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories',
+                    'about', 'latestCourses', 'becomeInstructor', 'video'));
     }
 
 

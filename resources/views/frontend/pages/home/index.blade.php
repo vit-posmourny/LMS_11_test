@@ -58,7 +58,7 @@
     <!--===========================
         VIDEO START
     ============================-->
-    {{-- @include('frontend.pages.sections.video-section') --}}
+    @include('frontend.pages.sections.video-section')
     <!--===========================
         VIDEO END
     ============================-->

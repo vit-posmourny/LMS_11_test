@@ -1,14 +1,12 @@
-{{-- resources\views\frontend\pages\sections\video-section.blade.php --}}
+<!-- resources\views\frontend\pages\sections\video-section.blade.php -->
 <section class="wsus__video mt_120 xs_mt_100">
-    <img src="{{ Vite::asset('resources/images/video_bg.jpg') }}" alt="Video" class="img-fluid w-100">
+    <img src="{{ asset($video->background) }}" alt="Video" class="img-fluid w-100">
     <a class="play_btn venobox" data-autoplay="true" data-vbtype="video"
-        href="https://youtu.be/sVPYIRF9RCQ?si=labNkx-xlyOWtptr">
+        href="{{ $video->video_url }}">
         <img src="{{ Vite::asset('resources/images/play_icon_white.png') }}" alt="Play" class="img-fluid">
     </a>
     <div class="text wow fadeInLeft">
-        <p>LMS allows administrators and instructors to create, organize, and deliver courses. This includes
-            uploading course content, managing materials, and setting assessments.Cras quis ligula ac felis Donec
-            cursus augue quis maximus morbi senectus.</p>
-        <a href="#">Free Online Courses <i class="far fa-arrow-right"></i></a>
+        <p>{{ $video->description }}</p>
+        <a href="#">{{ $video->button_text }} <i class="far fa-arrow-right"></i></a>
     </div>
 </section>

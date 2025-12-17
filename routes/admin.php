@@ -29,6 +29,7 @@ use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
 use App\Http\Controllers\Admin\BecomeInstructorSectionController;
 use App\Http\Controllers\Admin\LatestCourseSectionController;
+use App\Http\Controllers\Admin\VideoSectionController;
 use App\Models\LatestCourseSection;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
@@ -199,12 +200,14 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('hero', HeroController::class);
     /** Feature Routes */
     Route::resource('feature', FeatureController::class);
-    /** Feature Routes */
+    /** Become Instructor Routes */
     Route::resource('become-instructor-section', BecomeInstructorSectionController::class);
     /** About Us Routes */
     Route::resource('about-section', AboutUsSectionController::class);
     /** Latest Courses */
     Route::resource('latest-courses-section', LatestCourseSectionController::class);
+    /** Video Section */
+    Route::resource('video-section', VideoSectionController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

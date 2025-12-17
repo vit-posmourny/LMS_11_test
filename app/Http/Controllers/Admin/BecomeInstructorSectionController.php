@@ -28,7 +28,7 @@ class BecomeInstructorSectionController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validateData = $request->validate([
-            'image' => 'nullable|image|max:255',
+            'image' => 'nullable|image|max:600',
             'title' => 'nullable|string|max:255',
             'subtitle' => 'nullable|string|max:255',
             'button_text' => 'nullable|string|max:255',
