@@ -24,132 +24,60 @@ class FeatureController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(FeatureUpdateRequest $request): RedirectResponse
     {
-
-        $feature = Feature::first();
-
-        $data = [
-            'title_one' =>  $request->title_one,
-            'subtitle_one' =>  $request->subtitle_one,
-
-            'title_two' =>  $request->title_two,
-            'subtitle_two' =>  $request->subtitle_two,
-
-            'title_three' =>  $request->title_three,
-            'subtitle_three' =>  $request->subtitle_three,
-        ];
-
+        $validatedData = $request->validated();
         // Pole pro uchování cest ke starým souborům, které smažeme až na konci, když vše klapne
         $filesToDelete = [];
         // Pole pro sběr chyb obrázků
         $errors = [];
+        // Definujeme suffixy pro obrázky
+        $suffixes = ['one', 'two', 'three'];
 
-        // --- MANUÁLNÍ VALIDACE OBRÁZKU 1 (Main Image) ---
-        if ($request->hasFile('image_one')) {
-            $validator = Validator::make($request->all(), [
-                'image_one' => 'image|max:600',
-            ]);
+        foreach ($suffixes as $suffix) {
+            $fieldName = "image_{$suffix}";
+            $oldField  = "old_image_{$suffix}";
 
-            if ($validator->fails()) {
-                $errors[] = "Main Image: " . $validator->errors()->first('image_one');
-            } else {
-                // Validace OK -> nahrát
-                $file = $request->file('image_one');
-                $data['image_one'] = $this->fileUpload($file);
+            if ($request->hasFile($fieldName)) {
+                // Manuální validace pro konkrétní obrázek
+                $validator = Validator::make($request->all(), [
+                    $fieldName => 'image|max:600',
+                ]);
 
-                if (!empty($request->old_image_one)) {
-                    $filesToDelete[] = $request->old_image_one;
+                if ($validator->fails()) {
+                    // Přidání chyby do pole pro pozdější vypsání přes notyf
+                    $errors[] = "Image " . ucfirst($suffix) . ": " . $validator->errors()->first($fieldName);
+                } else {
+                    // Validace OK -> nahrát soubor
+                    $file = $request->file($fieldName);
+                    $validatedData[$fieldName] = $this->fileUpload($file);
+
+                    // Pokud existuje starý obrázek, přidáme ho do fronty na smazání
+                    if (!empty($request->$oldField)) {
+                        $filesToDelete[] = $request->$oldField;
+                    }
                 }
             }
         }
 
-        if ($request->hasFile('image_two')) {
-            $validator = Validator::make($request->all(), [
-                'image_two' => 'image|max:600',
-            ]);
+        // Pokud je vše v pořádku, uložíme/aktualizujeme data
+        Feature::updateOrCreate(['id' => 1], $validatedData);
 
-            if ($validator->fails()) {
-                $errors[] = "Main Image: " . $validator->errors()->first('image_two');
-            } else {
-                // Validace OK -> nahrát
-                $file = $request->file('image_two');
-                $data['image_two'] = $this->fileUpload($file);
-
-                if (!empty($request->old_image_two)) {
-                    $filesToDelete[] = $request->old_image_two;
-                }
-            }
-        }
-
-        if ($request->hasFile('image_three')) {
-            $validator = Validator::make($request->all(), [
-                'image_three' => 'image|max:600',
-            ]);
-
-            if ($validator->fails()) {
-                $errors[] = "Main Image: " . $validator->errors()->first('image_three');
-            } else {
-                // Validace OK -> nahrát
-                $file = $request->file('image_three');
-                $data['image_three'] = $this->fileUpload($file);
-
-                if (!empty($request->old_image_three)) {
-                    $filesToDelete[] = $request->old_image_three;
-                }
-            }
-        }
-
-        // Bezpečné smazání starých souborů (až teď, když víme, že DB a nové soubory jsou OK)
+        // Smazání starých souborů (pouze pokud vše proběhlo v pořádku)
         foreach ($filesToDelete as $oldImage) {
             $this->deleteFile($oldImage);
         }
+        // Pokud se vyskytly nějaké chyby u obrázků, vypíšeme je a vrátíme se zpět
+        if (!empty($errors)) {
+            foreach ($errors as $error) {
+                notyf()->error($error);
+            }
+        }
 
-        Feature::updateOrCreate(['id' => 1], $data);
-
-        notyf()->success('Data stored successfully.');
-
+        notyf()->success('Feature section stored successfully.');
+        
         return redirect()->back();
-    }
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }
