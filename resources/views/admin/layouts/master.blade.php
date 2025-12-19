@@ -18,7 +18,6 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
-    <!-- CSS files -->
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/tom-select/dist/css/tom-select.bootstrap5.min.css') }}"/>
 
     <style>
