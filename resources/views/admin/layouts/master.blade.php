@@ -30,7 +30,7 @@
         }
     </style>
     @stack('header_styles')
-    @vite(['resources/css/admin/style.css', 'resources/css/admin.css',])
+    @vite(['resources/css/admin/style.css', 'resources/css/admin.css', 'resources/css/global.css'])
     @stack('header_scripts')
 </head>
 
