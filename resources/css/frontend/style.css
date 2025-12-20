@@ -10594,6 +10594,7 @@ footer {
     height: 100vh;
     overflow: hidden;
     position: relative;
+    margin-top: 100px;
 }
 
 .wsus__sign_img {
@@ -13974,6 +13975,8 @@ footer {
 .wsus__dash_course_table .image img {
     width: 160px !important;
     border-radius: 10px;
+    height: 120px !important;
+    object-fit: cover !important;
 }
 
 .wsus__dash_course_table .action a {
@@ -15692,6 +15695,52 @@ svg.icon-tabler-social {
     stroke-linejoin: round;
 }
 
+
+.item_list li {
+    color: var(--colorBlack);
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--borderColor);
+    padding: 13px 50px 13px 55px;
+    position: relative;
+    margin: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+
+.item_list li span {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+
+.item_list li::before {
+    position: absolute;
+    content: "\f03d";
+    font-family: "font awesome 5 free";
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: var(--colorPrimary);
+    color: var(--colorWhite);
+    top: 7px;
+    left: 12px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
 svg.icon-tabler-category {
     width:25% !important;
     padding: 0px 0px !important;
@@ -15700,3 +15749,56 @@ svg.icon-tabler-category {
     stroke-linecap: round;
     stroke-linejoin: round;
 }
+
+/******************************************** PŘIDÁNO Z GLOBAL.CSS *********************************************/
+
+textarea.form-control {
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+}
+
+
+textarea.form-control.gateway__description {
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+    user-select: none;
+}
+
+/* vybírá buňky v posledním řádku a odebere okraj (spodní zobrazoval dvojitě) */
+.card.rounded-3 tr:nth-last-child(1) td {
+    border-style: none !important;
+}
+
+.wsus__course_sidebar .form-check :hover {
+    cursor: pointer;
+}
+
+/* frontend/assets/css/style.css */
+.video-js {
+    width: 100%;
+}
+
+
+._file_type {
+    width: 100%;
+    height: 700px;
+    position: relative;
+}
+
+
+._file_type_inner {
+    width: 20vw !important;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* frontend/assets/css/video_player.css */
+.video-js .vjs-big-play-button span {
+    font-size: 50px !important;
+    color: var(--colorWhite);
+}
+/******************************************** KONEC PŘIDÁNO Z GLOBAL.CSS *********************************************/

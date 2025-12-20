@@ -126,6 +126,9 @@
 </div>
 @endsection
 
+@push('header_styles')
+    @vite('resources/css/tom-select.css')
+@endpush
 @push('scripts')
     @vite('resources/js/tom-select-ini.js')
 @endpush
