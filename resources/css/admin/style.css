@@ -15890,3 +15890,18 @@ input {
   }
 }
 /******************************************** KONEC PŘIDÁNO Z FRONTEND.CSS *********************************************/
+
+/******************************************** PŘIDÁNO Z GLOBAL.CSS *********************************************/
+
+textarea.form-control {
+    font-size: 1.1rem;
+    font-family: 'Courier New', Courier, monospace;
+    resize: vertical;
+}
+
+@media (orientation: portrait) {
+    .navbar-nav.flex-row {
+        display: none;
+    }
+}
+/******************************************** KONEC PŘIDÁNO Z GLOBAL.CSS *********************************************/
