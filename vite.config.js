@@ -11,6 +11,7 @@ export default defineConfig({
                 'resources/css/global.css',
                 'resources/css/admin/style.css',
                 'resources/css/frontend/style.css',
+                'resources/css/tom-select.css',
                 'resources/js/app.js',
                 'resources/js/admin/login.js',
                 'resources/js/admin/admin.js',
