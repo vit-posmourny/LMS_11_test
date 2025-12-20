@@ -122,12 +122,7 @@ selectors.forEach(selector => {
         if (isMatch) {
             // Získání relativní cesty od složky views
             const relPath = path.relative(viewsDir, file);
-            const parts = relPath.split(path.sep);
-
-            // Určení první podsložky (nebo 'root' pokud je soubor přímo ve views)
-            const subDir = parts.length > 1 ? `views/${parts[0]}` : 'views (root)';
-
-            results[selector].add(subDir);
+            results[selector].add(relPath);
         }
     });
 });
@@ -136,10 +131,44 @@ selectors.forEach(selector => {
 console.log('\n=== VÝSLEDEK ANALÝZY ===\n');
 let foundCount = 0;
 
-for (const [selector, dirs] of Object.entries(results)) {
-    if (dirs.size > 0) {
+for (const [selector, files] of Object.entries(results)) {
+    if (files.size > 0) {
+        const usageMap = new Map();
+
+        files.forEach(fileRelPath => {
+            const parts = fileRelPath.split(path.sep);
+            let groupName;
+            let detail = null;
+
+            if (parts.length === 1) {
+                groupName = 'views (root)';
+            } else {
+                const folder = parts[0];
+                groupName = `views/${folder}`;
+                if (folder === 'components') {
+                    detail = parts.slice(1).join('/');
+                }
+            }
+
+            if (!usageMap.has(groupName)) {
+                usageMap.set(groupName, new Set());
+            }
+            if (detail) {
+                usageMap.get(groupName).add(detail);
+            }
+        });
+
+        const outputParts = [];
+        for (const [group, details] of usageMap.entries()) {
+            if (group === 'views/components' && details.size > 0) {
+                outputParts.push(`${group} (${Array.from(details).join(', ')})`);
+            } else {
+                outputParts.push(group);
+            }
+        }
+
         console.log(`Pravidlo: ${selector}`);
-        console.log(`Použito v: ${Array.from(dirs).join(', ')}`);
+        console.log(`Použito v: ${outputParts.join(', ')}`);
         console.log('------------------------------------------------');
         foundCount++;
     }
