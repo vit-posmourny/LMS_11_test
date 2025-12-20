@@ -15875,3 +15875,17 @@ input {
     top: 13px;
     left: 15px;
 }
+
+/******************************************** PŘIDÁNO Z FRONTEND.CSS *********************************************/
+
+/* pouzivam pro pawelkuna menu v admin casti */
+.responsive_margin {
+    margin-right: 1rem;
+}
+
+/* pouzivam pro pawelkuna menu v admin casti */
+@media (min-width: 992px) {
+  .responsive_margin {
+    margin-right: 16rem;
+  }
+}

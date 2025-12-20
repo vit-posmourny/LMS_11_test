@@ -10594,6 +10594,7 @@ footer {
     height: 100vh;
     overflow: hidden;
     position: relative;
+    margin-top: 100px;
 }
 
 .wsus__sign_img {
@@ -13974,6 +13975,8 @@ footer {
 .wsus__dash_course_table .image img {
     width: 160px !important;
     border-radius: 10px;
+    height: 120px !important;
+    object-fit: cover !important;
 }
 
 .wsus__dash_course_table .action a {
@@ -15690,6 +15693,52 @@ svg.icon-tabler-social {
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
+}
+
+
+.item_list li {
+    color: var(--colorBlack);
+    font-size: 18px;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 1px solid var(--borderColor);
+    padding: 13px 50px 13px 55px;
+    position: relative;
+    margin: 10px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+
+.item_list li span {
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+}
+
+
+.item_list li::before {
+    position: absolute;
+    content: "\f03d";
+    font-family: "font awesome 5 free";
+    font-size: 18px;
+    font-weight: bold;
+    color: black;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background: var(--colorPrimary);
+    color: var(--colorWhite);
+    top: 7px;
+    left: 12px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
 }
 
 svg.icon-tabler-category {
