@@ -50,6 +50,18 @@ class EnrolledCourseController extends Controller
             'id' => $request->lesson_id,
         ])->first();
 
+        if (!$lesson) {
+            return response()->json(['message' => 'Lesson not found'], 404);
+        }
+
+        // Extract YouTube Video ID if not present
+        if (empty($lesson->video_id)) {
+            $url = $lesson->url ?? $lesson->video_url ?? null;
+            if ($url && preg_match('%(?:youtube(?:-nocookie)?\.com/(?:[^/]+/.+/|(?:v|e(?:mbed)?)/|.*[?&]v=)|youtu\.be/)([^"&?/ ]{11})%i', $url, $match)) {
+                $lesson->video_id = $match[1];
+            }
+        }
+
         return response()->json($lesson);
     }
 
