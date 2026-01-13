@@ -44,13 +44,8 @@ class BecomeInstructorSectionController extends Controller
             $validateData['image'] = $this->fileUpload($file);
 
             if (!empty($request->old_image)) {
-                $filesToDelete[] = $request->old_image;
+                $this->deleteFile($request->oldImage);
             }
-        }
-
-        // Bezpečné smazání starých souborů (až teď, když víme, že DB a nové soubory jsou OK)
-        foreach ($filesToDelete as $oldImage) {
-            $this->deleteFile($oldImage);
         }
 
         BecomeInstructorSection::updateOrCreate(['id' => 1], $validateData);
