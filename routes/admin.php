@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\AboutUsSectionController;
+use App\Models\LatestCourseSection;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
@@ -9,9 +9,12 @@ use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CourseLevelController;
+use App\Http\Controllers\Admin\BrandSectionController;
+use App\Http\Controllers\Admin\VideoSectionController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
 use App\Http\Controllers\Admin\CourseContentController;
 use App\Http\Controllers\Admin\PayoutGatewayController;
+use App\Http\Controllers\Admin\AboutUsSectionController;
 use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseLanguageController;
 use App\Http\Controllers\Admin\PaymentSettingController;
@@ -22,15 +25,13 @@ use App\Http\Controllers\Admin\CourseSubCategoryController;
 use App\Http\Controllers\Admin\InstructorRequestController;
 use App\Http\Controllers\Admin\CertificateBuilderController;
 use App\Http\Controllers\Admin\Auth\RegisteredUserController;
+use App\Http\Controllers\Admin\LatestCourseSectionController;
 use App\Http\Controllers\Admin\Auth\PasswordResetLinkController;
+use App\Http\Controllers\Admin\BecomeInstructorSectionController;
 use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\BecomeInstructorSectionController;
-use App\Http\Controllers\Admin\LatestCourseSectionController;
-use App\Http\Controllers\Admin\VideoSectionController;
-use App\Models\LatestCourseSection;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -208,6 +209,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('latest-courses-section', LatestCourseSectionController::class);
     /** Video Section */
     Route::resource('video-section', VideoSectionController::class);
+    /** Brand Section */
+    Route::resource('brand-section', BrandSectionController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
