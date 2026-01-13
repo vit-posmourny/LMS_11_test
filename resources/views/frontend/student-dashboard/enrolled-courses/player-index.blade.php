@@ -3,8 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
     <meta name="base_url" content="{{ url('') }}">
     <meta name="csrf_token" content="{{ csrf_token() }}">
 
@@ -26,14 +25,13 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/sticky_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/spacing.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/responsive.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('vendor/flasher/flasher-notyf.min.css') }}">
 
-    @vite(['resources/css/frontend.css', 'resources/js/frontend/frontend.js', 'resources/css/global.css', 'resources/js/frontend/player.js'])
+    @vite(['resources/css/frontend/style.css', 'resources/js/frontend/frontend.js', 'resources/js/frontend/player.js'])
 </head>
 
 <body class="home_3">
