@@ -20,8 +20,7 @@
                     <div class="col-md-12">
                         <div class="mb-3">
                             <label class="form-label">Brand Image</label>
-                            <input type="file" class="form-control" name="image" placeholder="">
-                            <input type="hidden" name="old_image" value="{{ $brand->image }}">
+                            <input type="file" class="form-control" name="image">
                             <x-input-error for="image" class="mt-2"/>
                         </div>
                     </div>

@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\Traits\FileUpload;
 use Illuminate\Support\Facades\Validator;
 
+use function Psy\debug;
+
 class BrandSectionController extends Controller
 {
     use FileUpload;
@@ -34,58 +36,22 @@ class BrandSectionController extends Controller
      */
     public function store(Request $request)
     {
-        $filesToDelete = [];
-        $imagesToUpload = [];
-        $requestArray = $request->all();
-
-        $validator = Validator::make($requestArray, [
-            'image' => 'required|image|max:600',
-        ]);
-        //dd($validator);
-
-        if ($validator->fails()) {
-            foreach ($validator->errors()->all() as $error) {
-                notyf()->error($error);
-            }
-        }
-
         $request->validate([
             'image' => 'required|image|max:600',
             'url' => 'required|url',
             'status' => 'boolean',
         ]);
 
+        $imagePath = $this->fileUpload($request->file('image'));
+
         $brand = new Brand();
+        $brand->image = $imagePath;
         $brand->url = $request->url;
         $brand->status = $request->status;
 
-        foreach ($requestArray as $key => $value)
-        {
-            if (str_contains($key, 'image') && !str_contains($key, 'old_'))
-            {
-                $imagesToUpload[] = $key;
-            }
-        }
-
-        if ($imagesToUpload)
-        {
-            foreach ($imagesToUpload as $image)
-            $file = $request->file($image);
-            $brand->$image = $this->fileUpload($file);
-
-            foreach ($requestArray as $key => $value) {
-                if (str_starts_with($key, 'old_') && !empty($value)) {
-                    $filesToDelete[] = $value;
-                }
-            }
-        }
         $brand->save();
-        // Bezpečné smazání starých souborů (až teď, když víme, že DB a nové soubory jsou OK)
-        foreach ($filesToDelete as $oldImage) {
-            $this->deleteFile($oldImage);
-        }
 
-        notyf()->success('Brand Image uploaded successfully.');
+        notyf()->success('Brand stored successfully.');
         return redirect()->route('admin.brand-section.index');
     }
 
@@ -100,9 +66,10 @@ class BrandSectionController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Brand $brand_section): View
     {
-        //
+        $brand = $brand_section;
+        return view('admin.sections.brand.edit', compact('brand'));
     }
 
     /**
@@ -110,14 +77,44 @@ class BrandSectionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|max:600',
+            'url' => 'required|url',
+            'status' => 'boolean',
+        ]);
+
+        $brand = Brand::findOrFail($id);
+
+        if ($request->hasFile('image')) {
+            $imagePath = $this->fileUpload($request->file('image'));
+            $brand->image = $imagePath;
+        }
+        $brand->url = $request->url;
+        $brand->status = $request->status;
+        $brand->save();
+
+        if(!empty($request->old_image)) {
+            $this->deleteFile($request->old_image);
+        }
+
+        notyf()->success('Brand updated successfully.');
+        return redirect()->route('admin.brand-section.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Brand $brand_section)
     {
-        //
+        try {
+            $this->deleteFile($brand_section->image);
+            $brand_section->delete();
+            notyf()->success('Brand Deleted');
+            return response(['message' => 'delete success']);
+
+        } catch (\Throwable $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
     }
 }
