@@ -45,7 +45,7 @@ class VideoSectionController extends Controller
                 $filesToDelete[] = $request->old_background;
             }
         }
-        //dd($filesToDelete);
+ 
         VideoSection::updateOrCreate(['id' => 1], $validatedData);
 
         // Bezpečné smazání starých souborů (až teď, když víme, že DB a nové soubory jsou OK)

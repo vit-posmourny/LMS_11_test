@@ -1,0 +1,4 @@
+app/Http/Controllers/Admin/AboutUsSectionController.php
+-------------------------------------------------------
+
+možnost — jak když zpracovávám vícero obr. — nemusím přerušit ukládání kvůli jednomu s chybou

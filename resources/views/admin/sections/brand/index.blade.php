@@ -8,7 +8,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Brand Section</h3>
                     <div class="card-actions">
-                        <a href="{{ route('admin.brand-levels.create') }}" class="btn btn-primary">
+                        <a href="{{ route('admin.brand-section.create') }}" class="btn btn-primary">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                                 viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -26,18 +26,26 @@
                         <table class="table table-vcenter card-table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Slug</th>
+                                    <th>Image</th>
+                                    <th>Url</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @forelse ($levels as $level)
+                                @forelse ($brands as $brand)
                                     <tr>
-                                        <td>{{ $level->name }}</td>
-                                        <td>{{ $level->slug }}</td>
+                                        <td><img src="{{ asset($brand->image) }}" style="width: 100px !important;"></td>
+                                        <td>{{ $brand->url }}</td>
                                         <td>
-                                            <a href="{{ route('admin.course-levels.edit', $level) }}"
+                                            @if ($brand->status == 1)
+                                                <span class="badge bg-lime text-lime-fg">Yes</span>
+                                            @else
+                                                <span class="badge bg-red text-red-fg">No</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.course-levels.edit', $brand->id) }}"
                                                 class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -50,7 +58,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-levels.destroy', $level->id) }}" class="text-red delete__item">
+                                            <a href="{{ route('admin.course-levels.destroy', $brand->id) }}" class="text-red delete__item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -67,12 +75,9 @@
                                     </tr>
                                 @empty
                                     <tr><td colspan="3" class="text-center">No data found!</td></tr>
-                                @endforelse --}}
+                                @endforelse
                             </tbody>
                         </table>
-                        <div class="mt-5">
-                            {{-- {{ $levels->links() }} --}}
-                        </div>
                     </div>
                 </div>
             </div>
