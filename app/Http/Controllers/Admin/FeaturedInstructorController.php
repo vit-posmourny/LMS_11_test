@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Course;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 
@@ -18,6 +20,11 @@ class FeaturedInstructorController extends Controller
         return view('admin.sections.featured-instructor.index', compact('instructors'));
     }
 
+    function getInstructorCourses(String $id): Response
+    {
+        $courses = Course::select('id', 'title')->where('instructor_id', $id)->where('is_approved', 'approved')->get();
+        return response(['courses' => $courses]);
+    }
     /**
      * Show the form for creating a new resource.
      */

@@ -213,6 +213,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     /** Brand Section */
     Route::resource('brand-section', BrandSectionController::class);
     /** Featured Instructor Section */
+    Route::get('featured-instructor-courses/{id}', [FeaturedInstructorController::class, 'getInstructorCourses'])
+        ->name('featured-instructor-courses');
     Route::resource('featured-instructor-section', FeaturedInstructorController::class);
 
     /** lfm routes */

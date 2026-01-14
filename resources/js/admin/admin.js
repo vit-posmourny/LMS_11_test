@@ -156,3 +156,33 @@ $(function() {
         this.scrollTop = scrollTop - (y - startY);
     });
 });
+
+//** Featured Instructor *//
+$(function() {
+    $('.select_instructor').on('change', function()
+    {
+        let id =  $(this).val();
+        $.ajax({
+            method: 'GET',
+            url: `${base_url}/admin/featured-instructor-courses/${id}`,
+            data: {
+                '_token': csrf_token,
+                'id': id,
+            },
+            beforeSend: function() {
+                 $('.select_instructor_courses').empty();
+            },
+            success: function(data) {
+                console.log(data.courses);
+
+                $.each(data.courses, function(key, value) {
+                    let option = `<option value="${value.id}">${value.title}</option>`;
+                    $('.select_instructor_courses').append(option);
+                })
+            },
+            error: function(xhr, status, error) {
+
+            },
+        })
+    });
+});

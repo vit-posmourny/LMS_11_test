@@ -43,10 +43,10 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">Instructor</label>
-                                <select name="instructor" class="select2">
+                                <select name="instructor" class="select2 select_instructor">
                                     <option value="">Select</option>
                                     @foreach ($instructors as $instructor)
-                                        <option>{{ $instructor->name }}</option>
+                                        <option value="{{ $instructor->id }}">{{ $instructor->name }}</option>
                                     @endforeach
                                 </select>
                                 <x-input-error for="instructor" class="mt-2"/>
@@ -55,9 +55,9 @@
                         <div class="col-md-12">
                             <div class="mb-3">
                                 <label class="form-label">Courses</label>
-                                <select name="courses" class="select2" multiple>
-                                    <option value="">Select</option>
-                                    <option value="">Select</option>
+                                <select name="courses" class="select2 select_instructor_courses" multiple>
+                                    <option>Select</option>
+                                    <option>Select</option>
                                 </select>
                                 <x-input-error for="courses" class="mt-2"/>
                             </div>
