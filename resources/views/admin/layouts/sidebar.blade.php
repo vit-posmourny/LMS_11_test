@@ -407,6 +407,11 @@
                                     Brand
                                 </a>
                             </div>
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('admin.featured-instructor-section.index') }}">
+                                    Featured Instructor
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </li>

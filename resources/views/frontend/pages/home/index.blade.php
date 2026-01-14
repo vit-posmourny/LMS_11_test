@@ -76,7 +76,7 @@
     <!--===========================
         QUALITY COURSES START
     ============================-->
-    {{-- @include('frontend.pages.sections.quality-courses-section') --}}
+    @include('frontend.pages.sections.quality-courses-section')
     <!--===========================
         QUALITY COURSES END
     ============================-->
