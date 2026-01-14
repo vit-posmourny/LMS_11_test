@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 
 class FeaturedInstructorController extends Controller
 {
@@ -13,7 +14,8 @@ class FeaturedInstructorController extends Controller
      */
     public function index(): View
     {
-        return view('admin.sections.featured-instructor.index');
+        $instructors = User::where('role', 'instructor')->where('approve_status', 'approved')->get();
+        return view('admin.sections.featured-instructor.index', compact('instructors'));
     }
 
     /**
