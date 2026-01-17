@@ -8,9 +8,13 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use App\Models\FeaturedInstructor;
+use App\Traits\FileUpload;
+use Illuminate\Contracts\Support\ValidatedData;
 
 class FeaturedInstructorController extends Controller
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      */
@@ -38,8 +42,37 @@ class FeaturedInstructorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'subtitle' => 'required|string|max:255',
+            'button_text' => 'required|string|max:255',
+            'button_url' => 'required|string|max:255',
+            'instructor_id' => 'required|exists:users,id',
+            'featured_courses' => 'required|array',
+         // 'courses.*' => 'required|exists:user,id',    // nemusí tu být - jen ukázka
+            'instructor_image' => 'nullable|image|max:600',
+        ]);
+
+        $validatedData['featured_courses'] = json_encode($validatedData['featured_courses']);
+
+        if ($request->hasFile('instructor_image'))
+        {
+            $file = $request->file('instructor_image');
+            $validatedData['instructor_image'] = $this->fileUpload($file);
+
+            if (!empty($request->old_image)) {
+                $this->deleteFile($request->oldImage);
+            }
+        }
+
+        FeaturedInstructor::updateOrCreate(['id' => 1], $validatedData);
+
+        notyf()->success('Update data successfully.');
+
+        return redirect()->back();
     }
+
+
 
     /**
      * Display the specified resource.

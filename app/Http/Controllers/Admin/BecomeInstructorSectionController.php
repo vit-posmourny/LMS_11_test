@@ -34,8 +34,6 @@ class BecomeInstructorSectionController extends Controller
             'button_text' => 'nullable|string|max:255',
             'button_url' => 'nullable|string|max:255',
         ]);
-        // Pole pro uchování cest ke starým souborům, které smažeme až na konci, když vše klapne
-        $filesToDelete = [];
 
         // --- MANUÁLNÍ VALIDACE OBRÁZKU 1 (Main Image) ---
         if ($request->hasFile('image'))
