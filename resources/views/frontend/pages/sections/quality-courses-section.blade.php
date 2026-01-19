@@ -21,15 +21,16 @@
                     </div>
                     <div class="col-xxl-4 col-xl-4 col-md-6 col-lg-6 d-none d-xl-block wow fadeInUp">
                         <div class="wsus__quality_courses_img">
-                            <img src="{{ Vite::asset('resources/images/quality_courses_img.png') }}" alt="Quality Courses" class="img-fluid w-100">
+                            <img src="{{ asset($featuredInstructor->instructor_image) }}" alt="Quality Courses" class="img-fluid w-100">
                         </div>
                     </div>
                     <div class="col-xxl-3 col-xl-4 col-md-6 col-lg-5 wow fadeInUp">
                         <div class="row quality_course_card_slider">
+                        @forelse ($featuredCourses as $course)
                             <div class="col-12">
                                 <div class="wsus__single_courses_3">
                                     <div class="wsus__single_courses_3_img">
-                                        <img src="{{ Vite::asset('resources/images/courses_3_img_1.jpg') }}" alt="Courses" class="img-fluid">
+                                        <img src="{{ asset($course->thumbnail) }}" alt="Courses" class="img-fluid">
                                         <ul>
                                             <li>
                                                 <a href="#">
@@ -50,7 +51,7 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <span class="time"><i class="far fa-clock"></i> 15 Hours</span>
+                                        <span class="time"><i class="far fa-clock"></i> 15 Hours                                        </span>
                                     </div>
                                     <div class="wsus__single_courses_text_3">
                                         <div class="rating_area">
@@ -82,122 +83,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="wsus__single_courses_3">
-                                    <div class="wsus__single_courses_3_img">
-                                        <img src="{{ Vite::asset('resources/images/courses_3_img_2.jpg') }}" alt="Courses" class="img-fluid">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/love_icon_black.png') }}" alt="Love"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/compare_icon_black.png') }}" alt="Compare"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/cart_icon_black_2.png') }}" alt="Cart"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <span class="time"><i class="far fa-clock"></i> 24 Hours</span>
-                                    </div>
-                                    <div class="wsus__single_courses_text_3">
-                                        <div class="rating_area">
-
-                                            <p class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.9 Rating)</span>
-                                            </p>
-                                        </div>
-
-                                        <a class="title" href="#">50 Tips For Designing an Exceptional
-                                            Online Learning Progress.</a>
-                                        <ul>
-                                            <li>32 Lessons</li>
-                                            <li>48 Student</li>
-                                        </ul>
-                                        <a class="author" href="#">
-                                            <div class="img">
-                                                <img src="{{ Vite::asset('resources/images/author_img_2.jpg') }}" alt="Author" class="img-fluid">
-                                            </div>
-                                            <h4>Hugh Millie-Yate</h4>
-                                        </a>
-                                    </div>
-                                    <div class="wsus__single_courses_3_footer">
-                                        <a class="common_btn" href="#">Enroll <i class="far fa-arrow-right"></i></a>
-                                        <p>$239.00</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="wsus__single_courses_3">
-                                    <div class="wsus__single_courses_3_img">
-                                        <img src="{{ Vite::asset('resources/images/courses_3_img_3.jpg') }}" alt="Courses" class="img-fluid">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/love_icon_black.png') }}" alt="Love"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/compare_icon_black.png') }}" alt="Compare"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <img src="{{ Vite::asset('resources/images/cart_icon_black_2.png') }}" alt="Cart"
-                                                        class="img-fluid">
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <span class="time"><i class="far fa-clock"></i> 17 Hours</span>
-                                    </div>
-                                    <div class="wsus__single_courses_text_3">
-                                        <div class="rating_area">
-                                            <!-- <a href="#" class="category">Marketing</a> -->
-                                            <p class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.8 Rating)</span>
-                                            </p>
-                                        </div>
-
-                                        <a class="title" href="#">Holistic Internet-Based Instruction
-                                            Mastery Program.</a>
-                                        <ul>
-                                            <li>37 Lessons</li>
-                                            <li>56 Student</li>
-                                        </ul>
-                                        <a class="author" href="#">
-                                            <div class="img">
-                                                <img src="{{ Vite::asset('resources/images/author_img_2.jpg') }}" alt="Author" class="img-fluid">
-                                            </div>
-                                            <h4>Dominic L. Ement</h4>
-                                        </a>
-                                    </div>
-                                    <div class="wsus__single_courses_3_footer">
-                                        <a class="common_btn" href="#">Enroll <i class="far fa-arrow-right"></i></a>
-                                        <p>$199.00</p>
-                                    </div>
-                                </div>
-                            </div>
+                        @empty
+                            <p>No Data Found.</p>
+                        @endforelse
                         </div>
                     </div>
                 </div>

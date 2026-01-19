@@ -1574,6 +1574,10 @@ header .wsus__header_right li .nice-select .list {
     -o-border-radius: 50%;
 }
 
+span .time .icon {
+    width: 1rem;
+}
+
 .wsus__category_text .text {
     max-width: 80%;
 }
