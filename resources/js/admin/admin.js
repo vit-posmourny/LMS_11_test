@@ -173,8 +173,6 @@ $(function() {
                  $('.select_instructor_courses').empty();
             },
             success: function(data) {
-                console.log(data.courses);
-
                 $.each(data.courses, function(key, value) {
                     let option = `<option value="${value.id}">${value.title}</option>`;
                     $('.select_instructor_courses').append(option);

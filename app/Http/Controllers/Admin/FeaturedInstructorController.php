@@ -21,7 +21,21 @@ class FeaturedInstructorController extends Controller
     public function index(): View
     {
         $instructors = User::where('role', 'instructor')->where('approve_status', 'approved')->get();
-        return view('admin.sections.featured-instructor.index', compact('instructors'));
+        $featuredInstructor = FeaturedInstructor::first();
+
+        // Inicializace, aby view nehlásilo chybu, když data neexistují
+        $selectedInstructorCourses = collect();
+        $allInstructorCourses = collect();
+
+        if ($featuredInstructor) {
+            $courseIds = json_decode($featuredInstructor->featured_courses) ?? [];
+
+            $selectedInstructorCourses = Course::whereIn('id', $courseIds)->pluck('title');
+
+            $allInstructorCourses = Course::select('id', 'title')->where('instructor_id', $featuredInstructor->instructor_id)->get();
+        }
+        return view('admin.sections.featured-instructor.index',
+            compact('instructors', 'featuredInstructor', 'selectedInstructorCourses', 'allInstructorCourses'));
     }
 
     function getInstructorCourses(String $id): Response
@@ -49,7 +63,7 @@ class FeaturedInstructorController extends Controller
             'button_url' => 'required|string|max:255',
             'instructor_id' => 'required|exists:users,id',
             'featured_courses' => 'required|array',
-         // 'courses.*' => 'required|exists:user,id',    // nemusí tu být - jen ukázka
+            // 'featured_courses.*' => 'required|exists:user,id',
             'instructor_image' => 'nullable|image|max:600',
         ]);
 
@@ -60,8 +74,8 @@ class FeaturedInstructorController extends Controller
             $file = $request->file('instructor_image');
             $validatedData['instructor_image'] = $this->fileUpload($file);
 
-            if (!empty($request->old_image)) {
-                $this->deleteFile($request->oldImage);
+            if (!empty($request->old_instructor_image)) {
+                $this->deleteFile($request->old_instructor_image);
             }
         }
 

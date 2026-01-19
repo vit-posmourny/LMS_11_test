@@ -15751,6 +15751,12 @@ svg.icon-tabler-course-categories-as-image {
     line-height: 2.5rem;
 }
 
+/* Skryje všechny selecty s třídou .select2, dokud se nenačte JS */
+select.select2 {
+    visibility: hidden;
+    height: 38px; /* Odpovídá standardní výšce v Tableru, zabrání posunu obsahu */
+}
+
 /******************************************** PŘIDÁNO Z ADMIN.CSS *********************************************/
 .ti {
     font-size: 20px !important;
