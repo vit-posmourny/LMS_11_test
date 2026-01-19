@@ -8,14 +8,12 @@
                         <div class="wsus__quality_courses_text">
                             <div class="wsus__section_heading heading_left mb_30">
                                 <h5>100% QUALITY COURSES</h5>
-                                <h2>Find Your Match From The Spotlighted Collection</h2>
+                                <h2>{{ $featuredInstructor->title }}</h2>
                             </div>
-                            <p>Quisque vitae dignissim nunc, a molestie nisi. Orci varius natoque penatibus
-                                parturient
-                                nascetu
-                                mus.</p>
-                            <a class="common_btn" href="#">all Featured Courses <i
-                                    class="far fa-arrow-right"></i>
+                            <p>{{ $featuredInstructor->subtitle }}</p>
+                            <a class="common_btn" href="{{ $featuredInstructor->button_url }}">
+                                {{ $featuredInstructor->button_text }}
+                                <i class="far fa-arrow-right"></i>
                             </a>
                         </div>
                     </div>
@@ -51,7 +49,12 @@
                                                 </a>
                                             </li>
                                         </ul>
-                                        <span class="time"><i class="far fa-clock"></i> 15 Hours                                        </span>
+                                        <span class="time">
+                                            <svg class="icon">
+                                                <use href="{{ asset('tabler/icons-sprite/tabler-sprite-filled.svg') }}#tabler-filled-clock-hour-4"></use>
+                                            </svg>
+                                            {{ convertMinutesToHours($course->duration) }}
+                                        </span>
                                     </div>
                                     <div class="wsus__single_courses_text_3">
                                         <div class="rating_area">
@@ -65,21 +68,29 @@
                                             </p>
                                         </div>
 
-                                        <a class="title" href="#">Complete Blender Creator Learn 3D Modelling.</a>
+                                        <a class="title" href="#">{{ $course->title }}</a>
                                         <ul>
                                             <li>24 Lessons</li>
                                             <li>38 Student</li>
                                         </ul>
                                         <a class="author" href="#">
                                             <div class="img">
-                                                <img src="{{ Vite::asset('resources/images/author_img_2.jpg') }}" alt="Author" class="img-fluid">
+                                                <img src="{{ asset($course->instructor->avatar) }}" alt="Author" class="img-fluid">
                                             </div>
-                                            <h4>Hermann P. Schnitzel</h4>
+                                            <h4>{{ $course->instructor->name }}</h4>
                                         </a>
                                     </div>
                                     <div class="wsus__single_courses_3_footer">
                                         <a class="common_btn" href="#">Enroll <i class="far fa-arrow-right"></i></a>
-                                        <p><del>$254</del> $156.00</p>
+                                        <p>
+                                            @if ($course->price == 0)
+                                                $free
+                                            @elseif ($course->discount_price > 0)
+                                                <del>${{ $course->price }}</del> ${{ $course->discount_price }}
+                                            @else
+                                                ${{ $course->price }}
+                                            @endif
+                                        </p>
                                     </div>
                                 </div>
                             </div>
