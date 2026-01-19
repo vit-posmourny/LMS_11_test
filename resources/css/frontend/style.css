@@ -1574,6 +1574,15 @@ header .wsus__header_right li .nice-select .list {
     -o-border-radius: 50%;
 }
 
+.wsus__single_courses_3_img .time .icon {
+    width: 1.25em;
+    height: 1.25em;
+    fill: currentColor;
+    display: inline-block;
+    vertical-align: -0.25em;
+    line-height: 1;
+}
+
 .wsus__category_text .text {
     max-width: 80%;
 }

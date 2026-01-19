@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Models\Hero;
 use App\Models\Brand;
+use App\Models\Course;
 use App\Models\Feature;
 use App\Models\Newsletter;
 use App\Models\VideoSection;
@@ -11,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\AboutUsSection;
 use App\Models\CourseCategory;
+use App\Models\FeaturedInstructor;
 use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
@@ -34,8 +36,19 @@ class FrontendController extends Controller
         $becomeInstructor = BecomeInstructorSection::first();
         $video = VideoSection::first();
         $brands = Brand::where('status', 1)->get();
+
+        // Inicializace, aby view nehlásilo chybu, když data neexistují
+        $selectedInstructorCourses = collect();
+        $allInstructorCourses = collect();
+        $featuredInstructor = FeaturedInstructor::first();
+        if ($featuredInstructor) {
+            $courseIds = json_decode($featuredInstructor->featured_courses) ?? [];
+            $featuredCourses = Course::whereIn('id', $courseIds)->get();
+        }
+
         return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories',
-                    'about', 'latestCourses', 'becomeInstructor', 'video', 'brands'));
+                    'about', 'latestCourses', 'becomeInstructor', 'video', 'brands', 'featuredInstructor',
+                    'featuredCourses'));
     }
 
 
