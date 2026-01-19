@@ -33,6 +33,7 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
+use App\Http\Controllers\Admin\TestimonialController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -216,6 +217,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::get('featured-instructor-courses/{id}', [FeaturedInstructorController::class, 'getInstructorCourses'])
         ->name('featured-instructor-courses');
     Route::resource('featured-instructor-section', FeaturedInstructorController::class);
+    /** Testimonial Section */
+    Route::resource('testimonial-section', TestimonialController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
