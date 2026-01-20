@@ -14,11 +14,11 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.testimonial-section.store') }}" method="POST">
+                <form action="{{ route('admin.testimonial-section.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
                         <label class="form-label">Rating</label>
-                        <select name="rating" class="form-control">
+                        <select name="rating" class="form-select">
                             <option value="5">5</option>
                             <option value="4">4</option>
                             <option value="3">3</option>
@@ -35,6 +35,7 @@
                     <div class="mb-3">
                         <label class="form-label">Image</label>
                         <input type="file" class="form-control" name="image">
+                        <input type="hidden" name="old_image" value="">
                         <x-input-error for="image" class="mt-2"/>
                     </div>
                     <div class="mb-3">

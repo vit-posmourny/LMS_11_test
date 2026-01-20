@@ -42,7 +42,7 @@ class BecomeInstructorSectionController extends Controller
             $validateData['image'] = $this->fileUpload($file);
 
             if (!empty($request->old_image)) {
-                $this->deleteFile($request->oldImage);
+                $this->deleteFile($request->old_image);
             }
         }
 

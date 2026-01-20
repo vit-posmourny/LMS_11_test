@@ -1,4 +1,4 @@
-{{-- resources\views\frontend\pages\sections\testimonial-start-section.blade.php --}}
+<!-- resources\views\frontend\pages\sections\testimonial-start-section.blade.php -->
 <section class="wsus__testimonial pt_120 xs_pt_80">
     <div class="container">
         <div class="row">

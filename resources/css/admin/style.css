@@ -15882,6 +15882,16 @@ input {
     left: 15px;
 }
 
+.icon-star {
+    width: 1.25em;
+    height: 1.25em;
+    fill: currentColor;
+    color: var(--ratingColor);
+    display: inline-block;
+    vertical-align: -0.25em;
+    line-height: 1;
+}
+
 /******************************************** PŘIDÁNO Z FRONTEND.CSS *********************************************/
 
 /* pouzivam pro pawelkuna menu v admin casti */
