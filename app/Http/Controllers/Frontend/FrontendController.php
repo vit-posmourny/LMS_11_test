@@ -17,6 +17,7 @@ use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\BecomeInstructorSection;
+use App\Models\Testimonial;
 
 class FrontendController extends Controller
 {
@@ -46,9 +47,11 @@ class FrontendController extends Controller
             $featuredCourses = Course::whereIn('id', $courseIds)->get();
         }
 
+        $testimonials = Testimonial::all();
+
         return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories',
                     'about', 'latestCourses', 'becomeInstructor', 'video', 'brands', 'featuredInstructor',
-                    'featuredCourses'));
+                    'featuredCourses', 'testimonials'));
     }
 
 

@@ -37,12 +37,14 @@
                         <tbody>
                             @forelse ($testimonials as $testimonial)
                             <tr>
-                                <td><img style="width: 50px !important; height: 50px !important;" src="{{ asset($testimonial->user_image) }}" alt=""></td>
+                                <td>
+                                    <img style="width: 50px !important; height: 50px !important;" src="{{ asset($testimonial->user_image) }}" alt="">
+                                </td>
                                 <td class="fw-bold">{{ $testimonial->user_name }}</td>
                                 <td class="text-muted">{{ $testimonial->user_title }}</td>
-                                <td>
+                                <td style="white-space: nowrap;">
                                     @for ($i = 1; $i <= $testimonial->rating; $i++)
-                                        <svg class="icon icon-sm text-yellow">
+                                        <svg class="icon-star">
                                             <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/solid.svg') }}#star"></use>
                                         </svg>
                                     @endfor
