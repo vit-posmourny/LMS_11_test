@@ -67,4 +67,11 @@ class FrontendController extends Controller
 
         return response(['status' => 'success', 'message' => 'Successfully subscribe.']);
     }
+
+
+    function about(): View
+    {
+        $about = AboutUsSection::first();
+        return view('frontend.pages.about', compact('about'));
+    }
 }
