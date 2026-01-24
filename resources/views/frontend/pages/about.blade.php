@@ -90,112 +90,11 @@
 
 
 <!--===========================
-    CALL TO ACTION 4 START
-============================-->
-<section class="wsus__call_to_action_4 pt_140 xs_pt_100">
-    <ul class="d-flex flex-wrap wow fadeInUp">
-        <li>
-            <div class="img">
-                <img src="{{ asset('frontend/assets/images/call_to_action_4_img_1.jpg') }}" alt="Photo" class="img-fluid w-100">
-            </div>
-            <div class="text">
-                <h4>Proficient Coach - Engage in Live Learning Experiences!</h4>
-                <a href="#" class="common_btn">Take Our Service</a>
-            </div>
-        </li>
-        <li>
-            <div class="img">
-                <img src="{{ asset('frontend/assets/images/call_to_action_4_img_2.jpg') }}" alt="Photo" class="img-fluid w-100">
-            </div>
-            <div class="text">
-                <h4>Successfully Realize Your Goals with EduCore Education.</h4>
-                <a href="#" class="common_btn">Let’s Discover</a>
-            </div>
-        </li>
-        <li>
-            <div class="img">
-                <img src="{{ asset('frontend/assets/images/call_to_action_4_img_3.jpg') }}" alt="Photo" class="img-fluid w-100">
-            </div>
-            <div class="text">
-                <h4>Take on the Role of an Educator & Start Generating Income.</h4>
-                <a href="#" class="common_btn">Join now</a>
-            </div>
-        </li>
-    </ul>
-</section>
-<!--===========================
-    CALL TO ACTION 4 END
-============================-->
-
-
-<!--===========================
-    FEATURES 3 START
-============================-->
-<section class="wsus__features_3 wsus__features pt_120 xs_pt_100">
-    <div class="container">
-        <div class="row">
-            <div class="col-xl-6 m-auto wow fadeInUp">
-                <div class="wsus__section_heading mb_25">
-                    <h5>High-Quality Courses</h5>
-                    <h2>Remote Education Degrees To Online Classes.</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-3 col-md-6 col-lg-4 wow fadeInUp">
-                <div class="wsus__features_item_3 orange">
-                    <div class="icon">
-                        <img src="{{ asset('frontend/assets/images/features_3_icon_1.png') }}" alt="Features" class="img-fluid">
-                    </div>
-                    <a href="#" class="title">E-Learning Degree Programs.</a>
-                    <p>LMS platforms aim to be accessible to a diverse audience.</p>
-                    <span>24 Course</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-lg-4 wow fadeInUp">
-                <div class="wsus__features_item_3 blue">
-                    <div class="icon">
-                        <img src="{{ asset('frontend/assets/images/features_3_icon_2.png') }}" alt="Features" class="img-fluid">
-                    </div>
-                    <a href="#" class="title">Combined Online & On-Site Education.</a>
-                    <p>LMS platforms aim to be accessible to a diverse audience.</p>
-                    <span>57 Course</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-lg-4 wow fadeInUp">
-                <div class="wsus__features_item_3 red">
-                    <div class="icon">
-                        <img src="{{ asset('frontend/assets/images/features_3_icon_3.png') }}" alt="Features" class="img-fluid">
-                    </div>
-                    <a href="#" class="title">Non-Campus Educational Offerings.</a>
-                    <p>LMS platforms aim to be accessible to a diverse audience.</p>
-                    <span>43 Course</span>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 col-lg-4 wow fadeInUp">
-                <div class="wsus__features_item_3 pink">
-                    <div class="icon">
-                        <img src="{{ asset('frontend/assets/images/features_3_icon_4.png') }}" alt="Features" class="img-fluid">
-                    </div>
-                    <a href="#" class="title">Micro-Credential Programs.</a>
-                    <p>LMS platforms aim to be accessible to a diverse audience.</p>
-                    <span>26 Course</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<!--===========================
-    FEATURES 3 END
-============================-->
-
-
-<!--===========================
     COUNTER START
 ============================-->
 <section class="wsus__about_counter wsus__counter mt_120 xs_mt_100">
     <div class="container">
-        <div class="wsus__counter_bg" style="background: url(images/counter_bg.jpg);">
+        <div class="wsus__counter_bg" style="background: url({{ Vite::asset('resources/images/counter_bg.jpg') }});">
             <div class="row">
                 <div class="col-lg-3 col-md-6 wow fadeInUp">
                     <div class="wsus__single_counter">

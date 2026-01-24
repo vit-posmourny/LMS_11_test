@@ -417,6 +417,11 @@
                                     Testimonial
                                 </a>
                             </div>
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('admin.counter-section.index') }}">
+                                    Counter
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </li>

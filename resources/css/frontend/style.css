@@ -2444,7 +2444,7 @@ header .wsus__header_right li .nice-select .list {
 .wsus__single_counter h2,
 .wsus__single_counter h2 span {
     color: var(--colorWhite);
-    font-size: 44px;
+    font-size: 44px !important;
     font-weight: 600;
 }
 

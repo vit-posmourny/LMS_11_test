@@ -5,10 +5,12 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\CourseLevelController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\BrandSectionController;
 use App\Http\Controllers\Admin\VideoSectionController;
 use App\Http\Controllers\Admin\Auth\PasswordController;
@@ -33,7 +35,6 @@ use App\Http\Controllers\Admin\Auth\ConfirmablePasswordController;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationPromptController;
 use App\Http\Controllers\Admin\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Admin\TestimonialController;
 
 Route::group(["middleware" => "guest", "prefix" => "admin", "as" => "admin."], function ()
 {
@@ -219,6 +220,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('featured-instructor-section', FeaturedInstructorController::class);
     /** Testimonial Section */
     Route::resource('testimonial-section', TestimonialController::class);
+    /** Counter Section Routes */
+    Route::resource('counter-section', CounterController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
