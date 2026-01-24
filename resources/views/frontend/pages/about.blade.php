@@ -98,26 +98,26 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 wow fadeInUp">
                     <div class="wsus__single_counter">
-                        <h2><span class="counter">745</span>k+</h2>
-                        <p>LEARNERS & COUNTING</p>
+                        <h2><span class="counter">{{ $counter->counter_one }}</span></h2>
+                        <p>{{ $counter->title_one }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp">
                     <div class="wsus__single_counter">
-                        <h2><span class="counter">578</span>+</h2>
-                        <p>COURSES & VIDEO</p>
+                        <h2><span class="counter">{{ $counter->counter_two }}</span></h2>
+                        <p>{{ $counter->title_two }}></p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp">
                     <div class="wsus__single_counter">
-                        <h2><span class="counter">2457</span>+</h2>
-                        <p>CERTIFIED STUDENTS</p>
+                        <h2><span class="counter">{{ $counter->counter_three }}</span></h2>
+                        <p>{{ $counter->title_three }}</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 wow fadeInUp">
                     <div class="wsus__single_counter">
-                        <h2><span class="counter">378</span>k</h2>
-                        <p>Best Professors</p>
+                        <h2><span class="counter">{{ $counter->counter_four }}</span></h2>
+                        <p>{{ $counter->title_four }}</p>
                     </div>
                 </div>
             </div>

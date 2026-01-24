@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Models\Hero;
 use App\Models\Brand;
 use App\Models\Course;
+use App\Models\Counter;
 use App\Models\Feature;
 use App\Models\Newsletter;
+use App\Models\Testimonial;
 use App\Models\VideoSection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -17,7 +19,6 @@ use App\Models\LatestCourseSection;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use App\Models\BecomeInstructorSection;
-use App\Models\Testimonial;
 
 class FrontendController extends Controller
 {
@@ -51,7 +52,7 @@ class FrontendController extends Controller
 
         return view('frontend.pages.home.index', compact('hero', 'feature', 'featuredCategories',
                     'about', 'latestCourses', 'becomeInstructor', 'video', 'brands', 'featuredInstructor',
-                    'featuredCourses', 'testimonials'));
+                    'featuredCourses', 'testimonials',));
     }
 
 
@@ -72,6 +73,7 @@ class FrontendController extends Controller
     function about(): View
     {
         $about = AboutUsSection::first();
-        return view('frontend.pages.about', compact('about'));
+        $counter = Counter::first();
+        return view('frontend.pages.about', compact('about', 'counter'));
     }
 }
