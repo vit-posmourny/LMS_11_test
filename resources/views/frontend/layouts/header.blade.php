@@ -173,8 +173,12 @@
                     <a class="nav-link" href="{{ route('courses.index') }}">Courses</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('about.index') }}">About</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="#">Courses <i class="fas fa-angle-down"></i></a>
                     <ul class="droap_menu">
+                        <li><a href="courses.html">Courses</a></li>
                         <li><a href="courses.html">Courses</a></li>
                         <li><a href="courses_details.html">Course details</a></li>
                         <li><a href="course_video.html">Course video</a></li>
@@ -182,7 +186,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">contact us</a>
+                    <a class="nav-link" href="contact.html">Contact Us</a>
                 </li>
             </ul>
 

@@ -74,6 +74,7 @@ class FrontendController extends Controller
     {
         $about = AboutUsSection::first();
         $counter = Counter::first();
-        return view('frontend.pages.about', compact('about', 'counter'));
+        $testimonials = Testimonial::paginate(20);
+        return view('frontend.pages.about', compact('about', 'counter', 'testimonials'));
     }
 }
