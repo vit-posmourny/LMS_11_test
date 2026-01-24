@@ -167,7 +167,7 @@
             </div>
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
+                    <a class="nav-link active" href="{{ route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('courses.index') }}">Courses</a>
@@ -186,7 +186,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact Us</a>
+                    <a class="nav-link" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
             </ul>
 

@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\Admin\CertificateController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\HeroController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CourseController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\PaymentController;
 use App\Http\Controllers\Frontend\ProfileController;
+use App\Http\Controllers\Admin\CertificateController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Frontend\WithdrawController;
 use App\Http\Controllers\Frontend\CoursePageController;
 use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\EnrolledCourseController;
-use App\Http\Controllers\Frontend\HeroController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
 
@@ -66,6 +67,9 @@ Route::post('newsletter-subscribe', [FrontendController::class, 'subscribe'])
 /** About Route */
 Route::get('about', [FrontendController::class, 'about'])
     ->name('about.index');
+/** Contact Route */
+Route::get('contact', [ContactController::class, 'index'])
+    ->name('contact.index');
 
 /*
 *-----------------------------------------------------------------
