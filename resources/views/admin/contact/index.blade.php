@@ -6,7 +6,7 @@
         <div class="container-xl">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Course Levels</h3>
+                    <h3 class="card-title">Course Cards</h3>
                     <div class="card-actions">
                         <a href="{{ route('admin.contact.create') }}" class="btn btn-primary">
                             <!-- Download SVG icon from http://tabler-icons.io/i/plus -->
@@ -26,18 +26,26 @@
                         <table class="table table-vcenter card-table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Slug</th>
+                                    <th class="col-md-1 text-center">Icon</th>
+                                    <th>Title</th>
+                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {{-- @forelse ($levels as $level)
+                                @forelse ($contactCards as $card)
                                     <tr>
-                                        <td>{{ $level->name }}</td>
-                                        <td>{{ $level->slug }}</td>
+                                        <td class="text-center"><img src="{{ asset($card->icon) }}" style="width: 50px !important; height: 50px !important;" alt="card icon"></td>
+                                        <td class="fw-bold">{{ $card->title }}</td>
                                         <td>
-                                            <a href="{{ route('admin.course-levels.edit', $level) }}"
+                                            @if ($card->status == 1)
+                                                <span class="badge bg-lime text-lime-fg">Yes</span>
+                                            @else
+                                                <span class="badge bg-red text-red-fg">No</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('admin.contact.edit', $card->id) }}"
                                                 class="btn-sm btn-primary">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -50,7 +58,7 @@
                                                     <path d="M16 5l3 3" />
                                                 </svg>
                                             </a>
-                                            <a href="{{ route('admin.course-levels.destroy', $level->id) }}" class="text-red delete__item">
+                                            <a href="{{ route('admin.contact.destroy', $card->id) }}" class="text-red delete__item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -66,13 +74,10 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="3" class="text-center">No data found!</td></tr>
-                                @endforelse --}}
+                                    <tr><td colspan="4" class="text-center">No data found!</td></tr>
+                                @endforelse
                             </tbody>
                         </table>
-                        <div class="mt-5">
-                            {{-- {{ $levels->links() }} --}}
-                        </div>
                     </div>
                 </div>
             </div>

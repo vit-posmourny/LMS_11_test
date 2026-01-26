@@ -422,11 +422,6 @@
                                     Counter
                                 </a>
                             </div>
-                            <div class="dropdown-menu-column">
-                                <a class="dropdown-item" href="{{ route('admin.contact.index') }}">
-                                    Contact
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </li>

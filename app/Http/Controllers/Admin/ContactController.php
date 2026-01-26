@@ -16,7 +16,8 @@ class ContactController extends Controller
      */
     public function index(): View
     {
-        return view('admin.contact.index');
+        $contactCards = Contact::all();
+        return view('admin.contact.index', compact('contactCards'));
     }
 
     /**
@@ -37,17 +38,13 @@ class ContactController extends Controller
             'title' => 'required|string|max:255',
             'line_one' => 'nullable|string|max:255',
             'line_two' => 'nullable|string|max:255',
-            'status' => 'requiredZboolean',
+            'status' => 'required|boolean',
         ]);
 
         if ($request->hasFile('icon'))
         {
             $file = $request->file('icon');
             $icon = $this->fileUpload($file);
-
-            if (!empty($request->old_image)) {
-                $this->deleteFile($request->old_image);
-            }
         }
 
         $contact = new Contact();
@@ -64,34 +61,64 @@ class ContactController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Contact $contact)
     {
-        //
+        return view('admin.contact.edit', compact('contact'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Contact $contact)
     {
-        //
+        $request->validate([
+            'icon' => 'nullable|image|max:600',
+            'title' => 'required|string|max:255',
+            'line_one' => 'nullable|string|max:255',
+            'line_two' => 'nullable|string|max:255',
+            'status' => 'required|boolean',
+        ]);
+
+        $oldImagePath = $contact->icon;
+
+        if ($request->hasFile('icon'))
+        {
+            $file = $request->file('icon');
+            $icon = $this->fileUpload($file);
+            $contact->icon = $icon;
+        }
+
+        $contact->title = $request->title;
+        $contact->line_one = $request->line_one;
+        $contact->line_two = $request->line_two;
+        $contact->status = $request->status;
+        $contact->save();
+
+        if ($request->hasFile('icon') && $oldImagePath) {
+            $this->deleteFile($oldImagePath);
+        }
+
+        notyf()->success('Contact updated successfully.');
+
+        return redirect()->route('admin.contact.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Contact $contact)
     {
-        //
+        try {
+            $this->deleteFile($contact->icon);
+            $contact->delete();
+            notyf()->success('Contact deleted successfully.');
+            return response(['message' => 'Contact deleted successfully.'], 200);
+
+        } catch (\Throwable $e) {
+            notyf()->error("something went wrong");
+            return response(["message" => "something went wrong"], 500);
+        }
     }
 }

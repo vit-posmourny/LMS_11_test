@@ -3,6 +3,8 @@
 
 možnost — jak když zpracovávám vícero obr. — nemusím přerušit ukládání kvůli jednomu s chybou — app/Http/Controllers/Admin/AboutUsSectionController.php
 
-základní mazání jednoho obrázku — C:\Users\vitpo\Herd\LMS_11_test\app\Http\Controllers\Admin\BecomeInstructorSectionController.php
+základní mazání jednoho obrázku — app\Http\Controllers\Admin\ContactController.php
 
 použití sprite.svg — resources\views\frontend\pages\sections\quality-courses-section.blade.php
+
+mazání jednoho záznamu v kontroleru — app\Http\Controllers\Admin\ContactController.php
