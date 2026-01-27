@@ -96,8 +96,13 @@ class ContactController extends Controller
         $contact->status = $request->status;
         $contact->save();
 
-        if ($request->hasFile('icon') && $oldImagePath) {
-            $this->deleteFile($oldImagePath);
+        if ($request->hasFile('icon') && $oldImagePath)
+        {
+            if($this->deleteFile($oldImagePath)) {
+                notyf()->success('Old icon deleted successfully.');
+            }else {
+                notyf()->error('Old icon not found or could not be deleted.');
+            }
         }
 
         notyf()->success('Contact updated successfully.');

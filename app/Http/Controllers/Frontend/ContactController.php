@@ -2,14 +2,18 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
+use App\Models\Contact;
 use Illuminate\Http\Request;
+use App\Models\ContactSetting;
+use Illuminate\Contracts\View\View;
+use App\Http\Controllers\Controller;
 
 class ContactController extends Controller
 {
     function index(): View
     {
-        return view('frontend.pages.contact');
+        $contactCards = Contact::where('status', 1)->get();
+        $contactSetting = ContactSetting::first();
+        return view('frontend.pages.contact', compact('contactCards', 'contactSetting'));
     }
 }

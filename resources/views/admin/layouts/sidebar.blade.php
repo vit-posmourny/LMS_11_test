@@ -453,6 +453,13 @@
                                 </a>
                             </div>
                         </div>
+                        <div class="dropdown-menu-columns">
+                            <div class="dropdown-menu-column">
+                                <a class="dropdown-item" href="{{ route('admin.contact-setting.index') }}">
+                                    Contact Setting
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </li>
                 <li class="nav-item">
