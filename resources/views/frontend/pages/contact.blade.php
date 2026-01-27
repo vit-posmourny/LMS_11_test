@@ -54,23 +54,30 @@
                     </div>
                 </div>
                 <div class="col-xl-8 col-lg-7">
-                    <form class="wsus__contact_form">
+                    <form action="{{ route('send.contact') }}" method="POST" class="wsus__contact_form">
+                        @csrf
                         <h4>Send Us Message</h4>
                         <p>Your email address will not be published. Required fields are marked *</p>
 
                         <div class="row">
                             <div class="col-xl-6 col-md-6">
-                                <input type="text" placeholder="Name*">
+                                <input type="text" name="name" placeholder="Name*">
+                                <x-input-error for="name" class="mt-2"/>
                             </div>
                             <div class="col-xl-6 col-md-6">
-                                <input type="email" placeholder="Email*">
+                                <input type="email" name="email" placeholder="Email*">
+                                <x-input-error for="email" class="mt-2"/>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="text" name="subject" placeholder="Subject*">
+                                <x-input-error for="subject" class="mt-2"/>
                             </div>
                             <div class="col-xl-12">
-                                <textarea rows="5" placeholder="Comment*"></textarea>
+                                <textarea rows="5" name="message" placeholder="Your message..."></textarea>
+                                <x-input-error for="message" class="mt-2"/>
                                 <button type="submit" class="common_btn">Submit Now</button>
                             </div>
                         </div>
-
                     </form>
                 </div>
             </div>
@@ -79,7 +86,7 @@
     @if ( $contactSetting->map_url )
         <div class="wsus__contact_map mt_120 xs_mt_100 wow fadeInUp">
             <iframe
-                src="{{ $contactSetting->map_url }}"
+                {{-- src="{{ $contactSetting->map_url }}" --}} {{-- zakomentováno kvůli: Web lms_11_test.test vás přesměroval příliš mnohokrát. --}}
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>

@@ -70,6 +70,9 @@ Route::get('about', [FrontendController::class, 'about'])
 /** Contact Route */
 Route::get('contact', [ContactController::class, 'index'])
     ->name('contact.index');
+/** Contact Route */
+Route::post('contact', [ContactController::class, 'sendMail'])
+    ->name('send.contact');
 
 /*
 *-----------------------------------------------------------------
