@@ -2,10 +2,10 @@
 
 @section('settings-content')
 <div class="col-12 col-md-9 d-flex flex-column">
-    <form action="{{ route('admin.main-settings.update') }}" method="POST">
+    <form action="{{ route('admin.general-settings.update') }}" method="POST">
         @csrf
         <div class="card-body">
-            <h3 class="card-title mt-4">Main Settings</h3>
+            <h3 class="card-title mt-4">General Settings</h3>
             <div class="row g-3">
                 <div class="col-md-12">
                     <div class="form-label">Site Name</div>

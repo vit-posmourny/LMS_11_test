@@ -6,7 +6,7 @@
         <div class="container-xl">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="card-title">Create Level</h3>
+                    <h3 class="card-title">Settings</h3>
                     <div class="card-actions">
                         <a href="{{ route('admin.payment-setting.index') }}" class="btn btn-primary">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"

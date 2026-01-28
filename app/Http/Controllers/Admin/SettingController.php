@@ -14,11 +14,11 @@ class SettingController extends Controller
 
     function index(): View
     {
-        return view('admin.settings.main-panel');
+        return view('admin.settings.general');
     }
 
 
-    function  updateMainSettings(Request $request): RedirectResponse
+    function  updateGeneralSettings(Request $request): RedirectResponse
     {
         $validateData = $request->validate([
             'site_name' => 'required',
@@ -39,18 +39,18 @@ class SettingController extends Controller
 
         Cache::forget('settings');
 
-        notyf()->success('Update Main-Settings Successfully.');
+        notyf()->success('Update General-Settings Successfully.');
         return redirect()->back();
     }
 
 
-    function commissionSettingsIndex(): View
+    function commissionSettings(): View
     {
         return view('admin.settings.commission');
     }
 
 
-    function commissionSettingsUpdate(Request $request) : RedirectResponse
+    function updateCommissionSettings(Request $request) : RedirectResponse
     {
         $validateData = $request->validate([
             'commission_rate' => 'required|numeric',
@@ -67,7 +67,36 @@ class SettingController extends Controller
 
         Cache::forget('settings');
 
-        notyf()->success('Update Main-Settings Successfully.');
+        notyf()->success('Update General-Settings Successfully.');
+        return redirect()->back();
+    }
+
+
+    function smtpSettings(): View
+    {
+        return view('admin.settings.smtp-settings');
+    }
+
+
+    function updateSmtpSettings(Request $request) : RedirectResponse
+    {
+        $validateData = $request->validate([
+            'sender_email' => 'required|email',
+            'receiver_email' => 'required|email',
+        ]);
+
+        foreach ($validateData as $key => $value)
+        {
+            Setting::updateOrCreate([
+                'key' => $key
+            ],[
+                'value' => $value
+            ]);
+        }
+
+        Cache::forget('settings');
+
+        notyf()->success('Update SMTP Settings successfully.');
         return redirect()->back();
     }
 }

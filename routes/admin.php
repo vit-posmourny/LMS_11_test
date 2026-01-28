@@ -173,14 +173,18 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('razorpay-setting.update');
 
     /** Site Settings Route */
-    Route::get('settings', [SettingController::class, 'index'])
-        ->name('settings.main');
-    Route::post('main-settings', [SettingController::class, 'updateMainSettings'])
-        ->name('main-settings.update');
-    Route::get('commission-settings', [SettingController::class, 'commissionSettingsIndex'])
-        ->name('commission-settings.index');
-    Route::post('commission-settings', [SettingController::class, 'commissionSettingsUpdate'])
+    Route::get('general-settings', [SettingController::class, 'index'])
+        ->name('general-settings.index');
+    Route::post('general-settings', [SettingController::class, 'updateGeneralSettings'])
+        ->name('general-settings.update');
+    Route::get('commission-settings', [SettingController::class, 'commissionSettings'])
+        ->name('commission-settings');
+    Route::post('commission-settings', [SettingController::class, 'updateCommissionSettings'])
         ->name('commission-settings.update');
+    Route::get('smtp-settings', [SettingController::class, 'smtpSettings'])
+        ->name('smtp-settings');
+    Route::post('smtp-settings', [SettingController::class, 'updateSmtpSettings'])
+        ->name('smtp-settings.update');
 
     /** Payout Gateway Routes */
     Route::resource('payout-gateway', PayoutGatewayController::class);
