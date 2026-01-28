@@ -1,8 +1,8 @@
 @extends('admin.settings.layout')
 
 @section('settings-content')
-<div class="col-12 col-md-9 d-flex flex-column">
-    <form action="{{ route('admin.general-settings.update') }}" method="POST">
+<div class="col-12 col-md-9">
+    <form action="{{ route('admin.general-settings.update') }}" class="d-flex flex-column h-100" method="POST">
         @csrf
         <div class="card-body">
             <h3 class="card-title mt-4">General Settings</h3>
