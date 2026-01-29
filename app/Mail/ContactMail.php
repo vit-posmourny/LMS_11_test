@@ -16,9 +16,9 @@ class ContactMail extends Mailable
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct(public $validateData)
     {
-        //
+
     }
 
     /**
@@ -27,7 +27,8 @@ class ContactMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Contact Mail',
+            subject: $this->validateData['subject'],
+            from: $this->validateData['email'],
         );
     }
 

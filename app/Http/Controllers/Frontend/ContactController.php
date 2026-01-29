@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Contact;
+use App\Mail\ContactMail;
 use Illuminate\Http\Request;
 use App\Models\ContactSetting;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
@@ -28,11 +30,14 @@ class ContactController extends Controller
             'message' => 'required|string',
         ]);
 
-        // Here you would typically send the email using a mail service
-        // For example:
-        // Mail::to(config('mail.admin_email'))->send(new ContactFormMail($validatedData));
+        if (config('mail_queue.is_queue')) {
+            Mail::to(config('settings.receiver_email'))->queue(new ContactMail($validatedData));
+        } else {
+            Mail::to(config('settings.receiver_email'))->send(new ContactMail($validatedData));
+        }
 
-        // Redirect back with a success message
-        return redirect()->route('contact.index')->with('success', 'Your message has been sent successfully!');
+        notyf()->success('Your message has been sent successfully.');
+
+        return redirect()->back();
     }
 }

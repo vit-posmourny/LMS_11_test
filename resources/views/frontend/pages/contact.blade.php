@@ -86,7 +86,7 @@
     @if ( $contactSetting->map_url )
         <div class="wsus__contact_map mt_120 xs_mt_100 wow fadeInUp">
             <iframe
-                {{-- src="{{ $contactSetting->map_url }}" --}} {{-- zakomentováno kvůli: Web lms_11_test.test vás přesměroval příliš mnohokrát. --}}
+                src="{{ $contactSetting->map_url }}" {{-- zakomentováno kvůli: Web lms_11_test.test vás přesměroval příliš mnohokrát. --}}
                 width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade">
             </iframe>
