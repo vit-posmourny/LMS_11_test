@@ -12,10 +12,15 @@ use App\Models\CourseLanguage;
 
 class CoursePageController extends Controller
 {
-    function index(): View
+    function index(Request $request): View
     {
         $courses = Course::where('is_approved', 'approved')
             ->where('status', 'active')
+            ->when($request->has('search') && $request->filled('search'), function ($query) use ($request) {
+                $searchTerm = $request->search;
+                $query->where('title', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('description', 'like', '%' . $searchTerm . '%');
+            })
             ->paginate(12);
 
         $categories = CourseCategory::where('status', 1)->whereNull('parent_id')->get();
