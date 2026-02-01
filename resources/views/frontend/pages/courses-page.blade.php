@@ -36,7 +36,7 @@
                     <div class="wsus__sidebar">
                         <form action="{{ route('courses.index') }}">
                             <div class="wsus__sidebar_search">
-                                <input type="text" name="search" placeholder="Search Course" value="{{ request()->search ?? '' }}">
+                                <input type="text" name="search" placeholder="Search Course" value="{{ request('search') ?? '' }}">
                                 <button type="submit">
                                     <img src="{{ Vite::asset('resources/images/search_icon.png') }}" alt="Search" class="img-fluid">
                                 </button>
@@ -52,9 +52,9 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="{{ $subCategory->id }}"
                                                     id="subcategory-{{ $subCategory->id }}" name="category[]" @checked(
-                                                    is_array(request()->category) ?
-                                                    in_array($subCategory->id, request()->category ?? []):
-                                                    $subCategory->id == request()->category)>
+                                                    is_array(request('category')) ?
+                                                    in_array($subCategory->id, request('category') ?? []) :
+                                                    false)>
                                                 <label class="form-check-label" for="subcategory-{{ $subCategory->id }}">
                                                     {{ $subCategory->name }}
                                                 </label>
@@ -71,7 +71,7 @@
                                 @foreach ($levels as $level)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $level->id }}" name="level[]" id="level-{{ $level->id }}" @checked(
-                                        in_array($level->id, request()->level ?? []))>
+                                        in_array($level->id, request('level') ?? []))>
                                     <label class="form-check-label" for="level-{{ $level->id }}">
                                         {{ $level->name }}
                                     </label>
@@ -146,7 +146,7 @@
                                 @foreach ($languages as $language)
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" value="{{ $language->id }}" name="language[]" id="language-{{ $language->id }}" @checked(
-                                            in_array($language->id, request()->language ?? []))>
+                                            in_array($language->id, request('language') ?? []))>
                                         <label class="form-check-label" for="language-{{ $language->id }}">
                                             {{ $language->name }}
                                         </label>
@@ -167,13 +167,11 @@
                 <div class="col-xl-9 col-lg-8 order-lg-1">
                     <div class="wsus__page_courses_header wow fadeInUp">
                         <p>Showing <span>1-9</span> Of <span>62</span> Results</p>
-                        <form action="#">
+                        <form action="{{ route('courses.index') }}">
                             <p>Sort-by:</p>
-                            <select class="select_js">
-                                <option value="">Regular</option>
-                                <option value="">Top Rated</option>
-                                <option value="">Popular Courses</option>
-                                <option value="">Recent Courses</option>
+                            <select class="select_js" name="order" onchange="this.form.submit()">
+                                <option value="desc" @selected(request('order') == 'desc')>Recent Courses</option>
+                                <option value="asc" @selected(request('order') == 'asc')>Former Courses</option>
                             </select>
                         </form>
                     </div>
