@@ -15762,7 +15762,6 @@ svg.icon-tabler-category {
 .icon-star {
     width: 1.25em;
     height: 1.25em;
-    fill: currentColor;
     color: var(--ratingColor);
     display: inline-block;
     vertical-align: -0.25em;

@@ -80,7 +80,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultr1">
                                     <label class="form-check-label" for="flexCheckDefaultr1">
-                                        <i class="fas fa-star"></i> 5 star
+                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/> 5 star
                                     </label>
                                 </div>
                                 <div class="form-check">
@@ -153,6 +153,8 @@
                                 <h3>Price Range</h3>
                                 <div class="range_slider"></div>
                             </div>
+
+                            <button type="submit" class="common_btn">Search</button>
 
                         </form>
                     </div>
