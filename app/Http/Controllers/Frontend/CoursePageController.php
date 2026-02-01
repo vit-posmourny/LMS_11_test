@@ -21,6 +21,9 @@ class CoursePageController extends Controller
                 $query->where('title', 'like', '%' . $searchTerm . '%')
                     ->orWhere('description', 'like', '%' . $searchTerm . '%');
             })
+            ->when($request->has('category') && $request->filled('category'), function ($query) use ($request) {
+                $query->whereIn('category_id', $request->category);
+            })
             ->paginate(12);
 
         $categories = CourseCategory::where('status', 1)->whereNull('parent_id')->get();

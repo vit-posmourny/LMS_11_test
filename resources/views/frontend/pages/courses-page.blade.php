@@ -50,12 +50,15 @@
                                         <div class="wsus__sidebar_sub_category">
                                             @foreach ($category->subCategories as $subCategory)
                                             <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" value=""
-                                                    id="flexCheckDefaultc1">
-                                                    <label class="form-check-label" for="flexCheckDefaultc1">
-                                                        {{ $subCategory->name }}
-                                                    </label>
-                                                </div>
+                                                <input class="form-check-input" type="checkbox" value="{{ $subCategory->id }}"
+                                                    id="subcategory-{{ $subCategory->id }}" name="category[]" @checked(
+                                                    is_array(request()->category) ?
+                                                    in_array($subCategory->id, request()->category ?? []):
+                                                    $subCategory->id == request()->category)>
+                                                <label class="form-check-label" for="subcategory-{{ $subCategory->id }}">
+                                                    {{ $subCategory->name }}
+                                                </label>
+                                            </div>
                                             @endforeach
                                         </div>
                                     </li>
@@ -153,9 +156,9 @@
                                 <h3>Price Range</h3>
                                 <div class="range_slider"></div>
                             </div>
-
-                            <button type="submit" class="common_btn">Search</button>
-
+                            <div class="row mt-4">
+                                <button type="submit" class="common_btn">Search</button>
+                            </div>
                         </form>
                     </div>
                 </div>
