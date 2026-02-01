@@ -86,25 +86,25 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultr2">
                                     <label class="form-check-label" for="flexCheckDefaultr2">
-                                        <i class="fas fa-star"></i> 4 star or above
+                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/> 4 star or above
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultr3">
                                     <label class="form-check-label" for="flexCheckDefaultr3">
-                                        <i class="fas fa-star"></i> 3 star or above
+                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/> 3 star or above
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultr4">
                                     <label class="form-check-label" for="flexCheckDefaultr4">
-                                        <i class="fas fa-star"></i> 2 star or above
+                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/> 2 star or above
                                     </label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="flexCheckDefaultr5">
                                     <label class="form-check-label" for="flexCheckDefaultr5">
-                                        <i class="fas fa-star"></i> 1 star or above
+                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/> 1 star or above
                                     </label>
                                 </div>
                             </div>
@@ -202,11 +202,11 @@
                                     <div class="rating_area">
                                         <!-- <a href="#" class="category">Design</a> -->
                                         <p class="rating">
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
-                                            <i class="fas fa-star"></i>
+                                            <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
+                                            <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
+                                            <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
+                                            <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
+                                            <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
                                             <span>(4.8 Rating)</span>
                                         </p>
                                     </div>
