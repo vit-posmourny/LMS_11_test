@@ -50,9 +50,7 @@
                                             </li>
                                         </ul>
                                         <span class="time">
-                                            <svg class="icon">
-                                                <use href="{{ asset('tabler/icons-sprite/tabler-sprite-filled.svg') }}#tabler-filled-clock-hour-4"></use>
-                                            </svg>
+                                            <x-tabler-icon icon="clock-hour-4" />
                                             {{ convertMinutesToHours($course->duration) }}
                                         </span>
                                     </div>
