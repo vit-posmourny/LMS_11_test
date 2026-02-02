@@ -326,27 +326,23 @@
                                     <div class="select_rating d-flex flex-wrap">Your Rating:
                                         <ul id="starRating" data-stars="5"></ul>
                                     </div>
-                                    <form action="#">
+                                    <form action="{{ route('review.store') }}" method="POST">
+                                        @csrf
                                         <div class="row">
-                                            <div class="col-xl-6">
-                                                <input type="text" placeholder="Name">
-                                            </div>
-                                            <div class="col-xl-6">
-                                                <input type="email" placeholder="Email">
-                                            </div>
+                                            <input id="rating" type="hidden" name="rating" value="">
                                             <div class="col-xl-12">
-                                                <textarea rows="7" placeholder="Comments"></textarea>
+                                                <textarea rows="7" placeholder="Review" name="review"></textarea>
                                             </div>
                                             <div class="col-12">
                                                 <div class="form-check">
-                                                    <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDefault">
+                                                    {{-- <input class="form-check-input" type="checkbox" value=""
+                                                        id="flexCheckDefault"> --}}
                                                     <label class="form-check-label" for="flexCheckDefault">
                                                         Save my name, email, and website in this browser for the next
                                                         time I comment.
                                                     </label>
                                                 </div>
-                                                <a href="#" class="common_btn">Post Comment</a>
+                                                <button type="submit" class="common_btn">Post Comment</button>
                                             </div>
                                         </div>
                                     </form>
@@ -483,5 +479,14 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.jsdelivr.net/gh/shakilahmed0369/ez-share/dist/ez-share.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/shakilahmed0369/ez-share/dist/ez-share.min.js"></script>
+
+<script>
+    $(function() {
+        $('#starRating li').on('click', function() {
+            var starRatingLength = $('#starRating').find('.active').length;
+            $('#rating').val(starRatingLength);
+        })
+    })
+</script>
 @endpush

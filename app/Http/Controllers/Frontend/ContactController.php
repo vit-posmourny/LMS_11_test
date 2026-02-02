@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\ContactSetting;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
@@ -39,5 +40,11 @@ class ContactController extends Controller
         notyf()->success('Your message has been sent successfully.');
 
         return redirect()->back();
+    }
+
+
+    function storeReview(Request $request): RedirectResponse
+    {
+
     }
 }
