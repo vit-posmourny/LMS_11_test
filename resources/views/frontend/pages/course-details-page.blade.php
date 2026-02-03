@@ -319,34 +319,33 @@
                                         </div>
                                     </div>
                                 </div>
+                                @auth
                                 <div class="wsus__courses_review_input box_area mt_40">
                                     <h3>Write a Review</h3>
                                     <p class="short_text">Your email address will not be published. Required fields are
                                         marked *</p>
                                     <div class="select_rating d-flex flex-wrap">Your Rating:
-                                        <ul id="starRating" data-stars="5"></ul>
+                                        <ul id="starRating" data-stars="5" name="starRating"></ul>
                                     </div>
+                                    <x-input-error for="starRating"></x-input-error>
                                     <form action="{{ route('review.store') }}" method="POST">
                                         @csrf
                                         <div class="row">
                                             <input id="rating" type="hidden" name="rating" value="">
+                                            <input id="rating" type="hidden" name="course" value="{{ $course->id }}">
                                             <div class="col-xl-12">
-                                                <textarea rows="7" placeholder="Review" name="review"></textarea>
+                                                <textarea rows="7" placeholder="Your review..." name="review"></textarea>
                                             </div>
-                                            <div class="col-12">
-                                                <div class="form-check">
-                                                    {{-- <input class="form-check-input" type="checkbox" value=""
-                                                        id="flexCheckDefault"> --}}
-                                                    <label class="form-check-label" for="flexCheckDefault">
-                                                        Save my name, email, and website in this browser for the next
-                                                        time I comment.
-                                                    </label>
-                                                </div>
+                                            <x-input-error for="review"></x-input-error>
+                                            <div class="col-12 mt-3">
                                                 <button type="submit" class="common_btn">Post Comment</button>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
+                                @else
+                                <div class="alert alert-info mt-3 text-center" role="info">Please <a href="{{ route('login') }}">login</a> first to write a review.</div>
+                                @endauth
                             </div>
                         </div>
                     </div>
