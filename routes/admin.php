@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\FeatureController;
@@ -232,6 +233,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('contact', ContactController::class);
     /** Contact Settings Routes */
     Route::resource('contact-setting', ContactSettingController::class);
+    /** Reviews Routes */
+    Route::resource('reviews', ReviewController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
