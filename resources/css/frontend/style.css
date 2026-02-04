@@ -15768,6 +15768,14 @@ svg.icon-tabler-category {
     line-height: 1;
 }
 
+.icon-tabler {
+    --tblr-icon-size: 1.25rem;
+    width: var(--tblr-icon-size);
+    height: var(--tblr-icon-size);
+    font-size: var(--tblr-icon-size);
+    stroke-width: 1.5;
+}
+
 /******************************************** PŘIDÁNO Z GLOBAL.CSS *********************************************/
 
 textarea.form-control {

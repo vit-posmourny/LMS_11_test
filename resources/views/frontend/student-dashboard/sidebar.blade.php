@@ -41,6 +41,15 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('student.review.index') }}" class="{{ request()->routeIs('student.review.index') ? 'active' : "" }}">
+                    <div class="img">
+                        <img src="{{ Vite::asset('resources/images/dash_icon_8.png') }}" alt="icon"
+                            class="img-fluid w-100">
+                    </div>
+                    Reviews
+                </a>
+            </li>
+            <li>
                 <a href="javascript:;" onclick="event.preventDefault(); $('#logout').submit();">
                     <div class="img">
                         <img src="{{ Vite::asset('resources/images/dash_icon_16.png') }}"

@@ -10,3 +10,5 @@ použití sprite.svg — resources\views\frontend\pages\sections\quality-courses
 mazání jednoho záznamu v kontroleru — app\Http\Controllers\Admin\ContactController.php
 
 {{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('LLLL') }} - resources\views\frontend\pages\course-details-page.blade.php
+
+sprite delete button pro frontend - resources\views\frontend\student-dashboard\review\index.blade.php
