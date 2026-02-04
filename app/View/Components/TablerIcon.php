@@ -27,12 +27,12 @@ class TablerIcon extends Component
         $spriteFile = match($sprite) {
             'filled' => 'tabler-sprite-filled.svg',
             'outline' => 'tabler-sprite.svg',
-            default => $sprite
+            default => $sprite,
         };
 
         $this->spriteUrl = asset("tabler/icons-sprite/{$spriteFile}");
 
-        // Auto-prefix icon name if needed
+        // Auto-prefix icon id name if needed
         $this->iconId = $sprite === 'outline' ? "tabler-{$icon}" : "tabler-filled-{$icon}";
     }
 

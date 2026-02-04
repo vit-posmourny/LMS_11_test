@@ -4,9 +4,9 @@ window.$ = window.jQuery = $;
 import.meta.glob(['../../images/**',]);
 import { notyf } from '../notyf-definitions.js';
 // CONSTANTS
-const csrf_token = $('meta[name="csrf_token"]').attr('content');
 const base_url = $('meta[name="base_url"]').attr('content');
-
+const csrf_token = $('meta[name="csrf_token"]').attr('content');
+// VARIABLES
 var delete_url = null;
 
 
@@ -22,19 +22,18 @@ $(document).ready(function() {
 
 
 // Delete item with confirmation
-$('.delete__item').on('click', function(e) {
-
+$('.delete__item').on('click', function(e)
+{
     e.preventDefault();
 
     let url = $(this).attr('href');
     delete_url = url;
-
     $('#modal-danger').modal("show");
 });
 
 
-$('.delete-confirm').on('click', function(e) {
-
+$('.delete-confirm').on('click', function(e)
+{
     e.preventDefault();
 
     $.ajax({

@@ -49,12 +49,16 @@ class CoursePageController extends Controller
 
     function show(String $slug): View
     {
-        $course = Course::where('slug', $slug)
+        $course = Course::with('reviews')->where('slug', $slug)
             ->where('is_approved', 'approved')
             ->where('status', 'active')
             ->firstOrFail();
 
-        return view('frontend.pages.course-details-page', compact('course'));
+        $reviews = Review::where('course_id', $course->id)
+            ->where('status', 1)
+            ->paginate(15);
+
+        return view('frontend.pages.course-details-page', compact('course', 'reviews'));
     }
 
 

@@ -41,4 +41,9 @@ class Course extends Model
         return $this->hasMany(CourseChapter::class, 'course_id', 'id')->orderBy('order');
     }
 
+
+    function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class, 'course_id', 'id');
+    }
 }

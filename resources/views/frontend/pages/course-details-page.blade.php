@@ -17,11 +17,11 @@
                     <div class="col-12 wow fadeInUp">
                         <div class="wsus__breadcrumb_text">
                             <p class="rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
+                                <x-tabler-icon icon="star" class="icon-star"/>
+                                <x-tabler-icon icon="star" class="icon-star"/>
+                                <x-tabler-icon icon="star" class="icon-star"/>
+                                <x-tabler-icon icon="star" class="icon-star"/>
+                                <x-tabler-icon icon="star" class="icon-star"/>
                                 <span>(4 Reviews)</span>
                             </p>
                             <h1>{{ $course->title }}</h1>
@@ -143,7 +143,7 @@
                                                 <h4>{{ $course->instructor->name }}</h4>
                                                 <p class="designation">{{ $course->instructor->headline }}</p>
                                                 <ul class="list">
-                                                    <li><i class="fas fa-star"></i> <b>74,537 Reviews</b></li>
+                                                    <li><x-tabler-icon icon="star" class="icon-star"/> <b>74,537 Reviews</b></li>
                                                     <li><strong>4.7 Rating</strong></li>
                                                     <li>
                                                         <span><img src="{{ Vite::asset('resources/images/book_icon.png') }}" alt="book"
@@ -208,116 +208,90 @@
                                     <div class="row align-items-center mb_50">
                                         <div class="col-xl-4 col-md-6">
                                             <div class="total_review">
-                                                <h2>4.7</h2>
+                                                <h2>{{ number_format($course->reviews->avg('rating'), 1) ?? "N/A" }}</h2>
                                                 <p>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
+                                                    @for ($i = 0; $i < $course->reviews->avg('rating'); $i++)
+                                                        <x-tabler-icon icon="star" class="icon-star"></x-tabler-icon>
+                                                    @endfor
                                                 </p>
-                                                <h4>3 Ratings</h4>
+                                                <h4>{{ $course->reviews->count() }} Ratings</h4>
                                             </div>
                                         </div>
                                         <div class="col-xl-8 col-md-6">
                                             <div class="review_bar">
                                                 <div class="review_bar_single">
-                                                    <p>5 <i class="fas fa-star"></i></p>
+                                                    <p>5 <x-tabler-icon icon="star" class="icon-star"/></p>
                                                     <div id="bar1" class="barfiller">
                                                         <div class="tipWrap">
                                                             <span class="tip"></span>
                                                         </div>
                                                         <span class="fill" data-percentage="85"></span>
                                                     </div>
-                                                    <span class="qnty">87</span>
+                                                    <span class="qnty">{{ $course->reviews->where('rating', 5)->count() }}</span>
                                                 </div>
                                                 <div class="review_bar_single">
-                                                    <p>4 <i class="fas fa-star"></i></p>
+                                                    <p>4 <x-tabler-icon icon="star" class="icon-star"/></p>
                                                     <div id="bar2" class="barfiller">
                                                         <div class="tipWrap">
                                                             <span class="tip"></span>
                                                         </div>
                                                         <span class="fill" data-percentage="70"></span>
                                                     </div>
-                                                    <span class="qnty">69</span>
+                                                    <span class="qnty">{{ $course->reviews->where('rating', 4)->count() }}</span>
                                                 </div>
                                                 <div class="review_bar_single">
-                                                    <p>3 <i class="fas fa-star"></i></p>
+                                                    <p>3 <x-tabler-icon icon="star" class="icon-star"/></p>
                                                     <div id="bar3" class="barfiller">
                                                         <div class="tipWrap">
                                                             <span class="tip"></span>
                                                         </div>
                                                         <span class="fill" data-percentage="50"></span>
                                                     </div>
-                                                    <span class="qnty">44</span>
+                                                    <span class="qnty">{{ $course->reviews->where('rating', 3)->count() }}</span>
                                                 </div>
                                                 <div class="review_bar_single">
-                                                    <p>2 <i class="fas fa-star"></i></p>
+                                                    <p>2 <x-tabler-icon icon="star" class="icon-star"/></p>
                                                     <div id="bar4" class="barfiller">
                                                         <div class="tipWrap">
                                                             <span class="tip"></span>
                                                         </div>
                                                         <span class="fill" data-percentage="30"></span>
                                                     </div>
-                                                    <span class="qnty">29</span>
+                                                    <span class="qnty">{{ $course->reviews->where('rating', 2)->count() }}</span>
                                                 </div>
                                                 <div class="review_bar_single">
-                                                    <p>1 <i class="fas fa-star"></i></p>
+                                                    <p>1 <x-tabler-icon icon="star" class="icon-star"/></p>
                                                     <div id="bar5" class="barfiller">
                                                         <div class="tipWrap">
                                                             <span class="tip"></span>
                                                         </div>
                                                         <span class="fill" data-percentage="10"></span>
                                                     </div>
-                                                    <span class="qnty">12</span>
+                                                    <span class="qnty">{{ $course->reviews->where('rating', 1)->count() }}</span>
                                                 </div>
 
                                             </div>
                                         </div>
                                     </div>
                                     <h3>Reviews</h3>
-                                    <div class="wsus__course_single_reviews">
-                                        <div class="wsus__single_review_img">
-                                            <img src="{{ Vite::asset('resources/images/testimonial_user_1.png') }}" alt="user" class="img-fluid">
+                                    @foreach ($reviews as $review)
+                                        <div class="wsus__course_single_reviews">
+                                            <div class="wsus__single_review_img">
+                                                <img src="{{ asset($review->user->avatar) }}" alt="user" class="img-fluid">
+                                            </div>
+                                            <div class="wsus__single_review_text">
+                                                <h4>{{ $review->user->name }}</h4>
+                                                <h6>{{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('DD MMMM YYYY HH:mm:ss') }}
+                                                    <span>
+                                                        @for ($i = 0; $i < $review->rating; $i++)
+                                                            <x-tabler-icon icon="star" class="icon-star"/>
+                                                        @endfor
+                                                    </span>
+                                                </h6>
+                                                <p>{{ $review->review }}</p>
+                                            </div>
                                         </div>
-                                        <div class="wsus__single_review_text">
-                                            <h4>Dominic L. Ement</h4>
-                                            <h6> March 23,2024 at 8:37 pm
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </span>
-                                            </h6>
-                                            <p>Donec vel mauris at lectus iaculis elementum vel vel
-                                                lacus. Sed finibus velit vitae risus imperdiet placerat. Ut posuere eros
-                                                ut molestie rhoncus. Duis eget ex elementum, ultricies dolor sed,
-                                                hendrerit diam. Donec ut blandit nunc, et tempus lorem.</p>
-                                        </div>
-                                    </div>
-                                    <div class="wsus__course_single_reviews">
-                                        <div class="wsus__single_review_img">
-                                            <img src="{{ Vite::asset('resources/images/testimonial_user_2.png') }}" alt="user" class="img-fluid">
-                                        </div>
-                                        <div class="wsus__single_review_text">
-                                            <h4>Smith jhon</h4>
-                                            <h6> March 23,2024 at 8:37 pm
-                                                <span>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                    <i class="fas fa-star"></i>
-                                                </span>
-                                            </h6>
-                                            <p>Donec vel mauris at lectus iaculis elementum vel vel
-                                                lacus. Sed finibus velit vitae risus imperdiet placerat. Ut posuere eros
-                                                ut molestie rhoncus. Duis eget ex elementum, ultricies dolor sed,
-                                                hendrerit diam. Donec ut blandit nunc, et tempus lorem.</p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 @auth
                                 <div class="wsus__courses_review_input box_area mt_40">
