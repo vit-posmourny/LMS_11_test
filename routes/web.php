@@ -17,6 +17,7 @@ use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\EnrolledCourseController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
+use App\Models\Course;
 
 /*
 *-----------------------------------------------------------------
@@ -28,6 +29,10 @@ Route::get('/courses',[CoursePageController::class, 'index'])
     ->name('courses.index');
 Route::get('/courses/{slug}', [CoursePageController::class, 'show'])
     ->name('courses.show');
+/** Review Route */
+Route::post('review', [CoursePageController::class, 'storeReview'])
+    ->name('review.store');
+    
 /* Cart Routes */
 Route::get('cart', [CartController::class, 'index'])
     ->name('cart.index');
@@ -73,9 +78,6 @@ Route::get('contact', [ContactController::class, 'index'])
 /** Contact Route */
 Route::post('contact', [ContactController::class, 'sendMail'])
     ->name('send.contact');
-/** Review Route */
-Route::post('review', [ContactController::class, 'storeReview'])
-    ->name('review.store');
 
 /*
 *-----------------------------------------------------------------

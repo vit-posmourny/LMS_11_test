@@ -115,8 +115,7 @@ class CourseCategoryController extends Controller
             return response(['message' => 'delete success']);
 
         } catch (\Throwable $e) {
-            notyf()->error("something went wrong");
-            return response(["message" => "something went wrong"], 500);
+            return response(["message" => $e->getMessage()], 500);
         }
     }
 }

@@ -42,13 +42,17 @@
                                             @endif
                                         </td>
                                         <td colspan="1" class="text-truncate">
-                                            <select class="form-select">
-                                                <option value="0">Pending</option>
-                                                <option value="1">Approved</option>
-                                            </select>
+                                            <form action="{{ route('admin.reviews.update', $review->id) }}" method="POST">
+                                                @csrf
+                                                @method('PUT')
+                                                <select name="status" class="form-select" onchange="this.form.submit()">
+                                                    <option @selected($review->status == 0) value="0">Pending</option>
+                                                    <option @selected($review->status == 1) value="1">Approved</option>
+                                                </select>
+                                            </form>
                                         </td>
                                         <td colspan="1" class="text-center">
-                                            <a href="{{ route('admin.course-levels.destroy', $review->id) }}" class="text-red delete__item">
+                                            <a href="{{ route('admin.reviews.destroy', $review->id) }}" class="text-red delete__item">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                                     stroke-linecap="round" stroke-linejoin="round"
@@ -64,7 +68,7 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="12" class="text-center">No data found!</td></tr>
+                                    <tr><td colspan="12" class="text-center text-muted">No data found!</td></tr>
                                 @endforelse
                             </tbody>
                         </table>

@@ -50,7 +50,7 @@ $('.delete-confirm').on('click', function(e) {
             window.location.reload();
         },
         error: function(xhr, status, error) {
-            notyf.error('Cannot delete a category with a subcategory');
+            notyf.error(xhr.responseJSON.message || "An error occurred while deleting the item.");
         },
         complete: function() {
         }

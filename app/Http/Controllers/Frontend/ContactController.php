@@ -44,43 +44,4 @@ class ContactController extends Controller
 
         return redirect()->back();
     }
-
-
-    function storeReview(Request $request): RedirectResponse
-    {
-        $alreadyReviewed = Review::where('user_id', user()->id)
-            ->where('course_id', $request->course)
-            ->exists();
-
-        if ($alreadyReviewed) {
-            notyf()->info('You have already reviewed this course.');
-            return redirect()->back();
-        }
-
-        $request->validate([
-            'review' => 'required|string|max:1000',
-            'rating' => 'required|integer|min:1|max:5',
-            'course' => 'required|integer|exists:courses,id',
-        ]);
-
-        $checkPurchase = Enrollment::where('user_id', user()->id)
-            ->where('course_id', $request->course)
-            ->exists();
-
-        if (!$checkPurchase) {
-            notyf()->info('You can only review courses you have purchased.');
-            return redirect()->back();
-        }
-
-        $review = new Review();
-        $review->user_id = user()->id;
-        $review->course_id = $request->course;
-        $review->review = $request->review;
-        $review->rating = $request->rating;
-        $review->reviewed = 1;
-        $review->save();
-
-        notyf()->success('Thank you for your review! It has been submitted successfully.');
-        return redirect()->back();
-    }
 }

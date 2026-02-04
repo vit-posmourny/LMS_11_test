@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('course_id')->constrained('courses');
             $table->text('review');
             $table->unsignedTinyInteger('rating')->default(0);
+            $table->boolean('status')->default(0);
             $table->boolean('reviewed')->default(0);
             $table->timestamps();
         });
