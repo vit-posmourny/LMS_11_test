@@ -281,7 +281,7 @@
                                             </div>
                                             <div class="wsus__single_review_text">
                                                 <h4>{{ $review->user->name }}</h4>
-                                                <h6>{{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('DD MMMM YYYY HH:mm:ss') }}
+                                                <h6 style="text-transform: none;">{{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('LLLL') }}
                                                     <span>
                                                         @for ($i = 0; $i < $review->rating; $i++)
                                                             <x-tabler-icon icon="star" class="icon-star"/>
