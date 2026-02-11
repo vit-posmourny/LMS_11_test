@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\User;
+use Dotenv\Util\Str;
 use App\Models\Review;
 use App\Traits\FileUpload;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Dotenv\Util\Str;
 use Illuminate\Http\RedirectResponse;
 
 class StudentDashboardController extends Controller
@@ -50,8 +51,18 @@ class StudentDashboardController extends Controller
     }
 
 
-    function destroyReview(String $id): RedirectResponse
+    function destroyReview(String $id): Response
     {
-        dd($id);
+        try {
+            $review = Review::where('id', $id)->where('user_id', user()->id)->firstOrFail();
+            $review->delete();
+            notyf()->success('Review deleted successfully.');
+            return response(['message' => 'Review deleted successfully.'], 200);
+        }           //code...
+        catch (\Throwable $th) {
+            logger('Review error: >> ' . $th);
+            notyf()->error('Review deletion failed.');
+            return response(['message' => 'Review deleted failed.'], 500);
+        }
     }
 }
