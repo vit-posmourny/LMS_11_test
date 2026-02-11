@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\TopBar;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TopBarController extends Controller
@@ -13,7 +15,8 @@ class TopBarController extends Controller
      */
     public function index(): View
     {
-        return view('admin.top-bar.index');
+        $topBar = TopBar::first();
+        return view('admin.top-bar.index', compact('topBar'));
     }
 
     /**
@@ -27,9 +30,21 @@ class TopBarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validatedData = $request->validate([
+            'email' => 'nullable|email',
+            'phone' => 'nullable|string|max:20',
+            'offer_name' => 'nullable|string|max:255',
+            'offer_short_description' => 'nullable|string|max:255',
+            'offer_button_text' => 'nullable|string|max:255',
+            'offer_button_url' => 'nullable|url|max:255',
+        ]);
+
+        TopBar::updateOrCreate(['id' => 1], $validatedData);
+
+        notyf()->success('Top Bar information has been updated successfully.');
+        return redirect()->back();
     }
 
     /**
