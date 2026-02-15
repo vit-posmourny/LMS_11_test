@@ -1,5 +1,6 @@
 @php
     $topBar = App\Models\TopBar::first();
+    $categories = App\Models\CourseCategory::whereNull('parent_id')->where('status', 1)->get();
 @endphp
 
     <!--===========================
@@ -49,104 +50,23 @@
                 </div>
                 Category
                 <ul>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_1.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Development
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_2.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Business
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_3.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Marketing
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_4.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Lifestyle
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_5.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Health & Fitness
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_6.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Design
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span>
-                                <img src="{{ Vite::asset('resources/images/menu_category_icon_7.png') }}" alt="Category" class="img-fluid">
-                            </span>
-                            Academics
-                        </a>
-                        <ul class="category_sub_menu">
-                            <li><a href="#">Web Design</a></li>
-                            <li><a href="#">Web Development</a></li>
-                            <li><a href="#">UI/UX Design</a></li>
-                            <li><a href="#">Graphic Design</a></li>
-                        </ul>
-                    </li>
+                    @foreach ($categories as $category)
+                        <li>
+                            <a href="#">
+                                <span>
+                                    <img src="{{ asset($category->image) }}" alt="Category" class="img-fluid">
+                                </span>
+                                {{ $category->name }}
+                            </a>
+                            @if ($category->subCategories->count() > 0)
+                                <ul class="category_sub_menu">
+                                    @foreach ($category->subCategories as $subCategory)
+                                        <li><a href="{{ route('courses.index', ['category' => $subCategory->id]) }}">{{ $subCategory->name }}</a></li>
+                                    @endforeach
+                                </ul>
+                            @endif
+                        </li>
+                    @endforeach
                 </ul>
             </div>
             <ul class="navbar-nav m-auto">

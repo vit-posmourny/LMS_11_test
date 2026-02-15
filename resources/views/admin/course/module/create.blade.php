@@ -1,4 +1,4 @@
-@extends('admin.course.module.app')
+ @extends('admin.course.module.app')
 
 @section('tab_content')
 <div class="tab-content" id="pills-tabContent">

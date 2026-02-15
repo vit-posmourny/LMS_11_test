@@ -52,9 +52,10 @@
                                             <div class="form-check">
                                                 <input class="form-check-input" type="checkbox" value="{{ $subCategory->id }}"
                                                     id="subcategory-{{ $subCategory->id }}" name="category[]" @checked(
-                                                    is_array(request('category')) ?
-                                                    in_array($subCategory->id, request('category') ?? []) :
-                                                    false)>
+                                                        is_array(request('category')) ?
+                                                        in_array($subCategory->id, request('category') ?? []) :
+                                                        request('category') == $subCategory->id
+                                                    )>
                                                 <label class="form-check-label" for="subcategory-{{ $subCategory->id }}">
                                                     {{ $subCategory->name }}
                                                 </label>
@@ -71,7 +72,10 @@
                                 @foreach ($levels as $level)
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="{{ $level->id }}" name="level[]" id="level-{{ $level->id }}" @checked(
-                                        in_array($level->id, request('level') ?? []))>
+                                        is_array(request('level')) ?
+                                        in_array($level->id, request('level') ?? []) :
+                                        request('level') == $level->id
+                                    )>
                                     <label class="form-check-label" for="level-{{ $level->id }}">
                                         {{ $level->name }}
                                     </label>
