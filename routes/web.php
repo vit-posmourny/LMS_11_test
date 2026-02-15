@@ -35,11 +35,11 @@ Route::post('review', [CoursePageController::class, 'storeReview'])
 
 /* Cart Routes */
 Route::get('cart', [CartController::class, 'index'])
-    ->name('cart.index');
+    ->name('cart.index')->middleware('auth');
 Route::post('add-to-cart/{courseId}', [CartController::class, 'addToCart'])
-    ->name('add-to-cart');
+    ->name('add-to-cart')->middleware('auth');
 Route::get('remove-from-cart/{itemId}', [CartController::class, 'removeFromCart'])
-    ->name('remove-from-cart');
+    ->name('remove-from-cart')->middleware('auth');
 /** Payment Routes */
 Route::get('checkout', CheckoutController::class)
     ->name('checkout.index');
