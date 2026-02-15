@@ -58,6 +58,14 @@
 
     @yield('content')
 
+    <!--===========================
+        FOOTER 3 START
+    ============================-->
+    @include('frontend.layouts.footer')
+    <!--===========================
+        FOOTER 3 END
+    ============================-->
+
     <!-- Modal -->
     <div class="modal fade" id="id__dynamic__modal" tabindex="-1" data-bs-backdrop="static">
         <div class="modal-dialog modal-dialog-centered modal-lg dynamic__modal__content">

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CourseController;
+use App\Http\Controllers\Admin\FooterController;
 use App\Http\Controllers\Admin\ReviewController;
 use App\Http\Controllers\Admin\TopBarController;
 use App\Http\Controllers\Admin\ContactController;
@@ -238,6 +239,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('reviews', ReviewController::class);
     /** Top-Bar Routes */
     Route::resource('top-bar', TopBarController::class);
+    /** Footer Routes */
+    Route::resource('footer', FooterController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

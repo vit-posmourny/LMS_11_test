@@ -496,6 +496,9 @@
                                 <a class="dropdown-item" href="{{ route('admin.top-bar.index') }}">
                                     Top Bar
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.footer.index') }}">
+                                    Footer Content
+                                </a>
                             </div>
                         </div>
                     </div>
