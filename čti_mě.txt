@@ -7,7 +7,7 @@ základní mazání jednoho obrázku — app\Http\Controllers\Admin\ContactContr
 
 použití sprite.svg — resources\views\frontend\layouts\header.blade.php , ř.12
 
-mazání jednoho záznamu v kontroleru — app\Http\Controllers\Admin\ContactController.php
+mazání jednoho záznamu v kontroleru — app\Http\Controllers\Admin\ContactController.php , ř.119
 
 {{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('LLLL') }} - resources\views\frontend\pages\course-details-page.blade.php
 
