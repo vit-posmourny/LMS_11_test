@@ -31,7 +31,19 @@ class FooterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'description' => 'nullable|string|max:255',
+            'copyright' => 'nullable|string|max:255',
+            'phone' => 'nullable|string|max:255',
+            'address' => 'nullable|string|max:255',
+            'email' => 'nullable|email|max:255',
+
+        ]);
+
+        Footer::updateOrCreate(['id' => 1], $validatedData);
+
+        notyf()->success('Footer content updated successfully.');
+        return redirect()->back();
     }
 
     /**

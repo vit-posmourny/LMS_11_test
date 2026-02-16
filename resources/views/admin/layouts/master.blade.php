@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{ asset('fontawesome-free-7.0.1-web/css/solid.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/notyf.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/tabler.min.css') }}"/>
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}"/>
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/demo.min.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/css/nice-select.css') }}"/>
     <link rel="stylesheet" href="{{ asset('admin/assets/dist/libs/tom-select/dist/css/tom-select.bootstrap5.min.css') }}"/>

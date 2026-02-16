@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/startRating.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/video_player.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery.simple-bar-graph.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/assets/css/select2.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/sticky_menu.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/jquery-ui.min.css') }}">
