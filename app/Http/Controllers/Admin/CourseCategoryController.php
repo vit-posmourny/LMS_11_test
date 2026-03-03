@@ -112,7 +112,7 @@ class CourseCategoryController extends Controller
             $this->deleteFile($course_category->image);
             $course_category->delete();
             notyf()->success('Category Deleted');
-            return response(['message' => 'delete success']);
+            return response(['message' => 'Category Deleted'], 200);
 
         } catch (\Throwable $e) {
             return response(["message" => $e->getMessage()], 500);

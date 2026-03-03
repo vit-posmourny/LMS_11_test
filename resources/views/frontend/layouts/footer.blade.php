@@ -1,5 +1,6 @@
 @php
     $footer = App\Models\Footer::first();
+    $socialLinks = App\Models\SocialLink::where('status', 1)->get();
 @endphp
 <footer class="footer_3" style="background: url({{ Vite::asset('resources/images/footer_3_bg.jpg') }};">
     <div class="footer_3_overlay pt_120 xs_pt_100">
@@ -14,27 +15,15 @@
                             <p>{{ $footer->description }}</p>
                             <h2>Follow Us On</h2>
                             <ul class="d-flex flex-wrap">
-                                <li>
-                                    <a href="#">
-                                        <svg class="icon icon-tabler-social" data-fa-transform="shrink-8 up-6">
-                                            <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#twitter"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <svg class="icon icon-tabler-social" >
-                                            <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#facebook-f"></use>
-                                        </svg>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <svg class="icon icon-tabler-social">
-                                            <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#linkedin-in"></use>
-                                        </svg>
-                                    </a>
-                                </li>
+                                @foreach ($socialLinks as $socialLink)
+                                    <li>
+                                        <a href="{{ $socialLink->url }}" target="_blank">
+                                            <svg class="icon icon-tabler-social" data-fa-transform="shrink-8 up-6">
+                                                <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#twitter"></use>
+                                            </svg>
+                                        </a>
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

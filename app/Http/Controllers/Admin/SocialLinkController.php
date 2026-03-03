@@ -7,6 +7,7 @@ use App\Traits\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class SocialLinkController extends Controller
 {
@@ -16,7 +17,8 @@ class SocialLinkController extends Controller
      */
     public function index(): View
     {
-        return view('admin.social-link.index');
+        $socialLinks = SocialLink::all();
+        return view('admin.social-link.index', compact('socialLinks'));
     }
 
     /**
@@ -30,11 +32,11 @@ class SocialLinkController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'icon' => 'required|image|max:600',
-            'link' => 'required|url',
+            'url' => 'required|url',
             'status' => 'required|boolean',
         ]);
 
@@ -47,7 +49,7 @@ class SocialLinkController extends Controller
             $icon = $this->fileUpload($file);
             $socialLink->icon = $icon;
         }
-        $socialLink->link = $request->link;
+        $socialLinkurl = $request->url;
         $socialLink->status = $request->status;
         $socialLink->save();
 
@@ -57,19 +59,11 @@ class SocialLinkController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(SocialLink $social_link): View
     {
-        //
+        return view('admin.social-link.edit', compact('social_link'));
     }
 
     /**
@@ -77,14 +71,42 @@ class SocialLinkController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'icon' => 'nullable|image|max:600',
+            'url' => 'required|url',
+            'status' => 'required|boolean',
+        ]);
+
+        $socialLink = SocialLink::findOrFail($id);
+        $oldImagePath = $socialLink->icon;
+
+        if ($request->hasFile('icon')) {
+            $file = $request->file('icon');
+            $icon = $this->fileUpload($file);
+            $this->deleteFile($oldImagePath);
+            $socialLink->icon = $icon;
+        }
+        $socialLink->url = $request->url;
+        $socialLink->status = $request->status;
+        $socialLink->save();
+        notyf()->success('Social link updated successfully.');
+
+        return to_route('admin.social-links.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(SocialLink $socialLink)
     {
-        //
+        try {
+            $this->deleteFile($socialLink->icon);
+            $socialLink->delete();
+            notyf()->success('Social Link Deleted');
+            return response(['message' => 'Social Link Deleted']);
+
+        } catch (\Throwable $e) {
+            return response(["message" => $e->getMessage()], 500);
+        }
     }
 }

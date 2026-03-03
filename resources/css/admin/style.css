@@ -15747,6 +15747,14 @@ svg.icon-tabler-course-categories-as-image {
     stroke-linejoin: round;
 }
 
+.icon-tabler {
+    --tblr-icon-size: 1.25rem;
+    width: var(--tblr-icon-size);
+    height: var(--tblr-icon-size);
+    font-size: var(--tblr-icon-size);
+    stroke-width: 1.5;
+}
+
 .select2-container--default .select2-selection--single .select2-selection__rendered {
     line-height: 2.5rem;
 }
