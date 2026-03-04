@@ -20,7 +20,7 @@
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
-                            <x-tabler-icon icon="{{ $socialLink->icon }}" class="mb-3" width="5rem" height="8rem"/>
+                            <x-tabler-icon icon="{{ $socialLink->icon }}" class="mb-3" width="3rem" height="4rem"/>
                             <input type="text" class="form-control" name="icon" value="{{ $socialLink->icon }}"/>
                             <x-input-error for="icon" class="mt-2"/>
                         </div>

@@ -47,7 +47,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.social-links.edit', $socialLink->id) }}" class="text-blue">
-                                             <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
+                                             <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline" color="#4e5967"/>
                                         </a>
                                         <a href="{{ route('admin.social-links.destroy', $socialLink->id) }}" class="text-red delete__item">
                                             <x-tabler-icon icon="trash" class="icon-tabler" sprite="outline"/>
