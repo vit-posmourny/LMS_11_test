@@ -19,10 +19,10 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <x-input-file-block name="icon"/>
+                            <x-input-block name="icon"/>
                         </div>
                         <div class="col-md-6">
-                            <x-input-block name="link" placeholder="Enter social link URL"/>
+                            <x-input-block name="url" placeholder="Enter social URL"/>
                         </div>
                         <div class="col-md-3">
                             <x-input-toggle-block name="status" label="Status"/>

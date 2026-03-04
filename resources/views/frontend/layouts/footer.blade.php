@@ -16,13 +16,11 @@
                             <h2>Follow Us On</h2>
                             <ul class="d-flex flex-wrap">
                                 @foreach ($socialLinks as $socialLink)
-                                    <li>
-                                        <a href="{{ $socialLink->url }}" target="_blank">
-                                            <svg class="icon icon-tabler-social" data-fa-transform="shrink-8 up-6">
-                                                <use href="{{ asset('fontawesome-free-7.0.1-web/sprites-full/brands.svg') }}#twitter"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
+                                <li>
+                                    <a href="{{ $socialLink->url }}" target="_blank">
+                                        <x-tabler-icon icon="{{ $socialLink->icon }}" class="icon-tabler-social"/>
+                                    </a>
+                                </li>
                                 @endforeach
                             </ul>
                         </div>
