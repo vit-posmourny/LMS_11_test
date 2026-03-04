@@ -35,22 +35,15 @@ class SocialLinkController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'icon' => 'required|image|max:600',
+            'icon' => 'required|string|max:255',
             'url' => 'required|url',
-            'status' => 'required|boolean',
+            'status' => 'boolean',
         ]);
 
         $socialLink = new SocialLink();
-
-        $oldImagePath = $socialLink->icon;
-
-        if ($request->hasFile('icon')) {
-            $file = $request->file('icon');
-            $icon = $this->fileUpload($file);
-            $socialLink->icon = $icon;
-        }
-        $socialLinkurl = $request->url;
-        $socialLink->status = $request->status;
+        $socialLink->icon = $request->icon;
+        $socialLink->url = $request->url;
+        $socialLink->status = $request->status ?? 0;
         $socialLink->save();
 
         notyf()->success('Social link stored successfully.');
@@ -61,9 +54,9 @@ class SocialLinkController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(SocialLink $social_link): View
+    public function edit(SocialLink $socialLink): View
     {
-        return view('admin.social-link.edit', compact('social_link'));
+        return view('admin.social-link.edit', compact('socialLink'));
     }
 
     /**
@@ -71,23 +64,20 @@ class SocialLinkController extends Controller
      */
     public function update(Request $request, string $id)
     {
+        // 'status' => 'nullable|boolean' z důvodu - tabler switch je vlastně checkbox, který
+        // posílá hodnotu pouze pokud je zaškrtnutý. Proto nullable.
         $request->validate([
-            'icon' => 'nullable|image|max:600',
+            'icon' => 'nullable|string|max:255',
             'url' => 'required|url',
-            'status' => 'required|boolean',
+            'status' => 'nullable|boolean',
         ]);
 
         $socialLink = SocialLink::findOrFail($id);
-        $oldImagePath = $socialLink->icon;
-
-        if ($request->hasFile('icon')) {
-            $file = $request->file('icon');
-            $icon = $this->fileUpload($file);
-            $this->deleteFile($oldImagePath);
-            $socialLink->icon = $icon;
-        }
+        $socialLink->icon = $request->icon;
         $socialLink->url = $request->url;
-        $socialLink->status = $request->status;
+        // $request->status ?? 0; z důvodu - tabler switch je vlastně checkbox, který
+        // posílá hodnotu pouze pokud je zaškrtnutý.
+        $socialLink->status = $request->status ?? 0;
         $socialLink->save();
         notyf()->success('Social link updated successfully.');
 
@@ -100,7 +90,6 @@ class SocialLinkController extends Controller
     public function destroy(SocialLink $socialLink)
     {
         try {
-            $this->deleteFile($socialLink->icon);
             $socialLink->delete();
             notyf()->success('Social Link Deleted');
             return response(['message' => 'Social Link Deleted']);

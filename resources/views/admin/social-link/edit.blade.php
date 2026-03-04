@@ -15,19 +15,21 @@
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('admin.social-links.update', $social_link->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.social-links.update', $socialLink->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
-                            <x-image-preview src="{{ asset($social_link->icon) }}"/>
-                            <x-input-file-block name="icon"/>
+                            <x-tabler-icon icon="{{ $socialLink->icon }}" class="mb-3" width="5rem" height="8rem"/>
+                            <input type="text" class="form-control" name="icon" value="{{ $socialLink->icon }}"/>
+                            <x-input-error for="icon" class="mt-2"/>
                         </div>
-                        <div class="col-md-6">
-                            <x-input-block name="url" value="{{ $social_link->url }}" placeholder="Enter social link URL"/>
+                        <div class="col-md-6 align-self-end">
+                            <input type="text" class="form-control" name="url" value="{{ $socialLink->url }}" placeholder="Enter social link URL"/>
+                            <x-input-error for="url" class="mt-2"/>
                         </div>
                         <div class="col-md-3">
-                            <x-input-toggle-block name="status" label="Status" :checked="$social_link->status == 1"/>
+                            <x-input-toggle-block name="status" label="Status" :checked="$socialLink->status == 1"/>
                         </div>
                     </div>
 

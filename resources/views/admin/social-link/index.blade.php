@@ -35,7 +35,7 @@
                             @forelse ($socialLinks as $socialLink)
                                 <tr>
                                     <td>
-                                        <x-tabler-icon icon="{{ $socialLink->icon }}" class=""/>
+                                        <x-tabler-icon icon="{{ $socialLink->icon }}"/>
                                     </td>
                                     <td>{{ $socialLink->url }}</td>
                                     <td>
@@ -55,7 +55,7 @@
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="3" class="text-center">No data found!</td></tr>
+                                <tr><td colspan="4" class="text-center">No data found!</td></tr>
                             @endforelse
                         </tbody>
                     </table>
