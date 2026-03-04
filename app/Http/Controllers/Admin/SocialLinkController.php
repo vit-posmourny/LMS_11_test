@@ -92,9 +92,9 @@ class SocialLinkController extends Controller
         try {
             $socialLink->delete();
             notyf()->success('Social Link Deleted');
-            return response(['message' => 'Social Link Deleted']);
-
-        } catch (\Throwable $e) {
+            return response(['message' => 'Social Link Deleted'], 200);
+        }
+        catch (\Throwable $e) {
             return response(["message" => $e->getMessage()], 500);
         }
     }

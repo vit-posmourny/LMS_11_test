@@ -502,6 +502,9 @@
                                 <a class="dropdown-item" href="{{ route('admin.social-links.index') }}">
                                     Social Links
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.footer-column-one.index') }}">
+                                    Column One
+                                </a>
                             </div>
                         </div>
                     </div>
