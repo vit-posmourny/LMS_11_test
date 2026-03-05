@@ -27,6 +27,7 @@ use App\Http\Controllers\Admin\CourseCategoryController;
 use App\Http\Controllers\Admin\CourseLanguageController;
 use App\Http\Controllers\Admin\PaymentSettingController;
 use App\Http\Controllers\Admin\FooterColumnOneController;
+use App\Http\Controllers\Admin\FooterColumnTwoController;
 use App\Http\Controllers\Admin\WithdrawRequestController;
 use App\Http\Controllers\Admin\Auth\NewPasswordController;
 use App\Http\Controllers\Admin\Auth\VerifyEmailController;
@@ -247,6 +248,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('social-links', SocialLinkController::class);
     /** Footer Column One Routes */
     Route::resource('footer-column-one', FooterColumnOneController::class);
+    /** Footer Column Two Routes */
+    Route::resource('footer-column-two', FooterColumnTwoController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

@@ -505,6 +505,9 @@
                                 <a class="dropdown-item" href="{{ route('admin.footer-column-one.index') }}">
                                     Column One
                                 </a>
+                                <a class="dropdown-item" href="{{ route('admin.footer-column-two.index') }}">
+                                    Column Two
+                                </a>
                             </div>
                         </div>
                     </div>
