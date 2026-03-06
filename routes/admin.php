@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\CounterController;
 use App\Http\Controllers\Admin\FeatureController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\CustomPageController;
 use App\Http\Controllers\Admin\SocialLinkController;
 use App\Http\Controllers\Admin\CourseLevelController;
 use App\Http\Controllers\Admin\TestimonialController;
@@ -250,6 +251,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('footer-column-one', FooterColumnOneController::class);
     /** Footer Column Two Routes */
     Route::resource('footer-column-two', FooterColumnTwoController::class);
+    /** Custom Page Routes */
+    Route::resource('custom-page', CustomPageController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {

@@ -114,10 +114,10 @@
     </div>
 </div>
 @endsection
-
-@push('scripts')
+@push('header_scripts')
     <script src="https://cdn.tiny.cloud/1/jkx2gs8cwid6kn4mbyrcm88yn6h065ohcto5zckgsisdztl8/tinymce/8/tinymce.min.js"
         referrerpolicy="origin" crossorigin="anonymous"></script>
-
+@endpush
+@push('scripts')
     @vite(['resources/js/admin/tinymce-init.js', 'resources/js/analyzeImages.js'])
 @endpush
