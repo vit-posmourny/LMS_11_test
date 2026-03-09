@@ -35,11 +35,12 @@ class CustomPageController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:custom_pages',
             'description' => 'required|string',
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string|max:255',
             'status' => 'boolean',
+            'show_at_nav' => 'boolean',
         ]);
 
         $page = new CustomPage();
@@ -49,6 +50,7 @@ class CustomPageController extends Controller
         $page->seo_title = $request->seo_title;
         $page->seo_description = $request->seo_description;
         $page->status = $request->status ?? 0;
+        $page->show_at_nav = $request->show_at_nav ?? 0;
         $page->save();
 
         notyf()->success('Custom page created successfully.');
@@ -66,22 +68,25 @@ class CustomPageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, CustomPage $custom_page): RedirectResponse
+    public function update(Request $request, String $id): RedirectResponse
     {
         $request->validate([
-            'title' => 'required|string|max:255',
+            'title' => 'required|string|max:255|unique:custom_pages,title,' . $id,
             'description' => 'required|string',
             'seo_title' => 'nullable|string|max:255',
             'seo_description' => 'nullable|string|max:255',
             'status' => 'boolean',
+            'show_at_nav' => 'boolean',
         ]);
 
+        $custom_page = CustomPage::findOrFail($id);
         $custom_page->title = $request->input('title');
         $custom_page->slug = Str::slug($request->title);
         $custom_page->description = $request->description;
         $custom_page->seo_title = $request->seo_title;
         $custom_page->seo_description = $request->seo_description;
         $custom_page->status = $request->status ?? 0;
+        $custom_page->show_at_nav = $request->show_at_nav ?? 0;
         $custom_page->save();
 
         notyf()->success('Custom page updated successfully.');

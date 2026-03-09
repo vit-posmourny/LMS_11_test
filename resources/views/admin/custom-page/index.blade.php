@@ -27,7 +27,8 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Status</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Show at Nav.</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -35,16 +36,23 @@
                                 @forelse ($customPages as $page)
                                     <tr>
                                         <td>{{ $page->title }}</td>
-                                        <td>{{ $page->slug }}</td>
-                                        <td>
+                                        <td><code class="text-danger">{{ url('/') }}/page/{{ $page->slug }}</code></td>
+                                        <td class="col-1 text-center">
                                             @if ($page->status)
                                                 <span class="badge bg-lime text-lime-fg">Yes</span>
                                             @else
                                                 <span class="badge bg-pink text-pink-fg">No</span>
                                             @endif
                                         </td>
+                                        <td class="col-1 text-center">
+                                            @if ($page->show_at_nav)
+                                                <span class="badge bg-lime text-lime-fg">Yes</span>
+                                            @else
+                                                <span class="badge bg-pink text-pink-fg">No</span>
+                                            @endif
+                                        </td>
                                         <td>
-                                            <a href="{{ route('admin.custom-page.edit', ['custom_page' => $page->id]) }}" class="btn-sm btn-primary">
+                                            <a href="{{ route('admin.custom-page.edit', $page->id) }}" class="btn-sm btn-primary">
                                                 <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
                                             </a>
                                             <a href="{{ route('admin.custom-page.destroy', $page->id) }}" class="text-red delete__item">
@@ -53,12 +61,12 @@
                                         </td>
                                     </tr>
                                 @empty
-                                    <tr><td colspan="4" class="text-center">No data found!</td></tr>
+                                    <tr><td colspan="5" class="text-center">No data found!</td></tr>
                                 @endforelse
                             </tbody>
                         </table>
                         {{-- <div class="mt-5">
-                            {{ $columnOne->links() }}
+                            {{ $customPages->links() }}
                         </div> --}}
                     </div>
                 </div>

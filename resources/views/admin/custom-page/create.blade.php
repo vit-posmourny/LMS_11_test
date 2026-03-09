@@ -29,16 +29,19 @@
                         </div>
                         <div class="col-xl-6">
                             <x-input-block label="SEO Title" name="seo_title" placeholder="Enter SEO title"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <label for="seo_description" class="form-label">SEO Description</label>
+
+                            <label for="seo_description" class="form-label mt-3">SEO Description</label>
                             <textarea name="seo_description" placeholder="Enter SEO description"></textarea>
                             <x-input-error for="seo_description" class="mt-2"/>
-                        </div>
-                        <div class="col-12">
-                            <x-input-toggle-block name="status" label="Status"/>
+
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <x-input-toggle-block name="status" label="Status"/>
+                                </div>
+                                <div class="col-6">
+                                    <x-input-toggle-block name="show_at_nav" label="Show at Navigation"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="mt-3">

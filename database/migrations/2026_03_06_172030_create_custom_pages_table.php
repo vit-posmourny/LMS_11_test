@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('seo_title')->nullable();
             $table->string('seo_description')->nullable();
             $table->boolean('status')->default(1);
+            $table->boolean('show_at_nav')->default(0);
             $table->timestamps();
         });
     }

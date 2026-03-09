@@ -19,7 +19,7 @@
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
-                            <x-input-block name="title" value="{{ $custom_page->title }}" placeholder="Enter page title"/>
+                            <x-input-block name="title" placeholder="Enter page title" value="{{ $custom_page->title }}"/>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-3">
@@ -29,17 +29,20 @@
                             </div>
                         </div>
                         <div class="col-xl-6">
-                            <x-input-block label="SEO Title" name="seo_title" value="{{ $custom_page->seo_title }}" placeholder="Enter SEO title"/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xl-6">
-                            <label for="seo_description" class="form-label">SEO Description</label>
+                            <x-input-block label="SEO Title" name="seo_title" placeholder="Enter SEO title" value="{{ $custom_page->seo_title }}"/>
+
+                            <label for="seo_description" class="form-label mt-3">SEO Description</label>
                             <textarea name="seo_description" placeholder="Enter SEO description">{!! $custom_page->seo_description !!}</textarea>
                             <x-input-error for="seo_description" class="mt-2"/>
-                        </div>
-                        <div class="col-12">
-                            <x-input-toggle-block name="status" label="Status" :checked="$custom_page->status == 1"/>
+
+                            <div class="row mt-2">
+                                <div class="col-6">
+                                    <x-input-toggle-block name="status" label="Status" :checked="$custom_page->status == 1"/>
+                                </div>
+                                <div class="col-6">
+                                    <x-input-toggle-block name="show_at_nav" label="Show at Navigation" :checked="$custom_page->show_at_nav == 1"/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="mt-3">
