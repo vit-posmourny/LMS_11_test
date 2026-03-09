@@ -19,7 +19,7 @@
                     @method('PUT')
                     <div class="row">
                         <div class="col-md-6">
-                            <x-input-block name="title" placeholder="Enter page title" value="{{ $custom_page->title }}"/>
+                            <x-input-block name="title" placeholder="Enter page title" value="{!! $custom_page->title !!}"/>
                         </div>
                         <div class="col-md-12">
                             <div class="form-group mb-3">
@@ -29,7 +29,7 @@
                             </div>
                         </div>
                         <div class="col-xl-6">
-                            <x-input-block label="SEO Title" name="seo_title" placeholder="Enter SEO title" value="{{ $custom_page->seo_title }}"/>
+                            <x-input-block label="SEO Title" name="seo_title" placeholder="Enter SEO title" value="{!! $custom_page->seo_title !!}"/>
 
                             <label for="seo_description" class="form-label mt-3">SEO Description</label>
                             <textarea name="seo_description" placeholder="Enter SEO description">{!! $custom_page->seo_description !!}</textarea>

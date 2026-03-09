@@ -40,6 +40,7 @@
 
     @vite(['resources/css/frontend/style.css', 'resources/js/frontend/frontend.js',])
     {{-- dynamic js --}}
+    @stack('header_styles')
     @stack('header_scripts')
 </head>
 

@@ -7,6 +7,7 @@ use App\Models\Brand;
 use App\Models\Course;
 use App\Models\Counter;
 use App\Models\Feature;
+use App\Models\CustomPage;
 use App\Models\Newsletter;
 use App\Models\Testimonial;
 use App\Models\VideoSection;
@@ -76,5 +77,12 @@ class FrontendController extends Controller
         $counter = Counter::first();
         $testimonials = Testimonial::paginate(20);
         return view('frontend.pages.about', compact('about', 'counter', 'testimonials'));
+    }
+
+
+    function customPage($slug): View
+    {
+        $customPage = CustomPage::where('slug', $slug)->where('status', 1)->firstOrFail();
+        return view('frontend.pages.custom-page', compact('customPage'));
     }
 }

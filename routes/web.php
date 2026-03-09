@@ -1,8 +1,8 @@
 <?php
 
+use App\Models\Course;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Frontend\CartController;
-use App\Http\Controllers\Frontend\HeroController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\ContactController;
@@ -17,7 +17,6 @@ use App\Http\Controllers\Frontend\CourseContentController;
 use App\Http\Controllers\Frontend\EnrolledCourseController;
 use App\Http\Controllers\Frontend\StudentDashboardController;
 use App\Http\Controllers\Frontend\InstructorDashboardContoller;
-use App\Models\Course;
 
 /*
 *-----------------------------------------------------------------
@@ -32,6 +31,9 @@ Route::get('/courses/{slug}', [CoursePageController::class, 'show'])
 /** Review Route */
 Route::post('review', [CoursePageController::class, 'storeReview'])
     ->name('review.store');
+/** Custom Page Routes */
+Route::get('page/{slug}', [FrontendController::class, 'customPage'])
+    ->name('custom-page');
 
 /* Cart Routes */
 Route::get('cart', [CartController::class, 'index'])

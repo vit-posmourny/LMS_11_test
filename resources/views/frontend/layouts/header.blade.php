@@ -1,6 +1,7 @@
 @php
     $topBar = App\Models\TopBar::first();
     $categories = App\Models\CourseCategory::whereNull('parent_id')->where('status', 1)->get();
+    $customPages = App\Models\CustomPage::where('status', 1)->where('show_at_nav', 1)->get();
 @endphp
 
     <!--===========================
@@ -82,6 +83,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('contact.index') }}">Contact Us</a>
                 </li>
+                @foreach ($customPages as $customPage)
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('custom-page', ['slug' => $customPage->slug]) }}">{{ $customPage->title }}</a>
+                    </li>
+                @endforeach
             </ul>
 
             <div class="right_menu">
