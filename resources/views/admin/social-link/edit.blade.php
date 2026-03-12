@@ -1,4 +1,3 @@
-{{-- resources\views\admin\course\category\create.blade.php --}}
 @extends('admin.layouts.master')
 
 @section('content')

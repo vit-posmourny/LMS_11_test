@@ -5,9 +5,9 @@
     <div class="container-xl">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Social Links</h3>
+                <h3 class="card-title">Blog Categories</h3>
                 <div class="card-actions">
-                    <a href="{{ route('admin.social-links.create') }}" class="btn btn-primary">
+                    <a href="{{ route('admin.blog-categories.create') }}" class="btn btn-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                             stroke-linecap="round" stroke-linejoin="round">
@@ -24,31 +24,29 @@
                     <table class="table table-vcenter card-table">
                         <thead>
                             <tr>
-                                <th>Icon</th>
-                                <th>URL</th>
+                                <th>Name</th>
+                                <th>Slug</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @forelse ($socialLinks as $socialLink)
+                            @forelse ($categories as $category)
                                 <tr>
+                                    <td>{{ $category->name }}</td>
+                                    <td>{{ $category->slug }}</td>
                                     <td>
-                                        <x-tabler-icon icon="{{ $socialLink->icon }}"/>
-                                    </td>
-                                    <td>{{ $socialLink->url }}</td>
-                                    <td>
-                                        @if ($socialLink->status)
+                                        @if ($category->status)
                                             <span class="badge bg-lime text-lime-fg">Yes</span>
                                         @else
                                             <span class="badge bg-pink text-pink-fg">No</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.social-links.edit', $socialLink->id) }}" class="text-blue">
+                                        <a href="{{ route('admin.blog-categories.edit', $category->id) }}" class="text-blue">
                                              <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
                                         </a>
-                                        <a href="{{ route('admin.social-links.destroy', $socialLink->id) }}" class="text-red delete__item">
+                                        <a href="{{ route('admin.blog-categories.destroy', $category->id) }}" class="text-red delete__item">
                                             <x-tabler-icon icon="trash" class="icon-tabler" sprite="outline"/>
                                         </a>
                                     </td>
