@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\RedirectResponse;
+use Intervention\Image\Colors\Rgb\Channels\Red;
 
 class BlogCategoryController extends Controller
 {
@@ -15,7 +16,7 @@ class BlogCategoryController extends Controller
      */
     public function index(): View
     {
-        $categories = BlogCategory::all();
+        $categories = BlogCategory::paginate(20);
         return view('admin.blog.category.index', compact('categories'));
     }
 
@@ -49,27 +50,33 @@ class BlogCategoryController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(string $id): View
     {
-        //
+        $category = BlogCategory::findOrFail($id);
+        return view('admin.blog.category.edit', compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255|unique:blog_categories,name,'.$id,
+            'status' => 'nullable|boolean',
+        ]);
+
+        $category = BlogCategory::findOrFail($id);
+        $category->name = $request->name;
+        $category->slug = str()->slug($request->name);
+        $category->status = $request->status ?? 0;
+        $category->save();
+
+        notyf()->success('Category updated successfully.');
+
+        return to_route('admin.blog-categories.index');
     }
 
     /**
@@ -77,6 +84,14 @@ class BlogCategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = BlogCategory::findOrFail($id);
+        try {
+            $category->delete();
+            notyf()->success('Category Deleted');
+            return response(['message' => 'Category Deleted'], 200);
+        }
+        catch (\Throwable $e) {
+            return response(["message" => $e->getMessage()], 500);
+        }
     }
 }
