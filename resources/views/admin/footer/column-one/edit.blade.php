@@ -9,7 +9,7 @@
                 <h3 class="card-title">Update Footer Column One</h3>
                 <div class="card-actions">
                     <a href="{{ route('admin.footer-column-one.index') }}" class="btn btn-primary">
-                        <x-tabler-icon icon="chevron-left" sprite="outline"/>
+                        <x-tabler-icon icon="chevron-left" style="stroke-width: 2" class="icon-tabler" sprite="outline"/>
                         Back
                     </a>
                 </div>

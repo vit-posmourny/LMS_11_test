@@ -8,13 +8,7 @@
                 <h3 class="card-title">Blog Categories</h3>
                 <div class="card-actions">
                     <a href="{{ route('admin.blog-categories.create') }}" class="btn btn-primary">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M12 5l0 14"></path>
-                            <path d="M5 12l14 0"></path>
-                        </svg>
+                        <x-tabler-icon icon="plus" style="stroke-width: 2;" class="icon-tabler" sprite="outline"/>
                         Add new
                     </a>
                 </div>
@@ -44,7 +38,7 @@
                                     </td>
                                     <td>
                                         <a href="{{ route('admin.blog-categories.edit', $category->id) }}" class="text-blue">
-                                             <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
+                                            <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
                                         </a>
                                         <a href="{{ route('admin.blog-categories.destroy', $category->id) }}" class="text-red delete__item">
                                             <x-tabler-icon icon="trash" class="icon-tabler" sprite="outline"/>
