@@ -22,7 +22,7 @@
                         <x-input-error for="name" class="mt-2"/>
                     </div>
                     <div class="mb-3">
-                       <button class="btn btn-primary" type="submit">
+                        <button type="submit" class="btn btn-primary">
                             <x-tabler-icon icon="device-floppy" class="icon-tabler" sprite="outline"/>
                             Create
                         </button>
