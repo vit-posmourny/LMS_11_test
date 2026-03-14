@@ -16,6 +16,8 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('blog_category_id')->constrained('blog_categories')->onDelete('cascade');
             $table->string('title');
+            $table->string('image');
+            $table->string('slug');
             $table->text('description');
             $table->boolean('status')->default(1);
             $table->timestamps();

@@ -3,14 +3,15 @@
 
 možnost — jak když zpracovávám vícero obr. — nemusím přerušit ukládání kvůli jednomu s chybou — app/Http/Controllers/Admin/AboutUsSectionController.php
 
-základní mazání jednoho obrázku — app\Http\Controllers\Admin\ContactController.php nebo app\Http\Controllers\Admin\ContactSettingController.php
+základní mazání jednoho obrázku — app\Http\Controllers\Admin\ContactController.php , ř.119 nebo app\Http\Controllers\Admin\ContactSettingController.php
 
 použití sprite.svg — resources\views\frontend\layouts\header.blade.php , ř.13
-
-mazání jednoho záznamu v kontroleru — app\Http\Controllers\Admin\ContactController.php , ř.119
 
 {{ \Carbon\Carbon::parse($review->created_at)->timezone('Europe/Prague')->isoFormat('LLLL') }} - resources\views\frontend\pages\course-details-page.blade.php
 
 sprite delete button pro frontend - resources\views\frontend\student-dashboard\review\index.blade.php
 
 sprite edit/delete buttons pro admin - resources\views\admin\social-link\index.blade.php , ř.51
+
+jak nahradit obraz v metodě store() - app\Http\Controllers\Admin\ContactSettingController.php , store()
+

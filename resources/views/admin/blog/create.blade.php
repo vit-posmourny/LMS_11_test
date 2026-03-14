@@ -18,7 +18,10 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <x-input-block name="name" placeholder="Enter blog name"/>
+                            <x-input-block name="title" placeholder="Enter blog title"/>
+
+                            <x-input-file-block name="image" placeholder="Upload blog image"/>
+
                             <div class="form-group mb-3">
                                 <label for="" class="form-label">Category</label>
                                 <select name="category_id" class="form-control">
@@ -27,6 +30,7 @@
                                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                                     @endforeach
                                 </select>
+                                <x-input-error for="description" class="mt-2"/>
                             </div>
                         </div>
                         <div class="col-12">

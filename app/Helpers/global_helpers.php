@@ -23,14 +23,12 @@ if (!function_exists('convertMinutesToHours'))
     }
 
 
-
     if (!function_exists('admin'))
     {
         function admin() {
             return Auth('admin')->user();
         }
     }
-
 
 
     if (!function_exists('cartTotal'))
