@@ -20,9 +20,6 @@
                     <div class="row">
                         <div class="col-md-6">
                             <x-input-block name="name"  class="@error('name') is-invalid @enderror" :value="old('name', $category->name)" placeholder="Enter category name"/>
-                                @error('name')
-    <div class="alert alert-danger">{{ $message }}</div>
-@enderror
                             <div class="row">
                                 <div class="col-md-3">
                                     <x-input-toggle-block name="status" label="Status" :checked="old('status', $category->status == 1)"/>

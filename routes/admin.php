@@ -2,6 +2,7 @@
 
 use App\Models\LatestCourseSection;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\HeroController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\CourseController;
@@ -254,8 +255,12 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
     Route::resource('footer-column-two', FooterColumnTwoController::class);
     /** Custom Page Routes */
     Route::resource('custom-page', CustomPageController::class);
+
+    /** BLOG ROUTES */
     /** Blog Categories Routes */
     Route::resource('blog-categories', BlogCategoryController::class);
+    /** Blog Routes */
+    Route::resource('blogs', BlogController::class);
 
     /** lfm routes */
     Route::group(['prefix' => '/admin/laravel-filemanager', 'middleware' => ['web', 'auth:admin']], function () {
