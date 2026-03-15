@@ -86,8 +86,7 @@ class ContactController extends Controller
         if ($request->hasFile('icon'))
         {
             $file = $request->file('icon');
-            $icon = $this->fileUpload($file);
-            $contact->icon = $icon;
+            $contact->icon = $this->fileUpload($file);
         }
 
         $contact->title = $request->title;

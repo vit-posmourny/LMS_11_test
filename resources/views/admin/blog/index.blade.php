@@ -18,36 +18,42 @@
                     <table class="table table-vcenter card-table">
                         <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Slug</th>
+                                <th>Image</th>
+                                <th>Title</th>
+                                <th>Category</th>
                                 <th>Status</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- @forelse ($categories as $category)
+                            @forelse ($blogs as $blog)
                                 <tr>
-                                    <td>{{ $category->name }}</td>
-                                    <td>{{ $category->slug }}</td>
                                     <td>
-                                        @if ($category->status)
+                                        @if ($blog->image)
+                                            <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}" style="max-width: 100px; max-height: 100px;">
+                                        @endif
+                                    </td>
+                                    <td>{{ $blog->title }}</td>
+                                    <td>{{ $blog->category->name }}</td>
+                                    <td>
+                                        @if ($blog->status)
                                             <span class="badge bg-lime text-lime-fg">Yes</span>
                                         @else
                                             <span class="badge bg-pink text-pink-fg">No</span>
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="{{ route('admin.blog-categories.edit', $category->id) }}" class="text-blue">
+                                        <a href="{{ route('admin.blogs.edit', $blog->id) }}" class="text-blue">
                                             <x-tabler-icon icon="edit" class="icon-tabler" sprite="outline"/>
                                         </a>
-                                        <a href="{{ route('admin.blog-categories.destroy', $category->id) }}" class="text-red delete__item">
+                                        <a href="{{ route('admin.blogs.destroy', $blog->id) }}" class="text-red delete__item">
                                             <x-tabler-icon icon="trash" class="icon-tabler" sprite="outline"/>
                                         </a>
                                     </td>
                                 </tr>
                             @empty
-                                <tr><td colspan="4" class="text-center">No data found!</td></tr>
-                            @endforelse --}}
+                                <tr><td colspan="5" class="text-center">No data found!</td></tr>
+                            @endforelse
                         </tbody>
                     </table>
                 </div>
