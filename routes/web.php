@@ -2,6 +2,7 @@
 
 use App\Models\Course;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\OrderController;
 use App\Http\Controllers\Frontend\CourseController;
@@ -80,6 +81,9 @@ Route::get('contact', [ContactController::class, 'index'])
 /** Contact Route */
 Route::post('contact', [ContactController::class, 'sendMail'])
     ->name('send.contact');
+/** Blog Routes */
+Route::get('blog', [BlogController::class, 'index'])
+    ->name('blog.index');
 
 /*
 *-----------------------------------------------------------------
