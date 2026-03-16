@@ -36,8 +36,8 @@
             @forelse ($blogs as $blog )
                 <div class="col-xl-6 wow fadeInUp">
                     <div class="wsus__single_blog_4">
-                        <a href="#" class="wsus__single_blog_4_img">
-                            <img src="{{ Vite::asset('resources/images/blog_4_img_1.jpg') }}" alt="Blog" class="img-fluid">
+                        <a href="{{ route('blog.show', $blog->slug) }}" class="wsus__single_blog_4_img">
+                            <img src="{{ asset($blog->image) }}" alt="Blog" class="img-fluid">
                             <span class="date">{{ date('M d Y', strtotime($blog->created_at)) }}</span>
                         </a>
                         <div class="wsus__single_blog_4_text">

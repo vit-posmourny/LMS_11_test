@@ -6,12 +6,27 @@ use App\Models\Blog;
 use App\Models\BlogCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class BlogController extends Controller
 {
-    public function index(): View
+    public function index(Request $request): View
     {
-        $blogs = Blog::where('status', 1)->paginate(10);
+        $blogs = Blog::where('status', 1)
+            ->when($request->filled('search'), function($query) use ($request) {
+                $search = $request->search;
+                $query->where(function($q) use ($search) {
+                    $q->where('title', 'like', "%{$search}%")
+                      ->orWhere('description', 'like', "%{$search}%");
+                });
+            })
+            ->when($request->filled('category'), function($query) use ($request) {
+                $slug = $request->category;
+                $query->whereHas('category', function($q) use ($slug) {
+                    $q->where('slug', $slug);
+                });
+            })->paginate(10);
+
         return view('frontend.pages.blog', compact('blogs'));
     }
 
