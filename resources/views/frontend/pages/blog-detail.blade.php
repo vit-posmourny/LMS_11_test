@@ -1,5 +1,11 @@
 @extends('frontend.layouts.master')
-
+@push('meta')
+    <meta property="og:title" content="{{ $blog->seo_title }}">
+    <meta property="og:description" content="{{ $blog->seo_description }}">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:image" content="{{ asset($blog->image) }}">
+    <meta property="og:type" content="Blog">
+@endpush
 @section('content')
 <!--===========================
     BREADCRUMB START
@@ -78,10 +84,14 @@
                     <div class="wsus__blog_det_tags_share d-flex flex-wrap mt_50">
                         <ul class="share d-flex flex-wrap align-items-center">
                             <li><span>share:</span></li>
-                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                            {{-- <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
                             <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
                             <li><a href="#"><i class="fab fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li>
+                            <li><a href="#"><i class="fab fa-pinterest-p"></i></a></li> --}}
+                            <li class="ez-facebook"><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                            <li class="ez-linkedin"><a href=""><i class="fab fa-linkedin-in"></i></a></li>
+                            <li class="ez-x"><a href=""><i class="fab fa-twitter"></i></a></li>
+                            <li class="ez-reddit"><a href=""><i class="fab fa-reddit"></i></a></li>
                         </ul>
                     </div>
                     <div class="wsus__blog_det_author">
@@ -184,70 +194,34 @@
                     <div class="wsus__sidebar_recent_post">
                         <h3>Recent Posts</h3>
                         <ul class="d-flex flex-wrap">
-                            <li>
-                                <a href="#" class="img">
-                                    <img src="{{ Vite::asset('resources/images/blog_4_img_1.jpg') }}" alt="Blog" class="img-fluid">
-                                </a>
-                                <div class="text">
-                                    <p>
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/calendar_blue.png') }}" alt="Clander" class="img-fluid">
-                                        </span>
-                                        March 23, 2024
-                                    </p>
-                                    <a href="#" class="title">Launch into UI Design with Tips For Efficient
-                                        Progress</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="img">
-                                    <img src="{{ Vite::asset('resources/images/blog_4_img_2.jpg') }}" alt="Blog" class="img-fluid">
-                                </div>
-                                <div class="text">
-                                    <p>
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/calendar_blue.png') }}" alt="Clander" class="img-fluid">
-                                        </span>
-                                        June 15, 2024
-                                    </p>
-                                    <a href="#" class="title">Simplified Approach to Realistic Lip Drawing in 7
-                                        Steps.</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="img">
-                                    <img src="{{ Vite::asset('resources/images/blog_4_img_3.jpg') }}" alt="Blog" class="img-fluid">
-                                </div>
-                                <div class="text">
-                                    <p>
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/calendar_blue.png') }}" alt="Clander" class="img-fluid">
-                                        </span>
-                                        October 27, 2024
-                                    </p>
-                                    <a href="#" class="title">Exploring the GREP Command For File Discovery in
-                                        Linux.</a>
-                                </div>
-                            </li>
+                            @foreach ($recentBlogs as $blog)
+                                <li class="w-100">
+                                    <a href="#" class="img">
+                                        <img src="{{ asset($blog->image) }}" alt="Blog" class="img-fluid">
+                                    </a>
+                                    <div class="text">
+                                        <p>
+                                            <span>
+                                                <img src="{{ Vite::asset('resources/images/calendar_blue.png') }}" alt="Clander" class="img-fluid">
+                                            </span>
+                                            {{ date('M d Y', strtotime($blog->created_at)) }}
+                                        </p>
+                                        <a href="{{ route('blog.show', $blog->slug) }}" class="title">{{ $blog->title }}</a>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
                     </div>
                     <div class="wsus__sidebar_blog_category">
                         <h3>Categories</h3>
                         <ul>
+                            @foreach ($blogCategories as $category)
+                                <li>
+                                    <a href="#">{{ $category->name }} <span>({{ $category->blogs_count }})</span></a>
+                                </li>
+                            @endforeach
                             <li>
                                 <a href="#">Business <span>(07)</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Data Science <span>(14)</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Marketing <span>(27)</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Health & Fitness <span>(31)</span></a>
-                            </li>
-                            <li>
-                                <a href="#">Finance <span>(12)</span></a>
                             </li>
                         </ul>
                     </div>
@@ -272,3 +246,16 @@
     BLOG DETAILS END
 ============================-->
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/gh/shakilahmed0369/ez-share/dist/ez-share.min.js"></script>
+
+<script>
+    $(function() {
+        $('#starRating li').on('click', function() {
+            var starRatingLength = $('#starRating').find('.active').length;
+            $('#rating').val(starRatingLength);
+        })
+    })
+</script>
+@endpush

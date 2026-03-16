@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Models\Blog;
+use App\Models\BlogCategory;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
 
@@ -17,6 +18,8 @@ class BlogController extends Controller
     public function show(String $slug): View
     {
         $blog = Blog::with('category')->where('slug', $slug)->where('status', 1)->firstOrFail();
-        return view('frontend.pages.blog-detail', compact('blog'));
+        $recentBlogs = Blog::where('status', 1)->where('slug', '!=', $slug)->latest()->take(3)->get();
+        $blogCategories = BlogCategory::withCount('blogs')->where('status', 1)->get();
+        return view('frontend.pages.blog-detail', compact('blog', 'recentBlogs', 'blogCategories'));
     }
 }

@@ -16,4 +16,9 @@ class Blog extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
+
+    function author() : BelongsTo
+    {
+        return $this->belongsTo(Admin::class, 'user_id', 'id');
+    }
 }

@@ -18,7 +18,7 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-6">
-                            <x-input-block name="title" :value="$blog->title" placeholder="Enter blog title"/>
+                            <x-input-block name="title" placeholder="Enter blog title"/>
 
                             <x-input-file-block name="image" placeholder="Upload blog image"/>
 
