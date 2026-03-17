@@ -49,7 +49,7 @@
                                 <li>
                                     <span><img src="{{ Vite::asset('resources/images/comment_icon_black.png') }}" alt="Comment"
                                             class="img-fluid"></span>
-                                    3 Comments
+                                    {{ $blog->comments->count() }} Comments
                                 </li>
                             </ul>
                             <a href="{{ route('blog.show', $blog->slug) }}" class="title">{{ $blog->title }}</a>

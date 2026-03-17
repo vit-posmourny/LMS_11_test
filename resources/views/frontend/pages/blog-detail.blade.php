@@ -67,7 +67,7 @@
                                 <span>
                                     <img src="{{ Vite::asset('resources/images/comment_icon_gray.png') }}" alt="bookmark" class="img-fluid">
                                 </span>
-                                3 Comments
+                                {{ $blog->comments()->count() }} Comments
                             </li>
                         </ul>
                         <h2>{{ $blog->title }}</h2>
@@ -116,7 +116,7 @@
                         @foreach ($blog->comments()->orderBy('id', 'desc')->get() ?? [] as $comment)
                             <div class="wsus__blog_single_comment">
                                 <div class="img">
-                                    <img src="{{ Vite::asset('resources/images/testimonial_user_1.png') }}" alt="Comments" class="img-fluid">
+                                    <img src="{{ asset($comment->user->avatar) }}" alt="Comments" class="img-fluid">
                                 </div>
                                 <div class="text">
                                     <h4>{{ $comment->user->name }}</h4>
