@@ -10,7 +10,7 @@
 
     <title>EduCore - Online Courses & Education HTML Template</title>
 
-    <link rel="icon" type="image/png" href="{{ Vite::asset('resources/images/favicon.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset(config('settings.site_favicon')) }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/assets/css/tom-select.bootstrap5.min.css') }}">
