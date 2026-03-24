@@ -17,6 +17,44 @@
                     <input type="text" class="form-control" name="receiver_email" value="{{ config('settings.receiver_email') }}">
                     <x-input-error for="receiver_email" class="mt-2"/>
                 </div>
+                <div class="col-md-6">
+                    <div class="form-label">Mailer</div>
+                    <input type="text" class="form-control" name="mail_mailer" value="{{ config('settings.mail_mailer') }}">
+                    <x-input-error for="mail_mailer" class="mt-2"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label">Host</div>
+                    <input type="text" class="form-control" name="mail_host" value="{{ config('settings.mail_host') }}">
+                    <x-input-error for="mail_host" class="mt-2"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label">Port</div>
+                    <input type="text" class="form-control" name="mail_port" value="{{ config('settings.mail_port') }}">
+                    <x-input-error for="mail_port" class="mt-2"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label">User Name</div>
+                    <input type="text" class="form-control" name="mail_username" value="{{ config('settings.mail_username') }}">
+                    <x-input-error for="mail_username" class="mt-2"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label">Password</div>
+                    <input type="password" class="form-control" name="mail_password" value="{{ config('settings.mail_password') }}">
+                    <x-input-error for="mail_password" class="mt-2"/>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-label">Mail Encryption</div>
+                    <input type="text" class="form-control" name="mail_encryption" value="{{ config('settings.mail_encryption') }}">
+                    <x-input-error for="mail_encryption" class="mt-2"/>
+                </div>
+                <div class="col-md-2">
+                    <div class="form-label">Mail Queue</div>
+                    <select class="form-select" name="mail_queue" id="">
+                        <option value="1">On</option>
+                        <option value="0">Off</option>
+                    </select>
+                    <x-input-error for="mail_queue" class="mt-2"/>
+                </div>
             </div>
         </div>
         <div class="card-footer bg-transparent mt-auto">
