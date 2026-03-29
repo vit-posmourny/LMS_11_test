@@ -33,8 +33,8 @@ class ContactController extends Controller
             'subject' => 'required|string',
             'message' => 'required|string',
         ]);
-
-        if (config('mail_queue.is_queue')) {
+        //dd(config('mail_queue.is_queue'));
+        if (config('mail_queue.is_queue') == 'true') {
             Mail::to(config('settings.receiver_email'))->queue(new ContactMail($validatedData));
         } else {
             Mail::to(config('settings.receiver_email'))->send(new ContactMail($validatedData));

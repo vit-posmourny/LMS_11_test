@@ -91,7 +91,7 @@ class SettingController extends Controller
             'mail_username' => 'required|string|max:255',
             'mail_password' => 'required|string|max:255',
             'mail_encryption' => 'required|string|max:255',
-            'mail_queue' => 'required|boolean',
+            'mail_queue' => 'required|string|max:255',
         ]);
 
         foreach ($validateData as $key => $value)

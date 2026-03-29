@@ -50,8 +50,8 @@
                 <div class="col-md-2">
                     <div class="form-label">Mail Queue</div>
                     <select class="form-select" name="mail_queue" id="">
-                        <option value="1">On</option>
-                        <option value="0">Off</option>
+                        <option value="true" @selected(config('settings.mail_queue') == 'true')>On</option>
+                        <option value="false" @selected(config('settings.mail_queue') == 'false')>Off</option>
                     </select>
                     <x-input-error for="mail_queue" class="mt-2"/>
                 </div>

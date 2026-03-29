@@ -1,7 +1,7 @@
 @extends('frontend.layouts.master')
 
 @section('content')
-{{-- resources\views\auth\forgot-password.blade.php --}}
+<!-- resources\views\auth\forgot-password.blade.php -->
 <!--===========================
     SIGN IN START
 ============================-->

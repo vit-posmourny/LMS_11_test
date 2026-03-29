@@ -35,6 +35,6 @@ class SettingServiceProvider extends ServiceProvider
             'password' => config('settings.mail_password'),
             'encryption' => config('settings.mail_encryption'),
         ]);
-        Config::set('mail.queue.is_queue', config('settings.mail_queue'));
+        Config::set('mail_queue.is_queue', config('settings.mail_queue'));
     }
 }
