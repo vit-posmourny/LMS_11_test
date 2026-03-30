@@ -1232,6 +1232,88 @@ header .wsus__header_right li .nice-select .list {
     display: none;
 }
 
+@media (max-width: 991.98px) {
+    .header_3,
+    .main_menu_3 {
+        padding: 0 15px !important;
+    }
+
+    .main_menu_3 {
+        display: none !important;
+    }
+
+    .mobile_menu_area {
+        display: block !important;
+        background: #fff;
+        border-bottom: 1px solid #f0f0f0;
+        position: relative;
+        z-index: 999;
+        padding: 10px 15px;
+    }
+
+    .mobile_menu_area_top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .mobile_menu_logo img {
+        max-height: 40px;
+        width: auto;
+    }
+
+    .mobile_menu_icon {
+        font-size: 24px;
+        cursor: pointer;
+        color: var(--colorBlack);
+    }
+
+    .mobile_menu_item_area {
+        margin-top: 15px;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu,
+    .mobile_menu_item_area .main_mobile_menu ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu .mobile_dropdown > a {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 0;
+        color: var(--colorBlack);
+        font-weight: 500;
+        text-transform: capitalize;
+        border-bottom: 1px solid #e6e6e6;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu .inner_menu {
+        display: none;
+        padding-left: 15px;
+        margin-top: 8px;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu .mobile_dropdown.active > .inner_menu {
+        display: block;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu .inner_menu li a {
+        display: block;
+        padding: 8px 0;
+        color: #4a4a4a;
+        font-size: 14px;
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    .mobile_menu_item_area .main_mobile_menu .inner_menu li:last-child a {
+        border-bottom: 0;
+    }
+}
+
 /* menu end */
 
 /* banner start */

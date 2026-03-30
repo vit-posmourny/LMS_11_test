@@ -135,12 +135,12 @@
 
 
     <!--============================
-        STICKY MENU START
+        MOBILE MENU START
     ==============================-->
     <div class="mobile_menu_area">
         <div class="mobile_menu_area_top">
             <a class="mobile_menu_logo" href="index.html">
-                <img src="{{ Vite::asset('resources/images/logo.png') }}" alt="EduCore">
+                <img src="{{ asset(config('settings.site_logo')) }}" alt="{{ config('settings.site_name') }}">
             </a>
             <div class="mobile_menu_icon d-block d-lg-none" data-bs-toggle="offcanvas"
                 data-bs-target="#offcanvasWithBothOptions" aria-controls="offcanvasWithBothOptions">
@@ -350,5 +350,5 @@
         </div>
     </div>
     <!--============================
-        STICKY MENU END
+        MOBILE MENU END
     ==============================-->
