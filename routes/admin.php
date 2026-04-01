@@ -84,8 +84,8 @@ Route::group(["middleware" => "auth:admin", "prefix" => "admin", "as" => "admin.
         ->name('password.update');
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
-    Route::get('dashboard', [DashboardController::class, 'index'])
-        ->name('dashboard');
+    Route::get('dashboard', [DashboardController::class, 'index'])  
+        ->name('dashboard.index');
 
     /** Instructor Request Routes **/
     Route::get('instructor-doc-download/{user}', [InstructorRequestController::class, 'download'])
