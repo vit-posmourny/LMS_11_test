@@ -97,12 +97,14 @@
                                         <div class="rating_area">
                                             <!-- <a href="#" class="category">Design</a> -->
                                             <p class="rating">
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <i class="fas fa-star"></i>
-                                                <span>(4.8 Rating)</span>
+                                                @for ($i = 1; $i <= 5; $i++)
+                                                    @if ($i <= $course->reviews()->avg('rating'))
+                                                        <x-tabler-icon icon="star" class="icon-star" sprite="filled"/>
+                                                    @else
+                                                        <x-tabler-icon icon="star" class="icon-star" sprite="outline"/>
+                                                    @endif
+                                                @endfor
+                                                <span>({{ number_format($course->reviews()->avg('rating'), 1) }} Rating)</span>
                                             </p>
                                         </div>
 

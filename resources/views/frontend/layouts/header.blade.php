@@ -139,7 +139,7 @@
     ==============================-->
     <div class="mobile_menu_area">
         <div class="mobile_menu_area_top">
-            <a class="mobile_menu_logo" href="index.html">
+            <a class="mobile_menu_logo" href="{{ route('home') }}">
                 <img src="{{ asset(config('settings.site_logo')) }}" alt="{{ config('settings.site_name') }}">
             </a>
             <div class="mobile_menu_icon d-block d-lg-none" data-bs-toggle="offcanvas"
@@ -243,7 +243,7 @@
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"
                             tabindex="0">
                             <ul class="main_mobile_menu">
-                                <li class="mobile_dropdown">
+                                {{-- <li class="mobile_dropdown">
                                     <a href="#">
                                         <span>
                                             <img src="{{ Vite::asset('resources/images/menu_category_icon_1.png') }}" alt="Category" class="img-fluid">
@@ -256,92 +256,24 @@
                                         <li><a href="courses_details.html">UI/UX Design</a></li>
                                         <li><a href="courses_details.html">Graphic Design</a></li>
                                     </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_2.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Business
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_3.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Marketing
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_4.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Lifestyle
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_5.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Health & Fitness
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_6.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Design
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-                                <li class="mobile_dropdown">
-                                    <a href="#">
-                                        <span>
-                                            <img src="{{ Vite::asset('resources/images/menu_category_icon_7.png') }}" alt="Category" class="img-fluid">
-                                        </span>
-                                        Academics
-                                    </a>
-                                    <ul class="inner_menu">
-                                        <li><a href="courses_details.html">Web Design</a></li>
-                                        <li><a href="courses_details.html">Web Development</a></li>
-                                        <li><a href="courses_details.html">UI/UX Design</a></li>
-                                        <li><a href="courses_details.html">Graphic Design</a></li>
-                                    </ul>
-                                </li>
-
+                                </li> --}}
+                                @foreach ($categories as $category)
+                                    <li class="mobile_dropdown">
+                                        <a href="#">
+                                            <span>
+                                                <img src="{{ asset($category->image) }}" alt="Category" class="img-fluid">
+                                            </span>
+                                            {{ $category->name }}
+                                        </a>
+                                        @if ($category->subCategories->count() > 0)
+                                            <ul class="category_sub_menu">
+                                                @foreach ($category->subCategories as $subCategory)
+                                                    <li><a href="{{ route('courses.index', ['category' => $subCategory->id]) }}">{{ $subCategory->name }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        @endif
+                                    </li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>

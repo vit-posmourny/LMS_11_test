@@ -78,10 +78,10 @@ $(function()
     });
 
     // Mobile dropdown toggling inside offcanvas menu
-    $('.mobile_menu_item_area').on('click', '.mobile_dropdown > a', function(e) {
-        e.preventDefault();
-        const parent = $(this).closest('.mobile_dropdown');
-        parent.toggleClass('active');
-        parent.children('.inner_menu').slideToggle(200);
-    });
+    // $('.mobile_menu_item_area').on('click', '.mobile_dropdown > a', function(e) {
+    //     e.preventDefault();
+    //     const parent = $(this).closest('.mobile_dropdown');
+    //     parent.toggleClass('active');
+    //     parent.children('.inner_menu').slideToggle(200);
+    // });
 })
