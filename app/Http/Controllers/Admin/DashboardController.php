@@ -21,7 +21,15 @@ class DashboardController extends Controller
         $rejectedCourses = Course::where('is_approved', 'rejected')->count();
         $totalCourses = Course::where('is_approved', 'approved')->count();
 
-        return view('admin.dashboard', compact('todaysOrders', 'thisWeeksOrders', 'thisMonthsOrders',
-            'thisYearsOrders', 'totalOrders', 'pendingCourses', 'rejectedCourses', 'totalCourses'));
+        $monthlyOrderSums = [];
+        $monthlyOrderCounts = [];
+
+        for ($month = 1; $month <= 12; $month++) {
+            $monthlyOrderSums[] = Order::whereMonth('created_at', $month)->whereYear('created_at', Carbon::now()->year-1)->sum('total_amount');
+            $monthlyOrderCounts[] = Order::whereMonth('created_at', $month)->whereYear('created_at', Carbon::now()->year-1)->count();
+        }
+
+        return view('admin.dashboard', compact('todaysOrders', 'thisWeeksOrders', 'thisMonthsOrders', 'thisYearsOrders', 'totalOrders',
+            'pendingCourses', 'rejectedCourses', 'totalCourses', 'monthlyOrderSums', 'monthlyOrderCounts'));
     }
 }

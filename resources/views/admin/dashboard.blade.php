@@ -269,6 +269,63 @@
                     </div>
                 </div>
             </div>
+            <div class="card mt-3" style="height: 300px">
+                <canvas id="orderChart"></canvas>
+            </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.1/dist/chart.umd.min.js"></script>
+<script>
+    const ctx = document.getElementById('orderChart').getContext('2d');
+    const orderChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Led', 'Úno', 'Bře', 'Dub', 'Kvě', 'Čer', 'Čvc', 'Srp', 'Zář', 'Říj', 'Lis', 'Pro'],
+            datasets: [{
+                label: 'Order Amont ($)',
+                data: @json($monthlyOrderSums),
+                borderColor: 'rgba(75, 192, 192, 1)',
+                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                borderWidth: 2,
+                yAxisID: 'y',
+            },{
+                label: 'Order Count',
+                data: @json($monthlyOrderCounts),
+                borderColor: 'rgba(255, 55, 0, 1)',
+                backgroundColor: 'rgba(255, 55, 0, 0.2)',
+                borderWidth: 2,
+                type: 'line',
+                yAxisID: 'y1',
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Order Amount ({{ config("settings.currency_icon") }})',
+                    },
+                    position: 'left',
+                },
+                y1: {
+                    beginAtZero: true,
+                    title: {
+                        display: true,
+                        text: 'Order Count',
+                    },
+                    position: 'right',
+                    grid: {
+                        drawOnChartArea: false,
+                    }
+                }
+            }
+        }
+    });
+</script>
+@endpush
